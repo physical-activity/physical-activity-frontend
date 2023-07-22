@@ -1,0 +1,58 @@
+.signin__input-block {
+	position: relative;
+	width: 100%;
+}
+
+.signin__input-block:first-of-type {
+  margin-bottom: 20px;
+}
+
+.signin__input-name {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 0;
+	color: #c3c3cc;
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 34px; /* 212.5% */
+	letter-spacing: -0.16px;
+}
+.signin__input {
+	width: 100%;
+	padding: 8px 0px 8px 0px;
+	border: none;
+	border-bottom: 1px solid #c3c3cc;
+  z-index: 99;
+}
+
+.signin__input:focus + .signin__input-name {
+  display: none;
+}
+
+.signin__input:focus {
+  border: none;
+  background: red
+}
+
+.signin__input-span {
+	width: 8px;
+	height: 8px;
+	position: absolute;
+}
+
+.signin__input-button {
+	background-image: url(./visibility_off_FILL0_wght300_GRAD0_opsz48\ 1.svg);
+	width: 24px;
+	height: 24px;
+	border: none;
+	background-color: transparent;
+	position: absolute;
+	z-index: 10;
+	margin: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 0;
+}
