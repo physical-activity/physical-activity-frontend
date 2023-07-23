@@ -1,7 +1,8 @@
 import './index.css';
+import { Routing } from '../pages';
 
 function App() {
-	return <div className="App"></div>;
+	return <Routing />;
 }
 
 export default App;
