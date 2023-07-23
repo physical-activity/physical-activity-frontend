@@ -1,12 +1,13 @@
-.signin__form {
+.form__form {
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
+	width: calc(100% - 8px);
 }
 
-.signin__input-container {
-	width: calc(359px - 40px);
+.form__input-container {
+	width: calc(100% - 40px);
 	background-color: #fff;
 	border-radius: 12px;
 	padding: 28px 20px;
@@ -14,7 +15,13 @@
 	flex-direction: column;
 }
 
-.signin__recover-pass {
+.form__server-error {
+	margin-top: 8px;
+	color: #F94C4C
+}
+
+.form__recover-pass {
+	position: relative;
 	background-color: transparent;
 	border: none;
 	color: #8b8b96;
@@ -24,29 +31,41 @@
 	font-weight: 700;
 	line-height: normal;
 	align-self: flex-end;
-	margin-top: 16px;
-	margin-bottom: 211px;
+	margin-top: 20px;
+	margin-bottom: 238px;
 }
 
-.signin__button-continer {
-	width: calc(359px - 40px);
+.form__recover-pass_active {
+	color: #2349FF;
+	cursor: pointer;
+}
+
+.form__button-continer {
+	width: calc(100% - 40px);
 	background-color: #fff;
 	border-radius: 12px;
 	padding: 28px 20px;
 	display: flex;
 }
 
-.signin__button {
+.form__button {
 	width: 271px;
 	padding: 12px 24px;
 	margin: 0 auto;
 	border-radius: 12px;
-	background: #c3c3cc;
+	background: #2349FF;
 	border: none;
-	color: #8b8b96;
+	color: #fff;
 	font-family: Fyodor;
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 700;
 	line-height: normal;
+	cursor: pointer;
+}
+
+.form__button_unvalid {
+	color: #8b8b96;
+	background: #E0E0E5;
+	cursor: default;
 }
