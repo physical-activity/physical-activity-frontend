@@ -15,3 +15,6 @@ code {
 .App {
 	text-align: center;
 }
+
+@import url(./styles/fonts/fonts.css);
+@import url(./styles/normalize.css)
