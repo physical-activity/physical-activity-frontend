@@ -1,0 +1,10 @@
+.register__checkbox-element {
+  display: flex;
+	flex-direction: row;
+}
+
+.register__checkbox {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
