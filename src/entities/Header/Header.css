@@ -1,13 +1,13 @@
 .header {
-	width: 359px;
+	width: calc(100% - 8px);
 	display: flex;
 	flex-direction: column;
   margin: 0 auto;
   gap: 4px;
 }
 .header__logo {
-	text-align: center;
-	color: #141516;
+	text-align: left;
+	color: #2349FF;
 	font-family: 'Fyodor';
 	font-size: 18px;
 	font-style: normal;
@@ -21,7 +21,7 @@
 }
 
 .header__title {
-	text-align: center;
+	text-align: left;
 	color: #141516;
 	font-family: 'Fyodor';
 	font-size: 28px;
