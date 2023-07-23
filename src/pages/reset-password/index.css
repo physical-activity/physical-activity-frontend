@@ -1,0 +1,32 @@
+.resetpass__block {
+	width: calc(359px - 40px);
+	background-color: #fff;
+	padding: 120px 20px 28px;
+	border-radius: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	margin: 0 auto 8px;
+	text-align: center;
+  
+}
+
+.resetpass__title {
+	font-family: Fyodor;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+  margin: 0;
+}
+
+.resetpass__text {
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 135%; /* 21.6px */
+	letter-spacing: -0.16px;
+  margin-bottom: 390px;
+  margin-top: 0;
+}
