@@ -1,33 +1,33 @@
 .register__form {
 	display: flex;
 	flex-direction: column;
-  margin: 0 auto;
-  gap: 4px;
+	margin: 0 auto;
+	gap: 4px;
 }
 
 .register__input-container {
-  width: calc(359px - 40px);
+	width: calc(359px - 40px);
 	background-color: #fff;
 	border-radius: 12px;
 	padding: 28px 20px;
 }
 
 .register__button-container {
-  width: calc(359px - 40px);
+	width: calc(359px - 40px);
 	background-color: #fff;
 	border-radius: 12px;
 	padding: 28px 20px;
 }
 
 .register__button {
-  width: 319px;
-  padding: 12px 0;
-  margin: 0 auto;
-  border: none;
-  border-radius: 12px;
-  color: #FFFFFF;
-  background: #2349FF;
-  font-family: Fyodor;
+	width: 319px;
+	padding: 12px 0;
+	margin: 0 auto;
+	border: none;
+	border-radius: 12px;
+	color: #ffffff;
+	background: #2349ff;
+	font-family: Fyodor;
 	font-size: 20px;
 	font-weight: 700;
 	line-height: 24px;

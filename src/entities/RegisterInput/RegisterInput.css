@@ -1,31 +1,31 @@
 .register__input-element {
 	display: flex;
 	flex-direction: column;
-  margin: 0 0 18px;
+	margin: 0 0 18px;
 }
 
 .register__input {
 	padding: 8px 0px;
 	border: none;
 	border-bottom: 1px solid #c3c3cc;
-  background-color: transparent;
+	background-color: transparent;
 	z-index: 1;
 	position: inherit;
 }
 
-.register__input:focus{
-  outline: none;
+.register__input:focus {
+	outline: none;
 }
 
 .register__error {
-  color: #F94C4C;
+	color: #f94c4c;
 	margin: 8px 0;
 }
 
 .register__placeholder {
-  position: absolute;
+	position: absolute;
 	color: #c3c3cc;
-  font-family: Manrope;
+	font-family: Manrope;
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 34px;
