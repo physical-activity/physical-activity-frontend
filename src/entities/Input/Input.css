@@ -1,16 +1,16 @@
-.signin__input-block {
+.input-block {
 	position: relative;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 }
 
-.signin__input-block:first-of-type {
+.input-block:first-of-type {
 	margin-top: 8px;
 	margin-bottom: 24px;
 }
 
-.signin__input-name {
+.input-block__input-name {
 	position: absolute;
 	/* top: 50%;
 	transform: translateY(-50%); */
@@ -23,7 +23,7 @@
 	line-height: 34px; /* 212.5% */
 	letter-spacing: -0.16px;
 }
-.signin__input {
+.input-block__input {
 	width: 100%;
 	padding: 8px 0px 14px 0px;
 	border: none;
@@ -54,32 +54,32 @@ input[type="password"] {
 	letter-spacing: 2px;
 }
 
-.signin__input_error {
+.input-block__input_error {
 	border-bottom: 1px solid #F94C4C;
 }
 
-.signin__input:focus + .signin__input-name {
+.input-block__input:focus + .input-block__input-name {
 	display: none;
 }
 
-.signin__input:focus {
+.input-block__input:focus {
 	outline: none;
 }
 
-.signin__input-span {
+.input-block__input-span {
 	top: -8px;
 	width: 8px;
 	height: 8px;
 	position: relative;
 }
 
-.signin__input-error {
+.input-block__input-error {
 	color: #F94C4C;
 	margin-top: 8px;
 	width: fit-content;
 }
 
-.signin__input-hidebutton {
+.input-block__input-hidebutton {
 	width: 24px;
 	height: 24px;
 	border: none;
