@@ -10,7 +10,10 @@ const config = {
 				test: /\.(js|jsx)$/i,
 				loader: 'babel-loader',
 			},
-			{ test: /\\.(png|jp(e*)g|svg|gif)$/, use: ['file-loader'] },
+			{
+				test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+				loader: 'file-loader',
+			},
 		],
 	},
 	output: {

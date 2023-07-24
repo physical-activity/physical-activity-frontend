@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Input.css';
-
+import requireSvg from './ic_required_1.svg';
 
 export const Input = ({
 	name,
@@ -47,7 +47,7 @@ export const Input = ({
 				<p className="input-block__input-name">
 					{placeholder}{' '}
 					<img
-						src={require('./ic_required_1.svg').default}
+						src={requireSvg}
 						className="input-block__input-span"
 						alt="required"
 					/>
