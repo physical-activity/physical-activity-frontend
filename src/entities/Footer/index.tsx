@@ -5,8 +5,8 @@ export const Footer = ({ footerQuestion, footerAnswer }: { footerQuestion: strin
   const navigate = useNavigate()
 
   return (
-    <div className="signin__footer">
-      <p className="signin__footer-text">{footerQuestion}{' '}<span className="signin__footer-span" onClick={() => navigate('/signup')}>{footerAnswer}</span></p>
+    <div className="footer">
+      <p className="footer__text">{footerQuestion}{' '}<span className="footer__span" onClick={() => navigate('/signup')}>{footerAnswer}</span></p>
     </div>
   )
 }

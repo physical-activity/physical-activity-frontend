@@ -1,11 +1,11 @@
-.signin__footer {
+.footer {
 	width: calc(100% - 8px);
 	background-color: #fff;
 	border-radius: 12px;
 	margin: 0 auto 8px;
 }
 
-.signin__footer-text {
+.footer__text {
 	text-align: center;
 	color: #000;
 	font-family: 'Manrope';
@@ -16,7 +16,7 @@
   margin: 0;
 	padding: 28px 20px;
 }
-.signin__footer-span {
+.footer__span {
   color: #2349FF;
 	cursor: pointer;
 }
