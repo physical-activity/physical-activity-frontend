@@ -23,9 +23,8 @@
 	border-bottom: 1px solid #04091f;
 }
 
-.register__error {
-	color: #f94c4c;
-	margin: 8px 0;
+.register__input:focus + .register__placeholder{
+	visibility: hidden;
 }
 
 .register__placeholder {
@@ -35,6 +34,11 @@
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 34px;
+}
+
+.register__error {
+	color: #f94c4c;
+	margin: 8px 0;
 }
 
 .register__visibility-img {
