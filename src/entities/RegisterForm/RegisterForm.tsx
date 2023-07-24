@@ -38,8 +38,12 @@ export const RegisterForm = () => {
 		console.log(validation.errors.repeatpassword);
 	};
 
+	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault();
+	}
+
 	return (
-		<form className="register__form">
+		<form className="register__form" onSubmit={handleSubmit}>
 			<div className="register__input-container">
 				<Input
 					type="text"

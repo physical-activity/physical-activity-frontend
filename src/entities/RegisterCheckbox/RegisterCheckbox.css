@@ -1,6 +1,7 @@
 .register__checkbox-element {
 	display: flex;
 	flex-direction: row;
+	margin-bottom: 112px;
 }
 
 .register__checkbox {

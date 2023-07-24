@@ -25,7 +25,9 @@ export const Input = ({
 	return (
 		<div className="register__input-element">
 			<input
-				className="register__input"
+				className={`register__input ${
+					isValidInput !== '' && 'register__input_error'
+				}`}
 				type={type}
 				id={id}
 				name={name}
@@ -38,7 +40,9 @@ export const Input = ({
 			{isValidInput !== '' && (
 				<span className="register__error">{isValidInput}</span>
 			)}
-			<span className="register__placeholder">{placeholder}</span>
+			{inputValue === '' && (
+				<span className="register__placeholder">{placeholder}</span>
+			)}
 		</div>
 	);
 };
