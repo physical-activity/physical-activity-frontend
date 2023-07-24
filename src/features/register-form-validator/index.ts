@@ -21,7 +21,7 @@ export function useForm() {
 		} else if (name === 'email' && target.validationMessage !== '') {
 			setErrors({ ...errors, [name]: 'Допустимы только латинские буквы' });
 		} else if (
-			(name === 'password' || name === 'secondPassword') &&
+			(name === 'password' || name === 'repeatpassword') &&
 			target.validationMessage !== ''
 		) {
 			setErrors({

@@ -22,13 +22,23 @@ export const Input = ({
 		setInputValue(e.target.value);
 	};
 
+	const [visibilityType, setVisibilityType] = useState(type);
+
+	function togglePasswordVisibility() {
+		if (visibilityType === 'password') {
+			setVisibilityType('text');
+		} else {
+			setVisibilityType('password');
+		}
+	}
+
 	return (
 		<div className="register__input-element">
 			<input
 				className={`register__input ${
 					isValidInput !== '' && 'register__input_error'
 				}`}
-				type={type}
+				type={visibilityType}
 				id={id}
 				name={name}
 				value={inputValue ?? ''}
@@ -41,7 +51,22 @@ export const Input = ({
 				<span className="register__error">{isValidInput}</span>
 			)}
 			{inputValue === '' && (
-				<span className="register__placeholder">{placeholder}</span>
+				<span className="register__placeholder">
+					{placeholder}
+					<img
+						src={require('./required.svg').default}
+						className="register__placeholder-img"
+						alt="required"
+					/>
+				</span>
+			)}
+			{type === 'password' && (
+				<img
+					src={require('./visibility.svg').default}
+					className="register__visibility-img"
+					alt="required"
+					onClick={() => togglePasswordVisibility()}
+				/>
 			)}
 		</div>
 	);
