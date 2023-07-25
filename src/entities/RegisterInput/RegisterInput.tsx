@@ -8,6 +8,7 @@ export const Input = ({
 	placeholder,
 	isValidInput,
 	validateInput,
+	pattern,
 }: {
 	type: string;
 	id: string;
@@ -15,6 +16,7 @@ export const Input = ({
 	placeholder: string;
 	isValidInput: string;
 	validateInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	pattern?: string;
 }) => {
 	const [inputValue, setInputValue] = useState('');
 
@@ -46,6 +48,7 @@ export const Input = ({
 					handleChange(e);
 					validateInput(e);
 				}}
+				required
 			/>
 			{isValidInput !== '' && (
 				<span className="register__error">{isValidInput}</span>
