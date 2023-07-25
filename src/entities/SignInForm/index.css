@@ -17,7 +17,7 @@
 
 .form__server-error {
 	margin-top: 8px;
-	color: #F94C4C
+	color: #f94c4c;
 }
 
 .form__recover-pass {
@@ -36,7 +36,7 @@
 }
 
 .form__recover-pass_active {
-	color: #2349FF;
+	color: #2349ff;
 	cursor: pointer;
 }
 
@@ -53,7 +53,7 @@
 	padding: 12px 24px;
 	margin: 0 auto;
 	border-radius: 12px;
-	background: #2349FF;
+	background: #2349ff;
 	border: none;
 	color: #fff;
 	font-family: Fyodor;
@@ -66,6 +66,6 @@
 
 .form__button_unvalid {
 	color: #8b8b96;
-	background: #E0E0E5;
+	background: #e0e0e5;
 	cursor: default;
 }

@@ -1,5 +1,5 @@
 import Header from 'entities/Header/Header';
-import './index.css'
+import './index.css';
 import { ResetPasswordForm } from 'entities/ResetPasswordForm';
 export const ResetPasswordPage = () => {
 	return (

@@ -10,17 +10,15 @@ export const Input = ({
 	pattern,
 	isValidInput,
 	setValue,
-
 }: {
 	name: string;
 	type: string;
 	value: string;
 	placeholder: string;
 	pattern?: string;
-	isValidInput: string
+	isValidInput: string;
 	setValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
-
 	const [visibility, setVisibility] = useState(type);
 
 	const toggleInputVisibility = () => {
@@ -31,7 +29,6 @@ export const Input = ({
 		}
 	};
 
-
 	return (
 		<div className="input-block">
 			<input
@@ -39,7 +36,9 @@ export const Input = ({
 				name={name}
 				type={visibility}
 				value={value}
-				className={`input-block__input ${isValidInput && 'signin__input_error'}`}
+				className={`input-block__input ${
+					isValidInput && 'signin__input_error'
+				}`}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e)}
 				pattern={pattern}
 			/>
@@ -53,8 +52,8 @@ export const Input = ({
 					/>
 				</p>
 			)}
-			{isValidInput!=='' && (
-				<span className="input-block__input-error">{isValidInput}</span> 
+			{isValidInput !== '' && (
+				<span className="input-block__input-error">{isValidInput}</span>
 			)}
 			{type === 'password' && (
 				<img

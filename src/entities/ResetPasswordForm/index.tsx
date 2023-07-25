@@ -2,14 +2,12 @@ import { useState, useEffect } from 'react';
 import './index.css';
 import { Input } from 'entities/Input/Input';
 import { useFormValidation } from 'features/signin-form-validotor';
-import { useNavigate } from 'react-router-dom';
 
 export const ResetPasswordForm = () => {
 	const [isValid, setIsvalid] = useState(true);
 	const [passValue, setPassValue] = useState('');
 	const [repeatPassValue, setRepeatPassValue] = useState('');
-	const [isIdentical, setIsIdentical] = useState(passValue == repeatPassValue);
-	const navigate = useNavigate();
+	const [isIdentical, setIsIdentical] = useState(passValue === repeatPassValue);
 	const formValidator = useFormValidation();
 
 	const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +28,7 @@ export const ResetPasswordForm = () => {
 
 	useEffect(() => {
 		setIsvalid(formValidator.isValid);
-		setIsIdentical(passValue === repeatPassValue)
+		setIsIdentical(passValue === repeatPassValue);
 	}, [passValue, repeatPassValue, formValidator.isValid]);
 
 	return (

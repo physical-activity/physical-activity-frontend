@@ -1,18 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap');
 @font-face {
-  font-family: Fyodor;
-  src: url(./fyodor.bold-oblique.ttf)
+	font-family: Fyodor;
+	src: url(./fyodor.bold-oblique.ttf);
 }
 
 @font-face {
-  font-family: 'fontello';
-  src: url('./fontello.eot');
-  src: url('./fontello.eot') format('embedded-opentype'),
-       url('./fontello.woff2') format('woff2'),
-       url('./fontello.woff') format('woff'),
-       url('./fontello.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'fontello';
+	src: url('./fontello.eot');
+	src:
+		url('./fontello.eot') format('embedded-opentype'),
+		url('./fontello.woff2') format('woff2'),
+		url('./fontello.woff') format('woff'),
+		url('./fontello.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
 }
 /* @font-face {
   font-family: 'fontello';
@@ -25,4 +26,3 @@
   font-weight: normal;
   font-style: normal;
 } */
-

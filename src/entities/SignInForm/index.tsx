@@ -28,12 +28,13 @@ export const SignInForm = () => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		setIsvalid(false)
+		setIsvalid(false);
 		signin(emailValue, passValue)
 			.then(() => navigate('/'))
 			.catch((err) => {
 				// обработка ошибок
-				if (err.code === 403) { // неправильный пароль или почта
+				if (err.code === 403) {
+					// неправильный пароль или почта
 					setCanResetPass(true);
 				} else if (err.code === 228) {
 					// делаем что-то еще
