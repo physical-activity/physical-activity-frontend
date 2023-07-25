@@ -48,6 +48,7 @@ export const Input = ({
 					handleChange(e);
 					validateInput(e);
 				}}
+				pattern={pattern}
 				required
 			/>
 			{isValidInput !== '' && (

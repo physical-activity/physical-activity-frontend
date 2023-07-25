@@ -24,7 +24,7 @@
 	border-bottom: 1px solid #04091f;
 }
 
-.register__input:focus + .register__placeholder{
+.register__input:focus + .register__placeholder {
 	visibility: hidden;
 }
 
@@ -59,7 +59,3 @@
 	cursor: pointer;
 	z-index: 2;
 }
-
-
-
-	
