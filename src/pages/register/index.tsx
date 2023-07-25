@@ -8,7 +8,11 @@ export const RegisterPage = () => {
 		<main className="register">
 			<Header headerTitleText={'Регистрация'} />
 			<RegisterForm />
-			<Footer footerQuestion={'Уже есть аккаунт?'} footerAnswer={'Войти'} />
+			<Footer
+				footerQuestion={'Уже есть аккаунт?'}
+				footerAnswer={'Войти'}
+				footerLink={'signin'}
+			/>
 		</main>
 	);
 };

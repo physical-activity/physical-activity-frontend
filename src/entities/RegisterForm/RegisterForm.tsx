@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Input } from '../RegisterInput/RegisterInput';
 import { Checkbox } from '../RegisterCheckbox/RegisterCheckbox';
 import { useForm } from '../../features/register-form-validator/index';
+// import { useNavigate } from 'react-router-dom';
 
 export const RegisterForm = () => {
 	const validation = useForm();
@@ -40,6 +41,11 @@ export const RegisterForm = () => {
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
+		// register(validation.values)
+		// 	.then(() => navigate('/register-confirm'))
+		// 	.catch((err) => {
+		// 		console.log(`Не удалось зарегистрировать пользователя. ${err}`);
+		// 	});
 	}
 
 	return (

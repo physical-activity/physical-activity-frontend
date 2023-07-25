@@ -19,4 +19,5 @@
 .signin__footer-span {
 	font-weight: 700;
 	color: #2349ff;
+	cursor: pointer;
 }
