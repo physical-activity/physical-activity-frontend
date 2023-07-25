@@ -5,7 +5,13 @@ import './index.css';
 import { useFormValidation } from 'features/signin-form-validotor';
 import { signin } from 'shared/api/login';
 
-export const SignInForm = () => {
+export const SignInForm = ({
+	setIsResetPassword,
+	setUserEmail,
+}: {
+	setIsResetPassword: (arg: boolean) => void;
+	setUserEmail: (arg: string) => void;
+}) => {
 	const [isValid, setIsvalid] = useState(true);
 	const [emailValue, setEmailValue] = useState('');
 	const [passValue, setPassValue] = useState('');
@@ -33,6 +39,7 @@ export const SignInForm = () => {
 			.then(() => navigate('/'))
 			.catch((err) => {
 				// обработка ошибок
+				err.code = 403;
 				if (err.code === 403) {
 					// неправильный пароль или почта
 					setCanResetPass(true);
@@ -43,7 +50,9 @@ export const SignInForm = () => {
 	};
 
 	const handleResetPass = () => {
-		navigate('/reset-password');
+		setUserEmail(emailValue);
+		setIsResetPassword(true);
+		// navigate('/reset-password');
 	};
 
 	useEffect(() => {
