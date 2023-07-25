@@ -68,7 +68,7 @@ export const Input = ({
 				<img
 					src={require('./visibility.svg').default}
 					className="register__visibility-img"
-					alt="required"
+					alt="visibility"
 					onClick={() => togglePasswordVisibility()}
 				/>
 			)}

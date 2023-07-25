@@ -1,0 +1,40 @@
+.register-confirm {
+	max-width: 375px;
+	display: flex;
+	flex-direction: column;
+	background-color: black;
+  margin: 0 auto;
+	gap: 4px;
+	border-radius: 24px;
+}
+
+.register-confirm__block {
+  display: flex;
+	flex-direction: column;
+  gap: 4px;
+  margin: 0 auto 8px;
+	width: calc(359px - 40px);
+	background-color: #fff;
+	border-radius: 12px;
+	padding: 0 20px;
+}
+
+.register-confirm__title {
+  text-align: center;
+  margin: 120px 0 24px;
+  font-family: 'Fyodor';
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 24px;
+}
+
+.register-confirm__message {
+  text-align: center;
+  margin: 0 0 418px;
+  font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 22px;
+}
