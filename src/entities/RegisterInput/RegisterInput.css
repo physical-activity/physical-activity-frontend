@@ -2,7 +2,7 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	margin: 0 0 18px;
+	margin: 0 0 16px;
 }
 
 .register__input {
@@ -12,6 +12,7 @@
 	background-color: transparent;
 	z-index: 1;
 	position: inherit;
+	line-height: 34px;
 }
 
 .register__input_error {
@@ -29,6 +30,7 @@
 
 .register__placeholder {
 	position: absolute;
+	top: 20%;
 	color: #c3c3cc;
 	font-family: Manrope;
 	font-size: 16px;
@@ -41,7 +43,15 @@
 	margin: 8px 0;
 }
 
+.register__placeholder-img {
+	position: relative;
+	top: -8px;
+	width: 8px;
+	height: 8px;
+}
+
 .register__visibility-img {
+	margin-top: 8px;
 	width: 24px;
 	height: 24px;
 	position: absolute;
@@ -49,3 +59,7 @@
 	cursor: pointer;
 	z-index: 2;
 }
+
+
+
+	
