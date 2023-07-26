@@ -1,0 +1,5 @@
+@import '../../app/styles/variable.css';
+
+.home {
+	color: var(--color-white);
+}
