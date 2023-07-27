@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { SignInPage } from './signin';
-import { ResetPasswordPage } from './reset-password';
-import { HomePage } from './homePage';
+import { ConfirmNewPasswordPage } from './confirm-pass-page';
+import { ResetPasswordPage } from './reset-pass-page';
 
 export const Routing = () => {
 	return (
@@ -10,8 +10,9 @@ export const Routing = () => {
 			<Route path="/signin" element={<SignInPage />} />
 			<Route
 				path="/auth/set_new_password/:uid/:token"
-				element={<ResetPasswordPage />}
+				element={<ConfirmNewPasswordPage />}
 			/>
+			<Route path="/reset_password" element={<ResetPasswordPage />} />
 		</Routes>
 	);
 };

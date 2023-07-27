@@ -5,31 +5,18 @@
 	margin: 0 auto;
 	gap: 4px;
 }
-.header__logo {
-	text-align: left;
-	color: #2349ff;
-	font-family: 'Fyodor';
-	font-size: 18px;
-	font-style: normal;
-	font-weight: 700;
-	line-height: normal;
-	margin: 0;
-	margin-top: 8px;
-	padding: 16px 20px;
-	background-color: #fff;
-	border-radius: 12px;
-}
 
 .header__title {
 	text-align: left;
 	color: #141516;
-	font-family: 'Fyodor';
-	font-size: 28px;
-	font-style: normal;
-	font-weight: 700;
-	line-height: normal;
+	line-height: 21px;
 	margin: 0;
-	padding: 16px 20px;
+	padding: 20px;
 	background-color: #fff;
 	border-radius: 12px;
+	font-family: 'Open Sans';
+	font-size: 20px;
+	font-style: italic;
+	font-weight: 800;
+	text-transform: uppercase;
 }

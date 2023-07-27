@@ -10,9 +10,13 @@
 	width: calc(100% - 40px);
 	background-color: #fff;
 	border-radius: 12px;
-	padding: 28px 20px;
+	padding: 88px 20px 28px;
 	display: flex;
 	flex-direction: column;
+}
+
+.form__input-container_reset-pass {
+	height: 528px;
 }
 
 .form__server-error {
@@ -32,11 +36,7 @@
 	line-height: normal;
 	align-self: flex-end;
 	margin-top: 20px;
-	margin-bottom: 238px;
-}
-
-.form__recover-pass_active {
-	color: #2349ff;
+	margin-bottom: 326px;
 	cursor: pointer;
 }
 
@@ -49,19 +49,20 @@
 }
 
 .form__button {
-	width: 271px;
+	width: 319px;
 	padding: 12px 24px;
 	margin: 0 auto;
 	border-radius: 12px;
-	background: #2349ff;
+	background: #c2ff5d;
 	border: none;
 	color: #fff;
-	font-family: Fyodor;
-	font-size: 20px;
-	font-style: normal;
-	font-weight: 700;
-	line-height: normal;
 	cursor: pointer;
+	font-family: Open Sans;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 105%; /* 18.9px */
+	text-transform: uppercase;
 }
 
 .form__button_unvalid {
