@@ -5,6 +5,11 @@
 }
 
 @font-face {
+	font-family: Open Sans;
+	src: url('./OpenSans-ExtraBoldItalic.ttf');
+}
+
+@font-face {
 	font-family: 'fontello';
 	src: url('./fontello.eot');
 	src:
