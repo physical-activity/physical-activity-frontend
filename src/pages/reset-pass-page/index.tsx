@@ -1,8 +1,6 @@
-import Header from 'entities/Header/Header';
-import { Input } from 'entities/Input/Input';
-import { ResetPassworForm } from 'entities/Reset-password-form';
-import { useFormValidation } from 'shared/hooks/useFormValidation';
 import { useState } from 'react';
+import Header from 'entities/Header/Header';
+import { ResetPassworForm } from 'entities/Reset-password-form';
 
 export const ResetPasswordPage = () => {
 	const [isRequsetMade, setIsRequsetMade] = useState(false);
@@ -10,34 +8,26 @@ export const ResetPasswordPage = () => {
 
 	return (
 		<main className="main">
-			{(() => {
-				switch (isRequsetMade) {
-					case false:
-						return (
-							<>
-								<Header name={'Сброс пароля'} />
-								<ResetPassworForm
-									setIsRequsetMade={setIsRequsetMade}
-									setEmailValue={setEmailValue}
-									emailValue={emailValue}
-								/>
-							</>
-						);
-					case true:
-						return (
-							<>
-								<Header name={'Сброс пароля'} />
-								<div className="main__reset-block">
-									<h3 className="reset-block__title">Подтверждение аккаунта</h3>
-									<p className="reset-block__message">
-										На почту {emailValue} отправлено письмо. Пройдите по ссылке
-										из письма для входа в приложение.
-									</p>
-								</div>
-							</>
-						);
-				}
-			})()}
+			<Header name={'Сброс пароля'} />
+			{!isRequsetMade ? (
+				<>
+					<ResetPassworForm
+						setIsRequsetMade={setIsRequsetMade}
+						setEmailValue={setEmailValue}
+						emailValue={emailValue}
+					/>
+				</>
+			) : (
+				<>
+					<div className="main__reset-block">
+						<h3 className="reset-block__title">Подтверждение аккаунта</h3>
+						<p className="reset-block__message">
+							На почту {emailValue} отправлено письмо. Пройдите по ссылке
+							из письма для входа в приложение.
+						</p>
+					</div>
+				</>
+			)}
 		</main>
 	);
 };
