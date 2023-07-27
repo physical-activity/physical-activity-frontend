@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { SignInPage } from './signin';
 import { ConfirmNewPasswordPage } from './confirm-pass-page';
 import { ResetPasswordPage } from './reset-pass-page';
+import { HomePage } from './homePage';
 
 export const Routing = () => {
 	return (
