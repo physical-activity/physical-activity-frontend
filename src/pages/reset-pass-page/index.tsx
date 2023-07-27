@@ -1,7 +1,7 @@
 import Header from 'entities/Header/Header';
 import { Input } from 'entities/Input/Input';
 import { ResetPassworForm } from 'entities/Reset-password-form';
-import { useFormValidation } from 'shared/hooks/useFormWithValidation';
+import { useFormValidation } from 'shared/hooks/useFormValidation';
 import { useState } from 'react';
 
 export const ResetPasswordPage = () => {
