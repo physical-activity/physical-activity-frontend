@@ -1,11 +1,11 @@
 import Header from 'entities/Header/Header';
 import './index.css';
-import { ResetPasswordForm } from 'entities/ResetPasswordForm';
+import { ConfirmPasswordForm } from 'entities/Confirm-password-form';
 export const ConfirmNewPasswordPage = () => {
 	return (
 		<main className="main">
 			<Header name={'Новый пароль'} />
-			<ResetPasswordForm />
+			<ConfirmPasswordForm />
 		</main>
 	);
 };
