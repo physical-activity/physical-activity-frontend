@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '../Input/Input';
 import './index.css';
-import { useFormValidation } from 'features/signin-form-validotor';
+import { useFormValidation } from 'shared/hooks/useFormWithValidation';
 import { signin } from 'shared/api/login';
 
 export const SignInForm = ({}: {}) => {

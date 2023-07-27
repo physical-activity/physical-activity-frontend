@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './index.css';
 import { Input } from 'entities/Input/Input';
-import { useFormValidation } from 'features/signin-form-validotor';
+import { useFormValidation } from 'shared/hooks/useFormWithValidation';
 
 export const ConfirmPasswordForm = () => {
 	const [isValid, setIsvalid] = useState(true);
