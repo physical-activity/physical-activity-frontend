@@ -25,10 +25,17 @@
 	margin: 0 auto;
 	border: none;
 	border-radius: 12px;
-	color: #ffffff;
-	background: #2349ff;
+	color: #212120;
+	background: #c2ff5d;
 	font-family: Fyodor;
 	font-size: 20px;
 	font-weight: 700;
 	line-height: 24px;
+	cursor: pointer;
+}
+
+.register__button_unvalid {
+	color: #8b8b96;
+	background: #e0e0e5;
+	cursor: default;
 }

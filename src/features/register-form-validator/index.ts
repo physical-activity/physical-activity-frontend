@@ -7,6 +7,7 @@ export function useForm() {
 		email: '',
 		password: '',
 		repeatpassword: '',
+		terms: '',
 	});
 
 	const [isValid, setIsValid] = useState(false);
@@ -20,15 +21,16 @@ export function useForm() {
 			setErrors({ ...errors, [name]: 'Допустимые символы: пробел, дефис' });
 		} else if (name === 'email' && target.validationMessage !== '') {
 			setErrors({ ...errors, [name]: 'Допустимы только латинские буквы' });
-		} else if (
-			(name === 'password' || name === 'repeatpassword') &&
-			target.validationMessage !== ''
-		) {
+		} else if (name === 'password' && target.validationMessage !== '') {
 			setErrors({
 				...errors,
 				[name]:
 					'Минимум 6 символов: буквы в верхнем и нижем регистре, пробел, дефис',
 			});
+		} else if (name === 'repeatpassword' && target.validationMessage !== '') {
+			setErrors({ ...errors, [name]: 'Пароли не совпадают' });
+		} else if (name === 'terms' && target.validationMessage !== '') {
+			setErrors({ ...errors, [name]: 'Необходимо принять условия' });
 		} else {
 			setErrors({ ...errors, [name]: target.validationMessage });
 		}

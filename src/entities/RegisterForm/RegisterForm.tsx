@@ -7,36 +7,41 @@ import { useForm } from '../../features/register-form-validator/index';
 
 export const RegisterForm = () => {
 	const validation = useForm();
-	const [isValidNameInput, setIsValidNameInput] = useState('');
-	const [isValidEmailInput, setIsValidEmailInput] = useState('');
-	const [isValidPasswordInput, setIsValidPasswordInput] = useState('');
-	const [isValidRepeatpasswordInput, setIsValidRepeatpasswordInput] =
-		useState('');
+
+	const [nameInputValue, setNameInputValue] = useState('');
+	const [emailInputValue, setEmailInputValue] = useState('');
+	const [passwordInputValue, setPasswordInputValue] = useState('');
+	const [repeatpasswordInputValue, setRepeatpasswordInputValue] = useState('');
 
 	const validateNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		validation.handleChange(e);
-		setIsValidNameInput(validation.errors.name);
-		console.log(validation.errors.name);
+		setNameInputValue(e.target.value);
 	};
 
 	const validateEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		validation.handleChange(e);
-		setIsValidEmailInput(validation.errors.email);
-		console.log(validation.errors.email);
+		setEmailInputValue(e.target.value);
 	};
 
 	const validatePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		validation.handleChange(e);
-		setIsValidPasswordInput(validation.errors.password);
-		console.log(validation.errors.password);
+		setPasswordInputValue(e.target.value);
 	};
 
 	const validateRepeatpasswordInput = (
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
+		if (e.target.value !== passwordInputValue) {
+			e.target.setCustomValidity('Пароли не совпадают');
+		} else {
+			e.target.setCustomValidity('');
+		}
+		setRepeatpasswordInputValue(e.target.value);
 		validation.handleChange(e);
-		setIsValidRepeatpasswordInput(validation.errors.repeatpassword);
-		console.log(validation.errors.repeatpassword);
+	};
+
+	const validateCheckboxInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+		validation.handleChange(e);
 	};
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -55,42 +60,58 @@ export const RegisterForm = () => {
 					type="text"
 					id="name"
 					name="name"
+					value={nameInputValue}
 					placeholder="Ваше имя"
 					validateInput={validateNameInput}
-					isValidInput={isValidNameInput}
-					pattern={'^[a-zA-ZА-Яа-я]{2,}$'}
+					isValidInput={validation.errors.name}
+					pattern="[A-Za-zА-Яа-я\s-]{2,}"
 				/>
 				<Input
 					type="email"
 					id="email"
 					name="email"
+					value={emailInputValue}
 					placeholder="Почта"
 					validateInput={validateEmailInput}
-					isValidInput={isValidEmailInput}
-					pattern={'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-z]+'}
+					isValidInput={validation.errors.email}
+					pattern="^[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,4}$"
 				/>
 				<Input
 					type="password"
 					id="password"
 					name="password"
+					value={passwordInputValue}
 					placeholder="Пароль"
 					validateInput={validatePasswordInput}
-					isValidInput={isValidPasswordInput}
-					pattern={'^[a-zA-Z]{6,}$'}
+					isValidInput={validation.errors.password}
+					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{6,}"
 				/>
 				<Input
 					type="password"
 					id="repeatpassword"
 					name="repeatpassword"
+					value={repeatpasswordInputValue}
 					placeholder="Повторите пароль"
 					validateInput={validateRepeatpasswordInput}
-					isValidInput={isValidRepeatpasswordInput}
-					pattern={'^[a-zA-Z]{6,}$'}
+					isValidInput={validation.errors.repeatpassword}
+					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{6,}"
 				/>
-				<Checkbox />
+				<Checkbox
+					type="checkbox"
+					id="terms"
+					name="terms"
+					validateInput={validateCheckboxInput}
+				/>
 			</div>
 			<div className="register__button-container">
-				<button className="register__button">Поехали</button>
+				<button
+					className={`register__button ${
+						!validation.isValid && 'register__button_unvalid'
+					}`}
+					disabled={!validation.isValid}
+				>
+					Поехали
+				</button>
 			</div>
 		</form>
 	);

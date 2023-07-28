@@ -9,6 +9,7 @@ export const Input = ({
 	isValidInput,
 	validateInput,
 	pattern,
+	value,
 }: {
 	type: string;
 	id: string;
@@ -17,13 +18,8 @@ export const Input = ({
 	isValidInput: string;
 	validateInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	pattern?: string;
+	value: string;
 }) => {
-	const [inputValue, setInputValue] = useState('');
-
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setInputValue(e.target.value);
-	};
-
 	const [visibilityType, setVisibilityType] = useState(type);
 
 	function togglePasswordVisibility() {
@@ -43,9 +39,8 @@ export const Input = ({
 				type={visibilityType}
 				id={id}
 				name={name}
-				value={inputValue ?? ''}
+				value={value}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-					handleChange(e);
 					validateInput(e);
 				}}
 				pattern={pattern}
@@ -54,7 +49,7 @@ export const Input = ({
 			{isValidInput !== '' && (
 				<span className="register__error">{isValidInput}</span>
 			)}
-			{inputValue === '' && (
+			{value === '' && (
 				<span className="register__placeholder">
 					{placeholder}
 					<img
