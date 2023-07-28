@@ -11,7 +11,6 @@
 .register-confirm__block {
 	display: flex;
 	flex-direction: column;
-	gap: 4px;
 	margin: 0 auto 8px;
 	width: calc(359px - 40px);
 	background-color: #fff;
@@ -21,20 +20,29 @@
 
 .register-confirm__title {
 	text-align: center;
-	margin: 120px 0 24px;
-	font-family: 'Fyodor';
-	font-size: 20px;
-	font-style: normal;
-	font-weight: 700;
-	line-height: 24px;
+	margin: 0 0 12px;
+	font-family: 'Open Sans';
+	font-size: 16px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 18px;
+	text-transform: uppercase;
+}
+
+.register-confirm__img {
+	width: 68px;
+	height: 68px;
+	align-self: center;
+	margin: 88px 0 20px;
 }
 
 .register-confirm__message {
 	text-align: center;
-	margin: 0 0 418px;
-	font-family: Manrope;
+	margin: 0 0 459px;
+	font-family: 'Open Sans';
 	font-size: 16px;
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 22px;
+	color: #898989;
 }

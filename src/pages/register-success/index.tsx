@@ -6,12 +6,12 @@ export const RegisterSuccessPage = () => {
 		<main className="register-success">
 			<Header headerTitleText={'Регистрация'} />
 			<section className="register-success__block">
-				<h1 className="register-success__title">Регистрация прошла успешно</h1>
 				<img
 					src={require('./successImg.svg').default}
 					className="register-success__img"
 					alt="required"
 				/>
+				<h1 className="register-success__title">Регистрация прошла успешно</h1>
 				<p className="register-success__message">
 					Ваша учетная запись создана.
 				</p>

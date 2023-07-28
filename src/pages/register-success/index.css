@@ -11,7 +11,6 @@
 .register-success__block {
 	display: flex;
 	flex-direction: column;
-	gap: 4px;
 	margin: 0 auto;
 	width: calc(359px - 40px);
 	background-color: #fff;
@@ -21,36 +20,38 @@
 
 .register-success__title {
 	text-align: center;
-	margin: 120px 0 24px;
-	font-family: 'Fyodor';
-	font-size: 20px;
-	font-style: normal;
-	font-weight: 700;
-	line-height: 24px;
+	margin: 0 0 12px;
+	font-family: 'Open Sans';
+	font-size: 16px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 18px;
+	text-transform: uppercase;
 }
 
 .register-success__img {
-	width: 84px;
-	height: 84px;
+	width: 68px;
+	height: 68px;
 	align-self: center;
-	margin: 0 0 24px;
+	margin: 88px 0 20px;
 }
 
 .register-success__message {
 	text-align: center;
-	margin: 0 0 222px;
-	font-family: Manrope;
+	margin: 0 0 416px;
+	font-family: 'Open Sans';
 	font-size: 16px;
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 22px;
+	color: #898989;
 }
 
 .register-success__button-container {
 	width: calc(359px - 40px);
 	background-color: #fff;
 	border-radius: 12px;
-	padding: 28px 20px;
+	padding: 20px;
 	margin: 0 auto 8px;
 }
 
@@ -60,10 +61,13 @@
 	margin: 0 auto;
 	border: none;
 	border-radius: 12px;
-	color: #ffffff;
-	background: #2349ff;
-	font-family: Fyodor;
-	font-size: 20px;
-	font-weight: 700;
-	line-height: 24px;
+	color: #212120;
+	background: #c2ff5d;
+	font-family: 'Open Sans';
+	font-size: 18px;
+	font-weight: 800;
+	font-style: italic;
+	line-height: 19px;
+	cursor: pointer;
+	text-transform: uppercase;
 }

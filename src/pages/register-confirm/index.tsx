@@ -6,6 +6,11 @@ export const RegisterConfirmPage = () => {
 		<main className="register-confirm">
 			<Header headerTitleText={'Регистрация'} />
 			<section className="register-confirm__block">
+				<img
+					src={require('./confirmImg.svg').default}
+					className="register-confirm__img"
+					alt="required"
+				/>
 				<h1 className="register-confirm__title">Подтверждение аккаунта</h1>
 				<p className="register-confirm__message">
 					На почту account@mail.ru отправлено письмо. Пройдите по ссылке

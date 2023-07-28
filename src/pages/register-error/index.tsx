@@ -6,12 +6,12 @@ export const RegisterErrorPage = () => {
 		<main className="register-error">
 			<Header headerTitleText={'Регистрация'} />
 			<section className="register-error__block">
-				<h1 className="register-error__title">Что-то пошло не так</h1>
 				<img
 					src={require('./errorImg.svg').default}
-					className="register-success__img"
+					className="register-error__img"
 					alt="required"
 				/>
+				<h1 className="register-error__title">Что-то пошло не так</h1>
 				<p className="register-error__message">
 					Аккаунт не удалось зарегистрировать. Попробуйте снова или напишите нам
 					в поддержку help@fiz.ru
