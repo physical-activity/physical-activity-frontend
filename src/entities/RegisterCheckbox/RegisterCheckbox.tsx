@@ -12,7 +12,7 @@ export const Checkbox = ({
 	validateInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
 	return (
-		<div className="register__checkbox-element">
+		<label className="register__checkbox-element">
 			<input
 				type={type}
 				id={id}
@@ -23,9 +23,28 @@ export const Checkbox = ({
 				}}
 				required
 			/>
+			<span className="register__checkmark"></span>
 			<span className="register__checkbox-desc">
-				Я принимаю «Условия использования» и «Политику конфиденциальности»
+				Я принимаю{' '}
+				<a
+					href="#"
+					target="_blank"
+					rel="noreferrer noopener"
+					className="register__checkbox-link"
+				>
+					«Условия использования»
+				</a>{' '}
+				и
+				<a
+					href="#"
+					target="_blank"
+					rel="noreferrer noopener"
+					className="register__checkbox-link"
+				>
+					{' '}
+					«Политику конфиденциальности»
+				</a>
 			</span>
-		</div>
+		</label>
 	);
 };
