@@ -8,15 +8,15 @@
 
 .register__checkbox {
 	height: 0;
-  width: 0;
+	width: 0;
 	flex-basis: 42px;
 	margin: 7px 8px 7px 0;
 }
 
 .register__checkmark {
 	position: absolute;
-  top: 0;
-  left: 0;
+	top: 0;
+	left: 0;
 	width: 24px;
 	height: 24px;
 	margin: 7px 8px 7px 0;
@@ -27,17 +27,17 @@
 
 .register__checkbox:checked ~ .register__checkmark:after {
 	display: block;
- } 
- 
- .register__checkmark:after {
+}
+
+.register__checkmark:after {
 	content: url(./checkmarkImg.svg);
 	position: absolute;
 	display: none;
 	top: 3px;
-  left: 4px;
+	left: 4px;
 	width: 15px;
 	height: 11px;
- } 
+}
 
 .register__checkbox-desc {
 	font-family: 'Open Sans';
@@ -49,5 +49,4 @@
 
 .register__checkbox-link {
 	color: #898989;
-
 }
