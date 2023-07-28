@@ -58,7 +58,7 @@ export const RegisterForm = () => {
 					placeholder="Ваше имя"
 					validateInput={validateNameInput}
 					isValidInput={isValidNameInput}
-					pattern={'^[A-Za-zА-Яа-я\\s-]+$'}
+					pattern={'^[a-zA-ZА-Яа-я]{2,}$'}
 				/>
 				<Input
 					type="email"
@@ -76,7 +76,7 @@ export const RegisterForm = () => {
 					placeholder="Пароль"
 					validateInput={validatePasswordInput}
 					isValidInput={isValidPasswordInput}
-					pattern={'[a-zA-Z-* *]*.{6,}'}
+					pattern={'^[a-zA-Z]{6,}$'}
 				/>
 				<Input
 					type="password"
@@ -85,7 +85,7 @@ export const RegisterForm = () => {
 					placeholder="Повторите пароль"
 					validateInput={validateRepeatpasswordInput}
 					isValidInput={isValidRepeatpasswordInput}
-					pattern={'[a-zA-Z-* *]*.{6,}'}
+					pattern={'^[a-zA-Z]{6,}$'}
 				/>
 				<Checkbox />
 			</div>
