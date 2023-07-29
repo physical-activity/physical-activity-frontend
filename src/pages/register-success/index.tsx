@@ -4,7 +4,7 @@ import './index.css';
 export const RegisterSuccessPage = () => {
 	return (
 		<main className="register-success">
-			<Header headerTitleText={'Регистрация'} />
+			<Header name={'Регистрация'} />
 			<section className="register-success__block">
 				<img
 					src={require('./successImg.svg').default}

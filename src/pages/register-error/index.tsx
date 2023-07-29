@@ -4,7 +4,7 @@ import './index.css';
 export const RegisterErrorPage = () => {
 	return (
 		<main className="register-error">
-			<Header headerTitleText={'Регистрация'} />
+			<Header name={'Регистрация'} />
 			<section className="register-error__block">
 				<img
 					src={require('./errorImg.svg').default}

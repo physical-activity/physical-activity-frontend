@@ -6,7 +6,7 @@ import { Footer } from '../../entities/Footer/Footer';
 export const RegisterPage = () => {
 	return (
 		<main className="register">
-			<Header headerTitleText={'Регистрация'} />
+			<Header name={'Регистрация'} />
 			<RegisterForm />
 			<Footer footerText={'Войти в аккаунт'} footerLink={'signin'} />
 		</main>

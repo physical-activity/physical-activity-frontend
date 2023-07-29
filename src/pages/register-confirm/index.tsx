@@ -4,7 +4,7 @@ import './index.css';
 export const RegisterConfirmPage = () => {
 	return (
 		<main className="register-confirm">
-			<Header headerTitleText={'Регистрация'} />
+			<Header name={'Регистрация'} />
 			<section className="register-confirm__block">
 				<img
 					src={require('./confirmImg.svg').default}
