@@ -1,0 +1,48 @@
+.register-confirm {
+	max-width: 375px;
+	display: flex;
+	flex-direction: column;
+	background-color: black;
+	margin: 0 auto;
+	gap: 4px;
+	border-radius: 24px;
+}
+
+.register-confirm__block {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto 8px;
+	width: calc(359px - 40px);
+	background-color: #fff;
+	border-radius: 12px;
+	padding: 0 20px;
+}
+
+.register-confirm__title {
+	text-align: center;
+	margin: 0 0 12px;
+	font-family: 'Open Sans';
+	font-size: 16px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 18px;
+	text-transform: uppercase;
+}
+
+.register-confirm__img {
+	width: 68px;
+	height: 68px;
+	align-self: center;
+	margin: 88px 0 20px;
+}
+
+.register-confirm__message {
+	text-align: center;
+	margin: 0 0 459px;
+	font-family: 'Open Sans';
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 22px;
+	color: #898989;
+}
