@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Input } from '../Input/Input';
 // import './index.css';
-import { useFormValidation } from 'features/signin-form-validotor';
+import { useFormValidation } from 'shared/hooks/useFormValidation';
 
 export const ResetPassworForm = ({
 	setIsRequsetMade,
