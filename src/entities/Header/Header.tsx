@@ -1,13 +1,8 @@
 import './Header.css';
-
-interface HeaderProps {
-	headerTitleText: string;
-}
-
-const Header = ({ headerTitleText }: HeaderProps) => {
+const Header = ({ name }: { name: string }) => {
 	return (
 		<div className="header">
-			<h1 className="header__title">{headerTitleText}</h1>
+			<h2 className="header__title">{name}</h2>
 		</div>
 	);
 };

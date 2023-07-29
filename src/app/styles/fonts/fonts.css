@@ -1,26 +1,17 @@
-@font-face {
-	font-family: 'Fyodor';
-	font-weight: 700;
-	src: url(./fyodor.bold-oblique.ttf) format('truetype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,800;1,300;1,400;1,800&display=swap');
 
-@font-face {
-	font-family: 'Manrope';
-	font-weight: 800;
-	src: url(./Manrope-ExtraBold.ttf) format('truetype');
-}
+/* @font-face {
+	font-family: Fyodor;
+	src: url(./fyodor.bold-oblique.ttf);
+} */
+/* Федор больше не нужен? */
 
-@font-face {
-	font-family: 'Manrope';
-	font-weight: 500;
-	src: url(./Manrope-Medium.ttf) format('truetype');
-}
-
-@font-face {
-	font-family: 'Manrope';
-	font-weight: 400;
-	src: url(./Manrope-Regular.ttf) format('truetype');
-}
+/* @font-face {
+	font-family: Open Sans;
+	src: url('./OpenSans-ExtraBoldItalic.ttf');
+} */
+/* Дубль, оставил свой экспор */
 
 @font-face {
 	font-family: 'Open Sans';
@@ -40,3 +31,26 @@
 	font-weight: 400;
 	src: url(./OpenSans-Regular.ttf) format('truetype');
 }
+
+@font-face {
+	font-family: 'fontello';
+	src: url('./fontello.eot');
+	src:
+		url('./fontello.eot') format('embedded-opentype'),
+		url('./fontello.woff2') format('woff2'),
+		url('./fontello.woff') format('woff'),
+		url('./fontello.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+/* @font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.eot?32237760');
+  src: url('../font/fontello.eot?32237760#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff2?32237760') format('woff2'),
+       url('../font/fontello.woff?32237760') format('woff'),
+       url('../font/fontello.ttf?32237760') format('truetype'),
+       url('../font/fontello.svg?32237760#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+} */

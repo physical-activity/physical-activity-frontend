@@ -1,0 +1,92 @@
+.input-block {
+	position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.input-block:first-of-type {
+	margin-bottom: 16px;
+}
+
+.input-block__input-name {
+	position: absolute;
+	/* top: 50%;
+	transform: translateY(-50%); */
+	margin: 0;
+	color: #c3c3cc;
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 34px; /* 212.5% */
+	letter-spacing: -0.16px;
+}
+.input-block__input {
+	width: 100%;
+	padding: 8px 0px 14px 0px;
+	border: none;
+	background-color: transparent;
+	border-bottom: 1px solid #c3c3cc;
+	z-index: 10;
+	position: inherit;
+}
+
+input[type='password'] {
+	font-family: 'fontello';
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+
+	/* For safety - reset parent styles, that can break glyph codes*/
+	font-variant: normal;
+	text-transform: none;
+
+	/* Font smoothing. That was taken from TWBS */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* Uncomment for 3D effect */
+	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+
+	/* add spacing to better separate each image */
+	letter-spacing: 2px;
+}
+
+.input-block__input_error {
+	border-bottom: 1px solid #f94c4c;
+}
+
+.input-block__input:focus + .input-block__input-name {
+	display: none;
+}
+
+.input-block__input:focus {
+	outline: none;
+}
+
+.input-block__input-span {
+	top: -8px;
+	width: 8px;
+	height: 8px;
+	position: relative;
+}
+
+.input-block__input-error {
+	color: #f94c4c;
+	margin-top: 8px;
+	width: fit-content;
+}
+
+.input-block__input-hidebutton {
+	width: 24px;
+	height: 24px;
+	border: none;
+	background-color: transparent;
+	background-image: cover;
+	position: absolute;
+	z-index: 99;
+	margin: 0;
+	transform: translateY(25%);
+	right: 0;
+	cursor: pointer;
+}

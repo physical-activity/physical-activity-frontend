@@ -1,0 +1,72 @@
+.form__form {
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	width: calc(100% - 8px);
+}
+
+.form__input-container {
+	width: calc(100% - 40px);
+	background-color: #fff;
+	border-radius: 12px;
+	padding: 88px 20px 28px;
+	display: flex;
+	flex-direction: column;
+}
+
+.form__input-container_reset-pass {
+	height: 528px;
+}
+
+.form__server-error {
+	margin-top: 8px;
+	color: #f94c4c;
+}
+
+.form__recover-pass {
+	position: relative;
+	background-color: transparent;
+	border: none;
+	color: #8b8b96;
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	align-self: flex-end;
+	margin-top: 20px;
+	margin-bottom: 326px;
+	cursor: pointer;
+}
+
+.form__button-continer {
+	width: calc(100% - 40px);
+	background-color: #fff;
+	border-radius: 12px;
+	padding: 28px 20px;
+	display: flex;
+}
+
+.form__button {
+	width: 319px;
+	padding: 12px 24px;
+	margin: 0 auto;
+	border-radius: 12px;
+	background: #c2ff5d;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-family: Open Sans;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 105%; /* 18.9px */
+	text-transform: uppercase;
+}
+
+.form__button_unvalid {
+	color: #8b8b96;
+	background: #e0e0e5;
+	cursor: default;
+}

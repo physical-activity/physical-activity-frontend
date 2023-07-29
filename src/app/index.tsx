@@ -1,6 +1,5 @@
 import './index.css';
-import { Routing } from '../pages';
-
+import { Routing } from 'pages';
 function App() {
 	return <Routing />;
 }
