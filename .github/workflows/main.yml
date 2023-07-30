@@ -22,12 +22,12 @@ jobs:
         run: npm install
       - name: build project
         run: CI=false npm run build
-#      - name: build storybook
-#        run: npm run build-storybook
-#      - name: lint code
-#        run: npm run lint
-#      - name: start tests
-#        run: npm run test
+      - name: build storybook
+        run: npm run build-storybook
+      - name: lint code
+        run: npm run lint
+      - name: start tests
+        run: npm run test
 
 
   build_and_push_to_docker_hub:
@@ -50,6 +50,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/physact_frontend:latest
-
-
-
