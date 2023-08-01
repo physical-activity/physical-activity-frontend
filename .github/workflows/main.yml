@@ -2,7 +2,7 @@ name: Node-app workflow
 
 on:
   push:
-    branches: [ front_ci_cd_setup ]
+    branches: [ develop ]
   pull_request:
     branches: [ develop ]
 
