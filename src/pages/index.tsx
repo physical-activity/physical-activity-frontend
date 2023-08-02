@@ -8,6 +8,7 @@ import { RegisterConfirmPage } from './register-confirm';
 import { RegisterSuccessPage } from './register-success';
 import { RegisterErrorPage } from './register-error';
 
+
 export const Routing = () => {
 	return (
 		<Routes>

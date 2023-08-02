@@ -13,7 +13,7 @@ export const Footer = ({
 		<div className="footer">
 			<p className="footer__text">
 				{footerQuestion}{' '}
-				<span className="footer__span" onClick={() => navigate('/signup')}>
+				<span className="footer__span" onClick={() => navigate('/register')}>
 					{footerAnswer}
 				</span>
 			</p>
