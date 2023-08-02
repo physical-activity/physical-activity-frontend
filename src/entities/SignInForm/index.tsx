@@ -1,36 +1,22 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Input } from '../Input/Input';
 import './index.css';
-import { useFormValidation } from 'features/signin-form-validotor';
+import { Input } from '../Input/Input';
 import { signin } from 'shared/api/login';
+import { useFormValidation } from 'shared/hooks/useFormValidation';
 
-export const SignInForm = ({}: {}) => {
-	const [isValid, setIsvalid] = useState(true);
-	const [emailValue, setEmailValue] = useState('');
-	const [passValue, setPassValue] = useState('');
-	const [isError, setIsError] = useState(false);
-
+export const SignInForm = () => {
+	const [isServerError, setIsServerError] = useState(false);
 	const navigate = useNavigate();
-	const formValidator = useFormValidation();
-
-	const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setEmailValue(e.target.value);
-		formValidator.handleChange(e);
-	};
-
-	const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setPassValue(e.target.value);
-		formValidator.handleChange(e);
-	};
+	const { values, handleChange, errors, isValid, resetForm } =
+		useFormValidation();
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		setIsvalid(false);
-		signin(emailValue, passValue)
+		signin(values.email, values.password)
 			.then(() => navigate('/'))
 			.catch((err) => {
-				setIsError(true);
+				setIsServerError(true);
 				// обработка ошибок
 				err.code = 403;
 				if (err.code === 403) {
@@ -46,8 +32,8 @@ export const SignInForm = ({}: {}) => {
 	};
 
 	useEffect(() => {
-		setIsvalid(formValidator.isValid);
-	}, [passValue, emailValue, formValidator.isValid]);
+		resetForm();
+	}, [resetForm]);
 
 	return (
 		<form className="form__form" onSubmit={(e) => handleSubmit(e)}>
@@ -56,25 +42,26 @@ export const SignInForm = ({}: {}) => {
 					placeholder={'Почта'}
 					name={'email'}
 					type={'text'}
-					value={emailValue}
-					setValue={handleChangeEmail}
+					value={values.email}
+					setValue={handleChange}
 					pattern="[a-zA-Z0-9\-\.]+[\@][a-zA-Z0-9\-]+[\.][a-zA-Z0-9\.]{2,}"
-					isValidInput={formValidator.errors.email}
+					isValidInput={errors.email}
 				/>
 				<Input
 					placeholder={'Пароль'}
 					name={'password'}
 					type={'password'}
-					value={passValue}
-					setValue={handleChangePassword}
+					value={values.password}
+					setValue={handleChange}
 					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{5,}"
-					isValidInput={formValidator.errors.password}
+					isValidInput={errors.password}
 				/>
-				{isError && (
+				{isServerError && (
 					<span className="form__server-error">
 						Неправильно введен пароль или почта
 					</span>
 				)}
+
 				<button
 					className="form__recover-pass"
 					// disabled={!canResetPass}
@@ -83,6 +70,7 @@ export const SignInForm = ({}: {}) => {
 					Восстановить пароль
 				</button>
 			</div>
+
 			<div className="form__button-continer">
 				<button
 					className={`form__button ${!isValid && 'form__button_unvalid'}`}

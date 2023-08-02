@@ -1,7 +1,11 @@
 import { useCallback, useState } from 'react';
 
 export function useFormValidation() {
-	const [values, setValues] = useState({});
+	const [values, setValues] = useState({
+		email: '',
+		password: '',
+		secondPassword: '',
+	});
 	const [errors, setErrors] = useState({
 		email: '',
 		password: '',
@@ -13,6 +17,7 @@ export function useFormValidation() {
 		const target = event.target;
 		const name = target.name;
 		const value = target.value;
+
 		if (name === 'email' && target.validationMessage !== '') {
 			setErrors({ ...errors, [name]: 'Введите корректный Email' });
 		} else if (
@@ -36,7 +41,7 @@ export function useFormValidation() {
 
 	const resetForm = useCallback(
 		(
-			newValues = {},
+			newValues = { email: '', password: '', secondPassword: '' },
 			newErrors = { email: '', password: '', secondPassword: '' },
 			newIsValid = false
 		) => {

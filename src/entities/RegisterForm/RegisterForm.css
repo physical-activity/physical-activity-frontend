@@ -1,0 +1,66 @@
+.register__form {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	gap: 4px;
+}
+
+.register__input-container {
+	width: calc(359px - 40px);
+	background-color: #fff;
+	border-radius: 12px;
+	padding: 88px 20px 226px;
+}
+
+.register__button-container {
+	width: calc(359px - 40px);
+	background-color: #fff;
+	border-radius: 12px;
+	padding: 20px;
+}
+
+.register__button {
+	width: 319px;
+	padding: 12px 0;
+	margin: 0 auto;
+	border: none;
+	border-radius: 12px;
+	color: #212120;
+	background: #c2ff5d;
+	font-family: 'Open Sans';
+	font-size: 18px;
+	font-weight: 800;
+	font-style: italic;
+	line-height: 19px;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
+.register__button_unvalid {
+	color: #8b8b96;
+	background: #e0e0e5;
+	cursor: default;
+}
+
+/* .register__button {
+	width: 319px;
+	padding: 12px 24px;
+	margin: 0 auto;
+	border-radius: 12px;
+	background: #c2ff5d;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-family: Open Sans;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 105%; /* 18.9px */
+/* text-transform: uppercase;
+}
+
+.register__button_unvalid {
+	color: #8b8b96;
+	background: #e0e0e5;
+	cursor: default;
+} */
