@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Input } from '../Input/Input';
 // import './index.css';
 import { useFormValidation } from 'shared/hooks/useFormValidation';
+import { resetPassword } from 'shared/api/resetpass';
 
 export const ResetPassworForm = ({
 	setIsRequsetMade,
@@ -22,8 +23,8 @@ export const ResetPassworForm = ({
 	};
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		// делакем запрос на сервер , получаем ссылку на почту
-		setIsRequsetMade(true);
+		e.preventDefault();
+		resetPassword(emailValue).then(() => setIsRequsetMade(true));
 	};
 
 	useEffect(() => {
