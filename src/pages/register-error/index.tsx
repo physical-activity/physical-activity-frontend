@@ -1,7 +1,14 @@
-import Header from '../../entities/Header/Header';
 import './index.css';
+import Header from '../../entities/Header/Header';
+import { useNavigate } from 'react-router-dom';
 
 export const RegisterErrorPage = () => {
+	const navigate = useNavigate();
+
+	function handleClick() {
+		navigate('/register');
+	}
+
 	return (
 		<main className="register-error">
 			<Header name={'Регистрация'} />
@@ -18,7 +25,9 @@ export const RegisterErrorPage = () => {
 				</p>
 			</section>
 			<div className="register-error__button-container">
-				<button className="register-error__button">Понятно</button>
+				<button className="register-error__button" onClick={handleClick}>
+					Понятно
+				</button>
 			</div>
 		</main>
 	);

@@ -1,7 +1,13 @@
 import { useState } from 'react';
 
 export function useForm() {
-	const [values, setValues] = useState({});
+	const [values, setValues] = useState({
+		name: '',
+		email: '',
+		password: '',
+		repeatpassword: '',
+		terms: '',
+	});
 	const [errors, setErrors] = useState({
 		name: '',
 		email: '',
