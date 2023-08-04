@@ -5,9 +5,11 @@ import { Checkbox } from '../RegisterCheckbox/RegisterCheckbox';
 import { useForm } from '../../features/register-form-validator/index';
 import { signup } from '../../shared/api/signup';
 import { useNavigate } from 'react-router-dom';
+import { RegisterErrorPopup } from '../RegisterErrorPopup/RegisterErrorPopup';
 
 export const RegisterForm = () => {
 	const navigate = useNavigate();
+	const [isErrorPopupOpen, setErrorPopupOpen] = useState(false);
 	const { values, handleChange, errors, isValid } = useForm();
 
 	const [nameInputValue, setNameInputValue] = useState('');
@@ -48,19 +50,21 @@ export const RegisterForm = () => {
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
-		console.log(values.name, values.email, values.password);
 		signup(values.name, values.email, values.password)
 			.then(() => navigate('/register-confirm'))
 			.catch((err) => {
 				if (
 					`${err}` === 'Error: {"email":["User с таким email уже существует."]}'
 				) {
-					console.log('Аккаунт с почтой «account@mail.ru» уже зарегистрирован');
-					// Здесь прописать открытие попапа с уведомлением
+					openErrorPopup();
 				} else {
 					navigate('/register-error');
 				}
 			});
+	}
+
+	function openErrorPopup() {
+		setErrorPopupOpen(true);
 	}
 
 	return (
@@ -123,6 +127,7 @@ export const RegisterForm = () => {
 					Поехали
 				</button>
 			</div>
+			<RegisterErrorPopup isOpen={isErrorPopupOpen} />
 		</form>
 	);
 };

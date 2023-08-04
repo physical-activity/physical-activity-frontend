@@ -2,16 +2,16 @@ name: Node-app workflow
 
 on:
   push:
-    branches: [ develop ]
+    branches: [develop]
   pull_request:
-    branches: [ develop ]
+    branches: [develop]
 
 jobs:
   init:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 18.x ]
+        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
       - name: Staring Node.js ${{ matrix.node-version }}
@@ -22,13 +22,12 @@ jobs:
         run: npm install
       - name: build project
         run: CI=false npm run build
-#      - name: build storybook
-#        run: npm run build-storybook
-#      - name: lint code
-#        run: npm run lint
-#      - name: start tests
-#        run: npm run test
-
+  #      - name: build storybook
+  #        run: npm run build-storybook
+  #      - name: lint code
+  #        run: npm run lint
+  #      - name: start tests
+  #        run: npm run test
 
   build_and_push_to_docker_hub:
     runs-on: ubuntu-latest
