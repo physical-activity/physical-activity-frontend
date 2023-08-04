@@ -2,7 +2,7 @@ const BASE_USL = process.env.REACT_APP_BACKEND_BASE_URL;
 console.log(BASE_USL);
 export const signin = async (email: string, password: string) => {
 	const response = await fetch(
-		`https://91.201.53.71/api/v1/auth/token/login/`,
+		`http://91.201.53.71:8000/api/v1/auth/token/login/`,
 		{
 			method: 'POST',
 			headers: {
