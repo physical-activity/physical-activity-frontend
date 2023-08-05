@@ -1,0 +1,51 @@
+.workoutBlock {
+	width: 100%;
+	box-sizing: border-box;
+	background-color: var(--color-black);
+	border-radius: 12px;
+	margin-bottom: 4px;
+	display: grid;
+	grid-template-rows: repeat(3, 1fr);
+	grid-template-columns: 1fr 2fr;
+	gap: 4px;
+}
+.workoutBlock__info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	box-sizing: border-box;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-radius: 12px;
+	background-color: var(--color-white);
+}
+.workoutBlock__text {
+	margin: 0;
+	padding: 0;
+	color: var(--color-black);
+	font-family: 'Open Sans', serif;
+	font-size: 16px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+
+.workoutBlock__img-container {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 152px;
+	border-radius: 12px;
+}
+
+.workoutBlock__img {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	object-fit: cover;
+}
