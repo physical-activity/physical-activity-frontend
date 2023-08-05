@@ -127,7 +127,7 @@ export const RegisterForm = () => {
 					Поехали
 				</button>
 			</div>
-			<RegisterErrorPopup isOpen={isErrorPopupOpen} />
+			<RegisterErrorPopup isOpen={isErrorPopupOpen} email={values.email} />
 		</form>
 	);
 };
