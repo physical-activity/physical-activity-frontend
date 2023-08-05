@@ -1,14 +1,14 @@
 import './index.css';
-import Header from '../../entities/Header/Header';
+import RegisterHeader from '../../entities/RegisterHeader/RegisterHeader';
 import { RegisterForm } from '../../entities/RegisterForm/RegisterForm';
-import { Footer } from '../../entities/Footer/Footer';
+import { RegisterFooter } from '../../entities/RegisterFooter/RegisterFooter';
 
 export const RegisterPage = () => {
 	return (
 		<main className="register">
-			<Header name={'Регистрация'} />
+			<RegisterHeader name={'Регистрация'} />
 			<RegisterForm />
-			<Footer footerText={'Войти в аккаунт'} footerLink={'signin'} />
+			<RegisterFooter footerText={'Войти в аккаунт'} footerLink={'signin'} />
 		</main>
 	);
 };

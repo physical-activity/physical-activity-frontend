@@ -1,10 +1,10 @@
-import Header from '../../entities/Header/Header';
+import RegisterHeader from '../../entities/RegisterHeader/RegisterHeader';
 import './index.css';
 
 export const RegisterConfirmPage = () => {
 	return (
 		<main className="register-confirm">
-			<Header name={'Регистрация'} />
+			<RegisterHeader name={'Регистрация'} />
 			<section className="register-confirm__block">
 				<img
 					src={require('./confirmImg.svg').default}

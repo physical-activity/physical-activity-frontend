@@ -1,22 +1,22 @@
 .register__form {
 	display: flex;
 	flex-direction: column;
-	margin: 0 auto;
+	margin: 0 8px;
 	gap: 4px;
 }
 
 .register__input-container {
-	width: calc(359px - 40px);
 	background-color: #fff;
 	border-radius: 12px;
 	padding: 88px 20px 226px;
 }
 
 .register__button-container {
-	width: calc(359px - 40px);
 	background-color: #fff;
 	border-radius: 12px;
 	padding: 20px;
+	display: flex;
+	justify-content: center;
 }
 
 .register__button {

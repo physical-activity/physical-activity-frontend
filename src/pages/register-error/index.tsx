@@ -1,5 +1,5 @@
 import './index.css';
-import Header from '../../entities/Header/Header';
+import RegisterHeader from '../../entities/RegisterHeader/RegisterHeader';
 import { useNavigate } from 'react-router-dom';
 
 export const RegisterErrorPage = () => {
@@ -11,7 +11,7 @@ export const RegisterErrorPage = () => {
 
 	return (
 		<main className="register-error">
-			<Header name={'Регистрация'} />
+			<RegisterHeader name={'Регистрация'} />
 			<section className="register-error__block">
 				<img
 					src={require('./errorImg.svg').default}
