@@ -1,0 +1,41 @@
+.activityBlock {
+	width: 100%;
+	box-sizing: border-box;
+	background-color: var(--color-black);
+	border-radius: 12px;
+	margin-bottom: 4px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 4px;
+}
+
+.activityBlock__item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-radius: 12px;
+	background-color: var(--color-white);
+}
+
+.activityBlock__counter {
+	color: var(--color-black);
+	font-family: 'Open Sans', serif;
+	font-size: 27px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 1.05;
+	text-transform: uppercase;
+}
+
+.activityBlock__caption {
+	color: var(--color-black);
+	font-family: 'Open Sans', serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.4;
+	letter-spacing: -0.16px;
+}

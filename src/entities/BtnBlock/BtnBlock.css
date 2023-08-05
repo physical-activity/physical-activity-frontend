@@ -1,0 +1,31 @@
+.btnBlock {
+	width: 100%;
+	box-sizing: border-box;
+	background-color: var(--color-white);
+	border-radius: 12px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btnBlock__btn {
+	min-width: 319px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	border-radius: 12px;
+	background: var(--color-green);
+	border: none;
+	color: var(--color-black);
+	cursor: pointer;
+	font-family: 'Open Sans', serif;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 1.05;
+	text-transform: uppercase;
+}
