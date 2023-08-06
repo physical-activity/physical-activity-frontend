@@ -1,10 +1,17 @@
-import Header from '../../entities/Header/Header';
 import './index.css';
+import RegisterHeader from '../../entities/RegisterHeader/RegisterHeader';
+import { useNavigate } from 'react-router-dom';
 
 export const RegisterErrorPage = () => {
+	const navigate = useNavigate();
+
+	function handleClick() {
+		navigate('/register');
+	}
+
 	return (
 		<main className="register-error">
-			<Header name={'Регистрация'} />
+			<RegisterHeader name={'Регистрация'} />
 			<section className="register-error__block">
 				<img
 					src={require('./errorImg.svg').default}
@@ -18,7 +25,9 @@ export const RegisterErrorPage = () => {
 				</p>
 			</section>
 			<div className="register-error__button-container">
-				<button className="register-error__button">Понятно</button>
+				<button className="register-error__button" onClick={handleClick}>
+					Понятно
+				</button>
 			</div>
 		</main>
 	);

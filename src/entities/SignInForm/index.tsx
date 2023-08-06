@@ -17,13 +17,6 @@ export const SignInForm = () => {
 			.then(() => navigate('/'))
 			.catch((err) => {
 				setIsServerError(true);
-				// обработка ошибок
-				err.code = 403;
-				if (err.code === 403) {
-					// неправильный пароль или почта
-				} else if (err.code === 228) {
-					// делаем что-то еще
-				}
 			});
 	};
 

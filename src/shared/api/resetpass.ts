@@ -1,17 +1,20 @@
 const BASE_USL = process.env.REACT_APP_BACKEND_BASE_URL;
 export const resetPassword = async (email: string) => {
-	const response = await fetch(`${BASE_USL}/auth/reset_password`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			email: email,
-		}),
-	});
+	const response = await fetch(
+		`http://91.201.53.71/api/v1/auth/reset_password/`,
+		{
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email: email,
+			}),
+		}
+	);
 	let res;
-	if (response.status === 200) {
-		res = response.json();
+	if (response.status === 204) {
+		// res = response.json()
 	} else {
 		throw new Error('Smth went wrong');
 	}
