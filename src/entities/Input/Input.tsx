@@ -5,6 +5,7 @@ import requireSvg from './ic_required_1.svg';
 export const Input = ({
 	name,
 	type,
+	id,
 	value,
 	placeholder,
 	pattern,
@@ -13,6 +14,7 @@ export const Input = ({
 }: {
 	name: string;
 	type: string;
+	id: string;
 	value: string;
 	placeholder: string;
 	pattern?: string;
@@ -36,6 +38,7 @@ export const Input = ({
 				name={name}
 				type={visibility}
 				value={value}
+				id={id}
 				className={`input-block__input ${
 					isValidInput && 'signin__input_error'
 				}`}
