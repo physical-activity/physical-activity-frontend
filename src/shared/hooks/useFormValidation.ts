@@ -5,6 +5,7 @@ const initialValues = {
 	email: '',
 	password: '',
 	secondPassword: '',
+	terms: '',
 };
 
 export function useFormValidation() {
@@ -19,15 +20,18 @@ export function useFormValidation() {
 
 		if (name === 'email' && target.validationMessage !== '') {
 			setErrors({ ...errors, [name]: 'Введите корректный Email' });
-		} else if (
-			(name === 'password' || name === 'secondPassword') &&
-			target.validationMessage !== ''
-		) {
+		} else if (name === 'name' && target.validationMessage !== '') {
+			setErrors({ ...errors, [name]: 'Допустимые символы: пробел, дефис' });
+		} else if (name === 'password' && target.validationMessage !== '') {
 			setErrors({
 				...errors,
 				[name]:
 					'Пароль должен состоять из 6 символов, буквы в верхнем и нижнем регистре, пробел, дефис',
 			});
+		} else if (name === 'secondPassword' && target.validationMessage !== '') {
+			setErrors({ ...errors, [name]: 'Пароли не совпадают' });
+		} else if (name === 'terms' && target.validationMessage !== '') {
+			setErrors({ ...errors, [name]: 'Необходимо принять условия' });
 		} else {
 			setErrors({ ...errors, [name]: target.validationMessage });
 		}
