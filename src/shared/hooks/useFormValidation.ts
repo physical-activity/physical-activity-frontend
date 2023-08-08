@@ -1,16 +1,15 @@
 import { useCallback, useState } from 'react';
 
+const initialValues = {
+	name: '',
+	email: '',
+	password: '',
+	secondPassword: '',
+};
+
 export function useFormValidation() {
-	const [values, setValues] = useState({
-		email: '',
-		password: '',
-		secondPassword: '',
-	});
-	const [errors, setErrors] = useState({
-		email: '',
-		password: '',
-		secondPassword: '',
-	});
+	const [values, setValues] = useState(initialValues);
+	const [errors, setErrors] = useState(initialValues);
 	const [isValid, setIsValid] = useState(false);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,8 +40,8 @@ export function useFormValidation() {
 
 	const resetForm = useCallback(
 		(
-			newValues = { email: '', password: '', secondPassword: '' },
-			newErrors = { email: '', password: '', secondPassword: '' },
+			newValues = initialValues,
+			newErrors = initialValues,
 			newIsValid = false
 		) => {
 			setValues(newValues);
