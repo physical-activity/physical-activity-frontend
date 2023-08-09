@@ -3,15 +3,19 @@ import { useCallback, useState } from 'react';
 export function useFormValidation() {
 	const [values, setValues] = useState({
 		email: '',
+		secondName: '',
+		name: '',
 		password: '',
 		secondPassword: '',
 	});
 	const [errors, setErrors] = useState({
 		email: '',
+		name: '',
+		secondName: '',
 		password: '',
 		secondPassword: '',
 	});
-	const [isValid, setIsValid] = useState(false);
+	const [isValid, setIsValid] = useState(true);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const target = event.target;
@@ -29,6 +33,18 @@ export function useFormValidation() {
 				[name]:
 					'Пароль должен состоять из 6 символов, буквы в верхнем и нижнем регистре, пробел, дефис',
 			});
+		} else if (name === 'name' && target.validationMessage !== '') {
+			setErrors({
+				...errors,
+				[name]:
+					'Допустимые символы для ввода: пробел, дефис, кириллические, латинские буквы',
+			});
+		} else if (name === 'secondName' && target.validationMessage !== '') {
+			setErrors({
+				...errors,
+				[name]:
+					'Допустимые символы для ввода: пробел, дефис, кириллические, латинские буквы',
+			});
 		} else {
 			setErrors({ ...errors, [name]: target.validationMessage });
 		}
@@ -41,8 +57,20 @@ export function useFormValidation() {
 
 	const resetForm = useCallback(
 		(
-			newValues = { email: '', password: '', secondPassword: '' },
-			newErrors = { email: '', password: '', secondPassword: '' },
+			newValues = {
+				email: '',
+				password: '',
+				secondPassword: '',
+				name: '',
+				secondName: '',
+			},
+			newErrors = {
+				email: '',
+				password: '',
+				secondPassword: '',
+				name: '',
+				secondName: '',
+			},
 			newIsValid = false
 		) => {
 			setValues(newValues);
