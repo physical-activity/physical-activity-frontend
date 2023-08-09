@@ -35,6 +35,7 @@ export const ConfirmPasswordForm = () => {
 		<form className="form__form" onSubmit={(e) => handleSubmit(e)}>
 			<div className="form__input-container form__input-container_reset-pass">
 				<Input
+					required={true}
 					placeholder={'Пароль'}
 					name={'password'}
 					type={'password'}
@@ -44,6 +45,7 @@ export const ConfirmPasswordForm = () => {
 					isValidInput={formValidator.errors.password}
 				/>
 				<Input
+					required={true}
 					placeholder={'Пароль'}
 					name={'secondPassword'}
 					type={'password'}

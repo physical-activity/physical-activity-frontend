@@ -39,8 +39,10 @@ export const SignInForm = () => {
 					setValue={handleChange}
 					pattern="[a-zA-Z0-9\-\.]+[\@][a-zA-Z0-9\-]+[\.][a-zA-Z0-9\.]{2,}"
 					isValidInput={errors.email}
+					required={true}
 				/>
 				<Input
+					required={true}
 					placeholder={'Пароль'}
 					name={'password'}
 					type={'password'}

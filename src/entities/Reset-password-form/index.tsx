@@ -36,6 +36,7 @@ export const ResetPassworForm = ({
 		<form className="form__form" onSubmit={(e) => handleSubmit(e)}>
 			<div className="form__input-container form__input-container_reset-pass">
 				<Input
+					required={true}
 					placeholder={'Почта'}
 					name={'email'}
 					type={'text'}
