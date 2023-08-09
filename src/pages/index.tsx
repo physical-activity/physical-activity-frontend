@@ -7,6 +7,7 @@ import { RegisterPage } from './register';
 import { RegisterConfirmPage } from './register-confirm';
 import { RegisterSuccessPage } from './register-success';
 import { RegisterErrorPage } from './register-error';
+import { PersonalAccaunt } from './personal-accaunt';
 
 export const Routing = () => {
 	return (
@@ -22,6 +23,7 @@ export const Routing = () => {
 			<Route path="/register-confirm" element={<RegisterConfirmPage />} />
 			<Route path="/register-success" element={<RegisterSuccessPage />} />
 			<Route path="/register-error" element={<RegisterErrorPage />} />
+			<Route path="/users/:id" element={<PersonalAccaunt />} />
 		</Routes>
 	);
 };
