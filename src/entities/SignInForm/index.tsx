@@ -10,7 +10,6 @@ export const SignInForm = () => {
 	const navigate = useNavigate();
 	const { values, handleChange, errors, isValid, resetForm } =
 		useFormValidation();
-
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		signin(values.email, values.password)
@@ -32,10 +31,11 @@ export const SignInForm = () => {
 		<form className="form__form" onSubmit={(e) => handleSubmit(e)}>
 			<div className="form__input-container">
 				<Input
-					placeholder={'Почта'}
-					name={'email'}
 					type={'text'}
+					id="email"
+					name={'email'}
 					value={values.email}
+					placeholder={'Почта'}
 					setValue={handleChange}
 					pattern="[a-zA-Z0-9\-\.]+[\@][a-zA-Z0-9\-]+[\.][a-zA-Z0-9\.]{2,}"
 					isValidInput={errors.email}
@@ -43,6 +43,7 @@ export const SignInForm = () => {
 				<Input
 					placeholder={'Пароль'}
 					name={'password'}
+					id="password"
 					type={'password'}
 					value={values.password}
 					setValue={handleChange}

@@ -1,6 +1,6 @@
 import './RegisterForm.css';
 import { useState } from 'react';
-import { Input } from '../RegisterInput/RegisterInput';
+import { Input } from '../Input/Input';
 import { Checkbox } from '../RegisterCheckbox/RegisterCheckbox';
 import { useForm } from '../../features/register-form-validator/index';
 import { signup } from '../../shared/api/signup';
@@ -76,7 +76,7 @@ export const RegisterForm = () => {
 					name="name"
 					value={nameInputValue}
 					placeholder="Ваше имя"
-					validateInput={validateNameInput}
+					setValue={validateNameInput}
 					isValidInput={errors.name}
 					pattern="[A-Za-zА-Яа-я\s-]{2,}"
 				/>
@@ -86,7 +86,7 @@ export const RegisterForm = () => {
 					name="email"
 					value={emailInputValue}
 					placeholder="Почта"
-					validateInput={validateEmailInput}
+					setValue={validateEmailInput}
 					isValidInput={errors.email}
 					pattern="^[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,4}$"
 				/>
@@ -96,7 +96,7 @@ export const RegisterForm = () => {
 					name="password"
 					value={passwordInputValue}
 					placeholder="Пароль"
-					validateInput={validatePasswordInput}
+					setValue={validatePasswordInput}
 					isValidInput={errors.password}
 					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{6,}"
 				/>
@@ -106,7 +106,7 @@ export const RegisterForm = () => {
 					name="repeatpassword"
 					value={repeatpasswordInputValue}
 					placeholder="Повторите пароль"
-					validateInput={validateRepeatpasswordInput}
+					setValue={validateRepeatpasswordInput}
 					isValidInput={errors.repeatpassword}
 					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{6,}"
 				/>
