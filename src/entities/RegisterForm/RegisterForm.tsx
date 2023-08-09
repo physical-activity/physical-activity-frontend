@@ -1,6 +1,5 @@
 import './RegisterForm.css';
 import { useState } from 'react';
-// import { Input } from '../RegisterInput/RegisterInput';
 import { Input } from '../Input/Input';
 import { Checkbox } from '../RegisterCheckbox/RegisterCheckbox';
 import { useForm } from '../../features/register-form-validator/index';
