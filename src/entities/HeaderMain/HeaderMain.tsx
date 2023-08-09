@@ -10,14 +10,18 @@ const HeaderMain = () => {
 	return (
 		<div className="header-main">
 			<h1 className="header-main__logo">easyfit</h1>
-			<button
-				className="header-main__btn"
-				onClick={() => {
-					navigate('signin');
-				}}
-			>
-				<img src={loginIcon} alt="Логин" />
-			</button>
+			<div className="header-main__user">
+				<p className="header-main__name">Влад</p>
+				<button
+					className="header-main__btn"
+					onClick={() => {
+						navigate('/users/123');
+					}}
+				>
+					<p className="header-main__letter">B</p>
+					{/* <img src={loginIcon} alt="Логин" /> */}
+				</button>
+			</div>
 		</div>
 	);
 };

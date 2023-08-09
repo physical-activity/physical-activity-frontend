@@ -1,9 +1,13 @@
 .header {
-	width: calc(100% - 8px);
+	width: calc(100% - 48px);
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	margin: 0 auto;
 	gap: 4px;
+	justify-content: space-between;
+	border-radius: 12px;
+	background-color: #fff;
+	padding: 12px 20px;
 }
 
 .header__title {
@@ -11,9 +15,6 @@
 	color: #141516;
 	line-height: 21px;
 	margin: 0;
-	padding: 20px;
-	background-color: #fff;
-	border-radius: 12px;
 	font-family: 'Open Sans';
 	font-size: 20px;
 	font-style: italic;
@@ -21,4 +22,20 @@
 	text-transform: uppercase;
 	/* margin-top: 8px; */
 	/* в RegisterPage этот margin был нужен */
+}
+
+.header__button {
+	background-color: transparent;
+	border: none;
+	margin: 0;
+	color: var(--new-txt-black, #212120);
+	text-align: right;
+
+	/* new mob/body */
+	font-family: Open Sans;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 140%; /* 22.4px */
+	letter-spacing: -0.16px;
 }
