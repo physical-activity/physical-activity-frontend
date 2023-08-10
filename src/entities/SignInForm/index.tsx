@@ -4,6 +4,7 @@ import './index.css';
 import { Input } from '../Input/Input';
 import { signin } from 'shared/api/login';
 import { useFormValidation } from 'shared/hooks/useFormValidation';
+import { REGEX } from 'shared/utils/constants';
 
 export const SignInForm = () => {
 	const [isServerError, setIsServerError] = useState(false);
@@ -37,7 +38,7 @@ export const SignInForm = () => {
 					value={values.email}
 					placeholder={'Почта'}
 					setValue={handleChange}
-					pattern="[a-zA-Z0-9\-\.]+[\@][a-zA-Z0-9\-]+[\.][a-zA-Z0-9\.]{2,}"
+					pattern={REGEX.email.source}
 					isValidInput={errors.email}
 				/>
 				<Input
@@ -47,7 +48,7 @@ export const SignInForm = () => {
 					type={'password'}
 					value={values.password}
 					setValue={handleChange}
-					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{5,}"
+					pattern={REGEX.password.source}
 					isValidInput={errors.password}
 				/>
 				{isServerError && (
