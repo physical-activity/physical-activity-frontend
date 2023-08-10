@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './index.css';
 import { Input } from 'entities/Input/Input';
 import { useFormValidation } from 'shared/hooks/useFormValidation';
+import { REGEX } from 'shared/utils/constants';
 
 export const ConfirmPasswordForm = () => {
 	const [isValid, setIsvalid] = useState(true);
@@ -41,7 +42,7 @@ export const ConfirmPasswordForm = () => {
 					type={'password'}
 					value={passValue}
 					setValue={handleChangePassword}
-					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{5,}"
+					pattern={REGEX.password.source}
 					isValidInput={formValidator.errors.password}
 				/>
 				<Input
@@ -51,7 +52,7 @@ export const ConfirmPasswordForm = () => {
 					type={'password'}
 					value={repeatPassValue}
 					setValue={handleChangePasswordRepeat}
-					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{5,}"
+					pattern={REGEX.password.source}
 					isValidInput={formValidator.errors.secondPassword}
 				/>
 				{!isIdentical && (

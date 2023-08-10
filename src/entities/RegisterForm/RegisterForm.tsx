@@ -6,6 +6,7 @@ import { useForm } from '../../features/register-form-validator/index';
 import { signup } from '../../shared/api/signup';
 import { useNavigate } from 'react-router-dom';
 import { RegisterErrorPopup } from '../RegisterErrorPopup/RegisterErrorPopup';
+import { REGEX } from 'shared/utils/constants';
 
 export const RegisterForm = () => {
 	const navigate = useNavigate();
@@ -78,7 +79,7 @@ export const RegisterForm = () => {
 					placeholder="Ваше имя"
 					setValue={validateNameInput}
 					isValidInput={errors.name}
-					pattern="[A-Za-zА-Яа-я\s-]{2,}"
+					pattern={REGEX.name.source}
 				/>
 				<Input
 					type="email"
@@ -88,7 +89,7 @@ export const RegisterForm = () => {
 					placeholder="Почта"
 					setValue={validateEmailInput}
 					isValidInput={errors.email}
-					pattern="^[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,4}$"
+					pattern={REGEX.email.source}
 				/>
 				<Input
 					type="password"
@@ -98,7 +99,7 @@ export const RegisterForm = () => {
 					placeholder="Пароль"
 					setValue={validatePasswordInput}
 					isValidInput={errors.password}
-					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{6,}"
+					pattern={REGEX.password.source}
 				/>
 				<Input
 					type="password"
@@ -108,7 +109,7 @@ export const RegisterForm = () => {
 					placeholder="Повторите пароль"
 					setValue={validateRepeatpasswordInput}
 					isValidInput={errors.repeatpassword}
-					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{6,}"
+					pattern={REGEX.password.source}
 				/>
 				<Checkbox
 					type="checkbox"
