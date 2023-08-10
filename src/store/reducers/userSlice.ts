@@ -1,27 +1,45 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IUser } from 'models/IUser';
 
 interface UserState {
-	users: IUser[];
+	user: IUser;
+	id: number | null;
+	auth_token: string | null;
 	isLoading: boolean;
 	error: string;
-	// count: number;
 }
 
-const initialState: UserState = {
-	users: [],
+let initialState: UserState;
+
+initialState = {
+	user: {
+		first_name: '',
+		second_name: '',
+		phone: '',
+		email: '',
+		photo: '',
+	},
+	id: null,
+	auth_token: null,
 	isLoading: false,
 	error: '',
-	// count: 0,
 };
 
 export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		// increment(state, action: PayloadAction<number>) {
-		// 	state.count += action.payload;
-		// },
+		userLogin(state, action: PayloadAction<string>) {
+			state.auth_token = action.payload;
+		},
+
+		userGetInfo(state, action: PayloadAction<IUser>) {
+			state.user = action.payload;
+		},
+
+		userGetId(state, action: PayloadAction<number>) {
+			state.id = action.payload;
+		},
 	},
 });
 
