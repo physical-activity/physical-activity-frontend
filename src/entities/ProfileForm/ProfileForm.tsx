@@ -1,43 +1,34 @@
 import { Input } from 'entities/Input/Input';
 import React, { useState, useEffect } from 'react';
-
 import './index.css';
-import { useFormValidation } from 'shared/hooks/useFormValidation';
-import { error } from 'console';
-import { Secondary } from 'stories/Button.stories';
+import { useNavigate } from 'react-router';
+
 const ProfileForm = ({
 	isInputDisabled,
-	handleChange,
+	handleChangeName,
+	handleChangeSecondName,
+	handleChangeEmail,
 	errors,
+	name,
+	secondName,
+	email,
+	avatar,
 }: {
 	isInputDisabled: boolean;
-	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handleChangeName: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handleChangeSecondName: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handleChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	errors: { name: string; secondName: string; email: string };
-	// error: Object
+	name: string;
+	secondName: string;
+	email: string;
+	avatar: string;
 }) => {
-	const [avatar, setAvatar] = useState('');
-	const [name, setName] = useState('Влад');
-	const [secondName, setSecondName] = useState('');
-	const [email, setEmail] = useState('qwe@qwe.com');
-
-	const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
-		handleChange(e);
-		setName(e.target.value);
-		// console.log(errors);
-	};
-	const handleChangeSecondName = (e: React.ChangeEvent<HTMLInputElement>) => {
-		handleChange(e);
-		setSecondName(e.target.value);
-		// console.log(errors);
-	};
-	const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-		handleChange(e);
-		setEmail(e.target.value);
-		// console.log(errors);
-	};
+	const navigate = useNavigate();
 
 	const handleLogout = () => {
-		// удаляем токен юзера с локалстореджа
+		localStorage.removeItem('token');
+		navigate('/');
 	};
 
 	return (
@@ -47,7 +38,7 @@ const ProfileForm = ({
 					<img className="profile__avatar" src={avatar} alt="avatar" />
 				) : (
 					<div className="profile__avatar-box">
-						<p className="profile__letter">B</p>
+						<p className="profile__letter">{name.slice(0, 1)}</p>
 					</div>
 				)}
 				<span className="profile__span profile__span_name">Имя</span>
