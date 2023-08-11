@@ -60,7 +60,7 @@ export const RegisterForm = () => {
 					name="name"
 					value={values.name}
 					placeholder="Ваше имя"
-					validateInput={handleChange}
+					setValue={handleChange}
 					isValidInput={errors.name}
 					pattern={REGEX.name.source}
 				/>
@@ -70,7 +70,7 @@ export const RegisterForm = () => {
 					name="email"
 					value={values.email}
 					placeholder="Почта"
-					validateInput={handleChange}
+					setValue={handleChange}
 					isValidInput={errors.email}
 					pattern={REGEX.email.source}
 				/>
@@ -80,7 +80,7 @@ export const RegisterForm = () => {
 					name="password"
 					value={values.password}
 					placeholder="Пароль"
-					validateInput={handleChange}
+					setValue={handleChange}
 					isValidInput={errors.password}
 					pattern={REGEX.password.source}
 				/>
@@ -90,7 +90,7 @@ export const RegisterForm = () => {
 					name="secondPassword"
 					value={repeatpasswordInputValue}
 					placeholder="Повторите пароль"
-					validateInput={validateRepeatpasswordInput}
+					setValue={validateRepeatpasswordInput}
 					isValidInput={errors.secondPassword}
 					pattern={REGEX.password.source}
 				/>
