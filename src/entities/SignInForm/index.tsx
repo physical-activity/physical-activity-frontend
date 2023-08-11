@@ -14,7 +14,10 @@ export const SignInForm = () => {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		signin(values.email, values.password)
-			.then(() => navigate('/'))
+			.then((res) => {
+				localStorage.setItem('token', res.auth_token);
+				navigate('/');
+			})
 			.catch((err) => {
 				setIsServerError(true);
 			});
