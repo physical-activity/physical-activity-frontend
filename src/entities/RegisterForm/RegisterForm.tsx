@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './RegisterForm.css';
-import { Input } from '../RegisterInput/RegisterInput';
+import { Input } from '../Input/Input';
 import { Checkbox } from '../RegisterCheckbox/RegisterCheckbox';
 import { signup } from '../../shared/api/signup';
 import { RegisterErrorPopup } from '../RegisterErrorPopup/RegisterErrorPopup';
 import { useFormValidation } from 'shared/hooks/useFormValidation';
+import { REGEX } from 'shared/utils/constants';
 
 export const RegisterForm = () => {
 	const navigate = useNavigate();
@@ -61,7 +62,7 @@ export const RegisterForm = () => {
 					placeholder="Ваше имя"
 					validateInput={handleChange}
 					isValidInput={errors.name}
-					pattern="[A-Za-zА-Яа-я\s-]{2,}"
+					pattern={REGEX.name.source}
 				/>
 				<Input
 					type="email"
@@ -71,7 +72,7 @@ export const RegisterForm = () => {
 					placeholder="Почта"
 					validateInput={handleChange}
 					isValidInput={errors.email}
-					pattern="^[a-z0-9._%+-]+@[a-z0-9-]+\.[a-z]{2,4}$"
+					pattern={REGEX.email.source}
 				/>
 				<Input
 					type="password"
@@ -81,7 +82,7 @@ export const RegisterForm = () => {
 					placeholder="Пароль"
 					validateInput={handleChange}
 					isValidInput={errors.password}
-					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{6,}"
+					pattern={REGEX.password.source}
 				/>
 				<Input
 					type="password"
@@ -91,7 +92,7 @@ export const RegisterForm = () => {
 					placeholder="Повторите пароль"
 					validateInput={validateRepeatpasswordInput}
 					isValidInput={errors.secondPassword}
-					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{6,}"
+					pattern={REGEX.password.source}
 				/>
 				<Checkbox
 					type="checkbox"

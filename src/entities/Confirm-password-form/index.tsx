@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './index.css';
 import { Input } from 'entities/Input/Input';
 import { useFormValidation } from 'shared/hooks/useFormValidation';
+import { REGEX } from 'shared/utils/constants';
 
 export const ConfirmPasswordForm = () => {
 	const [isValid, setIsvalid] = useState(true);
@@ -35,21 +36,23 @@ export const ConfirmPasswordForm = () => {
 		<form className="form__form" onSubmit={(e) => handleSubmit(e)}>
 			<div className="form__input-container form__input-container_reset-pass">
 				<Input
+					id="password"
 					placeholder={'Пароль'}
 					name={'password'}
 					type={'password'}
 					value={passValue}
 					setValue={handleChangePassword}
-					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{5,}"
+					pattern={REGEX.password.source}
 					isValidInput={formValidator.errors.password}
 				/>
 				<Input
+					id="secondPassword"
 					placeholder={'Пароль'}
 					name={'secondPassword'}
 					type={'password'}
 					value={repeatPassValue}
 					setValue={handleChangePasswordRepeat}
-					pattern="[a-zA-Z0-9\#\?\!\@\$\%\^\&\*\-]*.{5,}"
+					pattern={REGEX.password.source}
 					isValidInput={formValidator.errors.secondPassword}
 				/>
 				{!isIdentical && (
