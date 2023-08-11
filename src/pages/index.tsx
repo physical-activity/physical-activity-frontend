@@ -8,6 +8,7 @@ import { RegisterConfirmPage } from './register-confirm';
 import { RegisterSuccessPage } from './register-success';
 import { RegisterErrorPage } from './register-error';
 import { PersonalAccaunt } from './personal-accaunt';
+import { useEffect, useState } from 'react';
 
 export const Routing = () => {
 	return (
