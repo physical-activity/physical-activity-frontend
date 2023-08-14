@@ -1,0 +1,81 @@
+.training__form {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 6px;
+	gap: 4px;
+}
+
+.training__input-container {
+	background-color: #fff;
+	border-radius: 12px;
+	padding: 20px;
+}
+
+.training__container {
+	background-color: #fff;
+	border-radius: 12px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 20px;
+}
+
+.training__input {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	padding: 8px 0;
+	border-bottom: 1px solid #c3c3cc;
+}
+
+.training__input:last-of-type {
+	margin-bottom: 68px;
+}
+
+.training__label {
+	padding: 0;
+	margin: 0;
+	padding-right: 8px;
+	white-space: nowrap;
+}
+
+.training__input-span {
+	top: -8px;
+	width: 8px;
+	height: 8px;
+	position: relative;
+	padding-right: 8px;
+}
+
+.training__button_calendar {
+	display: flex;
+	margin: auto;
+	padding: 0;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.training__button {
+	width: 319px;
+	padding: 12px 0;
+	margin: 0 auto;
+	border: none;
+	border-radius: 12px;
+	color: #212120;
+	background: #c2ff5d;
+	font-family: 'Open Sans';
+	font-size: 18px;
+	font-weight: 800;
+	font-style: italic;
+	line-height: 19px;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
+.training__button_unvalid {
+	color: #8b8b96;
+	background: #e0e0e5;
+	cursor: default;
+}
