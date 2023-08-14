@@ -7,6 +7,8 @@ export function useForm() {
 		started_at: '',
 		distance: null,
 		finished_at: '',
+		steps_num: '',
+
 		name: '',
 		email: '',
 		password: '',
@@ -19,6 +21,8 @@ export function useForm() {
 		started_at: '',
 		distance: '',
 		finished_at: '',
+		steps_num: '',
+
 		name: '',
 		email: '',
 		password: '',

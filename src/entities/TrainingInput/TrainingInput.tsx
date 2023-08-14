@@ -3,12 +3,13 @@ import './TrainingInput.css';
 type Props = {
 	name: string;
 	type: string;
-	placeholder: string;
+	placeholder?: string;
 	id: string;
 	value: string | number | undefined;
 	pattern?: string;
 	isValidInput: string;
 	setValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	// ref?: any;
 };
 
 export const TrainingInput = ({
@@ -20,7 +21,8 @@ export const TrainingInput = ({
 	pattern,
 	isValidInput,
 	setValue,
-}: Props) => {
+} // ref,
+: Props) => {
 	return (
 		<>
 			<input
@@ -35,6 +37,7 @@ export const TrainingInput = ({
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e)}
 				pattern={pattern}
 				placeholder={placeholder}
+				// ref={ref}
 			/>
 
 			{/* {isValidInput !== '' && (

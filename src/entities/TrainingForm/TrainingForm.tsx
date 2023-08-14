@@ -7,7 +7,8 @@ import { useForm } from '../../features/training-form-validator/index';
 import { signup } from '../../shared/api/signup';
 import { useNavigate } from 'react-router-dom';
 import { REGEX } from 'shared/utils/constants';
-import { ReminderBlock } from '../ReminderBlock/ReminderBlock';
+import { TrainingReminderBlock } from '../TrainingReminderBlock/TainingReminderBlock';
+import { TrainingDuration } from '../TrainingDuration/TrainingDuration';
 import requireSvg from './ic_required.svg';
 import calendarSvg from './ic_calendar.svg';
 
@@ -26,6 +27,8 @@ export const TrainingForm = () => {
 	const [trainingDistanceInputValue, setTrainingDistanceInputValue] =
 		useState('');
 	const [trainingFinishedAtInputValue, setTrainingFinishedAtInputValue] =
+		useState('');
+	const [trainingStepsNumInputValue, setTrainingStepsNumInputValue] =
 		useState('');
 
 	const validateTrainingTypeInput = (
@@ -61,6 +64,13 @@ export const TrainingForm = () => {
 	) => {
 		handleChange(e);
 		setTrainingFinishedAtInputValue(e.target.value);
+	};
+
+	const validateTrainingStepsNumInput = (
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
+		handleChange(e);
+		setTrainingStepsNumInputValue(e.target.value);
 	};
 
 	const validateCheckboxInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,7 +111,7 @@ export const TrainingForm = () => {
 					<TrainingInput
 						type="text"
 						id="training_date"
-						placeholder=""
+						// placeholder=""
 						name="training_date"
 						value={trainingDateInputValue}
 						setValue={validateTrainingDateInput}
@@ -138,6 +148,7 @@ export const TrainingForm = () => {
 						setValue={validateTrainingDistanceInput}
 						isValidInput={errors.distance}
 						// pattern={REGEX.email.source}
+						// ref={setFocus}
 					/>
 				</div>
 
@@ -154,9 +165,28 @@ export const TrainingForm = () => {
 						// pattern={REGEX.email.source}
 					/>
 				</div>
+
+				<div className="training__input">
+					<p className="training__label">Шаги</p>
+					<TrainingInput
+						type="text"
+						id="steps_num"
+						placeholder="0"
+						name="steps_num"
+						value={trainingStepsNumInputValue}
+						setValue={validateTrainingStepsNumInput}
+						isValidInput={errors.steps_num}
+						// pattern={REGEX.email.source}
+					/>
+				</div>
 			</div>
+
 			<div className="training__container">
-				<ReminderBlock
+				<TrainingDuration value={`01:10 ч`} />
+			</div>
+
+			<div className="training__container">
+				<TrainingReminderBlock
 					type="checkbox"
 					id="terms"
 					name="terms"
