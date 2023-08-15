@@ -1,5 +1,5 @@
 .header {
-	width: calc(100% - 48px);
+	width: calc(100% - 40px);
 	display: flex;
 	flex-direction: row;
 	margin: 0 auto;
@@ -30,7 +30,7 @@
 	margin: 0;
 	color: var(--new-txt-black, #212120);
 	text-align: right;
-
+	cursor: pointer;
 	/* new mob/body */
 	font-family: Open Sans;
 	font-size: 16px;

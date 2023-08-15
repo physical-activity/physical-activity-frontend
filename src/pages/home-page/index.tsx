@@ -29,16 +29,16 @@ export const HomePageMobile = () => {
 	}, []);
 
 	return (
-		<div className="page-container">
+		<main className="main">
 			<HeaderMain userData={userData} />
-			<main>
+			<div className="page-container">
 				<TextBlock text={'активность'} />
 				<ActivityBlock />
 				<TextBlock text={'тренировки'} />
 				<WorkoutBlock />
 				<BtnBlock text={'тренироваться'} />
-			</main>
+			</div>
 			<FooterMain />
-		</div>
+		</main>
 	);
 };

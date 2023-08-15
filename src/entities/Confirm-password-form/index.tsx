@@ -14,7 +14,6 @@ export const ConfirmPasswordForm = () => {
 	const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPassValue(e.target.value);
 		formValidator.handleChange(e);
-		console.log(formValidator.errors);
 	};
 
 	const handleChangePasswordRepeat = (
@@ -22,7 +21,6 @@ export const ConfirmPasswordForm = () => {
 	) => {
 		setRepeatPassValue(e.target.value);
 		formValidator.handleChange(e);
-		console.log(formValidator.errors);
 	};
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {};

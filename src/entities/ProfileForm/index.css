@@ -3,7 +3,7 @@
 	flex-direction: column;
 	gap: 4px;
 	margin: 0 auto;
-	width: calc(100% - 8px);
+	width: 100%;
 }
 
 .profile__avatar-box {
