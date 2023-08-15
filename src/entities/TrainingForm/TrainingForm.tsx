@@ -13,11 +13,12 @@ import requireSvg from './ic_required.svg';
 import calendarSvg from './ic_calendar.svg';
 
 export const TrainingForm = () => {
-	const setFocus = useCallback((element: any) => {
-		element?.focus();
-	}, []);
+	type TypeItem = {
+		name: string;
+	};
 
 	const navigate = useNavigate();
+
 	const { values, handleChange, errors, isValid } = useForm();
 
 	const [trainingTypeInputValue, setTrainingTypeInputValue] = useState('');
@@ -30,11 +31,14 @@ export const TrainingForm = () => {
 		useState('');
 	const [trainingStepsNumInputValue, setTrainingStepsNumInputValue] =
 		useState('');
+	const [trainingTypes, setTrainingTypes] = useState<TypeItem[]>([]);
+	const [isListOpen, setIsListOpen] = useState(false);
 
 	useEffect(() => {
 		getTrainingTypes()
 			.then((res) => {
 				console.log(res);
+				setTrainingTypes(res);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -42,12 +46,12 @@ export const TrainingForm = () => {
 			.finally(() => {});
 	}, []);
 
-	const validateTrainingTypeInput = (
-		e: React.ChangeEvent<HTMLInputElement>
-	) => {
-		handleChange(e);
-		setTrainingTypeInputValue(e.target.value);
-	};
+	// const validateTrainingTypeInput = (
+	// 	e: React.ChangeEvent<HTMLInputElement>
+	// ) => {
+	// 	handleChange(e);
+	// 	setTrainingTypeInputValue(e.target.value);
+	// };
 
 	const validateTrainingDateInput = (
 		e: React.ChangeEvent<HTMLInputElement>
@@ -100,7 +104,37 @@ export const TrainingForm = () => {
 	return (
 		<form className="training__form" onSubmit={handleSubmit}>
 			<div className="training__container">
-				<div className="training__input">
+				<div className="list-conteiner">
+					<div className={`list ${isListOpen && 'list_active'}`}>
+						<div className="list__top">
+							<p className="list__title">{trainingTypeInputValue}</p>
+							<div className="list__navigation">
+								<button
+									onClick={() => setIsListOpen(!isListOpen)}
+									className={`${
+										isListOpen ? 'list__close-button' : 'list__open-button'
+									}`}
+									type="button"
+								/>
+							</div>
+						</div>
+						<ul className={isListOpen ? 'list__bottom_active' : 'list__bottom'}>
+							{trainingTypes.map((item, i) => (
+								<li
+									key={i}
+									onClick={() => {
+										setTrainingTypeInputValue(item.name);
+									}}
+									className="list__text"
+								>
+									{item.name}
+								</li>
+							))}
+						</ul>
+					</div>
+				</div>
+
+				{/* <div className="training__input">
 					<TrainingInput
 						type="text"
 						id="trainingtype"
@@ -110,7 +144,7 @@ export const TrainingForm = () => {
 						setValue={validateTrainingTypeInput}
 						isValidInput={errors.trainingtype}
 					/>
-				</div>
+				</div> */}
 
 				<div className="training__input">
 					<p className="training__label">Дата</p>
