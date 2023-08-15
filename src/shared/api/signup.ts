@@ -1,5 +1,5 @@
 export const signup = (name: string, email: string, password: string) => {
-	return fetch(`${BASE_URL}/api/v1/auth/signup/`, {
+	return fetch(`https://easyfit.acceleratorpracticum.ru/api/v1/auth/signup/`, {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',
