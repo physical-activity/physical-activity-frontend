@@ -11,6 +11,8 @@ import { PersonalAccaunt } from './personal-accaunt';
 import { useEffect } from 'react';
 import { getUserData } from 'store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
+import { TrainingPageMobile } from './training';
+
 
 export const Routing = () => {
 	const dispatch = useAppDispatch();
@@ -36,6 +38,7 @@ export const Routing = () => {
 			<Route path="/register-success" element={<RegisterSuccessPage />} />
 			<Route path="/register-error" element={<RegisterErrorPage />} />
 			<Route path="/users/:id" element={<PersonalAccaunt />} />
+			<Route path="/training" element={<TrainingPageMobile />} />
 		</Routes>
 	);
 };
