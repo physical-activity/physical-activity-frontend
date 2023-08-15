@@ -10,7 +10,9 @@ const HeaderMain = ({ userData }: { userData: UserState }) => {
 	const token = localStorage.getItem('token');
 	return (
 		<div className="header-main">
-			<h1 className="header-main__logo">easyfit</h1>
+			<h1 className="header-main__logo" onClick={() => navigate('/')}>
+				easyfit
+			</h1>
 			<div className="header-main__user">
 				<p className="header-main__name">{userData.user.first_name}</p>
 				{token !== null ? (
