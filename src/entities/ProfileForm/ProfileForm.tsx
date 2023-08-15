@@ -2,6 +2,9 @@ import { Input } from 'entities/Input/Input';
 import React, { useState, useEffect } from 'react';
 import './index.css';
 import { useNavigate } from 'react-router';
+import { useAppDispatch } from 'shared/hooks/redux';
+
+import { clearUserData } from 'store/reducers/userSlice';
 
 const ProfileForm = ({
 	isInputDisabled,
@@ -26,8 +29,25 @@ const ProfileForm = ({
 }) => {
 	const navigate = useNavigate();
 
+	const dispatch = useAppDispatch();
+
 	const handleLogout = () => {
 		localStorage.removeItem('token');
+		dispatch(
+			clearUserData({
+				user: {
+					first_name: '',
+					second_name: '',
+					phone: '',
+					email: '',
+					photo: '',
+				},
+				id: null,
+				auth_token: null,
+				isLoading: false,
+				error: '',
+			})
+		);
 		navigate('/');
 	};
 

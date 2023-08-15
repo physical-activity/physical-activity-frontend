@@ -3,11 +3,12 @@ import HeaderMain from 'entities/HeaderMain/HeaderMain';
 import HeaderProfile from 'entities/HeaderProfile/HeaderProfile';
 import ProfileForm from 'entities/ProfileForm/ProfileForm';
 import { useState, useEffect } from 'react';
-import { changeUserInfo } from 'shared/api/changeUserInfo';
-import { getUserData } from 'shared/api/getUserData';
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { useFormValidation } from 'shared/hooks/useFormValidation';
+import { changeUserInfo } from 'store/reducers/userSlice';
 
 export const PersonalAccaunt = () => {
+	const userData = useAppSelector((state) => state.user);
 	const [isInputDisabled, setIsInputDisabled] = useState(true);
 	const [avatar, setAvatar] = useState('');
 	const [name, setName] = useState('');
@@ -37,36 +38,44 @@ export const PersonalAccaunt = () => {
 		setIsInputDisabled(false);
 	};
 
+	const dispatch = useAppDispatch();
+
 	const saveChanges = async () => {
 		if (isValid) {
 			setIsInputDisabled(true);
-			changeUserInfo(name, secondName, email);
+			// changeUserInfo(name, secondName, email);
+			dispatch(changeUserInfo({ name, secondName, email }));
 		}
 	};
 
-	const [userData, setUserData] = useState({
-		first_name: '',
-		last_name: '',
-		photo: '',
-		email: '',
-	});
+	// const [userData, setUserData] = useState({
+	// 	first_name: '',
+	// 	last_name: '',
+	// 	photo: '',
+	// 	email: '',
+	// });
+
+	// useEffect(() => {
+	// 	const fetchUserData = async () => {
+	// 		getUserData().then((res) => setUserData(res));
+	// 	};
+
+	// 	if (localStorage.getItem('token')) {
+	// 		fetchUserData();
+	// 	}
+	// }, []);
 
 	useEffect(() => {
-		const fetchUserData = async () => {
-			getUserData().then((res) => setUserData(res));
-		};
-
-		if (localStorage.getItem('token')) {
-			fetchUserData();
-		}
-	}, []);
-
-	useEffect(() => {
-		setAvatar(userData.photo);
-		setName(userData.first_name);
-		setSecondName(userData.last_name);
-		setEmail(userData.email);
-	}, [userData.email, userData.first_name, userData.photo, userData.last_name]);
+		setAvatar(userData.user.photo);
+		setName(userData.user.first_name);
+		setSecondName(userData.user.second_name);
+		setEmail(userData.user.email);
+	}, [
+		userData.user.email,
+		userData.user.first_name,
+		userData.user.photo,
+		userData.user.second_name,
+	]);
 
 	return (
 		<main className="main">

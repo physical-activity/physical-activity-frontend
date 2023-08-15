@@ -8,9 +8,20 @@ import { RegisterConfirmPage } from './register-confirm';
 import { RegisterSuccessPage } from './register-success';
 import { RegisterErrorPage } from './register-error';
 import { PersonalAccaunt } from './personal-accaunt';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { getUserData } from 'store/reducers/userSlice';
+import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 
 export const Routing = () => {
+	const dispatch = useAppDispatch();
+	const userData = useAppSelector((state) => state.user);
+
+	useEffect(() => {
+		if (localStorage.getItem('token')) {
+			dispatch(getUserData());
+		}
+	}, [dispatch, userData.auth_token]);
+
 	return (
 		<Routes>
 			<Route path="/" element={<HomePageMobile />} />

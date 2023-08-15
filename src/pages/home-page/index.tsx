@@ -6,27 +6,10 @@ import BtnBlock from 'entities/BtnBlock/BtnBlock';
 import ActivityBlock from 'entities/ActivityBllock/ActivityBlock';
 import WorkoutBlock from 'entities/WorkoutBlock/WorkoutBlock';
 import FooterMain from 'entities/FooterMain/FooterMain';
-import { getUserData } from 'shared/api/getUserData';
-import { useNavigate } from 'react-router';
+import { useAppSelector } from 'shared/hooks/redux';
 
 export const HomePageMobile = () => {
-	const [userData, setUserData] = useState({ first_name: '', photo: '' });
-	const navigate = useNavigate();
-	useEffect(() => {
-		const fetchUserData = async () => {
-			getUserData()
-				.then((res) => {
-					setUserData(res);
-				})
-				.catch((err) => {
-					localStorage.removeItem('token');
-					navigate('/');
-				});
-		};
-		if (localStorage.getItem('token')) {
-			fetchUserData();
-		}
-	}, []);
+	const userData = useAppSelector((state) => state.user);
 
 	return (
 		<main className="main">

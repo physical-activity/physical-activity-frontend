@@ -3,19 +3,16 @@ import { useNavigate } from 'react-router';
 import './HeaderMain.css';
 
 import loginIcon from './icons/login.svg';
+import { UserState } from 'store/reducers/userSlice';
 
-const HeaderMain = ({
-	userData,
-}: {
-	userData: { first_name: string; photo: string };
-}) => {
+const HeaderMain = ({ userData }: { userData: UserState }) => {
 	const navigate = useNavigate();
 	const token = localStorage.getItem('token');
 	return (
 		<div className="header-main">
 			<h1 className="header-main__logo">easyfit</h1>
 			<div className="header-main__user">
-				<p className="header-main__name">{userData.first_name}</p>
+				<p className="header-main__name">{userData.user.first_name}</p>
 				{token !== null ? (
 					<>
 						<button
@@ -25,7 +22,7 @@ const HeaderMain = ({
 							}}
 						>
 							<p className="header-main__letter">
-								{userData.first_name.slice(0, 1)}
+								{userData.user.first_name.slice(0, 1)}
 							</p>
 						</button>
 					</>
