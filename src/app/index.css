@@ -13,10 +13,19 @@ code {
 		monospace;
 }
 
+html::-webkit-scrollbar {
+	width: 10px;
+}
+html::-webkit-scrollbar-thumb {
+	background-color: #c2ff5d;
+	border-radius: 4px;
+	width: 5px;
+}
+
 #root {
-	height: 100vh;
 	width: 100%;
 	background-color: black;
+	min-height: 100vh;
 }
 
 @import url(./styles/fonts/fonts.css);

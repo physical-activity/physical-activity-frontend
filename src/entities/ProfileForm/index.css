@@ -1,0 +1,81 @@
+.profile {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.profile__avatar-box {
+	width: 124px;
+	height: 124px;
+	background-color: #c2ff5d;
+	display: flex;
+	border-radius: 50%;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	margin-bottom: 32px;
+}
+
+.profile__avatar {
+	width: 124px;
+	height: 124px;
+	border-radius: 50%;
+	align-self: center;
+	margin-bottom: 32px;
+}
+
+.profile__letter {
+	color: var(--new-txt-black, #212120);
+	font-family: Open Sans;
+	font-size: 50px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 100%; /* 50px */
+	letter-spacing: -0.5px;
+	margin: 0;
+}
+
+.profile__input-container {
+	width: calc(100% - 40px);
+	background-color: #fff;
+	border-radius: 12px;
+	padding: 40px 20px 160px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.profile__span {
+	color: var(--new-txt-secondary, #a6a6a6);
+	font-family: Manrope;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 800;
+	line-height: 100%; /* 13px */
+	letter-spacing: -0.13px;
+}
+
+.profile__button-container {
+	display: flex;
+	padding: 20px;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	border-radius: 12px;
+	background: var(--new-bg, #fff);
+}
+
+.profile__button {
+	color: #fd6c46;
+	text-align: right;
+	font-family: Open Sans;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 140%; /* 22.4px */
+	letter-spacing: -0.16px;
+	background-color: transparent;
+	border: none;
+}

@@ -14,7 +14,6 @@ export const ConfirmPasswordForm = () => {
 	const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPassValue(e.target.value);
 		formValidator.handleChange(e);
-		console.log(formValidator.errors);
 	};
 
 	const handleChangePasswordRepeat = (
@@ -22,7 +21,6 @@ export const ConfirmPasswordForm = () => {
 	) => {
 		setRepeatPassValue(e.target.value);
 		formValidator.handleChange(e);
-		console.log(formValidator.errors);
 	};
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
@@ -36,6 +34,7 @@ export const ConfirmPasswordForm = () => {
 		<form className="form__form" onSubmit={(e) => handleSubmit(e)}>
 			<div className="form__input-container form__input-container_reset-pass">
 				<Input
+					required={true}
 					id="password"
 					placeholder={'Пароль'}
 					name={'password'}
@@ -46,6 +45,7 @@ export const ConfirmPasswordForm = () => {
 					isValidInput={formValidator.errors.password}
 				/>
 				<Input
+					required={true}
 					id="secondPassword"
 					placeholder={'Пароль'}
 					name={'secondPassword'}

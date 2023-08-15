@@ -1,9 +1,8 @@
 .activityBlock {
 	width: 100%;
 	box-sizing: border-box;
-	background-color: var(--color-black);
+	background-color: #000;
 	border-radius: 12px;
-	margin-bottom: 4px;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 4px;
