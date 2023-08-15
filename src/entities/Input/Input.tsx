@@ -6,7 +6,6 @@ import toggleVisibleImg from './visibility_off_FILL0_wght300_GRAD0_opsz48 1.svg'
 export const Input = ({
 	name,
 	type,
-	id,
 	value,
 	placeholder,
 	pattern,
@@ -26,7 +25,6 @@ export const Input = ({
 	setValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	disabled?: boolean;
 	required: boolean;
-	id: string;
 }) => {
 	const [visibility, setVisibility] = useState(type);
 

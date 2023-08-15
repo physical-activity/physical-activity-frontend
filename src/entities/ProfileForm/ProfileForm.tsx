@@ -43,6 +43,7 @@ const ProfileForm = ({
 				)}
 				<span className="profile__span profile__span_name">Имя</span>
 				<Input
+					id="name"
 					name="name"
 					type="text"
 					value={name}
@@ -54,6 +55,7 @@ const ProfileForm = ({
 				/>
 				<span className="profile__span profile__span_secondname">Фамилия</span>
 				<Input
+					id="secondName"
 					name="secondName"
 					type="text"
 					value={secondName}
@@ -65,6 +67,7 @@ const ProfileForm = ({
 				/>
 				<span className="profile__span profile__span_email">Email</span>
 				<Input
+					id="email"
 					name="email"
 					type="text"
 					value={email}
