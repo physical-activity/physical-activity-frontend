@@ -20,9 +20,8 @@ export const TrainingInput = ({
 	value,
 	pattern,
 	isValidInput,
-	setValue,
-} // ref,
-: Props) => {
+	setValue, // ref,
+}: Props) => {
 	return (
 		<>
 			<input
