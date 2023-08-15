@@ -6,6 +6,7 @@ import toggleVisibleImg from './visibility_off_FILL0_wght300_GRAD0_opsz48 1.svg'
 export const Input = ({
 	name,
 	type,
+	id,
 	value,
 	placeholder,
 	pattern,
@@ -17,6 +18,7 @@ export const Input = ({
 }: {
 	name: string;
 	type: string;
+	id: string;
 	value: string;
 	placeholder?: string;
 	pattern?: string;
@@ -44,6 +46,7 @@ export const Input = ({
 				type={visibility}
 				value={value}
 				disabled={disabled}
+				id={id}
 				className={`input-block__input ${
 					isValidInput && 'signin__input_error'
 				}`}

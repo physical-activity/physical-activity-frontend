@@ -3,6 +3,7 @@ import { Input } from '../Input/Input';
 // import './index.css';
 import { useFormValidation } from 'shared/hooks/useFormValidation';
 import { resetPassword } from 'shared/api/resetpass';
+import { REGEX } from 'shared/utils/constants';
 
 export const ResetPassworForm = ({
 	setIsRequsetMade,
@@ -37,12 +38,13 @@ export const ResetPassworForm = ({
 			<div className="form__input-container form__input-container_reset-pass">
 				<Input
 					required={true}
+					id="email"
 					placeholder={'Почта'}
 					name={'email'}
 					type={'text'}
 					value={emailValue}
 					setValue={handleChangeEmail}
-					pattern="[a-zA-Z0-9\-\.]+[\@][a-zA-Z0-9\-]+[\.][a-zA-Z0-9\.]{2,}"
+					pattern={REGEX.email.source}
 					isValidInput={formValidator.errors.email}
 				/>
 			</div>
