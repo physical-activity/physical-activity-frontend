@@ -22,7 +22,6 @@ export const TrainingReminderBlock = ({
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 					validateInput(e);
 				}}
-				required
 			/>
 			<span className="training__checkmark"></span>
 		</label>

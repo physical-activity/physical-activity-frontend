@@ -2,32 +2,18 @@ import { useState } from 'react';
 
 export function useForm() {
 	const [values, setValues] = useState({
-		trainingtype: '',
 		training_date: '',
 		started_at: '',
 		distance: null,
 		finished_at: '',
 		steps_num: '',
-
-		name: '',
-		email: '',
-		password: '',
-		repeatpassword: '',
-		terms: '',
 	});
 	const [errors, setErrors] = useState({
-		trainingtype: '',
 		training_date: '',
 		started_at: '',
 		distance: '',
 		finished_at: '',
 		steps_num: '',
-
-		name: '',
-		email: '',
-		password: '',
-		repeatpassword: '',
-		terms: '',
 	});
 
 	const [isValid, setIsValid] = useState(false);
@@ -37,20 +23,19 @@ export function useForm() {
 		const name = target.name;
 		const value = target.value;
 		setValues({ ...values, [name]: value });
-		if (name === 'name' && target.validationMessage !== '') {
-			setErrors({ ...errors, [name]: 'Допустимые символы: пробел, дефис' });
-		} else if (name === 'email' && target.validationMessage !== '') {
-			setErrors({ ...errors, [name]: 'Допустимы только латинские буквы' });
-		} else if (name === 'password' && target.validationMessage !== '') {
+		if (name === 'training_date' && target.validationMessage !== '') {
+			setErrors({ ...errors, [name]: 'Допустимы формат даты: ДД/ММ/ГГГГ' });
+		} else if (name === 'started_at' && target.validationMessage !== '') {
+			setErrors({ ...errors, [name]: 'Допустимы формат: ЧЧ:ММ' });
+		} else if (name === 'distance' && target.validationMessage !== '') {
 			setErrors({
 				...errors,
-				[name]:
-					'Минимум 6 символов: буквы в верхнем и нижем регистре, пробел, дефис',
+				[name]: 'Допустимы только целые числа',
 			});
-		} else if (name === 'repeatpassword' && target.validationMessage !== '') {
-			setErrors({ ...errors, [name]: 'Пароли не совпадают' });
-		} else if (name === 'terms' && target.validationMessage !== '') {
-			setErrors({ ...errors, [name]: 'Необходимо принять условия' });
+		} else if (name === 'finished_at' && target.validationMessage !== '') {
+			setErrors({ ...errors, [name]: 'Допустимы формат: ЧЧ:ММ' });
+		} else if (name === 'steps_num' && target.validationMessage !== '') {
+			setErrors({ ...errors, [name]: 'Допустимы только целые числа' });
 		} else {
 			setErrors({ ...errors, [name]: target.validationMessage });
 		}

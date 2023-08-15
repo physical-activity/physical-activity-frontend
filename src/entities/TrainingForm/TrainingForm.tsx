@@ -1,5 +1,5 @@
 import './TrainingForm.css';
-import React, { useEffect, useState, useCallback, useReducer } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { TrainingInput } from '../TrainingInput/TrainingInput';
 import { getTrainingTypes } from '../../shared/api/training';
@@ -33,6 +33,7 @@ export const TrainingForm = () => {
 		useState('');
 	const [trainingTypes, setTrainingTypes] = useState<TypeItem[]>([]);
 	const [isListOpen, setIsListOpen] = useState(false);
+	const [isTrainingReminder, setIsTrainingReminder] = useState(false);
 
 	useEffect(() => {
 		getTrainingTypes()
@@ -45,13 +46,6 @@ export const TrainingForm = () => {
 			})
 			.finally(() => {});
 	}, []);
-
-	// const validateTrainingTypeInput = (
-	// 	e: React.ChangeEvent<HTMLInputElement>
-	// ) => {
-	// 	handleChange(e);
-	// 	setTrainingTypeInputValue(e.target.value);
-	// };
 
 	const validateTrainingDateInput = (
 		e: React.ChangeEvent<HTMLInputElement>
@@ -88,17 +82,27 @@ export const TrainingForm = () => {
 		setTrainingStepsNumInputValue(e.target.value);
 	};
 
-	const validateCheckboxInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-		handleChange(e);
-	};
+	// const validateCheckboxInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+	// 	handleChange(e);
+	// };
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
-		signup(values.name, values.email, values.password)
-			.then(() => navigate('/register-confirm'))
-			.catch((err) => {
-				console.log(err);
-			});
+		const data = {
+			training_type: trainingTypeInputValue,
+			started_at: values.started_at,
+			finished_at: values.finished_at,
+			distance: values.distance,
+			steps_num: values.steps_num,
+			reminder: isTrainingReminder,
+		};
+		console.log(data);
+
+		// signup(values.name, values.email, values.password)
+		// 	.then(() => navigate('/register-confirm'))
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	});
 	}
 
 	return (
@@ -134,18 +138,6 @@ export const TrainingForm = () => {
 					</div>
 				</div>
 
-				{/* <div className="training__input">
-					<TrainingInput
-						type="text"
-						id="trainingtype"
-						placeholder="Активность"
-						name="trainingtype"
-						value={trainingTypeInputValue}
-						setValue={validateTrainingTypeInput}
-						isValidInput={errors.trainingtype}
-					/>
-				</div> */}
-
 				<div className="training__input">
 					<p className="training__label">Дата</p>
 					<img
@@ -156,13 +148,13 @@ export const TrainingForm = () => {
 					<TrainingInput
 						type="text"
 						id="training_date"
-						// placeholder=""
 						name="training_date"
 						value={trainingDateInputValue}
 						setValue={validateTrainingDateInput}
 						isValidInput={errors.training_date}
-						// pattern={REGEX.email.source}
+						pattern={REGEX.date.source}
 					/>
+					{errors.training_date}
 					<button className="training__button_calendar">
 						<img src={calendarSvg} alt="required" />
 					</button>
@@ -178,8 +170,9 @@ export const TrainingForm = () => {
 						value={trainingStartedAtInputValue}
 						setValue={validateTrainingStartedAtInput}
 						isValidInput={errors.started_at}
-						// pattern={REGEX.email.source}
+						pattern={REGEX.time.source}
 					/>
+					{errors.started_at}
 				</div>
 
 				<div className="training__input">
@@ -192,9 +185,9 @@ export const TrainingForm = () => {
 						value={trainingDistanceInputValue}
 						setValue={validateTrainingDistanceInput}
 						isValidInput={errors.distance}
-						// pattern={REGEX.email.source}
-						// ref={setFocus}
+						pattern={REGEX.distance.source}
 					/>
+					{errors.distance}
 				</div>
 
 				<div className="training__input">
@@ -207,8 +200,9 @@ export const TrainingForm = () => {
 						value={trainingFinishedAtInputValue}
 						setValue={validateTrainingFinishedAtInput}
 						isValidInput={errors.finished_at}
-						// pattern={REGEX.email.source}
+						pattern={REGEX.time.source}
 					/>
+					{errors.finished_at}
 				</div>
 
 				<div className="training__input">
@@ -221,8 +215,9 @@ export const TrainingForm = () => {
 						value={trainingStepsNumInputValue}
 						setValue={validateTrainingStepsNumInput}
 						isValidInput={errors.steps_num}
-						// pattern={REGEX.email.source}
+						pattern={REGEX.distance.source}
 					/>
+					{errors.steps_num}
 				</div>
 			</div>
 
@@ -235,7 +230,7 @@ export const TrainingForm = () => {
 					type="checkbox"
 					id="terms"
 					name="terms"
-					validateInput={validateCheckboxInput}
+					validateInput={() => setIsTrainingReminder(!isTrainingReminder)}
 				/>
 			</div>
 
