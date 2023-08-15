@@ -30,13 +30,13 @@ export const ResetPassworForm = ({
 
 	useEffect(() => {
 		setIsvalid(formValidator.isValid);
-		console.log(formValidator.errors);
 	}, [emailValue, formValidator.isValid]);
 
 	return (
 		<form className="form__form" onSubmit={(e) => handleSubmit(e)}>
 			<div className="form__input-container form__input-container_reset-pass">
 				<Input
+					required={true}
 					id="email"
 					placeholder={'Почта'}
 					name={'email'}

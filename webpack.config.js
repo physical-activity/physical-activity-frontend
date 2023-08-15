@@ -20,6 +20,7 @@ const config = {
 		path: path.resolve(__dirname, 'dist'),
 	},
 	plugins: [],
+	resolve: { fallback: { url: require.resolve('url/') } },
 };
 
 module.exports = config;

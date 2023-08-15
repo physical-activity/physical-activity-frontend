@@ -1,16 +1,17 @@
 import { useCallback, useState } from 'react';
 
+const initialValues = {
+	name: '',
+	secondName: '',
+	email: '',
+	password: '',
+	secondPassword: '',
+	terms: '',
+};
+
 export function useFormValidation() {
-	const [values, setValues] = useState({
-		email: '',
-		password: '',
-		secondPassword: '',
-	});
-	const [errors, setErrors] = useState({
-		email: '',
-		password: '',
-		secondPassword: '',
-	});
+	const [values, setValues] = useState(initialValues);
+	const [errors, setErrors] = useState(initialValues);
 	const [isValid, setIsValid] = useState(false);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,15 +21,30 @@ export function useFormValidation() {
 
 		if (name === 'email' && target.validationMessage !== '') {
 			setErrors({ ...errors, [name]: 'Введите корректный Email' });
-		} else if (
-			(name === 'password' || name === 'secondPassword') &&
-			target.validationMessage !== ''
-		) {
+		} else if (name === 'name' && target.validationMessage !== '') {
+			setErrors({ ...errors, [name]: 'Допустимые символы: пробел, дефис' });
+		} else if (name === 'password' && target.validationMessage !== '') {
 			setErrors({
 				...errors,
 				[name]:
 					'Пароль должен состоять из 6 символов, буквы в верхнем и нижнем регистре, пробел, дефис',
 			});
+		} else if (name === 'name' && target.validationMessage !== '') {
+			setErrors({
+				...errors,
+				[name]:
+					'Допустимые символы для ввода: пробел, дефис, кириллические, латинские буквы',
+			});
+		} else if (name === 'secondName' && target.validationMessage !== '') {
+			setErrors({
+				...errors,
+				[name]:
+					'Допустимые символы для ввода: пробел, дефис, кириллические, латинские буквы',
+			});
+		} else if (name === 'secondPassword' && target.validationMessage !== '') {
+			setErrors({ ...errors, [name]: 'Пароли не совпадают' });
+		} else if (name === 'terms' && target.validationMessage !== '') {
+			setErrors({ ...errors, [name]: 'Необходимо принять условия' });
 		} else {
 			setErrors({ ...errors, [name]: target.validationMessage });
 		}
@@ -41,8 +57,8 @@ export function useFormValidation() {
 
 	const resetForm = useCallback(
 		(
-			newValues = { email: '', password: '', secondPassword: '' },
-			newErrors = { email: '', password: '', secondPassword: '' },
+			newValues = initialValues,
+			newErrors = initialValues,
 			newIsValid = false
 		) => {
 			setValues(newValues);

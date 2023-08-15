@@ -1,51 +1,34 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './RegisterForm.css';
-import { useState } from 'react';
 import { Input } from '../Input/Input';
 import { Checkbox } from '../RegisterCheckbox/RegisterCheckbox';
-import { useForm } from '../../features/register-form-validator/index';
 import { signup } from '../../shared/api/signup';
-import { useNavigate } from 'react-router-dom';
 import { RegisterErrorPopup } from '../RegisterErrorPopup/RegisterErrorPopup';
+import { useFormValidation } from 'shared/hooks/useFormValidation';
 import { REGEX } from 'shared/utils/constants';
 
 export const RegisterForm = () => {
 	const navigate = useNavigate();
 	const [isErrorPopupOpen, setErrorPopupOpen] = useState(false);
-	const { values, handleChange, errors, isValid } = useForm();
-
-	const [nameInputValue, setNameInputValue] = useState('');
-	const [emailInputValue, setEmailInputValue] = useState('');
-	const [passwordInputValue, setPasswordInputValue] = useState('');
 	const [repeatpasswordInputValue, setRepeatpasswordInputValue] = useState('');
+	const { values, handleChange, errors, isValid, resetForm } =
+		useFormValidation();
 
-	const validateNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-		handleChange(e);
-		setNameInputValue(e.target.value);
-	};
-
-	const validateEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-		handleChange(e);
-		setEmailInputValue(e.target.value);
-	};
-
-	const validatePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-		handleChange(e);
-		setPasswordInputValue(e.target.value);
-	};
+	useEffect(() => {
+		resetForm();
+	}, [resetForm]);
 
 	const validateRepeatpasswordInput = (
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
-		if (e.target.value !== passwordInputValue) {
+		if (e.target.value !== values.password) {
 			e.target.setCustomValidity('Пароли не совпадают');
 		} else {
 			e.target.setCustomValidity('');
 		}
 		setRepeatpasswordInputValue(e.target.value);
-		handleChange(e);
-	};
-
-	const validateCheckboxInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		handleChange(e);
 	};
 
@@ -72,50 +55,54 @@ export const RegisterForm = () => {
 		<form className="register__form" onSubmit={handleSubmit}>
 			<div className="register__input-container">
 				<Input
+					required={true}
 					type="text"
 					id="name"
 					name="name"
-					value={nameInputValue}
+					value={values.name}
 					placeholder="Ваше имя"
-					setValue={validateNameInput}
+					setValue={handleChange}
 					isValidInput={errors.name}
 					pattern={REGEX.name.source}
 				/>
 				<Input
+					required={true}
 					type="email"
 					id="email"
 					name="email"
-					value={emailInputValue}
+					value={values.email}
 					placeholder="Почта"
-					setValue={validateEmailInput}
+					setValue={handleChange}
 					isValidInput={errors.email}
 					pattern={REGEX.email.source}
 				/>
 				<Input
+					required={true}
 					type="password"
 					id="password"
 					name="password"
-					value={passwordInputValue}
+					value={values.password}
 					placeholder="Пароль"
-					setValue={validatePasswordInput}
+					setValue={handleChange}
 					isValidInput={errors.password}
 					pattern={REGEX.password.source}
 				/>
 				<Input
+					required={true}
 					type="password"
-					id="repeatpassword"
-					name="repeatpassword"
+					id="secondPassword"
+					name="secondPassword"
 					value={repeatpasswordInputValue}
 					placeholder="Повторите пароль"
 					setValue={validateRepeatpasswordInput}
-					isValidInput={errors.repeatpassword}
+					isValidInput={errors.secondPassword}
 					pattern={REGEX.password.source}
 				/>
 				<Checkbox
 					type="checkbox"
 					id="terms"
 					name="terms"
-					validateInput={validateCheckboxInput}
+					validateInput={handleChange}
 				/>
 			</div>
 			<div className="register__button-container">
