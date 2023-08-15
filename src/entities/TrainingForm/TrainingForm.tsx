@@ -2,7 +2,7 @@ import './TrainingForm.css';
 import React, { useEffect, useState, useCallback, useReducer } from 'react';
 
 import { TrainingInput } from '../TrainingInput/TrainingInput';
-import { Checkbox } from '../RegisterCheckbox/RegisterCheckbox';
+import { getTrainingTypes } from '../../shared/api/training';
 import { useForm } from '../../features/training-form-validator/index';
 import { signup } from '../../shared/api/signup';
 import { useNavigate } from 'react-router-dom';
@@ -30,6 +30,17 @@ export const TrainingForm = () => {
 		useState('');
 	const [trainingStepsNumInputValue, setTrainingStepsNumInputValue] =
 		useState('');
+
+	useEffect(() => {
+		getTrainingTypes()
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			})
+			.finally(() => {});
+	}, []);
 
 	const validateTrainingTypeInput = (
 		e: React.ChangeEvent<HTMLInputElement>
