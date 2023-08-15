@@ -13,7 +13,6 @@ import { getUserData } from 'store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { TrainingPageMobile } from './training';
 
-
 export const Routing = () => {
 	const dispatch = useAppDispatch();
 	const userData = useAppSelector((state) => state.user);
