@@ -18,21 +18,17 @@ export const PersonalAccaunt = () => {
 	const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
 		handleChange(e);
 		setName(e.target.value);
-		console.log(errors);
 	};
 	const handleChangeSecondName = (e: React.ChangeEvent<HTMLInputElement>) => {
 		handleChange(e);
 		setSecondName(e.target.value);
-		console.log(errors);
 	};
 	const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
 		handleChange(e);
 		setEmail(e.target.value);
-		console.log(errors);
 	};
 
-	const { values, handleChange, errors, isValid, resetForm } =
-		useFormValidation();
+	const { handleChange, errors, isValid } = useFormValidation();
 
 	const handleEnableInput = () => {
 		setIsInputDisabled(false);

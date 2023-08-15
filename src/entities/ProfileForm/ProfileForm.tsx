@@ -1,5 +1,5 @@
 import { Input } from 'entities/Input/Input';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './index.css';
 import { useNavigate } from 'react-router';
 import { useAppDispatch } from 'shared/hooks/redux';

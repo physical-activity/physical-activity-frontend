@@ -1,5 +1,4 @@
 import './index.css';
-import { useState, useEffect } from 'react';
 import HeaderMain from 'entities/HeaderMain/HeaderMain';
 import TextBlock from 'entities/TextBlock/TextBlock';
 import BtnBlock from 'entities/BtnBlock/BtnBlock';

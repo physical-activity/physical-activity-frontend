@@ -19,14 +19,13 @@ html::-webkit-scrollbar {
 html::-webkit-scrollbar-thumb {
 	background-color: #c2ff5d;
 	border-radius: 4px;
-	width: 5px
+	width: 5px;
 }
-
 
 #root {
 	width: 100%;
 	background-color: black;
-	min-height: 100vh,
+	min-height: 100vh;
 }
 
 @import url(./styles/fonts/fonts.css);

@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 
 const initialValues = {
 	name: '',
-  secondName: '',
+	secondName: '',
 	email: '',
 	password: '',
 	secondPassword: '',

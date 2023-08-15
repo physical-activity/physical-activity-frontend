@@ -30,7 +30,6 @@ export const ResetPassworForm = ({
 
 	useEffect(() => {
 		setIsvalid(formValidator.isValid);
-		console.log(formValidator.errors);
 	}, [emailValue, formValidator.isValid]);
 
 	return (

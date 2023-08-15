@@ -1,5 +1,3 @@
-const BASE_USL = process.env.REACT_APP_BACKEND_BASE_URL;
-console.log(BASE_USL);
 export const changeUserInfo = async (
 	name: string,
 	secondName: string,

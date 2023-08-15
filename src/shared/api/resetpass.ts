@@ -1,4 +1,3 @@
-const BASE_USL = process.env.REACT_APP_BACKEND_BASE_URL;
 export const resetPassword = async (email: string) => {
 	const response = await fetch(
 		`http://91.201.53.71/api/v1/auth/reset_password/`,
