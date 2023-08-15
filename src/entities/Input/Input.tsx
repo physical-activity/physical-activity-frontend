@@ -13,6 +13,7 @@ export const Input = ({
 	setValue,
 	disabled,
 	required,
+	id,
 }: {
 	name: string;
 	type: string;
@@ -23,6 +24,7 @@ export const Input = ({
 	setValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	disabled?: boolean;
 	required: boolean;
+	id: string;
 }) => {
 	const [visibility, setVisibility] = useState(type);
 
