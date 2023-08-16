@@ -45,7 +45,7 @@
 }
 
 .training__input_error {
-	border-bottom: 1px solid #E90000;
+	border-bottom: 1px solid #e90000;
 }
 
 .training__label {
@@ -145,6 +145,7 @@
 	overflow: auto;
 	background-color: #fff;
 	box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.3);
+	z-index: 99;
 }
 
 .list__bottom {

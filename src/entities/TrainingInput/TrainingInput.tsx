@@ -7,7 +7,8 @@ type Props = {
 	id: string;
 	value: string | number | undefined;
 	pattern?: string;
-	isValidInput: string;
+	required?: boolean;
+	// isValidInput: string;
 	setValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -18,13 +19,13 @@ export const TrainingInput = ({
 	id,
 	value,
 	pattern,
-	isValidInput,
+	required,
+	// isValidInput,
 	setValue,
 }: Props) => {
 	return (
 		<>
 			<input
-				required
 				type={type}
 				name={name}
 				value={value}
@@ -33,6 +34,7 @@ export const TrainingInput = ({
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e)}
 				pattern={pattern}
 				placeholder={placeholder}
+				required={required}
 			/>
 		</>
 	);

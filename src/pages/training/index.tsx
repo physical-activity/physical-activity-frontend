@@ -12,10 +12,8 @@ export const TrainingPageMobile = () => {
 	return (
 		<div className="page-container">
 			<HeaderMain userData={userData} />
-			<main>
-				<TextBlock text={'тренировка'} />
-				<TrainingForm />
-			</main>
+			<TextBlock text={'тренировка'} />
+			<TrainingForm />
 			<FooterMain />
 		</div>
 	);

@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 
 import { TrainingInput } from '../TrainingInput/TrainingInput';
 import { getTrainingTypes } from '../../shared/api/training';
-import { useForm } from '../../features/training-form-validator/index';
-import { signup } from '../../shared/api/signup';
+import { useTrainingFormValidation } from '../../shared/hooks/useTrainingFormValidation';
+import { createTraining } from '../../shared/api/training';
 import { useNavigate } from 'react-router-dom';
 import { REGEX } from 'shared/utils/constants';
 import { TrainingReminderBlock } from '../TrainingReminderBlock/TainingReminderBlock';
@@ -19,18 +19,21 @@ export const TrainingForm = () => {
 
 	const navigate = useNavigate();
 
-	const { values, handleChange, errors, isValid } = useForm();
+	const { values, handleChange, errors, isValid, resetForm, setIsValid } =
+		useTrainingFormValidation();
 
 	const [trainingTypeInputValue, setTrainingTypeInputValue] = useState('');
 	const [trainingDateInputValue, setTrainingDateInputValue] = useState('');
 	const [trainingStartedAtInputValue, setTrainingStartedAtInputValue] =
 		useState('');
-	const [trainingDistanceInputValue, setTrainingDistanceInputValue] =
-		useState('');
+	const [trainingDistanceInputValue, setTrainingDistanceInputValue] = useState<
+		number | undefined
+	>(undefined);
 	const [trainingFinishedAtInputValue, setTrainingFinishedAtInputValue] =
 		useState('');
-	const [trainingStepsNumInputValue, setTrainingStepsNumInputValue] =
-		useState('');
+	const [trainingStepsNumInputValue, setTrainingStepsNumInputValue] = useState<
+		number | undefined
+	>(undefined);
 	const [trainingTypes, setTrainingTypes] = useState<TypeItem[]>([]);
 	const [isListOpen, setIsListOpen] = useState(false);
 	const [isTrainingReminder, setIsTrainingReminder] = useState(false);
@@ -38,8 +41,8 @@ export const TrainingForm = () => {
 	useEffect(() => {
 		getTrainingTypes()
 			.then((res) => {
-				console.log(res);
 				setTrainingTypes(res);
+				setTrainingTypeInputValue(res[0].name);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -65,7 +68,7 @@ export const TrainingForm = () => {
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
 		handleChange(e);
-		setTrainingDistanceInputValue(e.target.value);
+		setTrainingDistanceInputValue(Number(e.target.value));
 	};
 
 	const validateTrainingFinishedAtInput = (
@@ -79,30 +82,66 @@ export const TrainingForm = () => {
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
 		handleChange(e);
-		setTrainingStepsNumInputValue(e.target.value);
+		setTrainingStepsNumInputValue(Number(e.target.value));
 	};
-
-	// const validateCheckboxInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-	// 	handleChange(e);
-	// };
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
-		const data = {
+
+		const date = values.training_date[0] + values.training_date[1];
+		const month = values.training_date[3] + values.training_date[4];
+		const year =
+			values.training_date[6] +
+			values.training_date[7] +
+			values.training_date[8] +
+			values.training_date[9];
+		const hour_start = values.started_at[0] + values.started_at[1];
+		const minutes_start = values.started_at[3] + values.started_at[4];
+		const hour_finish = values.finished_at[0] + values.finished_at[1];
+		const minutes_finish = values.finished_at[3] + values.finished_at[4];
+
+		const startTime = new Date(
+			Number(year),
+			Number(month),
+			Number(date),
+			Number(hour_start),
+			Number(minutes_start)
+		).toISOString();
+
+		let finishTime;
+
+		if (Boolean(values.finished_at)) {
+			finishTime = new Date(
+				Number(year),
+				Number(month),
+				Number(date),
+				Number(hour_finish),
+				Number(minutes_finish)
+			).toISOString();
+		} else {
+			finishTime = undefined;
+		}
+
+		const data: any = {
 			training_type: trainingTypeInputValue,
-			started_at: values.started_at,
-			finished_at: values.finished_at,
+			started_at: startTime,
+			finished_at: finishTime,
 			distance: values.distance,
 			steps_num: values.steps_num,
 			reminder: isTrainingReminder,
 		};
-		console.log(data);
 
-		// signup(values.name, values.email, values.password)
-		// 	.then(() => navigate('/register-confirm'))
-		// 	.catch((err) => {
-		// 		console.log(err);
-		// 	});
+		Object.keys(data).forEach((key) =>
+			data[key] === undefined ? delete data[key] : {}
+		);
+
+		createTraining(data)
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	}
 
 	return (
@@ -128,6 +167,7 @@ export const TrainingForm = () => {
 									key={i}
 									onClick={() => {
 										setTrainingTypeInputValue(item.name);
+										setIsListOpen(false);
 									}}
 									className="list__text"
 								>
@@ -156,8 +196,8 @@ export const TrainingForm = () => {
 							name="training_date"
 							value={trainingDateInputValue}
 							setValue={validateTrainingDateInput}
-							isValidInput={errors.training_date}
 							pattern={REGEX.date.source}
+							required={true}
 						/>
 						<button className="training__button_calendar">
 							<img src={calendarSvg} alt="required" />
@@ -180,8 +220,8 @@ export const TrainingForm = () => {
 							name="started_at"
 							value={trainingStartedAtInputValue}
 							setValue={validateTrainingStartedAtInput}
-							isValidInput={errors.started_at}
 							pattern={REGEX.time.source}
+							required={true}
 						/>
 					</div>
 					<span className="training__error">{errors.started_at}</span>
@@ -201,10 +241,8 @@ export const TrainingForm = () => {
 							name="distance"
 							value={trainingDistanceInputValue}
 							setValue={validateTrainingDistanceInput}
-							isValidInput={errors.distance}
 							pattern={REGEX.distance.source}
 						/>
-						{errors.distance}
 					</div>
 					<span className="training__error">{errors.distance}</span>
 				</div>
@@ -223,7 +261,6 @@ export const TrainingForm = () => {
 							name="finished_at"
 							value={trainingFinishedAtInputValue}
 							setValue={validateTrainingFinishedAtInput}
-							isValidInput={errors.finished_at}
 							pattern={REGEX.time.source}
 						/>
 					</div>
@@ -244,7 +281,6 @@ export const TrainingForm = () => {
 							name="steps_num"
 							value={trainingStepsNumInputValue}
 							setValue={validateTrainingStepsNumInput}
-							isValidInput={errors.steps_num}
 							pattern={REGEX.distance.source}
 						/>
 					</div>
