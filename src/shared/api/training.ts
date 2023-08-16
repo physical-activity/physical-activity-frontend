@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://easyfit.acceleratorpracticum.ru/api/v1';
+import { BASE_URL } from 'shared/utils/constants';
 
 const handleResponse = (res: any) => {
 	if (res.ok) {

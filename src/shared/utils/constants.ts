@@ -8,4 +8,4 @@ export const REGEX = {
 	distance: /[0-9]+/,
 };
 
-export const BASE_URL = 'https://easyfit.acceleratorpracticum.ru';
+export const BASE_URL = 'https://easyfit.acceleratorpracticum.ru/api/v1';

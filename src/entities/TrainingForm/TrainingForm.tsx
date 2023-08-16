@@ -138,86 +138,117 @@ export const TrainingForm = () => {
 					</div>
 				</div>
 
-				<div className="training__input">
-					<p className="training__label">Дата</p>
-					<img
-						src={requireSvg}
-						className="training__input-span"
-						alt="required"
-					/>
-					<TrainingInput
-						type="text"
-						id="training_date"
-						name="training_date"
-						value={trainingDateInputValue}
-						setValue={validateTrainingDateInput}
-						isValidInput={errors.training_date}
-						pattern={REGEX.date.source}
-					/>
-					{errors.training_date}
-					<button className="training__button_calendar">
-						<img src={calendarSvg} alt="required" />
-					</button>
+				<div className="training__input-conteiner">
+					<div
+						className={`training__input ${
+							errors.training_date && 'training__input_error'
+						}`}
+					>
+						<p className="training__label">Дата</p>
+						<img
+							src={requireSvg}
+							className="training__input-span"
+							alt="required"
+						/>
+						<TrainingInput
+							type="text"
+							id="training_date"
+							name="training_date"
+							value={trainingDateInputValue}
+							setValue={validateTrainingDateInput}
+							isValidInput={errors.training_date}
+							pattern={REGEX.date.source}
+						/>
+						<button className="training__button_calendar">
+							<img src={calendarSvg} alt="required" />
+						</button>
+					</div>
+					<span className="training__error">{errors.training_date}</span>
 				</div>
 
-				<div className="training__input">
-					<p className="training__label">Время старта</p>
-					<TrainingInput
-						type="text"
-						id="started_at"
-						placeholder="00:00 ч"
-						name="started_at"
-						value={trainingStartedAtInputValue}
-						setValue={validateTrainingStartedAtInput}
-						isValidInput={errors.started_at}
-						pattern={REGEX.time.source}
-					/>
-					{errors.started_at}
+				<div className="training__input-conteiner">
+					<div
+						className={`training__input ${
+							errors.started_at && 'training__input_error'
+						}`}
+					>
+						<p className="training__label">Время старта</p>
+						<TrainingInput
+							type="text"
+							id="started_at"
+							placeholder="00:00 ч"
+							name="started_at"
+							value={trainingStartedAtInputValue}
+							setValue={validateTrainingStartedAtInput}
+							isValidInput={errors.started_at}
+							pattern={REGEX.time.source}
+						/>
+					</div>
+					<span className="training__error">{errors.started_at}</span>
 				</div>
 
-				<div className="training__input">
-					<p className="training__label">Дистанция</p>
-					<TrainingInput
-						type="text"
-						id="distance"
-						placeholder="00 км"
-						name="distance"
-						value={trainingDistanceInputValue}
-						setValue={validateTrainingDistanceInput}
-						isValidInput={errors.distance}
-						pattern={REGEX.distance.source}
-					/>
-					{errors.distance}
+				<div className="training__input-conteiner">
+					<div
+						className={`training__input ${
+							errors.distance && 'training__input_error'
+						}`}
+					>
+						<p className="training__label">Дистанция</p>
+						<TrainingInput
+							type="text"
+							id="distance"
+							placeholder="00 км"
+							name="distance"
+							value={trainingDistanceInputValue}
+							setValue={validateTrainingDistanceInput}
+							isValidInput={errors.distance}
+							pattern={REGEX.distance.source}
+						/>
+						{errors.distance}
+					</div>
+					<span className="training__error">{errors.distance}</span>
 				</div>
 
-				<div className="training__input">
-					<p className="training__label">Время окончания</p>
-					<TrainingInput
-						type="text"
-						id="finished_at"
-						placeholder="00:00 ч"
-						name="finished_at"
-						value={trainingFinishedAtInputValue}
-						setValue={validateTrainingFinishedAtInput}
-						isValidInput={errors.finished_at}
-						pattern={REGEX.time.source}
-					/>
-					{errors.finished_at}
+				<div className="training__input-conteiner">
+					<div
+						className={`training__input ${
+							errors.finished_at && 'training__input_error'
+						}`}
+					>
+						<p className="training__label">Время окончания</p>
+						<TrainingInput
+							type="text"
+							id="finished_at"
+							placeholder="00:00 ч"
+							name="finished_at"
+							value={trainingFinishedAtInputValue}
+							setValue={validateTrainingFinishedAtInput}
+							isValidInput={errors.finished_at}
+							pattern={REGEX.time.source}
+						/>
+					</div>
+					<span className="training__error">{errors.finished_at}</span>
 				</div>
 
-				<div className="training__input">
-					<p className="training__label">Шаги</p>
-					<TrainingInput
-						type="text"
-						id="steps_num"
-						placeholder="0"
-						name="steps_num"
-						value={trainingStepsNumInputValue}
-						setValue={validateTrainingStepsNumInput}
-						isValidInput={errors.steps_num}
-						pattern={REGEX.distance.source}
-					/>
-					{errors.steps_num}
+				<div className="training__input-conteiner">
+					<div
+						className={`training__input ${
+							errors.steps_num && 'training__input_error'
+						}`}
+					>
+						<p className="training__label">Шаги</p>
+						<TrainingInput
+							type="text"
+							id="steps_num"
+							placeholder="0"
+							name="steps_num"
+							value={trainingStepsNumInputValue}
+							setValue={validateTrainingStepsNumInput}
+							isValidInput={errors.steps_num}
+							pattern={REGEX.distance.source}
+						/>
+					</div>
+					<span className="training__error">{errors.steps_num}</span>
 				</div>
 			</div>
 

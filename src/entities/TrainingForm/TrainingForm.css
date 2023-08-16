@@ -1,7 +1,7 @@
 .training__form {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 6px;
+	margin-top: 4px;
 	gap: 4px;
 }
 
@@ -21,6 +21,12 @@
 	gap: 20px;
 }
 
+.training__input-conteiner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .training__input {
 	width: 100%;
 	display: flex;
@@ -38,8 +44,8 @@
 	letter-spacing: -0.16px;
 }
 
-.training__input:last-of-type {
-	margin-bottom: 68px;
+.training__input_error {
+	border-bottom: 1px solid #E90000;
 }
 
 .training__label {
@@ -47,6 +53,17 @@
 	margin: 0;
 	padding-right: 8px;
 	white-space: nowrap;
+}
+
+.training__error {
+	color: var(--new-extra-error, #e90000);
+
+	font-family: Open Sans;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px;
+	letter-spacing: -0.12px;
 }
 
 .training__input-span {

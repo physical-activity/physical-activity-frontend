@@ -9,7 +9,6 @@ type Props = {
 	pattern?: string;
 	isValidInput: string;
 	setValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	// ref?: any;
 };
 
 export const TrainingInput = ({
@@ -20,7 +19,7 @@ export const TrainingInput = ({
 	value,
 	pattern,
 	isValidInput,
-	setValue, // ref,
+	setValue,
 }: Props) => {
 	return (
 		<>
@@ -30,18 +29,11 @@ export const TrainingInput = ({
 				name={name}
 				value={value}
 				id={id}
-				className={`training-input__input ${
-					name === 'trainingtype' && 'training-input__input_left'
-				}`}
+				className="training-input__input"
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e)}
 				pattern={pattern}
 				placeholder={placeholder}
-				// ref={ref}
 			/>
-
-			{/* {isValidInput !== '' && (
-				<span className="input-block__input-error">{isValidInput}</span>
-			)} */}
 		</>
 	);
 };
