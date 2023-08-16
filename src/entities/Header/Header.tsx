@@ -1,4 +1,5 @@
 import './Header.css';
+
 const Header = ({ name }: { name: string }) => {
 	return (
 		<div className="header">

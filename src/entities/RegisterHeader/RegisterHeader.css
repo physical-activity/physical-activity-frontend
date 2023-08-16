@@ -21,6 +21,7 @@
 	text-align: left;
 	line-height: 40px;
 	text-transform: uppercase;
+	cursor: pointer;
 }
 
 .register-header__title {

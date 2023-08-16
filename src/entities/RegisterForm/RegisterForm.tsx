@@ -55,6 +55,7 @@ export const RegisterForm = () => {
 		<form className="register__form" onSubmit={handleSubmit}>
 			<div className="register__input-container">
 				<Input
+					required={true}
 					type="text"
 					id="name"
 					name="name"
@@ -65,6 +66,7 @@ export const RegisterForm = () => {
 					pattern={REGEX.name.source}
 				/>
 				<Input
+					required={true}
 					type="email"
 					id="email"
 					name="email"
@@ -75,6 +77,7 @@ export const RegisterForm = () => {
 					pattern={REGEX.email.source}
 				/>
 				<Input
+					required={true}
 					type="password"
 					id="password"
 					name="password"
@@ -85,6 +88,7 @@ export const RegisterForm = () => {
 					pattern={REGEX.password.source}
 				/>
 				<Input
+					required={true}
 					type="password"
 					id="secondPassword"
 					name="secondPassword"

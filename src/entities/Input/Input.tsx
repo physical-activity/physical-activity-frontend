@@ -1,25 +1,30 @@
 import { useState } from 'react';
 import './Input.css';
 import requireSvg from './ic_required_1.svg';
+import toggleVisibleImg from './visibility_off_FILL0_wght300_GRAD0_opsz48 1.svg';
 
 export const Input = ({
 	name,
 	type,
-	id,
 	value,
 	placeholder,
 	pattern,
 	isValidInput,
 	setValue,
+	disabled,
+	required,
+	id,
 }: {
 	name: string;
 	type: string;
 	id: string;
 	value: string;
-	placeholder: string;
+	placeholder?: string;
 	pattern?: string;
-	isValidInput: string;
+	isValidInput?: string;
 	setValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	disabled?: boolean;
+	required: boolean;
 }) => {
 	const [visibility, setVisibility] = useState(type);
 
@@ -34,10 +39,11 @@ export const Input = ({
 	return (
 		<div className="input-block">
 			<input
-				required
+				required={required}
 				name={name}
 				type={visibility}
 				value={value}
+				disabled={disabled}
 				id={id}
 				className={`input-block__input ${
 					isValidInput && 'signin__input_error'
@@ -45,7 +51,7 @@ export const Input = ({
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e)}
 				pattern={pattern}
 			/>
-			{!value && (
+			{!value && required && (
 				<p className="input-block__input-name">
 					{placeholder}{' '}
 					<img
@@ -61,9 +67,10 @@ export const Input = ({
 			{type === 'password' && (
 				<img
 					className="input-block__input-hidebutton"
-					src={
-						require('./visibility_off_FILL0_wght300_GRAD0_opsz48 1.svg').default
-					}
+					// src={
+					// 	require('./visibility_off_FILL0_wght300_GRAD0_opsz48 1.svg').default
+					// }
+					src={toggleVisibleImg}
 					alt="show/hide password"
 					onClick={() => toggleInputVisibility()}
 				/>

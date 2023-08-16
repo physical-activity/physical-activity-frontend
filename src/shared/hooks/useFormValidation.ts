@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 
 const initialValues = {
 	name: '',
+	secondName: '',
 	email: '',
 	password: '',
 	secondPassword: '',
@@ -27,6 +28,18 @@ export function useFormValidation() {
 				...errors,
 				[name]:
 					'Пароль должен состоять из 6 символов, буквы в верхнем и нижнем регистре, пробел, дефис',
+			});
+		} else if (name === 'name' && target.validationMessage !== '') {
+			setErrors({
+				...errors,
+				[name]:
+					'Допустимые символы для ввода: пробел, дефис, кириллические, латинские буквы',
+			});
+		} else if (name === 'secondName' && target.validationMessage !== '') {
+			setErrors({
+				...errors,
+				[name]:
+					'Допустимые символы для ввода: пробел, дефис, кириллические, латинские буквы',
 			});
 		} else if (name === 'secondPassword' && target.validationMessage !== '') {
 			setErrors({ ...errors, [name]: 'Пароли не совпадают' });
