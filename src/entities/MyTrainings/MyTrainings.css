@@ -4,18 +4,15 @@
 	/* gap: 4px; */
 }
 
-
 .my-trainings__status {
-    display: flex;
-
+	display: flex;
 }
 
 .my-trainings__status-button {
-    
 }
 
 .my-trainings__conteiner {
-    background-color: #fff;
+	background-color: #fff;
 	border-radius: 12px;
 	padding: 20px;
 }
