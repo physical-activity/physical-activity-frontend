@@ -5,7 +5,6 @@ import { TrainingInput } from '../TrainingInput/TrainingInput';
 import { getTrainingTypes } from '../../shared/api/training';
 import { useTrainingFormValidation } from '../../shared/hooks/useTrainingFormValidation';
 import { createTraining } from '../../shared/api/training';
-import { useNavigate } from 'react-router-dom';
 import { REGEX } from 'shared/utils/constants';
 import { TrainingReminderBlock } from '../TrainingReminderBlock/TainingReminderBlock';
 import { TrainingDuration } from '../TrainingDuration/TrainingDuration';
@@ -16,8 +15,6 @@ export const TrainingForm = () => {
 	type TypeItem = {
 		name: string;
 	};
-
-	const navigate = useNavigate();
 
 	const { values, handleChange, errors, isValid, resetForm, setIsValid } =
 		useTrainingFormValidation();
@@ -37,6 +34,7 @@ export const TrainingForm = () => {
 	const [trainingTypes, setTrainingTypes] = useState<TypeItem[]>([]);
 	const [isListOpen, setIsListOpen] = useState(false);
 	const [isTrainingReminder, setIsTrainingReminder] = useState(false);
+	const [trainingDuration, setTrainingDuration] = useState('');
 
 	useEffect(() => {
 		getTrainingTypes()
@@ -49,6 +47,30 @@ export const TrainingForm = () => {
 			})
 			.finally(() => {});
 	}, []);
+
+	useEffect(() => {
+		if (
+			trainingStartedAtInputValue &&
+			trainingFinishedAtInputValue &&
+			trainingDateInputValue &&
+			!errors.training_date &&
+			!errors.started_at &&
+			!errors.finished_at
+		) {
+			const time = handleISODate(
+				trainingDateInputValue,
+				trainingStartedAtInputValue,
+				trainingFinishedAtInputValue
+			);
+			handleTrainingDuration(time[0], time[1]);
+		} else {
+			setTrainingDuration('');
+		}
+	}, [
+		trainingDateInputValue,
+		trainingFinishedAtInputValue,
+		trainingStartedAtInputValue,
+	]);
 
 	const validateTrainingDateInput = (
 		e: React.ChangeEvent<HTMLInputElement>
@@ -85,20 +107,22 @@ export const TrainingForm = () => {
 		setTrainingStepsNumInputValue(Number(e.target.value));
 	};
 
-	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-		e.preventDefault();
-
-		const date = values.training_date[0] + values.training_date[1];
-		const month = values.training_date[3] + values.training_date[4];
+	const handleISODate = (
+		training_date: string,
+		started_at: string,
+		finished_at: string
+	): any => {
+		const date = training_date[0] + training_date[1];
+		const month = training_date[3] + training_date[4];
 		const year =
-			values.training_date[6] +
-			values.training_date[7] +
-			values.training_date[8] +
+			training_date[6] +
+			training_date[7] +
+			training_date[8] +
 			values.training_date[9];
-		const hour_start = values.started_at[0] + values.started_at[1];
-		const minutes_start = values.started_at[3] + values.started_at[4];
-		const hour_finish = values.finished_at[0] + values.finished_at[1];
-		const minutes_finish = values.finished_at[3] + values.finished_at[4];
+		const hour_start = started_at[0] + started_at[1];
+		const minutes_start = started_at[3] + started_at[4];
+		const hour_finish = finished_at[0] + finished_at[1];
+		const minutes_finish = finished_at[3] + finished_at[4];
 
 		const startTime = new Date(
 			Number(year),
@@ -110,7 +134,7 @@ export const TrainingForm = () => {
 
 		let finishTime;
 
-		if (Boolean(values.finished_at)) {
+		if (Boolean(finished_at)) {
 			finishTime = new Date(
 				Number(year),
 				Number(month),
@@ -122,10 +146,50 @@ export const TrainingForm = () => {
 			finishTime = undefined;
 		}
 
+		const time: (string | undefined)[] = [startTime, finishTime];
+		return time;
+	};
+
+	const handleTrainingDuration = (
+		startTime: string,
+		finishTime: string | undefined
+	): any => {
+		const formatTime = (num: number): string => {
+			if (num < 9) {
+				const formatNum = '0' + num.toString();
+				return formatNum;
+			} else {
+				const formatNum = num.toString();
+				return formatNum;
+			}
+		};
+
+		if (startTime && finishTime) {
+			const currentDateStart = new Date(startTime);
+			const currentDateFinish = new Date(finishTime);
+			const currentDuration =
+				currentDateFinish.getTime() - currentDateStart.getTime();
+			console.log(currentDuration);
+			const hour = Math.floor(currentDuration / 3600000);
+			console.log(hour);
+			const minutes = (currentDuration % 3600000) / 60000;
+			setTrainingDuration(`${formatTime(hour)}:${formatTime(minutes)} ч`);
+		}
+	};
+
+	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault();
+
+		const time = handleISODate(
+			values.training_date,
+			values.started_at,
+			values.finished_at
+		);
+
 		const data: any = {
 			training_type: trainingTypeInputValue,
-			started_at: startTime,
-			finished_at: finishTime,
+			started_at: time[0],
+			finished_at: time[1],
 			distance: values.distance,
 			steps_num: values.steps_num,
 			reminder: isTrainingReminder,
@@ -135,13 +199,15 @@ export const TrainingForm = () => {
 			data[key] === undefined ? delete data[key] : {}
 		);
 
-		createTraining(data)
-			.then((res) => {
-				console.log(res);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		console.log(data);
+
+		// createTraining(data)
+		// 	.then((res) => {
+		// 		console.log(res);
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	});
 	}
 
 	return (
@@ -288,9 +354,11 @@ export const TrainingForm = () => {
 				</div>
 			</div>
 
-			<div className="training__container">
-				<TrainingDuration value={`01:10 ч`} />
-			</div>
+			{trainingDuration && (
+				<div className="training__container">
+					<TrainingDuration value={trainingDuration} />
+				</div>
+			)}
 
 			<div className="training__container">
 				<TrainingReminderBlock

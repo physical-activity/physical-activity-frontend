@@ -37,6 +37,7 @@
 	width: 100%;
 	height: 152px;
 	border-radius: 12px;
+	cursor: pointer;
 }
 
 .workoutBlock__img {
