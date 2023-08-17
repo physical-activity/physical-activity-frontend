@@ -1,13 +1,9 @@
 .training__checkbox-element {
-	/* margin: 4px 0; */
 	display: flex;
-	/* max-height: 38px; */
 	position: relative;
 	align-items: center;
-	color: var(--new-txt-black, #212120);
+	color: var(--color-black);
 	justify-content: space-between;
-
-	/* new mob/body */
 	font-family: Open Sans;
 	font-size: 16px;
 	font-style: normal;
@@ -19,18 +15,12 @@
 .training__checkbox {
 	height: 0;
 	width: 0;
-	/* flex-basis: 42px; */
-	/* margin: 7px 8px 7px 0; */
 }
 
 .training__checkmark {
-	/* position: absolute;
-	top: 0;
-	left: 0; */
 	width: 24px;
 	height: 24px;
-	/* margin: 7px 8px 7px 0; */
-	border: solid 1px #212120;
+	border: solid 1px var(--color-black);
 	border-radius: 4px;
 	user-select: none;
 }
@@ -40,10 +30,15 @@
 }
 
 .training__checkmark:after {
-	content: url(./checkmarkImg.svg);
+	content:  "." url(./checkmarkImg.svg);
 	position: absolute;
 	display: none;
-	right: -3px;
+	top: -.5px;
+	right: .5px;
 	width: 24px;
 	height: 24px;
+	background-color: var(--color-green);
+	border: solid 1px var(--color-green);
+	border-radius: 4px;
+	color: var(--color-green);
 }

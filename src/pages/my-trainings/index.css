@@ -1,0 +1,7 @@
+.page-container {
+	margin: 0 auto;
+	padding: 8px;
+	background-color: var(--color-black);
+	height: 100%;
+	box-sizing: border-box;
+}

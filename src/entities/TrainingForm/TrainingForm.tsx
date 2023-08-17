@@ -169,9 +169,7 @@ export const TrainingForm = () => {
 			const currentDateFinish = new Date(finishTime);
 			const currentDuration =
 				currentDateFinish.getTime() - currentDateStart.getTime();
-			console.log(currentDuration);
 			const hour = Math.floor(currentDuration / 3600000);
-			console.log(hour);
 			const minutes = (currentDuration % 3600000) / 60000;
 			setTrainingDuration(`${formatTime(hour)}:${formatTime(minutes)} ч`);
 		}
@@ -199,15 +197,13 @@ export const TrainingForm = () => {
 			data[key] === undefined ? delete data[key] : {}
 		);
 
-		console.log(data);
-
-		// createTraining(data)
-		// 	.then((res) => {
-		// 		console.log(res);
-		// 	})
-		// 	.catch((err) => {
-		// 		console.log(err);
-		// 	});
+		createTraining(data)
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	}
 
 	return (
@@ -363,8 +359,8 @@ export const TrainingForm = () => {
 			<div className="training__container">
 				<TrainingReminderBlock
 					type="checkbox"
-					id="terms"
-					name="terms"
+					id="reminder"
+					name="reminder"
 					validateInput={() => setIsTrainingReminder(!isTrainingReminder)}
 				/>
 			</div>

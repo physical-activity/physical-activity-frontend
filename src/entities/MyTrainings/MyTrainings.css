@@ -1,0 +1,21 @@
+.my-trainings {
+	display: flex;
+	flex-direction: column;
+	/* gap: 4px; */
+}
+
+
+.my-trainings__status {
+    display: flex;
+
+}
+
+.my-trainings__status-button {
+    
+}
+
+.my-trainings__conteiner {
+    background-color: #fff;
+	border-radius: 12px;
+	padding: 20px;
+}
