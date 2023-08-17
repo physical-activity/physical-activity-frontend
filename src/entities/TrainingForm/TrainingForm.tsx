@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 
 import { TrainingInput } from '../TrainingInput/TrainingInput';
 import { getTrainingTypes } from '../../shared/api/training';
-import { useForm } from '../../features/training-form-validator/index';
-import { signup } from '../../shared/api/signup';
-import { useNavigate } from 'react-router-dom';
+import { useTrainingFormValidation } from '../../shared/hooks/useTrainingFormValidation';
+import { createTraining } from '../../shared/api/training';
 import { REGEX } from 'shared/utils/constants';
 import { TrainingReminderBlock } from '../TrainingReminderBlock/TainingReminderBlock';
 import { TrainingDuration } from '../TrainingDuration/TrainingDuration';
@@ -17,35 +16,61 @@ export const TrainingForm = () => {
 		name: string;
 	};
 
-	const navigate = useNavigate();
-
-	const { values, handleChange, errors, isValid } = useForm();
+	const { values, handleChange, errors, isValid, resetForm, setIsValid } =
+		useTrainingFormValidation();
 
 	const [trainingTypeInputValue, setTrainingTypeInputValue] = useState('');
 	const [trainingDateInputValue, setTrainingDateInputValue] = useState('');
 	const [trainingStartedAtInputValue, setTrainingStartedAtInputValue] =
 		useState('');
-	const [trainingDistanceInputValue, setTrainingDistanceInputValue] =
-		useState('');
+	const [trainingDistanceInputValue, setTrainingDistanceInputValue] = useState<
+		number | undefined
+	>(undefined);
 	const [trainingFinishedAtInputValue, setTrainingFinishedAtInputValue] =
 		useState('');
-	const [trainingStepsNumInputValue, setTrainingStepsNumInputValue] =
-		useState('');
+	const [trainingStepsNumInputValue, setTrainingStepsNumInputValue] = useState<
+		number | undefined
+	>(undefined);
 	const [trainingTypes, setTrainingTypes] = useState<TypeItem[]>([]);
 	const [isListOpen, setIsListOpen] = useState(false);
 	const [isTrainingReminder, setIsTrainingReminder] = useState(false);
+	const [trainingDuration, setTrainingDuration] = useState('');
 
 	useEffect(() => {
 		getTrainingTypes()
 			.then((res) => {
-				console.log(res);
 				setTrainingTypes(res);
+				setTrainingTypeInputValue(res[0].name);
 			})
 			.catch((err) => {
 				console.log(err);
 			})
 			.finally(() => {});
 	}, []);
+
+	useEffect(() => {
+		if (
+			trainingStartedAtInputValue &&
+			trainingFinishedAtInputValue &&
+			trainingDateInputValue &&
+			!errors.training_date &&
+			!errors.started_at &&
+			!errors.finished_at
+		) {
+			const time = handleISODate(
+				trainingDateInputValue,
+				trainingStartedAtInputValue,
+				trainingFinishedAtInputValue
+			);
+			handleTrainingDuration(time[0], time[1]);
+		} else {
+			setTrainingDuration('');
+		}
+	}, [
+		trainingDateInputValue,
+		trainingFinishedAtInputValue,
+		trainingStartedAtInputValue,
+	]);
 
 	const validateTrainingDateInput = (
 		e: React.ChangeEvent<HTMLInputElement>
@@ -65,7 +90,7 @@ export const TrainingForm = () => {
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
 		handleChange(e);
-		setTrainingDistanceInputValue(e.target.value);
+		setTrainingDistanceInputValue(Number(e.target.value));
 	};
 
 	const validateTrainingFinishedAtInput = (
@@ -79,30 +104,106 @@ export const TrainingForm = () => {
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
 		handleChange(e);
-		setTrainingStepsNumInputValue(e.target.value);
+		setTrainingStepsNumInputValue(Number(e.target.value));
 	};
 
-	// const validateCheckboxInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-	// 	handleChange(e);
-	// };
+	const handleISODate = (
+		training_date: string,
+		started_at: string,
+		finished_at: string
+	): any => {
+		const date = training_date[0] + training_date[1];
+		const month = training_date[3] + training_date[4];
+		const year =
+			training_date[6] +
+			training_date[7] +
+			training_date[8] +
+			values.training_date[9];
+		const hour_start = started_at[0] + started_at[1];
+		const minutes_start = started_at[3] + started_at[4];
+		const hour_finish = finished_at[0] + finished_at[1];
+		const minutes_finish = finished_at[3] + finished_at[4];
+
+		const startTime = new Date(
+			Number(year),
+			Number(month),
+			Number(date),
+			Number(hour_start),
+			Number(minutes_start)
+		).toISOString();
+
+		let finishTime;
+
+		if (Boolean(finished_at)) {
+			finishTime = new Date(
+				Number(year),
+				Number(month),
+				Number(date),
+				Number(hour_finish),
+				Number(minutes_finish)
+			).toISOString();
+		} else {
+			finishTime = undefined;
+		}
+
+		const time: (string | undefined)[] = [startTime, finishTime];
+		return time;
+	};
+
+	const handleTrainingDuration = (
+		startTime: string,
+		finishTime: string | undefined
+	): any => {
+		const formatTime = (num: number): string => {
+			if (num < 9) {
+				const formatNum = '0' + num.toString();
+				return formatNum;
+			} else {
+				const formatNum = num.toString();
+				return formatNum;
+			}
+		};
+
+		if (startTime && finishTime) {
+			const currentDateStart = new Date(startTime);
+			const currentDateFinish = new Date(finishTime);
+			const currentDuration =
+				currentDateFinish.getTime() - currentDateStart.getTime();
+			const hour = Math.floor(currentDuration / 3600000);
+			const minutes = (currentDuration % 3600000) / 60000;
+			setTrainingDuration(`${formatTime(hour)}:${formatTime(minutes)} ч`);
+		}
+	};
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
-		const data = {
+
+		const time = handleISODate(
+			values.training_date,
+			values.started_at,
+			values.finished_at
+		);
+
+		const data: any = {
 			training_type: trainingTypeInputValue,
-			started_at: values.started_at,
-			finished_at: values.finished_at,
+			started_at: time[0],
+			finished_at: time[1],
 			distance: values.distance,
 			steps_num: values.steps_num,
 			reminder: isTrainingReminder,
 		};
-		console.log(data);
 
-		// signup(values.name, values.email, values.password)
-		// 	.then(() => navigate('/register-confirm'))
-		// 	.catch((err) => {
-		// 		console.log(err);
-		// 	});
+		Object.keys(data).forEach((key) =>
+			data[key] === undefined ? delete data[key] : {}
+		);
+
+		createTraining(data)
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	}
 
 	return (
@@ -128,6 +229,7 @@ export const TrainingForm = () => {
 									key={i}
 									onClick={() => {
 										setTrainingTypeInputValue(item.name);
+										setIsListOpen(false);
 									}}
 									className="list__text"
 								>
@@ -138,98 +240,127 @@ export const TrainingForm = () => {
 					</div>
 				</div>
 
-				<div className="training__input">
-					<p className="training__label">Дата</p>
-					<img
-						src={requireSvg}
-						className="training__input-span"
-						alt="required"
-					/>
-					<TrainingInput
-						type="text"
-						id="training_date"
-						name="training_date"
-						value={trainingDateInputValue}
-						setValue={validateTrainingDateInput}
-						isValidInput={errors.training_date}
-						pattern={REGEX.date.source}
-					/>
-					{errors.training_date}
-					<button className="training__button_calendar">
-						<img src={calendarSvg} alt="required" />
-					</button>
+				<div className="training__input-conteiner">
+					<div
+						className={`training__input ${
+							errors.training_date && 'training__input_error'
+						}`}
+					>
+						<p className="training__label">Дата</p>
+						<img
+							src={requireSvg}
+							className="training__input-span"
+							alt="required"
+						/>
+						<TrainingInput
+							type="text"
+							id="training_date"
+							name="training_date"
+							value={trainingDateInputValue}
+							setValue={validateTrainingDateInput}
+							pattern={REGEX.date.source}
+							required={true}
+						/>
+						<button className="training__button_calendar">
+							<img src={calendarSvg} alt="required" />
+						</button>
+					</div>
+					<span className="training__error">{errors.training_date}</span>
 				</div>
 
-				<div className="training__input">
-					<p className="training__label">Время старта</p>
-					<TrainingInput
-						type="text"
-						id="started_at"
-						placeholder="00:00 ч"
-						name="started_at"
-						value={trainingStartedAtInputValue}
-						setValue={validateTrainingStartedAtInput}
-						isValidInput={errors.started_at}
-						pattern={REGEX.time.source}
-					/>
-					{errors.started_at}
+				<div className="training__input-conteiner">
+					<div
+						className={`training__input ${
+							errors.started_at && 'training__input_error'
+						}`}
+					>
+						<p className="training__label">Время старта</p>
+						<TrainingInput
+							type="text"
+							id="started_at"
+							placeholder="00:00 ч"
+							name="started_at"
+							value={trainingStartedAtInputValue}
+							setValue={validateTrainingStartedAtInput}
+							pattern={REGEX.time.source}
+							required={true}
+						/>
+					</div>
+					<span className="training__error">{errors.started_at}</span>
 				</div>
 
-				<div className="training__input">
-					<p className="training__label">Дистанция</p>
-					<TrainingInput
-						type="text"
-						id="distance"
-						placeholder="00 км"
-						name="distance"
-						value={trainingDistanceInputValue}
-						setValue={validateTrainingDistanceInput}
-						isValidInput={errors.distance}
-						pattern={REGEX.distance.source}
-					/>
-					{errors.distance}
+				<div className="training__input-conteiner">
+					<div
+						className={`training__input ${
+							errors.distance && 'training__input_error'
+						}`}
+					>
+						<p className="training__label">Дистанция</p>
+						<TrainingInput
+							type="text"
+							id="distance"
+							placeholder="00 км"
+							name="distance"
+							value={trainingDistanceInputValue}
+							setValue={validateTrainingDistanceInput}
+							pattern={REGEX.distance.source}
+						/>
+					</div>
+					<span className="training__error">{errors.distance}</span>
 				</div>
 
-				<div className="training__input">
-					<p className="training__label">Время окончания</p>
-					<TrainingInput
-						type="text"
-						id="finished_at"
-						placeholder="00:00 ч"
-						name="finished_at"
-						value={trainingFinishedAtInputValue}
-						setValue={validateTrainingFinishedAtInput}
-						isValidInput={errors.finished_at}
-						pattern={REGEX.time.source}
-					/>
-					{errors.finished_at}
+				<div className="training__input-conteiner">
+					<div
+						className={`training__input ${
+							errors.finished_at && 'training__input_error'
+						}`}
+					>
+						<p className="training__label">Время окончания</p>
+						<TrainingInput
+							type="text"
+							id="finished_at"
+							placeholder="00:00 ч"
+							name="finished_at"
+							value={trainingFinishedAtInputValue}
+							setValue={validateTrainingFinishedAtInput}
+							pattern={REGEX.time.source}
+						/>
+					</div>
+					<span className="training__error">{errors.finished_at}</span>
 				</div>
 
-				<div className="training__input">
-					<p className="training__label">Шаги</p>
-					<TrainingInput
-						type="text"
-						id="steps_num"
-						placeholder="0"
-						name="steps_num"
-						value={trainingStepsNumInputValue}
-						setValue={validateTrainingStepsNumInput}
-						isValidInput={errors.steps_num}
-						pattern={REGEX.distance.source}
-					/>
-					{errors.steps_num}
+				<div className="training__input-conteiner">
+					<div
+						className={`training__input ${
+							errors.steps_num && 'training__input_error'
+						}`}
+					>
+						<p className="training__label">Шаги</p>
+						<TrainingInput
+							type="text"
+							id="steps_num"
+							placeholder="0"
+							name="steps_num"
+							value={trainingStepsNumInputValue}
+							setValue={validateTrainingStepsNumInput}
+							pattern={REGEX.distance.source}
+						/>
+					</div>
+					<span className="training__error">{errors.steps_num}</span>
 				</div>
 			</div>
 
-			<div className="training__container">
-				<TrainingDuration value={`01:10 ч`} />
-			</div>
+			{trainingDuration && (
+				<div className="training__container">
+					<TrainingDuration value={trainingDuration} />
+				</div>
+			)}
 
 			<div className="training__container">
 				<TrainingReminderBlock
 					type="checkbox"
-					id="terms"
-					name="terms"
+					id="reminder"
+					name="reminder"
 					validateInput={() => setIsTrainingReminder(!isTrainingReminder)}
 				/>
 			</div>

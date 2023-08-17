@@ -35,6 +35,7 @@ export const changeUserInfo = createAsyncThunk<any, data>(
 	'user/changeData',
 	async (data) => {
 		const token = localStorage.getItem('token');
+
 		const response = await fetch(`https://easyfit.space/api/v1/account/`, {
 			method: 'PATCH',
 			headers: {
@@ -47,6 +48,7 @@ export const changeUserInfo = createAsyncThunk<any, data>(
 				email: data.email,
 			}),
 		});
+
 		let res;
 		if (response.status === 200) {
 			res = response.json();
