@@ -46,7 +46,7 @@ export const Input = ({
 				disabled={disabled}
 				id={id}
 				className={`input-block__input ${
-					isValidInput && 'signin__input_error'
+					isValidInput && 'input-block__input_error'
 				}`}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e)}
 				pattern={pattern}

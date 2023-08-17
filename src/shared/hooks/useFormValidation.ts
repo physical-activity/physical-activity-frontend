@@ -20,9 +20,17 @@ export function useFormValidation() {
 		const value = target.value;
 
 		if (name === 'email' && target.validationMessage !== '') {
-			setErrors({ ...errors, [name]: 'Введите корректный Email' });
+			setErrors({
+				...errors,
+				[name]:
+					'Некорректно введено e-mail. Допустимые символы для ввода: только цифры, латинские буквы, нижнее подчеркивание, дефис, знак @ и точка',
+			});
 		} else if (name === 'name' && target.validationMessage !== '') {
-			setErrors({ ...errors, [name]: 'Допустимые символы: пробел, дефис' });
+			setErrors({
+				...errors,
+				[name]:
+					'Некорректно введено Имя. Допустимые символы для ввода: от 2 до 50 символов, пробел, дефис, кириллические, латинские буквы',
+			});
 		} else if (name === 'password' && target.validationMessage !== '') {
 			setErrors({
 				...errors,
@@ -51,6 +59,7 @@ export function useFormValidation() {
 		setValues({ ...values, [name]: value });
 		const form = target.closest('form');
 		if (form) {
+			console.log(errors);
 			setIsValid(form.checkValidity());
 		}
 	};
