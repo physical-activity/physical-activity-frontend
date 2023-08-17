@@ -1,0 +1,75 @@
+.signout-container {
+	width: 336px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	gap: 4px;
+	display: flex;
+	flex-direction: column;
+  z-index: 20;
+}
+
+.signout__title {
+	color: var(--new-txt-black, #212120);
+	font-family: Open Sans;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 105%;
+	text-transform: uppercase;
+	background-color: #fff;
+	margin: 0;
+	padding: 12px 0 12px 0;
+	text-align: center;
+	border-radius: 12px;
+}
+
+.signout__text-container {
+	background-color: #fff;
+	padding: 42px 20px;
+	border-radius: 12px;
+}
+
+.signout__text {
+	color: var(--new-txt-black, #212120);
+	text-align: center;
+	font-family: Open Sans;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 140%;
+	letter-spacing: -0.16px;
+}
+
+.signout__buttons-container {
+	display: flex;
+	flex-direction: row;
+	border-radius: 12px;
+	background: var(--new-bg, #fff);
+	padding: 20px;
+	justify-content: space-between;
+}
+
+.signout__button {
+  width: 146px;
+	padding: 12px 24px;
+	color: var(--new-txt-black, #212120);
+	text-align: center;
+	font-family: Open Sans;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 105%;
+	text-transform: uppercase;
+  border: none;
+  border-radius: 12px;
+	cursor: pointer;
+}
+
+.signout__button_green {
+  background: var(--new-brand, #C2FF5D);
+}
+
+.signout__button_gray {
+  background: var(--new-gray-light, #E0E0E5);
+}
