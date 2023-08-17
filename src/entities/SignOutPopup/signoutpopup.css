@@ -6,7 +6,7 @@
 	gap: 4px;
 	display: flex;
 	flex-direction: column;
-  z-index: 20;
+	z-index: 20;
 }
 
 .signout__title {
@@ -51,7 +51,7 @@
 }
 
 .signout__button {
-  width: 146px;
+	width: 146px;
 	padding: 12px 24px;
 	color: var(--new-txt-black, #212120);
 	text-align: center;
@@ -61,15 +61,15 @@
 	font-weight: 800;
 	line-height: 105%;
 	text-transform: uppercase;
-  border: none;
-  border-radius: 12px;
+	border: none;
+	border-radius: 12px;
 	cursor: pointer;
 }
 
 .signout__button_green {
-  background: var(--new-brand, #C2FF5D);
+	background: var(--new-brand, #c2ff5d);
 }
 
 .signout__button_gray {
-  background: var(--new-gray-light, #E0E0E5);
+	background: var(--new-gray-light, #e0e0e5);
 }
