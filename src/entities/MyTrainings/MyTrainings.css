@@ -1,14 +1,44 @@
 .my-trainings {
 	display: flex;
 	flex-direction: column;
-	/* gap: 4px; */
+	gap: 4px;
 }
 
 .my-trainings__status {
 	display: flex;
+	gap: 4px;
+}
+
+.my-trainings__status-button_active {
+	width: 100%;
+	padding: 12px 0;
+	margin: 0 auto;
+	border: none;
+	border-radius: 12px;
+	background: var(--color-green);
+	color: var(--color-black);
+	font-family: 'Open Sans';
+font-size: 12px;
+font-style: normal;
+font-weight: 800;
+line-height: 22px; /* 183.333% */
+	cursor: pointer;
 }
 
 .my-trainings__status-button {
+	width: 100%;
+	padding: 12px 0;
+	margin: 0 auto;
+	border: none;
+	border-radius: 12px;
+	background: var(--color-white);
+	color: #898989;
+	font-family: 'Open Sans';
+font-size: 12px;
+font-style: normal;
+font-weight: 800;
+line-height: 22px; /* 183.333% */
+	cursor: pointer;
 }
 
 .my-trainings__conteiner {
