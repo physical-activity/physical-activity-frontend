@@ -35,21 +35,18 @@ export const changeUserInfo = createAsyncThunk<any, data>(
 	'user/changeData',
 	async (data) => {
 		const token = localStorage.getItem('token');
-		const response = await fetch(
-			`https://easyfit.acceleratorpracticum.ru/api/v1/account/`,
-			{
-				method: 'PATCH',
-				headers: {
-					Authorization: `Token ${token}`,
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					first_name: data.name,
-					last_name: data.secondName,
-					email: data.email,
-				}),
-			}
-		);
+		const response = await fetch(`https://easyfit.space/api/v1/account/`, {
+			method: 'PATCH',
+			headers: {
+				Authorization: `Token ${token}`,
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				first_name: data.name,
+				last_name: data.secondName,
+				email: data.email,
+			}),
+		});
 		let res;
 		if (response.status === 200) {
 			res = response.json();
@@ -69,7 +66,7 @@ export const singInUser = createAsyncThunk<any, signinData>(
 	'user/signin',
 	async (data) => {
 		const response = await fetch(
-			`https://easyfit.acceleratorpracticum.ru/api/v1/auth/token/login/`,
+			`https://easyfit.space/api/v1/auth/token/login/`,
 			{
 				method: 'POST',
 				headers: {
@@ -94,15 +91,12 @@ export const singInUser = createAsyncThunk<any, signinData>(
 
 export const getUserData = createAsyncThunk<any>('user/getData', async () => {
 	const token = localStorage.getItem('token');
-	const res = await fetch(
-		'https://easyfit.acceleratorpracticum.ru/api/v1/account/',
-		{
-			method: 'GET',
-			headers: {
-				Authorization: `Token ${token}`,
-			},
-		}
-	);
+	const res = await fetch('https://easyfit.space/api/v1/account/', {
+		method: 'GET',
+		headers: {
+			Authorization: `Token ${token}`,
+		},
+	});
 	let response;
 	if (res.status === 200) {
 		response = res.json();
