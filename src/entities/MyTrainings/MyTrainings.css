@@ -18,10 +18,10 @@
 	background: var(--color-green);
 	color: var(--color-black);
 	font-family: 'Open Sans';
-font-size: 12px;
-font-style: normal;
-font-weight: 800;
-line-height: 22px; /* 183.333% */
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 800;
+	line-height: 22px; /* 183.333% */
 	cursor: pointer;
 }
 
@@ -34,10 +34,10 @@ line-height: 22px; /* 183.333% */
 	background: var(--color-white);
 	color: #898989;
 	font-family: 'Open Sans';
-font-size: 12px;
-font-style: normal;
-font-weight: 800;
-line-height: 22px; /* 183.333% */
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 800;
+	line-height: 22px; /* 183.333% */
 	cursor: pointer;
 }
 
