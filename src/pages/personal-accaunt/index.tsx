@@ -2,6 +2,7 @@ import FooterMain from 'entities/FooterMain/FooterMain';
 import HeaderMain from 'entities/HeaderMain/HeaderMain';
 import HeaderProfile from 'entities/HeaderProfile/HeaderProfile';
 import ProfileForm from 'entities/ProfileForm/ProfileForm';
+import { SignOutPopup } from 'entities/SignOutPopup/SignOutPopup';
 import { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { useFormValidation } from 'shared/hooks/useFormValidation';
@@ -14,6 +15,7 @@ export const PersonalAccaunt = () => {
 	const [name, setName] = useState('');
 	const [secondName, setSecondName] = useState('');
 	const [email, setEmail] = useState('');
+	const [isPopupOpen, setIsPopupOpen] = useState(false);
 
 	const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
 		handleChange(e);
@@ -44,22 +46,9 @@ export const PersonalAccaunt = () => {
 		}
 	};
 
-	// const [userData, setUserData] = useState({
-	// 	first_name: '',
-	// 	last_name: '',
-	// 	photo: '',
-	// 	email: '',
-	// });
-
-	// useEffect(() => {
-	// 	const fetchUserData = async () => {
-	// 		getUserData().then((res) => setUserData(res));
-	// 	};
-
-	// 	if (localStorage.getItem('token')) {
-	// 		fetchUserData();
-	// 	}
-	// }, []);
+	const handleClickSingOut = () => {
+		setIsPopupOpen((state) => !state);
+	};
 
 	useEffect(() => {
 		setAvatar(userData.user.photo);
@@ -93,6 +82,11 @@ export const PersonalAccaunt = () => {
 				handleChangeName={handleChangeName}
 				handleChangeSecondName={handleChangeSecondName}
 				handleChangeEmail={handleChangeEmail}
+				handleClickSingOut={handleClickSingOut}
+			/>
+			<SignOutPopup
+				isPopupOpen={isPopupOpen}
+				handleClickSingOut={handleClickSingOut}
 			/>
 			<FooterMain />
 		</main>

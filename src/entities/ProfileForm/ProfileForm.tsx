@@ -11,6 +11,7 @@ const ProfileForm = ({
 	handleChangeName,
 	handleChangeSecondName,
 	handleChangeEmail,
+	handleClickSingOut,
 	errors,
 	name,
 	secondName,
@@ -21,36 +22,13 @@ const ProfileForm = ({
 	handleChangeName: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	handleChangeSecondName: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	handleChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handleClickSingOut: () => void;
 	errors: { name: string; secondName: string; email: string };
 	name: string;
 	secondName: string;
 	email: string;
 	avatar: string;
 }) => {
-	const navigate = useNavigate();
-
-	const dispatch = useAppDispatch();
-
-	const handleLogout = () => {
-		localStorage.removeItem('token');
-		dispatch(
-			clearUserData({
-				user: {
-					first_name: '',
-					second_name: '',
-					phone: '',
-					email: '',
-					photo: '',
-				},
-				id: null,
-				auth_token: null,
-				isLoading: false,
-				error: '',
-			})
-		);
-		navigate('/');
-	};
-
 	return (
 		<div className="profile">
 			<form className="profile__input-container">
@@ -99,7 +77,7 @@ const ProfileForm = ({
 				/>
 			</form>
 			<div className="profile__button-container">
-				<button className="profile__button" onClick={() => handleLogout()}>
+				<button className="profile__button" onClick={handleClickSingOut}>
 					Выход
 				</button>
 			</div>
