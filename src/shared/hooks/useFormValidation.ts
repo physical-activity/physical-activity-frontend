@@ -59,7 +59,6 @@ export function useFormValidation() {
 		setValues({ ...values, [name]: value });
 		const form = target.closest('form');
 		if (form) {
-			console.log(errors);
 			setIsValid(form.checkValidity());
 		}
 	};
