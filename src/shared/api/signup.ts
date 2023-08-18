@@ -1,5 +1,7 @@
+import { BASE_URL } from 'shared/utils/constants';
+
 export const signup = (name: string, email: string, password: string) => {
-	return fetch(`https://easyfit.acceleratorpracticum.ru/api/v1/auth/signup/`, {
+	return fetch(`${BASE_URL}/auth/signup/`, {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',
