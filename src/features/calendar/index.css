@@ -2,9 +2,40 @@
 
 .custom-calendar {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	background: rgba(33, 33, 32, 0.6);
 }
+
+.custom-calendar__btns-group {
+	display: flex;
+	gap: 4px;
+	margin-top: 4px;
+}
+
+.custom-calendar__btn {
+	width: 166px;
+	background-color: #fff;
+	cursor: pointer;
+	outline: none;
+	border: none;
+	padding: 12px 0;
+	border-radius: 12px;
+
+	font-family: Open Sans;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 140%;
+	letter-spacing: -0.16px;
+}
+
+.custom-calendar__btn_main {
+	background-color: #c2ff5d;
+}
+
+/* React-calendar styles */
 
 .react-calendar {
 	width: 336px;
