@@ -32,9 +32,12 @@ export const TrainingForm = () => {
 		number | undefined
 	>(undefined);
 	const [trainingTypes, setTrainingTypes] = useState<TypeItem[]>([]);
+	const [trainingDuration, setTrainingDuration] = useState('');
 	const [isListOpen, setIsListOpen] = useState(false);
 	const [isTrainingReminder, setIsTrainingReminder] = useState(false);
-	const [trainingDuration, setTrainingDuration] = useState('');
+	const [isDuratiomError, setIsDuratiomError] = useState(false);
+	const [isDuratiomErrorMessage, setIsDuratiomErrorMessage] = useState('');
+	const [globalValid, setGlobalValid] = useState(false);
 
 	useEffect(() => {
 		getTrainingTypes()
@@ -49,28 +52,23 @@ export const TrainingForm = () => {
 	}, []);
 
 	useEffect(() => {
-		if (
-			trainingStartedAtInputValue &&
-			trainingFinishedAtInputValue &&
-			trainingDateInputValue &&
-			!errors.training_date &&
-			!errors.started_at &&
-			!errors.finished_at
-		) {
-			const time = handleISODate(
-				trainingDateInputValue,
-				trainingStartedAtInputValue,
-				trainingFinishedAtInputValue
-			);
-			handleTrainingDuration(time[0], time[1]);
-		} else {
-			setTrainingDuration('');
-		}
+		handleTrainingDuration(
+			trainingStartedAtInputValue,
+			trainingFinishedAtInputValue,
+			trainingDateInputValue,
+			errors.training_date,
+			errors.started_at,
+			errors.finished_at
+		);
 	}, [
 		trainingDateInputValue,
 		trainingFinishedAtInputValue,
 		trainingStartedAtInputValue,
 	]);
+
+	useEffect(() => {
+		isValid && !isDuratiomError ? setGlobalValid(true) : setGlobalValid(false);
+	}, [isDuratiomError, isValid]);
 
 	const validateTrainingDateInput = (
 		e: React.ChangeEvent<HTMLInputElement>
@@ -105,6 +103,48 @@ export const TrainingForm = () => {
 	) => {
 		handleChange(e);
 		setTrainingStepsNumInputValue(Number(e.target.value));
+	};
+
+	const handleTrainingDuration = (
+		startTime: string,
+		finishTime: string,
+		date: string,
+		dateErrors: string,
+		startErrors: string,
+		finishErrors: string
+	): any => {
+		if (
+			startTime &&
+			finishTime &&
+			date &&
+			!dateErrors &&
+			!startErrors &&
+			!finishErrors
+		) {
+			const time = handleISODate(date, startTime, finishTime);
+
+			if (time[0] && time[1]) {
+				const currentStart = new Date(time[0]);
+				const currentFinish = new Date(time[1]);
+				const currentDuration =
+					currentFinish.getTime() - currentStart.getTime();
+				const hour = Math.floor(currentDuration / 3600000);
+				const minutes = (currentDuration % 3600000) / 60000;
+				setTrainingDuration(`${formatTime(hour)}:${formatTime(minutes)} ч`);
+			}
+
+			if (time[0] > time[1]) {
+				setIsDuratiomError(true);
+				setIsDuratiomErrorMessage(
+					'Время окончания не может быть меньше времени старта'
+				);
+			} else {
+				setIsDuratiomError(false);
+				setIsDuratiomErrorMessage('');
+			}
+		} else {
+			setTrainingDuration('');
+		}
 	};
 
 	const handleISODate = (
@@ -150,28 +190,13 @@ export const TrainingForm = () => {
 		return time;
 	};
 
-	const handleTrainingDuration = (
-		startTime: string,
-		finishTime: string | undefined
-	): any => {
-		const formatTime = (num: number): string => {
-			if (num < 9) {
-				const formatNum = '0' + num.toString();
-				return formatNum;
-			} else {
-				const formatNum = num.toString();
-				return formatNum;
-			}
-		};
-
-		if (startTime && finishTime) {
-			const currentDateStart = new Date(startTime);
-			const currentDateFinish = new Date(finishTime);
-			const currentDuration =
-				currentDateFinish.getTime() - currentDateStart.getTime();
-			const hour = Math.floor(currentDuration / 3600000);
-			const minutes = (currentDuration % 3600000) / 60000;
-			setTrainingDuration(`${formatTime(hour)}:${formatTime(minutes)} ч`);
+	const formatTime = (num: number): string => {
+		if (num < 9) {
+			const formatNum = '0' + num.toString();
+			return formatNum;
+		} else {
+			const formatNum = num.toString();
+			return formatNum;
 		}
 	};
 
@@ -327,27 +352,30 @@ export const TrainingForm = () => {
 						/>
 					</div>
 					<span className="training__error">{errors.finished_at}</span>
+					<span className="training__error">{isDuratiomErrorMessage}</span>
 				</div>
 
-				<div className="training__input-conteiner">
-					<div
-						className={`training__input ${
-							errors.steps_num && 'training__input_error'
-						}`}
-					>
-						<p className="training__label">Шаги</p>
-						<TrainingInput
-							type="text"
-							id="steps_num"
-							placeholder="0"
-							name="steps_num"
-							value={trainingStepsNumInputValue}
-							setValue={validateTrainingStepsNumInput}
-							pattern={REGEX.distance.source}
-						/>
+				{trainingTypeInputValue === trainingTypes[2]?.name && (
+					<div className="training__input-conteiner">
+						<div
+							className={`training__input ${
+								errors.steps_num && 'training__input_error'
+							}`}
+						>
+							<p className="training__label">Шаги</p>
+							<TrainingInput
+								type="text"
+								id="steps_num"
+								placeholder="0"
+								name="steps_num"
+								value={trainingStepsNumInputValue}
+								setValue={validateTrainingStepsNumInput}
+								pattern={REGEX.distance.source}
+							/>
+						</div>
+						<span className="training__error">{errors.steps_num}</span>
 					</div>
-					<span className="training__error">{errors.steps_num}</span>
-				</div>
+				)}
 			</div>
 
 			{trainingDuration && (
@@ -368,9 +396,10 @@ export const TrainingForm = () => {
 			<div className="training__container">
 				<button
 					className={`training__button ${
-						!isValid && 'training__button_unvalid'
+						(!isValid || isDuratiomError) && 'training__button_unvalid'
 					}`}
-					disabled={!isValid}
+					// disabled={!isValid}
+					disabled={!globalValid}
 				>
 					запаланировать
 				</button>

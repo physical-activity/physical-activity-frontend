@@ -31,3 +31,9 @@ html::-webkit-scrollbar-thumb {
 @import url(./styles/fonts/fonts.css);
 @import url(./styles/normalize.css);
 @import url(./styles/variable.css);
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}

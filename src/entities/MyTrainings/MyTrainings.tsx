@@ -1,3 +1,4 @@
+import { TrainingCard } from 'entities/TrainingCard/TrainingCard';
 import './MyTrainings.css';
 import React, { useEffect, useState } from 'react';
 
@@ -10,8 +11,7 @@ export const MyTrainings = () => {
 				<button className="my-trainings__status-button">Выполнено</button>
 			</div>
 			<div className="my-trainings__conteiner">
-				<p>deddede</p>
-				<p>deddede</p>
+				<TrainingCard title={`Бег`} date={`8 авг`} />
 			</div>
 		</div>
 	);
