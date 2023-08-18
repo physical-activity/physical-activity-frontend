@@ -1,10 +1,12 @@
+import { BASE_URL } from 'shared/utils/constants';
+
 export const changeUserInfo = async (
 	name: string,
 	secondName: string,
 	email: string
 ) => {
 	const token = localStorage.getItem('token');
-	const response = await fetch(`http://91.201.53.71/api/v1/account/`, {
+	const response = await fetch(`${BASE_URL}/account/`, {
 		method: 'PATCH',
 		headers: {
 			Authorization: `Token ${token}`,
