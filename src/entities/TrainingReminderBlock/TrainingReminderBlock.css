@@ -30,11 +30,11 @@
 }
 
 .training__checkmark:after {
-	content:  "." url(./checkmarkImg.svg);
+	content: '.' url(./checkmarkImg.svg);
 	position: absolute;
 	display: none;
-	top: -.5px;
-	right: .5px;
+	top: -0.3px;
+	right: 0.3px;
 	width: 24px;
 	height: 24px;
 	background-color: var(--color-green);
