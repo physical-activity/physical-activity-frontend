@@ -7,32 +7,47 @@
 	padding: 20px;
 	gap: 12px;
 	border-radius: 8px;
+	margin-bottom: 8px;
 }
 
-.training-card__conteiner {
+.training-card:last-of-type {
+	margin-bottom: 0;
+}
+
+.training-card__container {
 	display: flex;
 	justify-content: space-between;
 }
 
-.training-card__conteiner:nth-of-type(2) {
+.training-card__container:nth-of-type(2) {
 	padding-bottom: 12px;
 	border-bottom: 1px solid #c3c3cc;
 }
 
-.training-card__pic {
+.training-card__title {
+	font-family: Open Sans;
+	font-size: 16px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 17.6px;
+	text-transform: uppercase;
+}
+
+.training-card__reminder {
+  background: none;
 	background-repeat: no-repeat;
 	background-position: center;
 	height: 24px;
 	width: 24px;
-	background-color: aquamarine;
+	background-image: url(./bell.svg);
 }
 
-.training-card__info {
-	display: flex;
-	gap: 4px;
+.training-card__reminder_active {
+	background-image: url(./bellActive.svg);
 }
 
-.training-card__button {
+
+/* .training-card__button {
 	background: none;
 	border: none;
 	outline: none;
@@ -42,7 +57,7 @@
 	cursor: pointer;
 	height: 24px;
 	width: 24px;
-}
+} */
 
 /* background: none;
 border: none;

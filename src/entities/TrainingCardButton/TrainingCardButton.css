@@ -1,0 +1,22 @@
+.training-card-button {
+  background: none;
+	border: none;
+	outline: none;
+	background-repeat: no-repeat;
+	background-position: center;
+	cursor: pointer;
+	height: 24px;
+	width: 24px;
+}
+
+.training-card-button_delete {
+  background-image: url(./delete.svg);
+}
+
+.training-card-button_check {
+  background-image: url(./check.svg);
+}
+
+.training-card-button_edit {
+  background-image: url(./edit.svg);
+}
