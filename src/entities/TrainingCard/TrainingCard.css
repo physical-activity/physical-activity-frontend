@@ -34,7 +34,7 @@
 }
 
 .training-card__reminder {
-  background: none;
+	background: none;
 	background-repeat: no-repeat;
 	background-position: center;
 	height: 24px;
@@ -45,7 +45,6 @@
 .training-card__reminder_active {
 	background-image: url(./bellActive.svg);
 }
-
 
 /* .training-card__button {
 	background: none;

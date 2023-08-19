@@ -2,6 +2,7 @@ import { TrainingCard } from 'entities/TrainingCard/TrainingCard';
 import { useNavigate } from 'react-router-dom';
 import './MyTrainings.css';
 import { getUserTrainings } from '../../shared/api/training';
+import { deleteTraining } from '../../shared/api/training';
 import React, { useEffect, useState } from 'react';
 
 export const MyTrainings = () => {
@@ -78,6 +79,17 @@ export const MyTrainings = () => {
 		fetchData();
 	}, []);
 
+	const handleDelete = async (id: number) => {
+		try {
+			await deleteTraining(id);
+			const data = await getUserTrainings();
+			setItems(data.results);
+			console.log(data.results);
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
 	return (
 		<div className="my-trainings">
 			<div className="my-trainings__status">
@@ -89,7 +101,9 @@ export const MyTrainings = () => {
 				<div className="my-trainings__card-container">
 					{items.map((card: Training) => (
 						<TrainingCard
+							card={card}
 							title={card.training_type}
+							key={card.id}
 							date={
 								formatterDay.format(new Date(card.started_at)).split('.')[0]
 							}
@@ -97,6 +111,7 @@ export const MyTrainings = () => {
 							// time={`${new Date(card.started_at).getHours()}:${new Date(card.started_at).getMinutes()}`}
 							distance={`${card.distance} км`}
 							reminder={card.reminder}
+							handleDelete={handleDelete}
 						/>
 					))}
 				</div>

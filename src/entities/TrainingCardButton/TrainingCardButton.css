@@ -1,5 +1,5 @@
 .training-card-button {
-  background: none;
+	background: none;
 	border: none;
 	outline: none;
 	background-repeat: no-repeat;
@@ -10,13 +10,13 @@
 }
 
 .training-card-button_delete {
-  background-image: url(./delete.svg);
+	background-image: url(./delete.svg);
 }
 
 .training-card-button_check {
-  background-image: url(./check.svg);
+	background-image: url(./check.svg);
 }
 
 .training-card-button_edit {
-  background-image: url(./edit.svg);
+	background-image: url(./edit.svg);
 }

@@ -51,3 +51,15 @@ export const getUserTrainings = async () => {
 	});
 	return handleResponse(res);
 };
+
+export const deleteTraining = async (id: number) => {
+	const token = localStorage.getItem('token');
+	const res = await fetch(`${BASE_URL}/trainings/${id}/`, {
+		method: 'DELETE',
+		headers: {
+			Authorization: `Token ${token}`,
+			'Content-Type': 'application/json',
+		},
+	});
+	return res;
+};
