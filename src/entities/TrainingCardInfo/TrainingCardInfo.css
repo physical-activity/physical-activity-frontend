@@ -23,6 +23,18 @@
 	background-image: url(./distance.svg);
 }
 
+.training-card-info__pic_date-missed {
+	background-image: url(./dateMissed.svg);
+}
+
+.training-card-info__pic_time-missed {
+	background-image: url(./timeMissed.svg);
+}
+
+.training-card-info__pic_distance-missed {
+	background-image: url(./distanceMissed.svg);
+}
+
 .training-card-info__text {
 	font-family: Open Sans;
 	font-size: 16px;

@@ -20,3 +20,11 @@
 .training-card-button_edit {
 	background-image: url(./edit.svg);
 }
+
+.training-card-button_delete-missed {
+	background-image: url(./deleteMissed.svg);
+}
+
+.training-card-button_check-missed {
+	background-image: url(./checkMissed.svg);
+}

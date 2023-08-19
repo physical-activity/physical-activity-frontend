@@ -55,6 +55,7 @@ export const MyTrainings = () => {
 	//       - started_at
 
 	const [items, setItems] = useState([]);
+	const [activeButton, setActiveButton] = useState(0);
 
 	let formatterDay = new Intl.DateTimeFormat('ru', {
 		month: 'short',
@@ -67,17 +68,63 @@ export const MyTrainings = () => {
 	});
 
 	useEffect(() => {
-		async function fetchData() {
-			try {
-				const data = await getUserTrainings();
-				console.log(data.results);
-				setItems(data.results);
-			} catch (e) {
-				console.error(e);
-			}
-		}
-		fetchData();
+		fetchPlannedTrainings();
 	}, []);
+
+	async function fetchPlannedTrainings() {
+		try {
+			const data = await getUserTrainings();
+			let plannedTrainings: any = [];
+			data.results.map((training: Training) => {
+				let trainingStartTime = new Date(training.started_at).getTime();
+				let currentTime = Date.now();
+				if (trainingStartTime > currentTime && training.completed === false) {
+					plannedTrainings.push(training);
+				}
+			});
+			console.log(plannedTrainings);
+			setActiveButton(0);
+			setItems(plannedTrainings);
+		} catch (e) {
+			console.error(e);
+		}
+	}
+
+	async function fetchMissedTrainings() {
+		try {
+			const data = await getUserTrainings();
+			let missedTrainings: any = [];
+			data.results.map((training: Training) => {
+				let trainingStartTime = new Date(training.started_at).getTime();
+				let currentTime = Date.now();
+				if (trainingStartTime < currentTime && training.completed === false) {
+					missedTrainings.push(training);
+				}
+			});
+			console.log(missedTrainings);
+			setActiveButton(1);
+			setItems(missedTrainings);
+		} catch (e) {
+			console.error(e);
+		}
+	}
+
+	async function fetchCompletedTrainings() {
+		try {
+			const data = await getUserTrainings();
+			let completedTrainings: any = [];
+			data.results.map((training: Training) => {
+				if (training.completed === true) {
+					completedTrainings.push(training);
+				}
+			});
+			console.log(completedTrainings);
+			setActiveButton(2);
+			setItems(completedTrainings);
+		} catch (e) {
+			console.error(e);
+		}
+	}
 
 	const handleDelete = async (id: number) => {
 		try {
@@ -93,9 +140,30 @@ export const MyTrainings = () => {
 	return (
 		<div className="my-trainings">
 			<div className="my-trainings__status">
-				<button className="my-trainings__status-button_active">План</button>
-				<button className="my-trainings__status-button">Пропущено</button>
-				<button className="my-trainings__status-button">Выполнено</button>
+				<button
+					className={`my-trainings__status-button ${
+						activeButton === 0 ? 'my-trainings__status-button_active' : ''
+					}`}
+					onClick={fetchPlannedTrainings}
+				>
+					План
+				</button>
+				<button
+					className={`my-trainings__status-button ${
+						activeButton === 1 ? 'my-trainings__status-button_active' : ''
+					}`}
+					onClick={fetchMissedTrainings}
+				>
+					Пропущено
+				</button>
+				<button
+					className={`my-trainings__status-button ${
+						activeButton === 2 ? 'my-trainings__status-button_active' : ''
+					}`}
+					onClick={fetchCompletedTrainings}
+				>
+					Выполнено
+				</button>
 			</div>
 			<div className="my-trainings__container">
 				<div className="my-trainings__card-container">

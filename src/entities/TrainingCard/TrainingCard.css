@@ -19,6 +19,10 @@
 	justify-content: space-between;
 }
 
+.training-card__container_missed {
+	color: var(--new-dark-gray, #898989);
+}
+
 .training-card__container:nth-of-type(2) {
 	padding-bottom: 12px;
 	border-bottom: 1px solid #c3c3cc;
@@ -33,6 +37,10 @@
 	text-transform: uppercase;
 }
 
+.training-card__title_missed {
+	color: var(--new-dark-gray, #898989);
+}
+
 .training-card__reminder {
 	background: none;
 	background-repeat: no-repeat;
@@ -44,6 +52,10 @@
 
 .training-card__reminder_active {
 	background-image: url(./bellActive.svg);
+}
+
+.training-card__reminder_missed {
+	background-image: none;
 }
 
 /* .training-card__button {

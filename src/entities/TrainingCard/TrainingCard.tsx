@@ -1,6 +1,7 @@
 import './TrainingCard.css';
 import { TrainingCardButton } from '../TrainingCardButton/TrainingCardButton';
 import { TrainingCardInfo } from '../TrainingCardInfo/TrainingCardInfo';
+import React, { useEffect, useState } from 'react';
 
 type Props = {
 	card: {
@@ -32,6 +33,16 @@ export const TrainingCard = ({
 	reminder,
 	handleDelete,
 }: Props) => {
+	const [missed, setMissed] = useState(false);
+
+	useEffect(() => {
+		let trainingStartTime = new Date(card.started_at).getTime();
+		let currentTime = Date.now();
+		if (trainingStartTime < currentTime) {
+			setMissed(true);
+		}
+	}, []);
+
 	function handleDeleteClick() {
 		handleDelete(card.id);
 	}
@@ -39,27 +50,44 @@ export const TrainingCard = ({
 	return (
 		<div className="training-card">
 			<div className="training-card__container">
-				<p className={`training-card__title`}>{title}</p>
-				<div
-					className={`training-card__reminder ${
-						reminder ? 'training-card__reminder_active' : ''
+				<p
+					className={`training-card__title ${
+						missed ? 'training-card__title_missed' : ''
 					}`}
+				>
+					{title}
+				</p>
+				<div
+					className={`training-card__reminder 
+						${reminder ? 'training-card__reminder_active' : ''}
+						${missed ? 'training-card__reminder_missed' : ''}
+					`}
 				></div>
 			</div>
-			<div className="training-card__container">
-				<TrainingCardInfo type={'date'} info={date} />
-				<TrainingCardInfo type={'time'} info={time} />
-				<TrainingCardInfo type={'distance'} info={distance} />
+			<div
+				className={`training-card__container ${
+					missed ? 'training-card__container_missed' : ''
+				}`}
+			>
+				<TrainingCardInfo type={'date'} info={date} missed={missed} />
+				<TrainingCardInfo type={'time'} info={time} missed={missed} />
+				<TrainingCardInfo type={'distance'} info={distance} missed={missed} />
 			</div>
 			<div className="training-card__container">
-				<TrainingCardButton type={'delete'} handleClick={handleDeleteClick} />
+				<TrainingCardButton
+					type={'delete'}
+					handleClick={handleDeleteClick}
+					missed={missed}
+				/>
 				<TrainingCardButton
 					type={'check'}
 					handleClick={() => console.log(card.id)}
+					missed={missed}
 				/>
 				<TrainingCardButton
 					type={'edit'}
 					handleClick={() => console.log(card.id)}
+					missed={missed}
 				/>
 			</div>
 		</div>
