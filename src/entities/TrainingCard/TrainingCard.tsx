@@ -3,17 +3,31 @@ import { TrainingCardButton } from '../TrainingCardButton/TrainingCardButton';
 import { TrainingCardInfo } from '../TrainingCardInfo/TrainingCardInfo';
 import React, { useEffect, useState } from 'react';
 
+type Training = {
+	id: number;
+	author: string;
+	training_type: string;
+	started_at: string;
+	finished_at: string;
+	distance: number;
+	steps_num: number;
+	completed: boolean;
+	reminder: boolean;
+	rating: number;
+};
+
 type Props = {
 	card: {
 		id: number;
 		author: string;
 		training_type: string;
-		started_at: Date;
+		started_at: string;
 		finished_at: string;
 		distance: number;
 		steps_num: number;
 		completed: boolean;
 		reminder: boolean;
+		rating: number;
 	};
 	title: string;
 	key: number;
@@ -22,6 +36,7 @@ type Props = {
 	distance: string;
 	reminder: boolean;
 	handleDelete: (key: number) => void;
+	handleCheck: (key: number, card: Training) => void;
 };
 
 export const TrainingCard = ({
@@ -32,6 +47,7 @@ export const TrainingCard = ({
 	distance,
 	reminder,
 	handleDelete,
+	handleCheck,
 }: Props) => {
 	const [missed, setMissed] = useState(false);
 
@@ -45,6 +61,10 @@ export const TrainingCard = ({
 
 	function handleDeleteClick() {
 		handleDelete(card.id);
+	}
+
+	function handleCheckClick() {
+		handleCheck(card.id, card);
 	}
 
 	return (
@@ -81,7 +101,7 @@ export const TrainingCard = ({
 				/>
 				<TrainingCardButton
 					type={'check'}
-					handleClick={() => console.log(card.id)}
+					handleClick={handleCheckClick}
 					missed={missed}
 				/>
 				<TrainingCardButton

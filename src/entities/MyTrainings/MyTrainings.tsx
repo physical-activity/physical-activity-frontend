@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './MyTrainings.css';
 import { getUserTrainings } from '../../shared/api/training';
 import { deleteTraining } from '../../shared/api/training';
+import { updateTraining } from '../../shared/api/training';
 import React, { useEffect, useState } from 'react';
 
 export const MyTrainings = () => {
@@ -12,12 +13,13 @@ export const MyTrainings = () => {
 		id: number;
 		author: string;
 		training_type: string;
-		started_at: Date;
+		started_at: string;
 		finished_at: string;
 		distance: number;
 		steps_num: number;
 		completed: boolean;
 		reminder: boolean;
+		rating: number;
 	};
 
 	// Training:
@@ -129,9 +131,29 @@ export const MyTrainings = () => {
 	const handleDelete = async (id: number) => {
 		try {
 			await deleteTraining(id);
-			const data = await getUserTrainings();
-			setItems(data.results);
-			console.log(data.results);
+			if (activeButton === 0) {
+				fetchPlannedTrainings();
+			} else if (activeButton === 1) {
+				fetchMissedTrainings();
+			} else {
+				fetchCompletedTrainings();
+			}
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
+	const handleCheck = async (id: number, card: Training) => {
+		try {
+			card.completed = true;
+			await updateTraining(id, card);
+			if (activeButton === 0) {
+				fetchPlannedTrainings();
+			} else if (activeButton === 1) {
+				fetchMissedTrainings();
+			} else {
+				fetchCompletedTrainings();
+			}
 		} catch (e) {
 			console.error(e);
 		}
@@ -180,6 +202,7 @@ export const MyTrainings = () => {
 							distance={`${card.distance} км`}
 							reminder={card.reminder}
 							handleDelete={handleDelete}
+							handleCheck={handleCheck}
 						/>
 					))}
 				</div>

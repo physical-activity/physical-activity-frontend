@@ -9,6 +9,19 @@ type Data = {
 	reminder: boolean;
 };
 
+type Training = {
+	id: number;
+	author: string;
+	training_type: string;
+	started_at: string;
+	finished_at: string;
+	distance: number;
+	steps_num: number;
+	completed: boolean;
+	reminder: boolean;
+	rating: number;
+};
+
 const handleResponse = (res: any) => {
 	if (res.ok) {
 		return res.json();
@@ -62,4 +75,17 @@ export const deleteTraining = async (id: number) => {
 		},
 	});
 	return res;
+};
+
+export const updateTraining = async (id: number, data: Training) => {
+	const token = localStorage.getItem('token');
+	const res = await fetch(`${BASE_URL}/trainings/${id}/`, {
+		method: 'PUT',
+		headers: {
+			Authorization: `Token ${token}`,
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	});
+	return handleResponse(res);
 };
