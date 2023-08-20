@@ -50,6 +50,9 @@ export const Input = ({
 				}`}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e)}
 				pattern={pattern}
+				onBlur={({ target }) => {
+					target.value = target.value.trim();
+				}}
 			/>
 			{!value && required && (
 				<p className="input-block__input-name">
