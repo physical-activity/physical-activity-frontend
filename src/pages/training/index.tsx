@@ -14,7 +14,7 @@ export const TrainingPageMobile = () => {
 			<HeaderMain userData={userData} />
 			<TextBlock text={'тренировка'} />
 			<TrainingForm />
-			<FooterMain />
+			<FooterMain page={'trainings'} />
 		</div>
 	);
 };

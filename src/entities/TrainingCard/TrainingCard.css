@@ -7,55 +7,64 @@
 	padding: 20px;
 	gap: 12px;
 	border-radius: 8px;
+	margin-bottom: 8px;
 }
 
-.training-card__conteiner {
+.training-card:last-of-type {
+	margin-bottom: 0;
+}
+
+.training-card__container {
 	display: flex;
 	justify-content: space-between;
 }
 
-.training-card__conteiner:nth-of-type(2) {
+.training-card__container_missed {
+	color: var(--new-dark-gray, #898989);
+}
+
+.training-card__info-container {
+	display: flex;
+	justify-content: space-between;
 	padding-bottom: 12px;
 	border-bottom: 1px solid #c3c3cc;
 }
 
-.training-card__pic {
-	background-repeat: no-repeat;
-	background-position: center;
-	height: 24px;
-	width: 24px;
-	background-color: aquamarine;
+.training-card__inf-container_missed {
+	color: var(--new-dark-gray, #898989);
 }
 
-.training-card__info {
-	display: flex;
-	gap: 4px;
+.training-card__info-container_completed {
+	padding-bottom: 0;
+	border-bottom: none;
 }
 
-.training-card__button {
+.training-card__title {
+	font-family: Open Sans;
+	font-size: 16px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 17.6px;
+	text-transform: uppercase;
+}
+
+.training-card__title_missed {
+	color: var(--new-dark-gray, #898989);
+}
+
+.training-card__reminder {
 	background: none;
-	border: none;
-	outline: none;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-color: #3b3a2d;
-	cursor: pointer;
 	height: 24px;
 	width: 24px;
+	background-image: url(./bell.svg);
 }
 
-/* background: none;
-border: none;
-outline: none;
-background-image: url(../../images/find-item.svg);
-background-repeat: no-repeat;
-background-position: center;
-height: 34px;
-width: 34px;
-border-radius: 50%;
-background-color: #3B3A2D;
-background-color: rgb(224, 79, 79);
-cursor: pointer;
-position: absolute;
-right: 7px;
-top: 7px; */
+.training-card__reminder_active {
+	background-image: url(./bellActive.svg);
+}
+
+.training-card__reminder_missed {
+	background-image: none;
+}
