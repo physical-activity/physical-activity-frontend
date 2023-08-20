@@ -67,7 +67,7 @@ export const RegisterForm = () => {
 				/>
 				<Input
 					required={true}
-					type="email"
+					type="text"
 					id="email"
 					name="email"
 					value={values.email}
