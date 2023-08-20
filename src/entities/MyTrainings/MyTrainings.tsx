@@ -22,40 +22,6 @@ export const MyTrainings = () => {
 		rating: number;
 	};
 
-	// Training:
-	//     type: object
-	//     properties:
-	//       id:
-	//         type: integer
-	//         readOnly: true
-	//       author:
-	//         $ref: '#/components/schemas/Email'
-	//       training_type:
-	//         $ref: '#/components/schemas/TrainingType'
-	//       started_at:
-	//         $ref: '#/components/schemas/TrainingTime'
-	//       finished_at:
-	//         $ref: '#/components/schemas/TrainingTime'
-	//       distance:
-	//         $ref: '#/components/schemas/Distance'
-	//       steps_num:
-	//         $ref: '#/components/schemas/StepsNum'
-	//       completed:
-	//         type: boolean
-	//         description: 'Завершение тренировки'
-	//         example: true
-	//       reminder:
-	//         type: boolean
-	//         description: 'Напоминание о тренировке'
-	//         example: false
-	//       rating:
-	//         $ref: '#/components/schemas/Rating'
-	//     required:
-	//       - id
-	//       - author
-	//       - training_type
-	//       - started_at
-
 	const [items, setItems] = useState([]);
 	const [activeButton, setActiveButton] = useState(0);
 
@@ -84,7 +50,6 @@ export const MyTrainings = () => {
 					plannedTrainings.push(training);
 				}
 			});
-			console.log(plannedTrainings);
 			setActiveButton(0);
 			setItems(plannedTrainings);
 		} catch (e) {
@@ -103,7 +68,6 @@ export const MyTrainings = () => {
 					missedTrainings.push(training);
 				}
 			});
-			console.log(missedTrainings);
 			setActiveButton(1);
 			setItems(missedTrainings);
 		} catch (e) {
@@ -120,7 +84,6 @@ export const MyTrainings = () => {
 					completedTrainings.push(training);
 				}
 			});
-			console.log(completedTrainings);
 			setActiveButton(2);
 			setItems(completedTrainings);
 		} catch (e) {
@@ -198,7 +161,6 @@ export const MyTrainings = () => {
 								formatterDay.format(new Date(card.started_at)).split('.')[0]
 							}
 							time={formatterTime.format(new Date(card.started_at))}
-							// time={`${new Date(card.started_at).getHours()}:${new Date(card.started_at).getMinutes()}`}
 							distance={`${card.distance} км`}
 							reminder={card.reminder}
 							handleDelete={handleDelete}

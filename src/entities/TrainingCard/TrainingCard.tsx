@@ -50,12 +50,16 @@ export const TrainingCard = ({
 	handleCheck,
 }: Props) => {
 	const [missed, setMissed] = useState(false);
+	const [completed, setCompleted] = useState(false);
 
 	useEffect(() => {
 		let trainingStartTime = new Date(card.started_at).getTime();
 		let currentTime = Date.now();
 		if (trainingStartTime < currentTime) {
 			setMissed(true);
+		}
+		if (card.completed === true) {
+			setCompleted(true);
 		}
 	}, []);
 
@@ -81,35 +85,39 @@ export const TrainingCard = ({
 					className={`training-card__reminder 
 						${reminder ? 'training-card__reminder_active' : ''}
 						${missed ? 'training-card__reminder_missed' : ''}
+						${completed ? 'training-card__reminder_missed' : ''}
 					`}
 				></div>
 			</div>
 			<div
-				className={`training-card__container ${
-					missed ? 'training-card__container_missed' : ''
-				}`}
+				className={`training-card__info-container
+					${missed ? 'training-card__info-container_missed' : ''}
+					${completed ? 'training-card__info-container_completed' : ''}
+				`}
 			>
 				<TrainingCardInfo type={'date'} info={date} missed={missed} />
 				<TrainingCardInfo type={'time'} info={time} missed={missed} />
 				<TrainingCardInfo type={'distance'} info={distance} missed={missed} />
 			</div>
-			<div className="training-card__container">
-				<TrainingCardButton
-					type={'delete'}
-					handleClick={handleDeleteClick}
-					missed={missed}
-				/>
-				<TrainingCardButton
-					type={'check'}
-					handleClick={handleCheckClick}
-					missed={missed}
-				/>
-				<TrainingCardButton
-					type={'edit'}
-					handleClick={() => console.log(card.id)}
-					missed={missed}
-				/>
-			</div>
+			{!completed && (
+				<div className="training-card__container">
+					<TrainingCardButton
+						type={'delete'}
+						handleClick={handleDeleteClick}
+						missed={missed}
+					/>
+					<TrainingCardButton
+						type={'check'}
+						handleClick={handleCheckClick}
+						missed={missed}
+					/>
+					<TrainingCardButton
+						type={'edit'}
+						handleClick={() => console.log(card.id)}
+						missed={missed}
+					/>
+				</div>
+			)}
 		</div>
 	);
 };

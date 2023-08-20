@@ -88,7 +88,7 @@ export const PersonalAccaunt = () => {
 				isPopupOpen={isPopupOpen}
 				handleClickSingOut={handleClickSingOut}
 			/>
-			<FooterMain />
+			<FooterMain page={'main'} />
 		</main>
 	);
 };

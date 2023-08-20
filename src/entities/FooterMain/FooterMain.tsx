@@ -3,10 +3,16 @@ import { useNavigate } from 'react-router';
 import './FooterMain.css';
 
 import homeIcon from './icons/home.svg';
+import homeIconInactive from './icons/homeInactive.svg';
 import workoutIcon from './icons/workout.svg';
-import settingsIcon from './icons/settings.svg';
+import workoutIconInactive from './icons/workoutInactive.svg';
+import settingsIconInactive from './icons/settingsInactive.svg';
 
-const FooterMain = () => {
+type Props = {
+	page: string;
+};
+
+const FooterMain = ({ page }: Props) => {
 	const navigate = useNavigate();
 
 	return (
@@ -17,16 +23,18 @@ const FooterMain = () => {
 					navigate('/');
 				}}
 			>
-				<img src={homeIcon}></img>
+				<img src={page === 'main' ? homeIcon : homeIconInactive}></img>
 				<caption>Главная</caption>
 			</button>
 			<button
 				className="footer-main__item"
 				onClick={() => {
-					navigate('/register');
+					navigate('/my-trainings');
 				}}
 			>
-				<img src={workoutIcon}></img>
+				<img
+					src={page === 'trainings' ? workoutIcon : workoutIconInactive}
+				></img>
 				<caption>Тренировки</caption>
 			</button>
 			<button
@@ -35,7 +43,7 @@ const FooterMain = () => {
 					navigate('/register');
 				}}
 			>
-				<img src={settingsIcon}></img>
+				<img src={settingsIconInactive}></img>
 				<caption>Настройки</caption>
 			</button>
 		</div>

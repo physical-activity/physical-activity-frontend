@@ -20,7 +20,7 @@ export const HomePageMobile = () => {
 				<WorkoutBlock />
 				<BtnBlock text={'тренироваться'} />
 			</div>
-			<FooterMain />
+			<FooterMain page={'main'} />
 		</main>
 	);
 };

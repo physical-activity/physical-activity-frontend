@@ -23,9 +23,20 @@
 	color: var(--new-dark-gray, #898989);
 }
 
-.training-card__container:nth-of-type(2) {
+.training-card__info-container {
+	display: flex;
+	justify-content: space-between;
 	padding-bottom: 12px;
 	border-bottom: 1px solid #c3c3cc;
+}
+
+.training-card__inf-container_missed {
+	color: var(--new-dark-gray, #898989);
+}
+
+.training-card__info-container_completed {
+	padding-bottom: 0;
+	border-bottom: none;
 }
 
 .training-card__title {
@@ -57,31 +68,3 @@
 .training-card__reminder_missed {
 	background-image: none;
 }
-
-/* .training-card__button {
-	background: none;
-	border: none;
-	outline: none;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-color: #3b3a2d;
-	cursor: pointer;
-	height: 24px;
-	width: 24px;
-} */
-
-/* background: none;
-border: none;
-outline: none;
-background-image: url(../../images/find-item.svg);
-background-repeat: no-repeat;
-background-position: center;
-height: 34px;
-width: 34px;
-border-radius: 50%;
-background-color: #3B3A2D;
-background-color: rgb(224, 79, 79);
-cursor: pointer;
-position: absolute;
-right: 7px;
-top: 7px; */
