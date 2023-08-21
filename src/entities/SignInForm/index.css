@@ -3,11 +3,11 @@
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
-	width: calc(100% - 8px);
+	width: 100%;
 }
 
 .form__input-container {
-	width: calc(100% - 40px);
+	width: 100%;
 	background-color: #fff;
 	border-radius: 12px;
 	padding: 88px 20px 28px;
@@ -41,7 +41,7 @@
 }
 
 .form__button-continer {
-	width: calc(100% - 40px);
+	width: 100%;
 	background-color: #fff;
 	border-radius: 12px;
 	padding: 28px 20px;
