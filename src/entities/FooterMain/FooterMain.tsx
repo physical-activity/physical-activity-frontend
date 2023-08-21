@@ -40,7 +40,7 @@ const FooterMain = ({ page }: Props) => {
 			<button
 				className="footer-main__item"
 				onClick={() => {
-					navigate('/register');
+					navigate('/');
 				}}
 			>
 				<img src={statsIconInactive}></img>
