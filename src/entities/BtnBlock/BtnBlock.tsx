@@ -17,7 +17,7 @@ const BtnBlock = ({ text }: { text: string }) => {
 			<button
 				className="btnBlock__btn"
 				onClick={() => {
-					isToken ? navigate('/training') : navigate('/register');
+					isToken ? navigate('/training') : navigate('/signin');
 				}}
 			>
 				{text}

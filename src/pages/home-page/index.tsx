@@ -18,7 +18,7 @@ export const HomePageMobile = () => {
 				<ActivityBlock />
 				<TextBlock text={'тренировки'} />
 				<WorkoutBlock />
-				<BtnBlock text={'тренироваться'} />
+				<BtnBlock text={'присоединиться'} />
 			</div>
 			<FooterMain page={'main'} />
 		</main>

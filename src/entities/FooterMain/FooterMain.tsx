@@ -6,7 +6,7 @@ import homeIcon from './icons/home.svg';
 import homeIconInactive from './icons/homeInactive.svg';
 import workoutIcon from './icons/workout.svg';
 import workoutIconInactive from './icons/workoutInactive.svg';
-import settingsIconInactive from './icons/settingsInactive.svg';
+import statsIconInactive from './icons/statInactive.svg';
 
 type Props = {
 	page: string;
@@ -43,8 +43,8 @@ const FooterMain = ({ page }: Props) => {
 					navigate('/register');
 				}}
 			>
-				<img src={settingsIconInactive}></img>
-				<caption>Настройки</caption>
+				<img src={statsIconInactive}></img>
+				<caption>Статистика</caption>
 			</button>
 		</div>
 	);

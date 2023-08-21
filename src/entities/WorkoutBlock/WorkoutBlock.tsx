@@ -21,7 +21,7 @@ const WorkoutBlock = () => {
 			</div>
 			<button
 				onClick={() => {
-					isToken ? navigate('/training') : navigate('/register');
+					isToken ? navigate('/training') : navigate('/signin');
 				}}
 				className="workoutBlock__img-container"
 			>
@@ -38,7 +38,7 @@ const WorkoutBlock = () => {
 			</div>
 			<button
 				onClick={() => {
-					isToken ? navigate('/training') : navigate('/register');
+					isToken ? navigate('/training') : navigate('/signin');
 				}}
 				className="workoutBlock__img-container"
 			>
@@ -53,7 +53,7 @@ const WorkoutBlock = () => {
 			</div>
 			<button
 				onClick={() => {
-					isToken ? navigate('/training') : navigate('/register');
+					isToken ? navigate('/training') : navigate('/signin');
 				}}
 				className="workoutBlock__img-container"
 			>
