@@ -10,6 +10,8 @@ import { useAppSelector } from 'shared/hooks/redux';
 export const HomePageMobile = () => {
 	const userData = useAppSelector((state) => state.user);
 
+	const token = localStorage.getItem('token');
+
 	return (
 		<main className="main">
 			<HeaderMain userData={userData} />
@@ -18,7 +20,7 @@ export const HomePageMobile = () => {
 				<ActivityBlock />
 				<TextBlock text={'тренировки'} />
 				<WorkoutBlock />
-				<BtnBlock text={'присоединиться'} />
+				<BtnBlock text={token !== null ? 'тренироваться' : 'присоединиться'} />
 			</div>
 			<FooterMain page={'main'} />
 		</main>
