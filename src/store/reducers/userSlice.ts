@@ -91,6 +91,39 @@ export const singInUser = createAsyncThunk<any, signinData>(
 	}
 );
 
+type resetPassType = {
+	new_password: string;
+	uid: string;
+	token: string;
+};
+export const resetUserPassword = createAsyncThunk<any, resetPassType>(
+	'post/resetPassword',
+	async (data) => {
+		const res = await fetch(
+			`https://easyfit.space/api/v1/auth/set_new_password/${data.uid}/${data.token}/`,
+			{
+				method: 'POST',
+				headers: {
+					accept: 'application/json',
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					uid: data.uid,
+					token: data.token,
+					new_password: data.new_password,
+				}),
+			}
+		);
+		let response;
+		if (res.status === 200) {
+			response = res.json();
+		} else {
+			throw new Error('Smth went wrong');
+		}
+		return response;
+	}
+);
+
 export const getUserData = createAsyncThunk<any>('user/getData', async () => {
 	const token = localStorage.getItem('token');
 	const res = await fetch('https://easyfit.space/api/v1/account/', {
