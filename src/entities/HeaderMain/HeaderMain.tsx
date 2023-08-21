@@ -28,7 +28,16 @@ const HeaderMain = ({ userData }: { userData: UserState }) => {
 							</p>
 						</button>
 					</>
-				) : (
+				) : null}
+			</div>
+		</div>
+	);
+};
+
+export default HeaderMain;
+
+/*
+(
 					<>
 						<img
 							src={loginIcon}
@@ -36,10 +45,5 @@ const HeaderMain = ({ userData }: { userData: UserState }) => {
 							onClick={() => navigate('/signin')}
 						/>
 					</>
-				)}
-			</div>
-		</div>
-	);
-};
-
-export default HeaderMain;
+				)
+*/
