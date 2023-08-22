@@ -5,6 +5,7 @@ body {
 		'Open Sans', 'Inter', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	-webkit-tap-highlight-color: transparent;
 	background-color: black;
 }
 
