@@ -148,7 +148,7 @@ export const TrainingForm = () => {
 		finished_at: string
 	): any => {
 		const date = Number(training_date[0] + training_date[1]);
-		const month = Number(training_date[3] + training_date[4]);
+		const month = Number(training_date[3] + training_date[4]) - 1;
 		const year = Number(
 			training_date[6] + training_date[7] + training_date[8] + training_date[9]
 		);
