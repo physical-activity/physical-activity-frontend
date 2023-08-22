@@ -8,11 +8,12 @@ import { RegisterConfirmPage } from './register-confirm';
 import { RegisterSuccessPage } from './register-success';
 import { RegisterErrorPage } from './register-error';
 import { PersonalAccaunt } from './personal-accaunt';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { getUserData } from 'store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { TrainingPageMobile } from './training';
 import { MyTrainingsPageMobile } from './my-trainings';
+import RequireAuth from 'shared/hooks/require-auth';
 
 export const Routing = () => {
 	const dispatch = useAppDispatch();
@@ -30,16 +31,57 @@ export const Routing = () => {
 			<Route path="/signin" element={<SignInPage />} />
 			<Route
 				path="/auth/set_new_password/:uid/:token"
-				element={<ConfirmNewPasswordPage />}
+				element={
+					<RequireAuth
+						children={
+							<Suspense>
+								<ConfirmNewPasswordPage />
+							</Suspense>
+						}
+					/>
+				}
 			/>
 			<Route path="/reset_password" element={<ResetPasswordPage />} />
 			<Route path="/register" element={<RegisterPage />} />
 			<Route path="/register-confirm" element={<RegisterConfirmPage />} />
 			<Route path="/register-success" element={<RegisterSuccessPage />} />
 			<Route path="/register-error" element={<RegisterErrorPage />} />
-			<Route path="/users/:id" element={<PersonalAccaunt />} />
-			<Route path="/training" element={<TrainingPageMobile />} />
-			<Route path="/my-trainings" element={<MyTrainingsPageMobile />} />
+			<Route
+				path="/users/:id"
+				element={
+					<RequireAuth
+						children={
+							<Suspense>
+								<PersonalAccaunt />
+							</Suspense>
+						}
+					/>
+				}
+			/>
+			<Route
+				path="/training"
+				element={
+					<RequireAuth
+						children={
+							<Suspense>
+								<TrainingPageMobile />
+							</Suspense>
+						}
+					/>
+				}
+			/>
+			<Route
+				path="/my-trainings"
+				element={
+					<RequireAuth
+						children={
+							<Suspense>
+								<MyTrainingsPageMobile />
+							</Suspense>
+						}
+					/>
+				}
+			/>
 		</Routes>
 	);
 };
