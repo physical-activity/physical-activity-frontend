@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import './index.css';
+import timepickerFormatTime from 'shared/utils/timepickerFormatTime';
 
 const hours = Array.from(Array(24).keys());
 const minutes = Array.from(Array(60).keys());
@@ -9,21 +10,10 @@ const minutes = Array.from(Array(60).keys());
 export default function Timepicker({ title, onClose, handleTimePick }) {
 	const today = new Date();
 
-	const timepickerFormatTime = (hour, minutes) => {
-		let formattedHour;
-		let formattedMinutes;
-
-		hour <= 9 ? (formattedHour = '0' + hour) : (formattedHour = hour);
-		minutes <= 9
-			? (formattedMinutes = '0' + minutes)
-			: (formattedMinutes = minutes);
-		return `${formattedHour}:${formattedMinutes}`;
-	};
-
 	const handleChooseClick = () => {
 		const formattedTime = timepickerFormatTime(selectedHour, selectedMinute);
-		handleTimePick(formattedTime);
 
+		handleTimePick(formattedTime);
 		onClose();
 	};
 
