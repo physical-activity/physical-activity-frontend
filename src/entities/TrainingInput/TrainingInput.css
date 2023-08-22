@@ -2,6 +2,7 @@
 	width: 100%;
 	border: none;
 	text-align: right;
+	cursor: pointer;
 }
 
 .training-input__input:focus {

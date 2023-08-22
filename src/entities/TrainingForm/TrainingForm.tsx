@@ -11,6 +11,7 @@ import { TrainingDuration } from '../TrainingDuration/TrainingDuration';
 import requireSvg from './ic_required.svg';
 import calendarSvg from './ic_calendar.svg';
 import CalendarModal from 'entities/CalendarModal/CalendarModal';
+import TimepickerModal from 'entities/TimepickerModal/TimepickerModal';
 
 export const TrainingForm = () => {
 	type TypeItem = {
@@ -40,6 +41,8 @@ export const TrainingForm = () => {
 	const [isDuratiomErrorMessage, setIsDuratiomErrorMessage] = useState('');
 	const [globalValid, setGlobalValid] = useState(false);
 	const [isCaledarModalOpen, setIsCalendarModalOpen] = useState(false);
+	const [isTimeModalStartOpen, setIsTimeModalStartOpen] = useState(false);
+	const [isTimeModalFinishOpen, setIsTimeModalFinishOpen] = useState(false);
 
 	useEffect(() => {
 		getTrainingTypes()
@@ -66,18 +69,18 @@ export const TrainingForm = () => {
 		trainingDateInputValue,
 		trainingFinishedAtInputValue,
 		trainingStartedAtInputValue,
+		errors.training_date,
+		errors.started_at,
+		errors.finished_at,
 	]);
 
 	useEffect(() => {
 		isValid && !isDuratiomError ? setGlobalValid(true) : setGlobalValid(false);
 	}, [isDuratiomError, isValid]);
 
-	const validateTrainingStartedAtInput = (
-		e: React.ChangeEvent<HTMLInputElement>
-	) => {
-		handleChange(e);
-		setTrainingStartedAtInputValue(e.target.value);
-	};
+	function handleTimeStartPick(time: string) {
+		setTrainingStartedAtInputValue(time);
+	}
 
 	const validateTrainingDistanceInput = (
 		e: React.ChangeEvent<HTMLInputElement>
@@ -86,12 +89,9 @@ export const TrainingForm = () => {
 		setTrainingDistanceInputValue(Number(e.target.value));
 	};
 
-	const validateTrainingFinishedAtInput = (
-		e: React.ChangeEvent<HTMLInputElement>
-	) => {
-		handleChange(e);
-		setTrainingFinishedAtInputValue(e.target.value);
-	};
+	function handleTimeFinishPick(time: string) {
+		setTrainingFinishedAtInputValue(time);
+	}
 
 	const validateTrainingStepsNumInput = (
 		e: React.ChangeEvent<HTMLInputElement>
@@ -198,8 +198,8 @@ export const TrainingForm = () => {
 
 		const time = handleISODate(
 			trainingDateInputValue,
-			values.started_at,
-			values.finished_at
+			trainingStartedAtInputValue,
+			trainingFinishedAtInputValue
 		);
 		const data: any = {
 			training_type: trainingTypeInputValue,
@@ -229,7 +229,12 @@ export const TrainingForm = () => {
 
 	return (
 		<>
-			<form className="training__form" onSubmit={handleSubmit} noValidate>
+			<form
+				className="training__form"
+				onSubmit={handleSubmit}
+				noValidate
+				autoComplete="off"
+			>
 				<div className="training__container">
 					<div className="list-conteiner">
 						<div className={`list ${isListOpen && 'list_active'}`}>
@@ -301,6 +306,7 @@ export const TrainingForm = () => {
 							className={`training__input ${
 								errors.started_at && 'training__input_error'
 							}`}
+							onClick={() => setIsTimeModalStartOpen(true)}
 						>
 							<p className="training__label">Время старта</p>
 							<TrainingInput
@@ -309,9 +315,10 @@ export const TrainingForm = () => {
 								placeholder="00:00 ч"
 								name="started_at"
 								value={trainingStartedAtInputValue}
-								setValue={validateTrainingStartedAtInput}
+								setValue={() => handleTimeStartPick}
 								pattern={REGEX.time.source}
 								required={true}
+								isReadOnly
 							/>
 						</div>
 						<span className="training__error">{errors.started_at}</span>
@@ -342,6 +349,7 @@ export const TrainingForm = () => {
 							className={`training__input ${
 								errors.finished_at && 'training__input_error'
 							}`}
+							onClick={() => setIsTimeModalFinishOpen(true)}
 						>
 							<p className="training__label">Время окончания</p>
 							<TrainingInput
@@ -350,8 +358,9 @@ export const TrainingForm = () => {
 								placeholder="00:00 ч"
 								name="finished_at"
 								value={trainingFinishedAtInputValue}
-								setValue={validateTrainingFinishedAtInput}
+								setValue={() => handleTimeFinishPick}
 								pattern={REGEX.time.source}
+								isReadOnly
 							/>
 						</div>
 						<span className="training__error">{errors.finished_at}</span>
@@ -411,6 +420,18 @@ export const TrainingForm = () => {
 				isOpen={isCaledarModalOpen}
 				onClose={() => setIsCalendarModalOpen(false)}
 				handleDatePick={handleDatePick}
+			/>
+			<TimepickerModal
+				title="Время старта"
+				isOpen={isTimeModalStartOpen}
+				onClose={() => setIsTimeModalStartOpen(false)}
+				handleTimePick={handleTimeStartPick}
+			/>
+			<TimepickerModal
+				title="Время старта"
+				isOpen={isTimeModalFinishOpen}
+				onClose={() => setIsTimeModalFinishOpen(false)}
+				handleTimePick={handleTimeFinishPick}
 			/>
 		</>
 	);
