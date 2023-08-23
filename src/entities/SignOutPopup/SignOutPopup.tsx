@@ -16,6 +16,7 @@ export const SignOutPopup = ({
 
 	const handleLogout = () => {
 		localStorage.removeItem('token');
+		localStorage.removeItem('google_access_token');
 		dispatch(
 			clearUserData({
 				user: {
