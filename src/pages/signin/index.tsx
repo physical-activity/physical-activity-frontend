@@ -6,6 +6,9 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { useAppDispatch } from 'shared/hooks/redux';
 import { useNavigate } from 'react-router';
 import { userAuthGoogle } from 'store/reducers/userSlice';
+import googleLogo from './google.svg';
+import vkLogo from './vk.svg';
+import { Link } from 'react-router-dom';
 
 export const SignInPage = () => {
 	const dispatch = useAppDispatch();
@@ -62,9 +65,19 @@ export const SignInPage = () => {
 		<main className="main">
 			<Header name={'вход'} />
 			<SignInForm />
-			<button className="google-auth-button" onClick={() => login()}>
-				Войти через аккаунт Google 🚀{' '}
-			</button>
+			<div className="google-auth">
+				<button className="google-auth-button" onClick={() => login()}>
+					<img src={googleLogo} />
+					<p className="auth-text">Продолжить с Google</p>
+				</button>
+				<Link
+					to="https://oauth.vk.com/authorize?client_id=51731957&redirect_uri=https://easyfit.space&response_type=code&scope=email"
+					className="google-auth-button"
+				>
+					<img src={vkLogo} />
+					<p className="auth-text">Продолжить с VK</p>
+				</Link>
+			</div>
 			<button onClick={() => read()}>read activite</button>
 			<Footer footerQuestion={'Еще нет аккаунта?'} footerAnswer={'Создать'} />
 		</main>
