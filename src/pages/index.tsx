@@ -8,7 +8,7 @@ import { RegisterConfirmPage } from './register-confirm';
 import { RegisterSuccessPage } from './register-success';
 import { RegisterErrorPage } from './register-error';
 import { PersonalAccaunt } from './personal-accaunt';
-import { Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import { getUserData } from 'store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { TrainingPageMobile } from './training';
@@ -29,59 +29,20 @@ export const Routing = () => {
 		<Routes>
 			<Route path="/" element={<HomePageMobile />} />
 			<Route path="/signin" element={<SignInPage />} />
+			<Route path="/register" element={<RegisterPage />} />
+			<Route path="/reset_password" element={<ResetPasswordPage />} />
 			<Route
 				path="/auth/set_new_password/:uid/:token"
-				element={
-					<RequireAuth
-						children={
-							<Suspense>
-								<ConfirmNewPasswordPage />
-							</Suspense>
-						}
-					/>
-				}
+				element={<ConfirmNewPasswordPage />}
 			/>
-			<Route path="/reset_password" element={<ResetPasswordPage />} />
-			<Route path="/register" element={<RegisterPage />} />
 			<Route path="/register-confirm" element={<RegisterConfirmPage />} />
 			<Route path="/register-success" element={<RegisterSuccessPage />} />
 			<Route path="/register-error" element={<RegisterErrorPage />} />
-			<Route
-				path="/users/:id"
-				element={
-					<RequireAuth
-						children={
-							<Suspense>
-								<PersonalAccaunt />
-							</Suspense>
-						}
-					/>
-				}
-			/>
-			<Route
-				path="/training"
-				element={
-					<RequireAuth
-						children={
-							<Suspense>
-								<TrainingPageMobile />
-							</Suspense>
-						}
-					/>
-				}
-			/>
-			<Route
-				path="/my-trainings"
-				element={
-					<RequireAuth
-						children={
-							<Suspense>
-								<MyTrainingsPageMobile />
-							</Suspense>
-						}
-					/>
-				}
-			/>
+			<Route element={<RequireAuth />}>
+				<Route path="/users/:id" element={<PersonalAccaunt />} />
+				<Route path="/training" element={<TrainingPageMobile />} />
+				<Route path="/my-trainings" element={<MyTrainingsPageMobile />} />
+			</Route>
 		</Routes>
 	);
 };
