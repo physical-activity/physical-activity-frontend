@@ -42,3 +42,17 @@
 	letter-spacing: -0.16px;
 	margin: 0 0 505px;
 }
+
+.google-auth-button {
+	background-color: #fff;
+	border-radius: 14px;
+	border: none;
+	color: var(--new-txt-black, #04091f);
+	text-align: center;
+	font-family: Manrope;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	letter-spacing: -0.16px;
+	padding: 28px 20px;
+}
