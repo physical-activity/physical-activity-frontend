@@ -38,11 +38,30 @@ export const Routing = () => {
 			<Route path="/register-confirm" element={<RegisterConfirmPage />} />
 			<Route path="/register-success" element={<RegisterSuccessPage />} />
 			<Route path="/register-error" element={<RegisterErrorPage />} />
-			<Route element={<RequireAuth />}>
-				<Route path="/users/:id" element={<PersonalAccaunt />} />
-				<Route path="/training" element={<TrainingPageMobile />} />
-				<Route path="/my-trainings" element={<MyTrainingsPageMobile />} />
-			</Route>
+			<Route
+				path="/users/:id"
+				element={
+					<RequireAuth>
+						<PersonalAccaunt />
+					</RequireAuth>
+				}
+			/>
+			<Route
+				path="/training"
+				element={
+					<RequireAuth>
+						<TrainingPageMobile />
+					</RequireAuth>
+				}
+			/>
+			<Route
+				path="/my-trainings"
+				element={
+					<RequireAuth>
+						<MyTrainingsPageMobile />
+					</RequireAuth>
+				}
+			/>
 		</Routes>
 	);
 };
