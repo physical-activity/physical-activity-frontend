@@ -1,4 +1,5 @@
 import './index.css';
+import React, { useEffect, useState } from 'react';
 import qrCode from './images/qrCode.svg';
 import barGreen from './images/barGreen.svg';
 import barWhite from './images/barWhite.svg';
@@ -8,10 +9,24 @@ import telegram from './images/telegram.svg';
 import vk from './images/vk.svg';
 
 export const Landing = () => {
+	const [largeHeader, setLargeHeader] = useState(false);
+
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			window.addEventListener('scroll', () =>
+				setLargeHeader(window.scrollY > 100)
+			);
+		}
+	}, []);
+
 	return (
 		<div className="landing">
 			<header className="landing__header">
-				<div className="landing__header-outer-container">
+				<div
+					className={`landing__header-outer-container ${
+						largeHeader && 'landing__header-outer-container_visible'
+					}`}
+				>
 					<div className="landing__header-inner-container">
 						<h1 className="landing__header-logo">EasyFit</h1>
 						<ul className="landing__header-links">
