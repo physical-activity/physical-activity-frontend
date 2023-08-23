@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { SignInPage } from './signin';
 import { ConfirmNewPasswordPage } from './confirm-pass-page';
 import { ResetPasswordPage } from './reset-pass-page';
@@ -9,7 +9,7 @@ import { RegisterSuccessPage } from './register-success';
 import { RegisterErrorPage } from './register-error';
 import { PersonalAccaunt } from './personal-accaunt';
 import { useEffect } from 'react';
-import { getUserData } from 'store/reducers/userSlice';
+import { getUserData, userAuthVK } from 'store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { TrainingPageMobile } from './training';
 import { MyTrainingsPageMobile } from './my-trainings';
@@ -17,12 +17,19 @@ import { MyTrainingsPageMobile } from './my-trainings';
 export const Routing = () => {
 	const dispatch = useAppDispatch();
 	const userData = useAppSelector((state) => state.user);
+	const location = useLocation();
 
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
 			dispatch(getUserData());
 		}
 	}, [dispatch, userData.auth_token]);
+
+	useEffect(() => {
+		if (location.search) {
+			dispatch(userAuthVK(location.search.replace('?code=', '')));
+		}
+	}, [dispatch, location]);
 
 	return (
 		<Routes>

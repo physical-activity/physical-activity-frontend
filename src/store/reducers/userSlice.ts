@@ -161,6 +161,25 @@ export const userAuthGoogle = createAsyncThunk('auth/google', async () => {
 	return response;
 });
 
+export const userAuthVK = createAsyncThunk('auth/vk', async (code: string) => {
+	const res = await fetch(`https://easyfit.space/api/v1/dj-rest-auth/vk/`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			code: code,
+		}),
+	});
+	let response;
+	if (res.status === 200) {
+		response = await res.json();
+	} else {
+		throw new Error("Can't login");
+	}
+	return response;
+});
+
 export const userSlice = createSlice({
 	name: 'user',
 	initialState,
@@ -193,6 +212,10 @@ export const userSlice = createSlice({
 			state.auth_token = action.payload.auth_token;
 		});
 		builder.addCase(userAuthGoogle.fulfilled, (state, action) => {
+			localStorage.setItem('token', action.payload.key);
+			state.auth_token = action.payload.key;
+		});
+		builder.addCase(userAuthVK.fulfilled, (state, action) => {
 			localStorage.setItem('token', action.payload.key);
 			state.auth_token = action.payload.key;
 		});
