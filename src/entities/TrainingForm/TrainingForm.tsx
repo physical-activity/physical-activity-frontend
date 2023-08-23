@@ -235,8 +235,8 @@ export const TrainingForm = () => {
 				noValidate
 				autoComplete="off"
 			>
-				<div className="training__container">
-					<div className="list-conteiner">
+				<div className="training__container training__container_form">
+					<div className="list-container">
 						<div className={`list ${isListOpen && 'list_active'}`}>
 							<div className="list__top">
 								<p className="list__title">{trainingTypeInputValue}</p>
@@ -269,7 +269,7 @@ export const TrainingForm = () => {
 						</div>
 					</div>
 
-					<div className="training__input-conteiner">
+					<div className="training__input-container">
 						<div
 							className={`training__input ${
 								errors.training_date && 'training__input_error'
@@ -301,7 +301,7 @@ export const TrainingForm = () => {
 						<span className="training__error">{errors.training_date}</span>
 					</div>
 
-					<div className="training__input-conteiner">
+					<div className="training__input-container">
 						<div
 							className={`training__input ${
 								errors.started_at && 'training__input_error'
@@ -324,7 +324,7 @@ export const TrainingForm = () => {
 						<span className="training__error">{errors.started_at}</span>
 					</div>
 
-					<div className="training__input-conteiner">
+					<div className="training__input-container">
 						<div
 							className={`training__input ${
 								errors.distance && 'training__input_error'
@@ -344,7 +344,7 @@ export const TrainingForm = () => {
 						<span className="training__error">{errors.distance}</span>
 					</div>
 
-					<div className="training__input-conteiner">
+					<div className="training__input-container">
 						<div
 							className={`training__input ${
 								errors.finished_at && 'training__input_error'
@@ -368,7 +368,7 @@ export const TrainingForm = () => {
 					</div>
 
 					{trainingTypeInputValue === trainingTypes[2]?.name && (
-						<div className="training__input-conteiner">
+						<div className="training__input-container">
 							<div
 								className={`training__input ${
 									errors.steps_num && 'training__input_error'
