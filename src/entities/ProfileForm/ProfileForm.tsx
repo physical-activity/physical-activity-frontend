@@ -1,10 +1,6 @@
 import { Input } from 'entities/Input/Input';
 import React from 'react';
 import './index.css';
-import { useNavigate } from 'react-router';
-import { useAppDispatch } from 'shared/hooks/redux';
-
-import { clearUserData } from 'store/reducers/userSlice';
 
 const ProfileForm = ({
 	isInputDisabled,
@@ -32,7 +28,7 @@ const ProfileForm = ({
 	return (
 		<div className="profile">
 			<form className="profile__input-container">
-				{avatar !== '' ? (
+				{!!avatar ? (
 					<img className="profile__avatar" src={avatar} alt="avatar" />
 				) : (
 					<div className="profile__avatar-box">
