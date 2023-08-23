@@ -1,0 +1,343 @@
+.landing {
+  width: 100%;
+  background-color: #FFFFFF;
+}
+
+.landing__header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  /* left: 50%;
+  transform: translate(-50%, 0); */
+}
+
+.landing__header-outer-container {
+  max-width: 1440px;
+  padding: 40px 64px 0;
+  background-color: #F5F5F5;
+  margin: 0 auto;
+}
+
+.landing__header-inner-container {
+  padding: 10px 36px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.landing__header-links {
+  display: flex;
+}
+
+.landing__header-url {
+  color: #212120;
+  text-decoration: none;
+}
+
+.landing__header-link {
+  margin: 10px 32px 10px 0;
+  list-style: none;
+  font-family: Retni Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 105%; /* 21px */
+  text-transform: uppercase;
+}
+
+.landing__header-link:last-of-type {
+  margin-right: 0;
+}
+
+.landing__header-logo {
+  margin: 0;
+  font-family: Finlandica;
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 105%; /* 42px */
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.landing__main {
+  background-color: #FFFFFF;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.landing__opportunities {
+  padding: 200px 100px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.landing__trainings {
+  padding: 200px 100px 0;
+}
+
+.landing__join {
+  padding: 200px 100px 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.landing__share {
+  padding: 0 100px 0;
+  background-color: #C2FF5D;
+  display: grid;
+  column-gap: 0;
+	grid-template-columns: 1fr 314px 79px;
+}
+
+.landing__heading {
+  margin: 0 0 64px;
+  font-family: 'Finlandica';
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 50px;
+  text-transform: uppercase;
+  max-width: 568px;
+  min-width: 416px;
+}
+
+.landing__heading_share {
+  margin: 66px 64px 64px 0;
+  min-width: 568px;
+}
+
+.landing__share-button {
+  position: relative;
+  z-index: 1;
+  margin: 93px -79px 92px 0;
+  max-height: 45px;
+  background-color: #212120;
+  color: #F5F5F5;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 40px;
+  width: 394px;
+  min-width: 394px;
+  font-family: Retni Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 105%; /* 21px */
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.landing__list {
+  font-family: 'Retni Sans';
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 31.2px;
+}
+
+.landing__list-item {
+  margin: 0 0 40px 32px;
+  list-style-image: url('./images/listImg.svg');
+}
+
+.landing__list-item:last-of-type {
+  margin: 0 0 0 32px;
+}
+
+.landing__img {
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+.landing__img_opportunities {
+  width: 608px;
+  height: 404px;
+}
+
+.landing__opportunities-img {
+  margin-left: 24px;;
+  width: 608px;
+  min-width: 404px;
+  height: 404px;
+  border-radius: 24px;
+  background-image: url(./images/oppImg.png);
+  background-size: cover;
+  background-position: center;
+
+}
+
+.landing__training-img {
+  position: relative;
+  width: 100%;
+  min-width: 282px;
+  height: 0;
+  padding-bottom: 87%;
+  border-radius: 24px;
+  background-size: cover;
+  background-position: center;
+}
+
+.landing__training-img-title {
+  position: absolute;
+  bottom: 40px;
+  left: 32px;
+  font-family: 'Finlandica';
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 105%;
+  letter-spacing: 1.28px;
+  color: #FFF;
+}
+
+.landing__training-img_run{
+  background-image: url(./images/runImg.png);
+}
+
+.landing__training-img_walk {
+  background-image: url(./images/walkImg.png);
+}
+
+.landing__training-img_bike {
+  background-image: url(./images/bikeImg.png);
+}
+
+.landing__img-block_trainings {
+  display: grid;
+	column-gap: 24px;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.landing__qr-code {
+  height: 397px;
+  width: 397px;
+}
+
+.landing__bar_green {
+  margin-left: 130px;
+}
+
+.landing__bar_white {
+
+}
+
+.landing__img-block_join {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.landing__cover {
+  position: relative;
+  min-height: 750px;
+  /* background-size: 116%;
+  background-position: 55% 61%; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(./images/cover.png);
+}
+
+.landing__cover-runner {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.landing__cover-heading {
+  margin: 0;
+  padding: 172px 0 212px 100px;
+  color: #F5F5F5;
+  font-family: Finlandica;
+  font-size: 208px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 105%; /* 218.4px */
+  letter-spacing: 8.32px;
+  text-transform: uppercase;
+}
+
+.landing__cover-button {
+  margin: 602px 0 0 100px;
+  max-height: 45px;
+  background-color: #C2FF5D;
+  color: #212120;
+  border: none;
+  border-radius: 24px;
+  padding: 12px 40px;
+  width: 288px;
+  min-width: 288px;
+  font-family: Retni Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 105%; /* 21px */
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.landing__footer {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 200px 100px 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing__footer-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #1D1D1D;
+}
+
+.landing__footer-links {
+  display: flex;
+  list-style: none;
+}
+
+.landing__footer-container:last-of-type {
+  border-bottom: none;
+}
+
+.landing__footer-logo {
+  margin-bottom: 35px;
+  font-family: Finlandica;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 105%; /* 33.6px */
+  letter-spacing: 1.28px;
+  text-transform: uppercase;
+}
+
+.landing__footer-link {
+  margin-left: 8px;
+}
+
+.landing__footer-copyright {
+  margin-top: 40px;
+  font-family: Retni Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 145%;
+  text-transform: uppercase;
+  min-width: 400px;
+}
+
+.landing__footer-paragraph {
+  margin: 40px 96px 0 0;
+  font-family: Retni Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 145%; /* 29px */
+
+}
+
+.landing__footer-paragraph:last-of-type {
+  margin: 40px 0 0 0;
+}
+
+.landing__footer-paragraphs {
+  display: flex;
+}

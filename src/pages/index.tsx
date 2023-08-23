@@ -13,6 +13,7 @@ import { getUserData } from 'store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { TrainingPageMobile } from './training';
 import { MyTrainingsPageMobile } from './my-trainings';
+import { Landing } from './landing';
 
 export const Routing = () => {
 	const dispatch = useAppDispatch();
@@ -40,6 +41,7 @@ export const Routing = () => {
 			<Route path="/users/:id" element={<PersonalAccaunt />} />
 			<Route path="/training" element={<TrainingPageMobile />} />
 			<Route path="/my-trainings" element={<MyTrainingsPageMobile />} />
+			<Route path="/landing" element={<Landing />} />
 		</Routes>
 	);
 };

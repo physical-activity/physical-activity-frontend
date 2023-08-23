@@ -33,6 +33,20 @@
 }
 
 @font-face {
+	font-family: 'Finlandica';
+	font-style: italic;
+	font-weight: 700;
+	src: url(./Finlandica-BoldItalic.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Retni Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: url(./RetniSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
 	font-family: 'fontello';
 	src: url('./fontello.eot');
 	src:
