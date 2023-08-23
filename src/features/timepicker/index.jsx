@@ -24,7 +24,7 @@ export default function Timepicker({ title, onClose, handleTimePick }) {
 		<div className="timepicker">
 			<h2 className="timepicker__title">{title}</h2>
 			<div className="timepicker__main">
-				<div className="picker">
+				<div className="timepicker__container">
 					<Swiper
 						initialSlide={
 							selectedHour !== null ? selectedHour : today.getHours()
@@ -41,12 +41,14 @@ export default function Timepicker({ title, onClose, handleTimePick }) {
 					>
 						{hours.map((hour) => (
 							<SwiperSlide key={hour}>
-								<div className="time">{hour.toString().padStart(2, '0')}</div>
+								<div className="timepicker__time timepicker__time_hours">
+									{hour.toString().padStart(2, '0')}
+								</div>
 							</SwiperSlide>
 						))}
 					</Swiper>
 				</div>
-				<div className="picker">
+				<div className="timepicker__container">
 					<Swiper
 						initialSlide={
 							selectedMinute !== null ? selectedMinute : today.getMinutes()
@@ -63,7 +65,9 @@ export default function Timepicker({ title, onClose, handleTimePick }) {
 					>
 						{minutes.map((minute) => (
 							<SwiperSlide key={minute}>
-								<div className="time">{minute.toString().padStart(2, '0')}</div>
+								<div className="timepicker__time timepicker__time_minutes">
+									{minute.toString().padStart(2, '0')}
+								</div>
 							</SwiperSlide>
 						))}
 					</Swiper>
