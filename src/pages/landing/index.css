@@ -7,8 +7,6 @@
 	position: fixed;
 	z-index: 2;
 	width: 100%;
-	/* left: 50%;
-  transform: translate(-50%, 0); */
 }
 
 .landing__header-outer-container {
@@ -28,6 +26,7 @@
 	display: flex;
 	justify-content: space-between;
 	border-radius: 41px;
+  min-width: 824px;
 }
 
 .landing__header-links {
@@ -46,7 +45,7 @@
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 105%; /* 21px */
+	line-height: 105%; 
 	text-transform: uppercase;
 }
 
@@ -55,12 +54,12 @@
 }
 
 .landing__header-logo {
-	margin: 0;
+	margin: 0 32px 0;
 	font-family: Finlandica;
 	font-size: 40px;
 	font-style: italic;
 	font-weight: 700;
-	line-height: 105%; /* 42px */
+	line-height: 105%; 
 	letter-spacing: 1.6px;
 	text-transform: uppercase;
 }
