@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import qrCode from './images/qrCode.svg';
 import barGreen from './images/barGreen.svg';
 import barWhite from './images/barWhite.svg';
-import runner from './images/runner.svg';
 import email from './images/email.svg';
 import telegram from './images/telegram.svg';
 import vk from './images/vk.svg';
@@ -19,6 +18,17 @@ export const Landing = () => {
 		}
 	}, []);
 
+	const handleClickScroll = () => {
+		const element = document.getElementById('join');
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth' });
+		}
+	};
+
+	const handleClickCopy = () => {
+		navigator.clipboard.writeText('joinlink');
+	};
+
 	return (
 		<div className="landing">
 			<header className="landing__header">
@@ -31,17 +41,17 @@ export const Landing = () => {
 						<h1 className="landing__header-logo">EasyFit</h1>
 						<ul className="landing__header-links">
 							<li className="landing__header-link">
-								<a href="" className="landing__header-url">
+								<a href="#opportunities" className="landing__header-url">
 									Возможности
 								</a>
 							</li>
 							<li className="landing__header-link">
-								<a href="" className="landing__header-url">
+								<a href="#trainings" className="landing__header-url">
 									Тренировки
 								</a>
 							</li>
 							<li className="landing__header-link">
-								<a href="" className="landing__header-url">
+								<a href="#join" className="landing__header-url">
 									Присоединиться
 								</a>
 							</li>
@@ -52,9 +62,11 @@ export const Landing = () => {
 			<main className="landing__main">
 				<section className="landing__cover">
 					{/* <h1 className="landing__cover-heading">EasyFit</h1> */}
-					<button className="landing__cover-button">Начать тренировки</button>
+					<button onClick={handleClickScroll} className="landing__cover-button">
+						Начать тренировки
+					</button>
 				</section>
-				<section className="landing__opportunities">
+				<section id="opportunities" className="landing__opportunities">
 					<div className="landing__text-block">
 						<h2 className="landing__heading">Новые возможности</h2>
 						<ul className="landing__list">
@@ -68,7 +80,7 @@ export const Landing = () => {
 					</div>
 					<div className="landing__opportunities-img"></div>
 				</section>
-				<section className="landing__trainings">
+				<section id="trainings" className="landing__trainings">
 					<div className="landing__text-block">
 						<h2 className="landing__heading">Тренировки</h2>
 					</div>
@@ -84,7 +96,7 @@ export const Landing = () => {
 						</div>
 					</div>
 				</section>
-				<section className="landing__join">
+				<section id="join" className="landing__join">
 					<div className="landing__text-block">
 						<h2 className="landing__heading">Присоединяйся к нам</h2>
 						<ul className="landing__list">
@@ -108,7 +120,9 @@ export const Landing = () => {
 							Делись ссылкой с друзьями и тренируйтесь вместе!
 						</h2>
 					</div>
-					<button className="landing__share-button">Скопировать ссылку</button>
+					<button onClick={handleClickCopy} className="landing__share-button">
+						Скопировать ссылку
+					</button>
 					<img
 						src={barWhite}
 						className="landing__bar landing__bar_white"
