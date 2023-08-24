@@ -4,6 +4,7 @@ import { useAppSelector } from './redux';
 
 const RequireAuth = () => {
 	const token = useAppSelector((state) => state.user.auth_token);
+	console.log('token', token);
 
 	return !token ? <Navigate to="/signin" /> : <Outlet />;
 };

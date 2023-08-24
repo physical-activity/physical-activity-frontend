@@ -412,7 +412,7 @@ export const TrainingForm = () => {
 						}`}
 						disabled={!globalValid}
 					>
-						запаланировать
+						запланировать
 					</button>
 				</div>
 			</form>
