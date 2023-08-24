@@ -13,12 +13,29 @@ import { getUserData, userAuthVK } from 'store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { TrainingPageMobile } from './training';
 import { MyTrainingsPageMobile } from './my-trainings';
+import { Landing } from './landing';
+import { useNavigate } from 'react-router-dom';
+import useResize from '../shared/hooks/useResize';
 import RequireAuth from 'shared/hooks/require-auth';
 
 export const Routing = () => {
 	const dispatch = useAppDispatch();
 	const userData = useAppSelector((state) => state.user);
-	const location = useLocation();
+  const location = useLocation();
+	const navigate = useNavigate();
+	const size = useResize();
+	let windowWidth = size[0];
+
+	function redirectToLanding() {
+		console.log(windowWidth);
+		if (windowWidth >= 992) {
+			navigate(`/landing`);
+		}
+	}
+
+	useEffect(() => {
+		redirectToLanding();
+	}, [windowWidth]);
 
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
@@ -48,6 +65,7 @@ export const Routing = () => {
 			<Route path="/users/:id" element={<PersonalAccaunt />} />
 			<Route path="/training" element={<TrainingPageMobile />} />
 			<Route path="/my-trainings" element={<MyTrainingsPageMobile />} />
+			<Route path="/landing" element={<Landing />} />
 		</Routes>
 	);
 };
