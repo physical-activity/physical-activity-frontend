@@ -15,10 +15,15 @@ const WorkoutBlock = () => {
 
 	return (
 		<div className="workoutBlock">
-			<div className="workoutBlock__info">
+			<button
+				onClick={() => {
+					isToken ? navigate('/training') : navigate('/signin');
+				}}
+				className="workoutBlock__info"
+			>
 				<p className="workoutBlock__text">ходьба</p>
 				<img src={arrowIcon} alt="Стрелка" />
-			</div>
+			</button>
 			<button
 				onClick={() => {
 					isToken ? navigate('/training') : navigate('/signin');
@@ -32,10 +37,15 @@ const WorkoutBlock = () => {
 				/>
 			</button>
 
-			<div className="workoutBlock__info">
+			<button
+				onClick={() => {
+					isToken ? navigate('/training') : navigate('/signin');
+				}}
+				className="workoutBlock__info"
+			>
 				<p className="workoutBlock__text">бег</p>
 				<img src={arrowIcon} alt="Стрелка" />
-			</div>
+			</button>
 			<button
 				onClick={() => {
 					isToken ? navigate('/training') : navigate('/signin');
@@ -44,13 +54,18 @@ const WorkoutBlock = () => {
 			>
 				<img src="/images/run.png" alt="Бег" className="workoutBlock__img" />
 			</button>
-			<div className="workoutBlock__info">
+			<button
+				onClick={() => {
+					isToken ? navigate('/training') : navigate('/signin');
+				}}
+				className="workoutBlock__info"
+			>
 				<div>
 					<p className="workoutBlock__text">вело</p>
 					<p className="workoutBlock__text">прогулка</p>
 				</div>
 				<img src={arrowIcon} alt="Стрелка" />
-			</div>
+			</button>
 			<button
 				onClick={() => {
 					isToken ? navigate('/training') : navigate('/signin');

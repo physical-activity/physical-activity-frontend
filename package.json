@@ -4,6 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"@react-oauth/google": "^0.11.1",
 		"@reduxjs/toolkit": "^1.9.5",
 		"@testing-library/jest-dom": "^5.17.0",
 		"@testing-library/react": "^13.4.0",
@@ -14,6 +15,7 @@
 		"@types/react-dom": "^18.2.7",
 		"@types/react-redux": "^7.1.25",
 		"compose-function": "^3.0.3",
+		"dayjs": "^1.11.9",
 		"react": "^18.2.0",
 		"react-calendar": "^4.6.0",
 		"react-dom": "^18.2.0",
@@ -22,6 +24,7 @@
 		"react-router-dom": "^6.14.2",
 		"react-scripts": "5.0.1",
 		"saas": "^1.0.0",
+		"swiper": "^10.2.0",
 		"typescript": "^4.9.5",
 		"url": "^0.11.1",
 		"web-vitals": "^2.1.4"

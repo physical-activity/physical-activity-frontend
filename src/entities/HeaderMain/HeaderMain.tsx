@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router';
 
 import './HeaderMain.css';
 
-import loginIcon from './icons/login.svg';
 import { UserState } from 'store/reducers/userSlice';
 
 const HeaderMain = ({ userData }: { userData: UserState }) => {
@@ -35,15 +34,3 @@ const HeaderMain = ({ userData }: { userData: UserState }) => {
 };
 
 export default HeaderMain;
-
-/*
-(
-					<>
-						<img
-							src={loginIcon}
-							alt="Логин"
-							onClick={() => navigate('/signin')}
-						/>
-					</>
-				)
-*/

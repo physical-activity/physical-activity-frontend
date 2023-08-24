@@ -48,7 +48,6 @@ export const changeUserInfo = createAsyncThunk<any, data>(
 				email: data.email,
 			}),
 		});
-
 		let res;
 		if (response.status === 200) {
 			res = response.json();
@@ -96,6 +95,7 @@ type resetPassType = {
 	uid: string;
 	token: string;
 };
+
 export const resetUserPassword = createAsyncThunk<any, resetPassType>(
 	'post/resetPassword',
 	async (data) => {
@@ -141,12 +141,57 @@ export const getUserData = createAsyncThunk<any>('user/getData', async () => {
 	return response;
 });
 
+export const userAuthGoogle = createAsyncThunk('auth/google', async () => {
+	const google_access_token = localStorage.getItem('google_access_token');
+	const res = await fetch(`https://easyfit.space/api/v1/dj-rest-auth/google/`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			access_token: google_access_token,
+		}),
+	});
+	let response;
+	if (res.status === 200) {
+		response = await res.json();
+	} else {
+		throw new Error("Can't login");
+	}
+	return response;
+});
+
+export const userAuthVK = createAsyncThunk('auth/vk', async (code: string) => {
+	const res = await fetch(`https://easyfit.space/api/v1/dj-rest-auth/vk/`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			code: code,
+		}),
+	});
+	let response;
+	if (res.status === 200) {
+		response = await res.json();
+	} else {
+		throw new Error("Can't login");
+	}
+	return response;
+});
+
 export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
 		clearUserData: (state, action) => {
 			return (state = action.payload);
+		},
+		setUserData: (state, action) => {
+			state.user.email = action.payload.email;
+			state.user.first_name = action.payload.given_name;
+			state.user.second_name = action.payload.family_name;
+			state.user.photo = action.payload.picture;
 		},
 	},
 	extraReducers: (builder) => {
@@ -166,9 +211,17 @@ export const userSlice = createSlice({
 			localStorage.setItem('token', action.payload.auth_token);
 			state.auth_token = action.payload.auth_token;
 		});
+		builder.addCase(userAuthGoogle.fulfilled, (state, action) => {
+			localStorage.setItem('token', action.payload.key);
+			state.auth_token = action.payload.key;
+		});
+		builder.addCase(userAuthVK.fulfilled, (state, action) => {
+			localStorage.setItem('token', action.payload.key);
+			state.auth_token = action.payload.key;
+		});
 	},
 });
 
-export const { clearUserData } = userSlice.actions;
+export const { clearUserData, setUserData } = userSlice.actions;
 
 export default userSlice.reducer;

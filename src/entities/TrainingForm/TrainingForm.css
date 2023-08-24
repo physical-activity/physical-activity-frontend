@@ -1,14 +1,7 @@
 .training__form {
 	display: flex;
 	flex-direction: column;
-	/* margin-top: 4px; */
 	gap: 4px;
-}
-
-.training__input-container {
-	background-color: #fff;
-	border-radius: 12px;
-	padding: 20px;
 }
 
 .training__container {
@@ -17,11 +10,15 @@
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	gap: 20px;
 }
 
-.training__input-conteiner {
+.training__container_form {
+	height: calc(100vh - 345px);
+}
+
+.training__input-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -56,7 +53,7 @@
 }
 
 .training__error {
-	color: var(--new-extra-error, #e90000);
+	color: #e90000;
 
 	font-family: Open Sans;
 	font-size: 12px;
@@ -106,7 +103,7 @@
 	cursor: default;
 }
 
-.list-conteiner {
+.list-container {
 	position: relative;
 	min-height: 40px;
 	border-bottom: 1px solid #c3c3cc;
@@ -154,7 +151,7 @@
 }
 
 .list__title {
-	color: var(--new-txt-black, #212120);
+	color: #212120;
 	font-family: Open Sans;
 	font-size: 16px;
 	font-style: normal;
@@ -170,7 +167,7 @@
 
 .list__text {
 	background-color: transparent;
-	color: var(--new-txt-black, #212120);
+	color: #212120;
 	font-family: Open Sans;
 	font-size: 16px;
 	font-style: normal;

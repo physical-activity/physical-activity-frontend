@@ -16,6 +16,7 @@
 	box-sizing: border-box;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	border: none;
 	border-radius: 12px;
 	background-color: var(--color-white);
 }
