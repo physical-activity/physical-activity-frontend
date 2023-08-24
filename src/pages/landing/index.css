@@ -26,7 +26,7 @@
 	display: flex;
 	justify-content: space-between;
 	border-radius: 41px;
-  min-width: 824px;
+	min-width: 824px;
 }
 
 .landing__header-links {
@@ -45,7 +45,7 @@
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 105%; 
+	line-height: 105%;
 	text-transform: uppercase;
 }
 
@@ -59,7 +59,7 @@
 	font-size: 40px;
 	font-style: italic;
 	font-weight: 700;
-	line-height: 105%; 
+	line-height: 105%;
 	letter-spacing: 1.6px;
 	text-transform: uppercase;
 }
@@ -107,7 +107,7 @@
 }
 
 .landing__heading_share {
-	margin: 66px 64px 64px 0;
+	margin: 66px 88px 64px 0;
 	min-width: 568px;
 }
 
@@ -213,15 +213,13 @@
 }
 
 .landing__qr-code {
+	margin-left: 24px;
 	height: 397px;
 	width: 397px;
 }
 
 .landing__bar_green {
 	margin-left: 130px;
-}
-
-.landing__bar_white {
 }
 
 .landing__img-block_join {
@@ -232,8 +230,6 @@
 .landing__cover {
 	position: relative;
 	min-height: 750px;
-	/* background-size: 116%;
-  background-position: 55% 61%; */
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

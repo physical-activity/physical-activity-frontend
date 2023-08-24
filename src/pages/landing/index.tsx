@@ -26,7 +26,7 @@ export const Landing = () => {
 	};
 
 	const handleClickCopy = () => {
-		navigator.clipboard.writeText('joinlink');
+		navigator.clipboard.writeText('https://easyfit.space/');
 	};
 
 	return (
@@ -61,7 +61,6 @@ export const Landing = () => {
 			</header>
 			<main className="landing__main">
 				<section className="landing__cover">
-					{/* <h1 className="landing__cover-heading">EasyFit</h1> */}
 					<button onClick={handleClickScroll} className="landing__cover-button">
 						Начать тренировки
 					</button>
@@ -135,12 +134,22 @@ export const Landing = () => {
 					<h3 className="landing__footer-logo">EasyFit</h3>
 					<ul className="landing__footer-links">
 						<li className="landing__footer-link">
-							<a href="" className="landing__footer-url" target="_blank">
+							<a
+								href="https://easyfit.space/"
+								className="landing__footer-url"
+								target="_blank"
+								rel="noreferrer"
+							>
 								<img src={email} className="landing__footer-icon" alt=""></img>
 							</a>
 						</li>
 						<li className="landing__footer-link">
-							<a href="" className="landing__footer-url" target="_blank">
+							<a
+								href="https://easyfit.space/"
+								className="landing__footer-url"
+								target="_blank"
+								rel="noreferrer"
+							>
 								<img
 									src={telegram}
 									className="landing__footer-icon"
@@ -149,7 +158,12 @@ export const Landing = () => {
 							</a>
 						</li>
 						<li className="landing__footer-link">
-							<a href="" className="landing__footer-url" target="_blank">
+							<a
+								href="https://easyfit.space/"
+								className="landing__footer-url"
+								target="_blank"
+								rel="noreferrer"
+							>
 								<img src={vk} className="landing__footer-icon" alt=""></img>
 							</a>
 						</li>
