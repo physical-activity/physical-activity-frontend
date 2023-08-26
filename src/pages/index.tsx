@@ -62,9 +62,30 @@ export const Routing = () => {
 			<Route path="/register-confirm" element={<RegisterConfirmPage />} />
 			<Route path="/register-success" element={<RegisterSuccessPage />} />
 			<Route path="/register-error" element={<RegisterErrorPage />} />
-			<Route path="/users/:id" element={<PersonalAccaunt />} />
-			<Route path="/training" element={<TrainingPageMobile />} />
-			<Route path="/my-trainings" element={<MyTrainingsPageMobile />} />
+			<Route
+				path="/users/:id"
+				element={
+					<RequireAuth>
+						<PersonalAccaunt />
+					</RequireAuth>
+				}
+			/>
+			<Route
+				path="/training"
+				element={
+					<RequireAuth>
+						<TrainingPageMobile />
+					</RequireAuth>
+				}
+			/>
+			<Route
+				path="/my-trainings"
+				element={
+					<RequireAuth>
+						<MyTrainingsPageMobile />
+					</RequireAuth>
+				}
+			/>
 			<Route path="/landing" element={<Landing />} />
 		</Routes>
 	);
