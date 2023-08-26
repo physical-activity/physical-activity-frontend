@@ -49,11 +49,17 @@
 	text-transform: uppercase;
 }
 
+.landing__header-url:hover {
+	color: #A1DB42;
+}
+
 .landing__header-link:last-of-type {
 	margin-right: 0;
 }
 
 .landing__header-logo {
+	color: #212120;
+	text-decoration: none;
 	margin: 0 32px 0;
 	font-family: Finlandica;
 	font-size: 40px;
@@ -62,6 +68,10 @@
 	line-height: 105%;
 	letter-spacing: 1.6px;
 	text-transform: uppercase;
+}
+
+.landing__header-logo:hover {
+	color: #A1DB42;
 }
 
 .landing__main {
@@ -130,6 +140,24 @@
 	line-height: 105%; /* 21px */
 	text-transform: uppercase;
 	cursor: pointer;
+}
+
+.landing__share-button:hover {
+	background-color: #3A3A39;
+}
+
+.landing__share-button:active {
+	background-color: #7C7C79;
+}
+
+.landing__share-button_copied {
+	color: var(--new-txt-black, #212120);
+	background-color: var(--new-bg, #F5F5F5);
+}
+
+.landing__share-button_copied:hover {
+	color: var(--new-txt-black, #212120);
+	background-color: var(--new-bg, #F5F5F5);
 }
 
 .landing__list {
@@ -274,6 +302,15 @@
 	cursor: pointer;
 }
 
+.landing__cover-button:hover {
+	background-color: #DBFFA0;
+}
+
+.landing__cover-button:active {
+	background-color: #F0FFD8;
+}
+
+
 .landing__footer {
 	max-width: 1440px;
 	margin: 0 auto;
@@ -310,6 +347,49 @@
 
 .landing__footer-link {
 	margin-left: 8px;
+
+}
+
+.landing__footer-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 24px;
+}
+
+.landing__footer-icon_email {
+	background-image: url(./images/email.svg);
+}
+
+.landing__footer-icon_email:hover {
+	background-image: url(./images/emailHovered.svg);
+}
+
+.landing__footer-icon_email:active {
+	background-image: url(./images/emailPressed.svg);
+}
+
+.landing__footer-icon_telegram {
+	background-image: url(./images/telegram.svg);
+}
+
+.landing__footer-icon_telegram:hover {
+	background-image: url(./images/telegramHovered.svg);
+}
+
+.landing__footer-icon_telegram:active {
+	background-image: url(./images/telegramPressed.svg);
+}
+
+.landing__footer-icon_vk {
+	background-image: url(./images/vk.svg);
+}
+
+.landing__footer-icon_vk:hover {
+	background-image: url(./images/vkHovered.svg);
+}
+
+.landing__footer-icon_vk:active {
+	background-image: url(./images/vkPressed.svg);
 }
 
 .landing__footer-copyright {
