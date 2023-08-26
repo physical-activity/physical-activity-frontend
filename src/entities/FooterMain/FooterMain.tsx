@@ -7,6 +7,7 @@ import homeIconInactive from './icons/homeInactive.svg';
 import workoutIcon from './icons/workout.svg';
 import workoutIconInactive from './icons/workoutInactive.svg';
 import statsIconInactive from './icons/statInactive.svg';
+import { useAppSelector } from 'shared/hooks/redux';
 
 type Props = {
 	page: string;
@@ -14,6 +15,8 @@ type Props = {
 
 const FooterMain = ({ page }: Props) => {
 	const navigate = useNavigate();
+
+	const token = useAppSelector((state) => state.user.auth_token);
 
 	return (
 		<div className="footer-main">
@@ -29,7 +32,7 @@ const FooterMain = ({ page }: Props) => {
 			<button
 				className="footer-main__item"
 				onClick={() => {
-					navigate('/my-trainings');
+					token ? navigate('/my-trainings') : navigate('/signin');
 				}}
 			>
 				<img
