@@ -21,7 +21,7 @@ import RequireAuth from 'shared/hooks/require-auth';
 export const Routing = () => {
 	const dispatch = useAppDispatch();
 	const userData = useAppSelector((state) => state.user);
-  const location = useLocation();
+	const location = useLocation();
 	const navigate = useNavigate();
 	const size = useResize();
 	let windowWidth = size[0];
