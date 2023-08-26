@@ -5,10 +5,6 @@
 	flex-direction: column;
 }
 
-.input-block:first-of-type {
-	margin-bottom: 16px;
-}
-
 .input-block__input-name {
 	position: absolute;
 	/* top: 50%;
