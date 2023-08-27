@@ -110,39 +110,39 @@ export const SignInForm = () => {
 						Неправильно введен пароль или почта
 					</span>
 				)}
-
-				<button
-					className="form__recover-pass"
-					// disabled={!canResetPass}
-					onClick={() => handleResetPass()}
-				>
-					Забыли пароль?
-				</button>
-				<button
-					className={`form__button ${!isValid && 'form__button_unvalid'}`}
-					disabled={!isValid}
-					type="submit"
-				>
-					Войти
-				</button>
-				<div className="form_div-span">
-					<span className="form_span">ИЛИ</span>
-				</div>
-				<div className="auth-social">
-					<button className="auth-button" onClick={() => login()}>
-						<img src={googleLogo} />
-						<p className="auth-text">Продолжить с Google</p>
-					</button>
-					<Link
-						to="https://oauth.vk.com/authorize?client_id=51731957&redirect_uri=https://easyfit.space&response_type=code&scope=email"
-						className="auth-button"
-					>
-						<img src={vkLogo} />
-						<p className="auth-text">Продолжить с VK</p>
-					</Link>
-				</div>
-				<button onClick={() => read()}>read activite</button>
 			</div>
+
+			<button
+				className="form__recover-pass"
+				// disabled={!canResetPass}
+				onClick={() => handleResetPass()}
+			>
+				Забыли пароль?
+			</button>
+			<button
+				className={`form__button ${!isValid && 'form__button_unvalid'}`}
+				disabled={!isValid}
+				type="submit"
+			>
+				Войти
+			</button>
+			<div className="form_div-span">
+				<span className="form_span">ИЛИ</span>
+			</div>
+			<div className="auth-social">
+				<button className="auth-button" onClick={() => login()}>
+					<img src={googleLogo} />
+					<p className="auth-text">Продолжить с Google</p>
+				</button>
+				<Link
+					to="https://oauth.vk.com/authorize?client_id=51731957&redirect_uri=https://easyfit.space&response_type=code&scope=email"
+					className="auth-button"
+				>
+					<img src={vkLogo} />
+					<p className="auth-text">Продолжить с VK</p>
+				</Link>
+			</div>
+			<button onClick={() => read()}>read activite</button>
 		</form>
 	);
 };
