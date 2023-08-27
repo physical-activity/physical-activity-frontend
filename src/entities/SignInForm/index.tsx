@@ -28,7 +28,13 @@ export const SignInForm = ({
 		scope: 'https://www.googleapis.com/auth/fitness.activity.read',
 		onSuccess: async (tokenResponse) => {
 			localStorage.setItem('google_access_token', tokenResponse.access_token);
-			dispatch(userAuthGoogle()).then(() => navigate('/'));
+			dispatch(userAuthGoogle())
+				.unwrap()
+				.then(() => navigate('/'))
+				.catch((err) => {
+					setIsServerError(true);
+					setErrorText('Не возможно войти с предоставленными данными Google');
+				});
 		},
 		onError: (errorResponse) => console.log(errorResponse),
 	});
