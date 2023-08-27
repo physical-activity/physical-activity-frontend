@@ -6,12 +6,16 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { useAppDispatch } from 'shared/hooks/redux';
 import { useNavigate } from 'react-router';
 import { userAuthGoogle } from 'store/reducers/userSlice';
+import { ResetPasswordPage } from 'pages/reset-pass-page';
+import { useState } from 'react';
 // import googleLogo from './google.svg';
 // import vkLogo from './vk.svg';
 
 export const SignInPage = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
+
+	const [isPopupOpen, setIsPopupOpen] = useState(false);
 
 	// const login = useGoogleLogin({
 	// 	scope: 'https://www.googleapis.com/auth/fitness.activity.read',
@@ -27,7 +31,8 @@ export const SignInPage = () => {
 	return (
 		<main className="main">
 			<Header name={'вход'} />
-			<SignInForm />
+			<SignInForm setIsPopupOpen={setIsPopupOpen} />
+			{isPopupOpen && <ResetPasswordPage setIsPopupOpen={setIsPopupOpen} />}
 			{/* <Footer footerQuestion={'Еще нет аккаунта?'} footerAnswer={'Создать'} /> */}
 		</main>
 	);

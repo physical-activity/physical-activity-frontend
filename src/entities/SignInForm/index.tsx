@@ -11,7 +11,11 @@ import { Link } from 'react-router-dom';
 import googleLogo from './google.svg';
 import vkLogo from './vk.svg';
 
-export const SignInForm = () => {
+export const SignInForm = ({
+	setIsPopupOpen,
+}: {
+	setIsPopupOpen: (arg: boolean) => void;
+}) => {
 	const [isServerError, setIsServerError] = useState(false);
 
 	const dispatch = useAppDispatch();
@@ -73,7 +77,7 @@ export const SignInForm = () => {
 	};
 
 	const handleResetPass = () => {
-		navigate('/reset_password');
+		setIsPopupOpen(true);
 	};
 
 	useEffect(() => {
