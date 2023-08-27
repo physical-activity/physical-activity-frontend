@@ -60,7 +60,7 @@ export const RegisterForm = () => {
 					id="name"
 					name="name"
 					value={values.name}
-					placeholder="Ваше имя"
+					placeholder="Имя"
 					setValue={handleChange}
 					isValidInput={errors.name}
 					pattern={REGEX.name.source}
