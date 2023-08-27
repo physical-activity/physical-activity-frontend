@@ -98,23 +98,20 @@ export const RegisterForm = () => {
 					isValidInput={errors.secondPassword}
 					pattern={REGEX.password.source}
 				/>
-				<Checkbox
+				{/* <Checkbox
 					type="checkbox"
 					id="terms"
 					name="terms"
 					validateInput={handleChange}
-				/>
+				/> */}
 			</div>
-			<div className="register__button-container">
-				<button
-					className={`register__button ${
-						!isValid && 'register__button_unvalid'
-					}`}
-					disabled={!isValid}
-				>
-					Поехали
-				</button>
-			</div>
+			<button
+				className={`register__button ${!isValid && 'register__button_unvalid'}`}
+				disabled={!isValid}
+			>
+				Зарегистрироваться
+			</button>
+			{/* <div className="register__button-container"></div> */}
 			<RegisterErrorPopup isOpen={isErrorPopupOpen} email={values.email} />
 		</form>
 	);

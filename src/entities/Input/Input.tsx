@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './Input.css';
 import requireSvg from './ic_required_1.svg';
 import toggleVisibleImg from './visibility_off_FILL0_wght300_GRAD0_opsz48 1.svg';
+import visible from './State=Open.svg';
 
 export const Input = ({
 	name,
@@ -73,7 +74,7 @@ export const Input = ({
 					// src={
 					// 	require('./visibility_off_FILL0_wght300_GRAD0_opsz48 1.svg').default
 					// }
-					src={toggleVisibleImg}
+					src={visibility === 'password' ? toggleVisibleImg : visible}
 					alt="show/hide password"
 					onClick={() => toggleInputVisibility()}
 				/>
