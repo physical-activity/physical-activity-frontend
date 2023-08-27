@@ -5,7 +5,11 @@ import { Input } from '../Input/Input';
 import { useFormValidation } from 'shared/hooks/useFormValidation';
 import { REGEX } from 'shared/utils/constants';
 import { useAppDispatch } from 'shared/hooks/redux';
-import { singInUser } from 'store/reducers/userSlice';
+import { singInUser, userAuthGoogle } from 'store/reducers/userSlice';
+import { useGoogleLogin } from '@react-oauth/google';
+import { Link } from 'react-router-dom';
+import googleLogo from './google.svg';
+import vkLogo from './vk.svg';
 
 export const SignInForm = () => {
 	const [isServerError, setIsServerError] = useState(false);
@@ -14,6 +18,51 @@ export const SignInForm = () => {
 	const navigate = useNavigate();
 	const { values, handleChange, errors, isValid, resetForm } =
 		useFormValidation();
+
+	const login = useGoogleLogin({
+		scope: 'https://www.googleapis.com/auth/fitness.activity.read',
+		onSuccess: async (tokenResponse) => {
+			localStorage.setItem('google_access_token', tokenResponse.access_token);
+			dispatch(userAuthGoogle()).then(() => navigate('/'));
+		},
+		onError: (errorResponse) => console.log(errorResponse),
+	});
+
+	const read = async () => {
+		let token = localStorage.getItem('google_access_token');
+		console.log(token);
+		const res = await fetch(
+			`https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${token}`,
+				},
+				body: JSON.stringify({
+					aggregateBy: [
+						{
+							dataTypeName: 'com.google.step_count.delta',
+							dataSourceId:
+								'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps',
+						},
+					],
+					bucketByTime: { durationMillis: 86400000 },
+					startTimeMillis: 1438705622000,
+					endTimeMillis: 1439310422000,
+				}),
+			}
+		);
+		let response;
+		// let response2;
+		if (res.status === 200) {
+			response = await res.json();
+			console.log(response);
+			console.log(res);
+		} else {
+			throw new Error('lolol');
+		}
+	};
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -67,11 +116,8 @@ export const SignInForm = () => {
 					// disabled={!canResetPass}
 					onClick={() => handleResetPass()}
 				>
-					Восстановить пароль
+					Забыли пароль?
 				</button>
-			</div>
-
-			<div className="form__button-continer">
 				<button
 					className={`form__button ${!isValid && 'form__button_unvalid'}`}
 					disabled={!isValid}
@@ -79,6 +125,23 @@ export const SignInForm = () => {
 				>
 					Войти
 				</button>
+				<div className="form_div-span">
+					<span className="form_span">ИЛИ</span>
+				</div>
+				<div className="auth-social">
+					<button className="auth-button" onClick={() => login()}>
+						<img src={googleLogo} />
+						<p className="auth-text">Продолжить с Google</p>
+					</button>
+					<Link
+						to="https://oauth.vk.com/authorize?client_id=51731957&redirect_uri=https://easyfit.space&response_type=code&scope=email"
+						className="auth-button"
+					>
+						<img src={vkLogo} />
+						<p className="auth-text">Продолжить с VK</p>
+					</Link>
+				</div>
+				<button onClick={() => read()}>read activite</button>
 			</div>
 		</form>
 	);
