@@ -14,7 +14,7 @@ export const MyTrainingsPageMobile = () => {
 			<HeaderMain userData={userData} />
 			<TextBlock text={'мои тренировки'} />
 			<MyTrainings />
-			<FooterMain page={'trainings'} />
+			<FooterMain page={'trainings'} withBtn={true} />
 		</div>
 	);
 };
