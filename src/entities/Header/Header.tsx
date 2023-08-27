@@ -7,25 +7,31 @@ const Header = ({ name }: { name: string }) => {
 	return (
 		<div className="header">
 			<img className="header_logo" src={logo} />
-			<div className="header_select">
-				<h2
-					className={`header__title ${
-						name === 'вход' && 'header__title_selected'
-					}`}
-					onClick={() => navigate('/signin')}
-				>
-					ВХОД
-				</h2>{' '}
-				<span>|</span>
-				<h2
-					className={`header__title ${
-						name === 'Регистрация' && 'header__title_selected'
-					}`}
-					onClick={() => navigate('/register')}
-				>
-					РЕГИСТРАЦИЯ
-				</h2>
-			</div>
+			{name === 'Восстановление пароля' ? (
+				<p className="header__title header__title_selected">
+					Восстановление пароля
+				</p>
+			) : (
+				<div className="header_select">
+					<h2
+						className={`header__title ${
+							name === 'вход' && 'header__title_selected'
+						}`}
+						onClick={() => navigate('/signin')}
+					>
+						ВХОД
+					</h2>{' '}
+					<span>|</span>
+					<h2
+						className={`header__title ${
+							name === 'Регистрация' && 'header__title_selected'
+						}`}
+						onClick={() => navigate('/register')}
+					>
+						РЕГИСТРАЦИЯ
+					</h2>
+				</div>
+			)}
 		</div>
 	);
 };
