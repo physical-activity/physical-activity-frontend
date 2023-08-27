@@ -15,6 +15,7 @@ export const Input = ({
 	disabled,
 	required,
 	id,
+	isServerError,
 }: {
 	name: string;
 	type: string;
@@ -26,6 +27,7 @@ export const Input = ({
 	setValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	disabled?: boolean;
 	required: boolean;
+	isServerError?: boolean;
 }) => {
 	const [visibility, setVisibility] = useState(type);
 
@@ -47,7 +49,7 @@ export const Input = ({
 				disabled={disabled}
 				id={id}
 				className={`input-block__input ${
-					isValidInput && 'input-block__input_error'
+					(isValidInput || isServerError) && 'input-block__input_error'
 				}`}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e)}
 				pattern={pattern}

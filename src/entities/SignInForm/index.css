@@ -22,7 +22,7 @@
 }
 
 .form__server-error {
-	margin-top: 8px;
+	margin-top: -8px;
 	color: #f94c4c;
 }
 

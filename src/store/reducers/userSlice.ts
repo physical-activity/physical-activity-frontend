@@ -83,8 +83,10 @@ export const singInUser = createAsyncThunk<any, signinData>(
 		let res;
 		if (response.status === 200) {
 			res = response.json();
-		} else {
-			throw new Error('Smth went wrong');
+		} else if (response.status === 400) {
+			throw new Error('Invalid Data');
+		} else if (response.status === 500) {
+			throw new Error('Server Error');
 		}
 		return res;
 	}

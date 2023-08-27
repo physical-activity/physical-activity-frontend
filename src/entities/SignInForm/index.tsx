@@ -17,6 +17,7 @@ export const SignInForm = ({
 	setIsPopupOpen: (arg: boolean) => void;
 }) => {
 	const [isServerError, setIsServerError] = useState(false);
+	const [errorText, setErrorText] = useState('');
 
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
@@ -72,8 +73,17 @@ export const SignInForm = ({
 		e.preventDefault();
 		const dataToSend = { password: values.password, email: values.email };
 		dispatch(singInUser(dataToSend))
+			.unwrap()
 			.then(() => navigate('/'))
-			.catch((err) => setIsServerError(true));
+			.catch((err) => {
+				setIsServerError(true);
+				console.log(err.message);
+				if (err.message === 'Invalid Data') {
+					setErrorText('Неправильно введен пароль или e-mail');
+				} else {
+					setErrorText('Сервер не отвечает');
+				}
+			});
 	};
 
 	const handleResetPass = () => {
@@ -97,6 +107,7 @@ export const SignInForm = ({
 					pattern={REGEX.email.source}
 					isValidInput={errors.email}
 					required={true}
+					isServerError={isServerError}
 				/>
 				<Input
 					required={true}
@@ -108,11 +119,10 @@ export const SignInForm = ({
 					setValue={handleChange}
 					pattern={REGEX.password.source}
 					isValidInput={errors.password}
+					isServerError={isServerError}
 				/>
 				{isServerError && (
-					<span className="form__server-error">
-						Неправильно введен пароль или почта
-					</span>
+					<span className="form__server-error">{errorText}</span>
 				)}
 			</div>
 
