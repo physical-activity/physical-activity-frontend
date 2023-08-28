@@ -201,6 +201,7 @@
 .statistics__navigation {
 	position: relative;
 	margin: 3px 0;
+	cursor: pointer;
 }
 
 .statistics__navigation-header {

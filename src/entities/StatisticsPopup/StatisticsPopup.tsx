@@ -3,14 +3,15 @@ import './StatisticsPopup.css';
 interface StatisticsPopupTypes {
 	isOpen: boolean;
 	onClose: () => void;
+	period: string;
 	// handlePeriodPick: (period: string) => void;
 }
 
 const StatisticsPopup = ({
 	isOpen,
 	onClose,
-} // handlePeriodPick,
-: StatisticsPopupTypes) => {
+	period, // handlePeriodPick,
+}: StatisticsPopupTypes) => {
 	return (
 		<div className={`statistics-popup ${isOpen && 'statistics-popup_opened'}`}>
 			<div className="statistics-popup__container">
@@ -26,18 +27,47 @@ const StatisticsPopup = ({
 				</div>
 				<ul className="statistics-popup__selector">
 					<li className="statistics-popup__selector-item">
-						<h4 className="statistics-popup__selector-heading statistics-popup__selector-heading_active">
+						<h4
+							className={`statistics-popup__selector-heading ${
+								period === 'day' && 'statistics-popup__selector-heading_active'
+							}`}
+						>
 							Сегодня
 						</h4>
-						<div className="statistics-popup__selector-img statistics-popup__selector-img_active"></div>
+						<div
+							className={`statistics-popup__selector-img ${
+								period === 'day' && 'statistics-popup__selector-img_active'
+							}`}
+						></div>
 					</li>
 					<li className="statistics-popup__selector-item">
-						<h4 className="statistics-popup__selector-heading">За неделю</h4>
-						<div className="statistics-popup__selector-img"></div>
+						<h4
+							className={`statistics-popup__selector-heading ${
+								period === 'week' && 'statistics-popup__selector-heading_active'
+							}`}
+						>
+							За неделю
+						</h4>
+						<div
+							className={`statistics-popup__selector-img ${
+								period === 'week' && 'statistics-popup__selector-img_active'
+							}`}
+						></div>
 					</li>
 					<li className="statistics-popup__selector-item">
-						<h4 className="statistics-popup__selector-heading">За месяц</h4>
-						<div className="statistics-popup__selector-img"></div>
+						<h4
+							className={`statistics-popup__selector-heading ${
+								period === 'month' &&
+								'statistics-popup__selector-heading_active'
+							}`}
+						>
+							За месяц
+						</h4>
+						<div
+							className={`statistics-popup__selector-img ${
+								period === 'month' && 'statistics-popup__selector-img_active'
+							}`}
+						></div>
 					</li>
 				</ul>
 			</div>

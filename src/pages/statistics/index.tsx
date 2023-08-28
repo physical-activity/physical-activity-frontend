@@ -196,7 +196,11 @@ export const Statistics = () => {
 				</section>
 			</main>
 			<FooterMain page={'statistics'} withBtn={false} />
-			<StatisticsPopup isOpen={isPopupOpen} onClose={handlePopupClose} />
+			<StatisticsPopup
+				isOpen={isPopupOpen}
+				onClose={handlePopupClose}
+				period={'day'}
+			/>
 		</div>
 	);
 };
