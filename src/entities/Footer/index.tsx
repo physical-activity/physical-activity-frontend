@@ -7,15 +7,10 @@ export const Footer = ({
 	footerQuestion: string;
 	footerAnswer: string;
 }) => {
-	const navigate = useNavigate();
-
 	return (
 		<div className="footer">
 			<p className="footer__text">
-				{footerQuestion}{' '}
-				<span className="footer__span" onClick={() => navigate('/register')}>
-					{footerAnswer}
-				</span>
+				{footerQuestion} <span className="footer__span">{footerAnswer}</span>
 			</p>
 		</div>
 	);

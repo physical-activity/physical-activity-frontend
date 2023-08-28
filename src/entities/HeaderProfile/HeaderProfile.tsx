@@ -1,4 +1,5 @@
 import '../Header/Header.css';
+import './HeaderProfile.css';
 
 const HeaderProfile = ({
 	name,
@@ -14,8 +15,8 @@ const HeaderProfile = ({
 	saveChanges: () => void;
 }) => {
 	return (
-		<div className="header">
-			<h2 className="header__title">{name}</h2>
+		<div className="header-profile">
+			<h2 className="header-profile__title">{name}</h2>
 			{toggleButtonText ? (
 				<button className="header__button" onClick={() => handleEnableInput()}>
 					Редактировать

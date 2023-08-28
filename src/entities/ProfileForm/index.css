@@ -4,6 +4,7 @@
 	gap: 4px;
 	margin: 0 auto;
 	width: 100%;
+	margin-bottom: 4px;
 }
 
 .profile__avatar-box {
@@ -39,7 +40,6 @@
 }
 
 .profile__input-container {
-	width: calc(100% - 40px);
 	background-color: #fff;
 	border-radius: 12px;
 	padding: 40px 20px 160px;
