@@ -41,7 +41,6 @@ export const SignInForm = ({
 
 	const read = async () => {
 		let token = localStorage.getItem('google_access_token');
-		console.log(token);
 		const res = await fetch(
 			`https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`,
 			{
@@ -83,7 +82,6 @@ export const SignInForm = ({
 			.then(() => navigate('/'))
 			.catch((err) => {
 				setIsServerError(true);
-				console.log(err.message);
 				if (err.message === 'Invalid Data') {
 					setErrorText('Неправильно введен пароль или e-mail');
 				} else {
