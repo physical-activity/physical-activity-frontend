@@ -1,9 +1,14 @@
 import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 
-import './BtnBlock.css';
+import styles from './BtnBlock.module.scss';
 
-const BtnBlock = ({ text }: { text: string }) => {
+type Props = {
+	text: string;
+	btnType?: string;
+};
+
+export const BtnBlock = ({ text, btnType }: Props) => {
 	const navigate = useNavigate();
 	const [isToken, setIsToken] = useState(false);
 
@@ -13,17 +18,13 @@ const BtnBlock = ({ text }: { text: string }) => {
 	}, []);
 
 	return (
-		<div className="btnBlock">
-			<button
-				className="btnBlock__btn"
-				onClick={() => {
-					isToken ? navigate('/training') : navigate('/signin');
-				}}
-			>
-				{text}
-			</button>
-		</div>
+		<button
+			className={styles.btn}
+			onClick={() => {
+				isToken ? navigate('/training') : navigate('/signin');
+			}}
+		>
+			{text}
+		</button>
 	);
 };
-
-export default BtnBlock;

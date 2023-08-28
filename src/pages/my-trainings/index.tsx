@@ -12,11 +12,9 @@ export const MyTrainingsPageMobile = () => {
 	return (
 		<>
 			<HeaderMain userData={userData} />
-			<div className="page-container">
-				<TextBlock text={'мои тренировки'} />
-				<MyTrainings />
-				<FooterMain page={'trainings'} />
-			</div>
+			<TextBlock text={'мои тренировки'} />
+			<MyTrainings />
+			<FooterMain page={'trainings'} withBtn={true} />
 		</>
 	);
 };

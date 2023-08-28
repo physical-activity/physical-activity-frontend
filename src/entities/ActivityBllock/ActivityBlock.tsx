@@ -1,4 +1,4 @@
-import './ActivityBlock.css';
+import styles from './ActivityBlock.module.scss';
 
 import widthIcon from './icons/width.svg';
 import stepsIcon from './icons/steps.svg';
@@ -6,23 +6,36 @@ import timerIcon from './icons/timer.svg';
 
 const ActivityBlock = () => {
 	return (
-		<div className="activityBlock">
-			<div className="activityBlock__item">
-				<img src={widthIcon} alt="км"></img>
-				<span className="activityBlock__counter">0</span>
-				<caption className="activityBlock__caption">км</caption>
+		<section className={styles.activity}>
+			<div className={`${styles.container} ${styles.pb24}`}>
+				<div className={styles.activity__content}>
+					<h3 className={styles.activity__header}>Активность</h3>
+					<div className={styles.activity__info}>
+						<div className={styles.activity__item}>
+							<h4 className={styles.activity__subtitle}>Дистанция</h4>
+							<img src={widthIcon} alt="" />
+							<p className={styles.activity__data}>
+								<span className={styles.activity__number}>{0}</span> км
+							</p>
+						</div>
+						<div className={styles.activity__item}>
+							<h4 className={styles.activity__subtitle}>Шаги</h4>
+							<img src={stepsIcon} alt="" />
+							<p className={styles.activity__data}>
+								<span className={styles.activity__number}>{0}</span>
+							</p>
+						</div>
+						<div className={styles.activity__item}>
+							<h4 className={styles.activity__subtitle}>Длительность</h4>
+							<img src={timerIcon} alt="" />
+							<p className={styles.activity__data}>
+								<span className={styles.activity__number}>00:00</span>
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div className="activityBlock__item">
-				<img src={stepsIcon} alt="км"></img>
-				<span className="activityBlock__counter">0</span>
-				<caption className="activityBlock__caption">шаг</caption>
-			</div>
-			<div className="activityBlock__item">
-				<img src={timerIcon} alt="км"></img>
-				<span className="activityBlock__counter">0</span>
-				<caption className="activityBlock__caption">час</caption>
-			</div>
-		</div>
+		</section>
 	);
 };
 
