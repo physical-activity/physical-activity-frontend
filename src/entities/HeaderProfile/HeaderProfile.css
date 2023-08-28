@@ -1,0 +1,20 @@
+.header-profile {
+	background-color: #fff;
+	border-radius: 12px;
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 20px;
+	margin-bottom: 4px;
+}
+
+.header-profile__title {
+	color: var(--new-txt-black, #212120);
+
+	/* new mob/H2 */
+	font-family: Open Sans;
+	font-size: 20px;
+	font-style: italic;
+	font-weight: 800;
+	line-height: 105%; /* 21px */
+	text-transform: uppercase;
+}

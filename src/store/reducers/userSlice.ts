@@ -83,8 +83,10 @@ export const singInUser = createAsyncThunk<any, signinData>(
 		let res;
 		if (response.status === 200) {
 			res = response.json();
-		} else {
-			throw new Error('Smth went wrong');
+		} else if (response.status === 400) {
+			throw new Error('Invalid Data');
+		} else if (response.status === 500) {
+			throw new Error('Server Error');
 		}
 		return res;
 	}
@@ -154,9 +156,11 @@ export const userAuthGoogle = createAsyncThunk('auth/google', async () => {
 	});
 	let response;
 	if (res.status === 200) {
-		response = await res.json();
-	} else {
-		throw new Error("Can't login");
+		response = res.json();
+	} else if (res.status === 400) {
+		throw new Error('Invalid Data');
+	} else if (res.status === 500) {
+		throw new Error('Server Error');
 	}
 	return response;
 });

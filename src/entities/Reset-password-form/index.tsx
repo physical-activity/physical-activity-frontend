@@ -4,6 +4,7 @@ import { Input } from '../Input/Input';
 import { useFormValidation } from 'shared/hooks/useFormValidation';
 import { resetPassword } from 'shared/api/resetpass';
 import { REGEX } from 'shared/utils/constants';
+import { ResetPasswordPage } from 'pages/reset-pass-page';
 
 export const ResetPassworForm = ({
 	setIsRequsetMade,

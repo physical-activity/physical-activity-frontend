@@ -54,7 +54,7 @@ export const Routing = () => {
 			<Route path="/" element={<HomePageMobile />} />
 			<Route path="/signin" element={<SignInPage />} />
 			<Route path="/register" element={<RegisterPage />} />
-			<Route path="/reset_password" element={<ResetPasswordPage />} />
+			{/* <Route path="/reset_password" element={<ResetPasswordPage />} /> */}
 			<Route
 				path="/auth/set_new_password/:uid/:token"
 				element={<ConfirmNewPasswordPage />}

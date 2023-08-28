@@ -10,11 +10,11 @@ export const MyTrainingsPageMobile = () => {
 	const userData = useAppSelector((state) => state.user);
 
 	return (
-		<div className="page-container">
+		<>
 			<HeaderMain userData={userData} />
 			<TextBlock text={'мои тренировки'} />
 			<MyTrainings />
 			<FooterMain page={'trainings'} withBtn={true} />
-		</div>
+		</>
 	);
 };
