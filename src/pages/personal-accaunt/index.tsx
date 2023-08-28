@@ -1,3 +1,5 @@
+import styles from './personal-accaunt.module.scss';
+
 import FooterMain from 'entities/FooterMain/FooterMain';
 import HeaderMain from 'entities/HeaderMain/HeaderMain';
 import HeaderProfile from 'entities/HeaderProfile/HeaderProfile';
@@ -63,32 +65,34 @@ export const PersonalAccaunt = () => {
 	]);
 
 	return (
-		<main className="main">
+		<div className={styles.wrapper}>
 			<HeaderMain userData={userData} />
-			<HeaderProfile
-				name="Профиль"
-				isButton={true}
-				toggleButtonText={isInputDisabled}
-				handleEnableInput={handleEnableInput}
-				saveChanges={saveChanges}
-			/>
-			<ProfileForm
-				isInputDisabled={isInputDisabled}
-				errors={errors}
-				name={name}
-				secondName={secondName}
-				email={email}
-				avatar={avatar}
-				handleChangeName={handleChangeName}
-				handleChangeSecondName={handleChangeSecondName}
-				handleChangeEmail={handleChangeEmail}
-				handleClickSingOut={handleClickSingOut}
-			/>
-			<SignOutPopup
-				isPopupOpen={isPopupOpen}
-				handleClickSingOut={handleClickSingOut}
-			/>
+			<main className={styles.main}>
+				<HeaderProfile
+					name="Профиль"
+					isButton={true}
+					toggleButtonText={isInputDisabled}
+					handleEnableInput={handleEnableInput}
+					saveChanges={saveChanges}
+				/>
+				<ProfileForm
+					isInputDisabled={isInputDisabled}
+					errors={errors}
+					name={name}
+					secondName={secondName}
+					email={email}
+					avatar={avatar}
+					handleChangeName={handleChangeName}
+					handleChangeSecondName={handleChangeSecondName}
+					handleChangeEmail={handleChangeEmail}
+					handleClickSingOut={handleClickSingOut}
+				/>
+				<SignOutPopup
+					isPopupOpen={isPopupOpen}
+					handleClickSingOut={handleClickSingOut}
+				/>
+			</main>
 			<FooterMain page={'main'} />
-		</main>
+		</div>
 	);
 };
