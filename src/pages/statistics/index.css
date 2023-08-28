@@ -1,6 +1,6 @@
 .statistics {
-  padding: 0 24px 16px;
-  background-color: var(--color-white);
+  padding: 0 24px 83px;
+  background-color: var(--color-light-bg);
   margin: 0;
 	width: 100%;
 	box-sizing: border-box;
@@ -158,7 +158,7 @@
 }
 
 .statistics__type:last-of-type {
-  margin-bottom: 68px;
+  margin-bottom: 24px;
 }
 
 .statistics__type-header {

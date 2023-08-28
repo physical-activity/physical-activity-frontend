@@ -1,23 +1,35 @@
 import './index.css';
+import { useState } from 'react';
 import { useAppSelector } from 'shared/hooks/redux';
-import HeaderStatistics from 'entities/HeaderStatistics/HeaderStatistics';
-import FooterStatistics from 'entities/FooterStatistics/FooterStatistics';
+import HeaderMain from 'entities/HeaderMain/HeaderMain';
+import FooterMain from 'entities/FooterMain/FooterMain';
 import runningIcon from './icons/running.svg';
 import walkingIcon from './icons/walking.svg';
 import bikingIcon from './icons/biking.svg';
 import trainingIcon from './icons/training.svg';
 import timeIcon from './icons/time.svg';
 import distanceIcon from './icons/distance.svg';
+import StatisticsPopup from 'entities/StatisticsPopup/StatisticsPopup';
 
 export const Statistics = () => {
 	const userData = useAppSelector((state) => state.user);
+	const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+	const handlePopupOpen = () => {
+		setIsPopupOpen(true);
+	};
+
+	const handlePopupClose = () => {
+		setIsPopupOpen(false);
+	};
+
 	return (
 		<div>
-			<HeaderStatistics userData={userData} />
+			<HeaderMain userData={userData} />
 			<main className="statistics">
 				<section className="statistics__switcher">
 					<h2 className="statistics__switcher-header">Статистика</h2>
-					<div className="statistics__navigation">
+					<div className="statistics__navigation" onClick={handlePopupOpen}>
 						<h3 className="statistics__navigation-header">Сегодня</h3>
 						<button className="statistics__navigation-button" type="button" />
 					</div>
@@ -183,7 +195,8 @@ export const Statistics = () => {
 					</div>
 				</section>
 			</main>
-			<FooterStatistics page={'statistics'} />
+			<FooterMain page={'statistics'} withBtn={false} />
+			<StatisticsPopup isOpen={isPopupOpen} onClose={handlePopupClose} />
 		</div>
 	);
 };
