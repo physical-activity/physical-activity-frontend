@@ -42,6 +42,7 @@ export const MyTrainings = () => {
 	async function fetchPlannedTrainings() {
 		try {
 			const data = await getUserTrainings();
+			console.log(data);
 			let plannedTrainings: any = [];
 			data.results.map((training: Training) => {
 				let trainingStartTime = new Date(training.started_at).getTime();

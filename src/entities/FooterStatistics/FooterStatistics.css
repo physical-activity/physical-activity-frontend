@@ -1,0 +1,32 @@
+.footer-stats {
+	position: fixed;
+  z-index: 2;
+	left: 0;
+  bottom: 0;
+  width: 100%;
+	margin: 0;
+	box-sizing: border-box;
+	background-color: var(--color-white);
+	padding: 6px 42px 35px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.footer-stats__item {
+	min-width: 60px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	border: none;
+	background: transparent;
+	color: var(--new-dark-gray, #898989);
+	text-align: center;
+	font-family: 'Retni Sans';
+	font-size: 11px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
