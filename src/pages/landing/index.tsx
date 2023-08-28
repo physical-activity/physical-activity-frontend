@@ -1,14 +1,12 @@
 import './index.css';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import qrCode from './images/qrCode.svg';
 import barGreen from './images/barGreen.svg';
 import barWhite from './images/barWhite.svg';
-import email from './images/email.svg';
-import telegram from './images/telegram.svg';
-import vk from './images/vk.svg';
 
 export const Landing = () => {
 	const [largeHeader, setLargeHeader] = useState(false);
+	const [buttonCopied, setButtonCopied] = useState(false);
 
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
@@ -27,6 +25,7 @@ export const Landing = () => {
 
 	const handleClickCopy = () => {
 		navigator.clipboard.writeText('https://easyfit.space/');
+		setButtonCopied(true);
 	};
 
 	return (
@@ -38,7 +37,9 @@ export const Landing = () => {
 					}`}
 				>
 					<div className="landing__header-inner-container">
-						<h1 className="landing__header-logo">EasyFit</h1>
+						<a href="https://easyfit.space/" className="landing__header-logo">
+							EasyFit
+						</a>
 						<ul className="landing__header-links">
 							<li className="landing__header-link">
 								<a href="#opportunities" className="landing__header-url">
@@ -119,7 +120,12 @@ export const Landing = () => {
 							Делись ссылкой с друзьями и тренируйтесь вместе!
 						</h2>
 					</div>
-					<button onClick={handleClickCopy} className="landing__share-button">
+					<button
+						onClick={handleClickCopy}
+						className={`landing__share-button ${
+							buttonCopied && 'landing__share-button_copied'
+						}`}
+					>
 						Скопировать ссылку
 					</button>
 					<img
@@ -140,7 +146,7 @@ export const Landing = () => {
 								target="_blank"
 								rel="noreferrer"
 							>
-								<img src={email} className="landing__footer-icon" alt=""></img>
+								<div className="landing__footer-icon landing__footer-icon_email"></div>
 							</a>
 						</li>
 						<li className="landing__footer-link">
@@ -150,11 +156,7 @@ export const Landing = () => {
 								target="_blank"
 								rel="noreferrer"
 							>
-								<img
-									src={telegram}
-									className="landing__footer-icon"
-									alt=""
-								></img>
+								<div className="landing__footer-icon landing__footer-icon_telegram"></div>
 							</a>
 						</li>
 						<li className="landing__footer-link">
@@ -164,7 +166,7 @@ export const Landing = () => {
 								target="_blank"
 								rel="noreferrer"
 							>
-								<img src={vk} className="landing__footer-icon" alt=""></img>
+								<div className="landing__footer-icon landing__footer-icon_vk"></div>
 							</a>
 						</li>
 					</ul>

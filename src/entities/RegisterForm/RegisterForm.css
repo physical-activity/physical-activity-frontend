@@ -1,14 +1,15 @@
 .register__form {
 	display: flex;
 	flex-direction: column;
-	margin: 0 8px;
-	gap: 4px;
+	width: 100%;
 }
 
 .register__input-container {
 	background-color: #fff;
-	border-radius: 12px;
-	padding: 88px 20px 166px;
+	padding: 0 20px 32px;
+	gap: 24px;
+	display: flex;
+	flex-direction: column;
 }
 
 .register__button-container {

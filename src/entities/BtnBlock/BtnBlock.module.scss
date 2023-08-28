@@ -1,0 +1,18 @@
+.btn {
+	width: 100%;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	border-radius: 12px;
+	background: var(--color-green);
+	border: none;
+	color: var(--color-black);
+	cursor: pointer;
+	color: var(--color-black, #212120);
+	font-family: 'Retni Sans';
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 105%;
+	letter-spacing: 0.36px;
+	margin-top: 8px;
+}

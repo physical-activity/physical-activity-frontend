@@ -64,7 +64,7 @@ export const ConfirmPasswordForm = () => {
 				<Input
 					required={true}
 					id="secondPassword"
-					placeholder={'Пароль'}
+					placeholder={'Повторите пароль'}
 					name={'secondPassword'}
 					type={'password'}
 					value={repeatPassValue}
@@ -82,7 +82,7 @@ export const ConfirmPasswordForm = () => {
 					disabled={!isValid}
 					type="submit"
 				>
-					Далее
+					Продолжить
 				</button>
 			</div>
 		</form>

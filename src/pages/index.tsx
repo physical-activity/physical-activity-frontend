@@ -55,7 +55,7 @@ export const Routing = () => {
 			<Route path="/" element={<HomePageMobile />} />
 			<Route path="/signin" element={<SignInPage />} />
 			<Route path="/register" element={<RegisterPage />} />
-			<Route path="/reset_password" element={<ResetPasswordPage />} />
+			{/* <Route path="/reset_password" element={<ResetPasswordPage />} /> */}
 			<Route
 				path="/auth/set_new_password/:uid/:token"
 				element={<ConfirmNewPasswordPage />}
@@ -63,9 +63,30 @@ export const Routing = () => {
 			<Route path="/register-confirm" element={<RegisterConfirmPage />} />
 			<Route path="/register-success" element={<RegisterSuccessPage />} />
 			<Route path="/register-error" element={<RegisterErrorPage />} />
-			<Route path="/users/:id" element={<PersonalAccaunt />} />
-			<Route path="/training" element={<TrainingPageMobile />} />
-			<Route path="/my-trainings" element={<MyTrainingsPageMobile />} />
+			<Route
+				path="/users/:id"
+				element={
+					<RequireAuth>
+						<PersonalAccaunt />
+					</RequireAuth>
+				}
+			/>
+			<Route
+				path="/training"
+				element={
+					<RequireAuth>
+						<TrainingPageMobile />
+					</RequireAuth>
+				}
+			/>
+			<Route
+				path="/my-trainings"
+				element={
+					<RequireAuth>
+						<MyTrainingsPageMobile />
+					</RequireAuth>
+				}
+			/>
 			<Route path="/landing" element={<Landing />} />
 			<Route path="/statistics" element={<Statistics />} />
 		</Routes>

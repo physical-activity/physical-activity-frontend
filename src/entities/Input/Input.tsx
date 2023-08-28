@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './Input.css';
 import requireSvg from './ic_required_1.svg';
 import toggleVisibleImg from './visibility_off_FILL0_wght300_GRAD0_opsz48 1.svg';
+import visible from './State=Open.svg';
 
 export const Input = ({
 	name,
@@ -14,6 +15,7 @@ export const Input = ({
 	disabled,
 	required,
 	id,
+	isServerError,
 }: {
 	name: string;
 	type: string;
@@ -25,6 +27,7 @@ export const Input = ({
 	setValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	disabled?: boolean;
 	required: boolean;
+	isServerError?: boolean;
 }) => {
 	const [visibility, setVisibility] = useState(type);
 
@@ -46,7 +49,7 @@ export const Input = ({
 				disabled={disabled}
 				id={id}
 				className={`input-block__input ${
-					isValidInput && 'input-block__input_error'
+					(isValidInput || isServerError) && 'input-block__input_error'
 				}`}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e)}
 				pattern={pattern}
@@ -73,7 +76,7 @@ export const Input = ({
 					// src={
 					// 	require('./visibility_off_FILL0_wght300_GRAD0_opsz48 1.svg').default
 					// }
-					src={toggleVisibleImg}
+					src={visibility === 'password' ? toggleVisibleImg : visible}
 					alt="show/hide password"
 					onClick={() => toggleInputVisibility()}
 				/>
