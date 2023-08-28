@@ -1,10 +1,10 @@
 .header-profile {
 	background-color: #fff;
 	border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 20px;
-  margin-bottom: 4px;
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 20px;
+	margin-bottom: 4px;
 }
 
 .header-profile__title {
