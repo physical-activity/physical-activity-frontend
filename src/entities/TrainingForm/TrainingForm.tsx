@@ -12,12 +12,14 @@ import requireSvg from './ic_required.svg';
 import calendarSvg from './ic_calendar.svg';
 import CalendarModal from 'entities/CalendarModal/CalendarModal';
 import TimepickerModal from 'entities/TimepickerModal/TimepickerModal';
+import { useNavigate } from 'react-router';
 
 export const TrainingForm = () => {
 	type TypeItem = {
 		name: string;
 	};
 
+	const navigate = useNavigate();
 	const { values, handleChange, errors, isValid, resetForm, setIsValid } =
 		useTrainingFormValidation();
 
@@ -210,8 +212,8 @@ export const TrainingForm = () => {
 		);
 
 		createTraining(data)
-			.then((res) => {
-				console.log(res);
+			.then(() => {
+				navigate('/my-trainings');
 			})
 			.catch((err) => {
 				console.log(err);
