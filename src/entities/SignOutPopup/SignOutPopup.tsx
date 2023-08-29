@@ -3,6 +3,7 @@ import './signoutpopup.css';
 import { useNavigate } from 'react-router';
 import { useAppDispatch } from 'shared/hooks/redux';
 import { clearUserData } from 'store/reducers/userSlice';
+import { clearActivity } from 'store/reducers/activitySlice';
 export const SignOutPopup = ({
 	isPopupOpen,
 	handleClickSingOut,
@@ -15,8 +16,7 @@ export const SignOutPopup = ({
 	const dispatch = useAppDispatch();
 
 	const handleLogout = () => {
-		localStorage.removeItem('token');
-		localStorage.removeItem('google_access_token');
+		localStorage.clear();
 		dispatch(
 			clearUserData({
 				user: {
@@ -32,6 +32,7 @@ export const SignOutPopup = ({
 				error: '',
 			})
 		);
+		dispatch(clearActivity());
 		navigate('/');
 	};
 
