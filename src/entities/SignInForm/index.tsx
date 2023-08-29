@@ -25,7 +25,8 @@ export const SignInForm = ({
 		useFormValidation();
 
 	const login = useGoogleLogin({
-		scope: 'https://www.googleapis.com/auth/fitness.activity.read',
+		scope:
+			'https://www.googleapis.com/auth/fitness.activity.read https://www.googleapis.com/auth/fitness.location.read',
 		onSuccess: async (tokenResponse) => {
 			localStorage.setItem('google_access_token', tokenResponse.access_token);
 			dispatch(userAuthGoogle())
