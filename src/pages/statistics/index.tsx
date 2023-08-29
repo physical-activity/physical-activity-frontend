@@ -1,7 +1,6 @@
 import './index.css';
 import { useEffect, useState } from 'react';
 import { useAppSelector } from 'shared/hooks/redux';
-import { getUserTrainings } from '../../shared/api/training';
 import { getUserTrainingsFromDate } from '../../shared/api/training';
 import HeaderMain from 'entities/HeaderMain/HeaderMain';
 import FooterMain from 'entities/FooterMain/FooterMain';
@@ -32,10 +31,6 @@ export const Statistics = () => {
 
 	const [items, setItems] = useState([]);
 	const [period, setPeriod] = useState('day');
-	// const [dayAgoDate, setDayAgoDate] = useState('');
-	// const [weekAgoDate, setWeekAgoDate] = useState('');
-	// const [monthAgoDate, setMonthAgoDate] = useState('');
-	// const [fromDate, setFromDate] = useState('2023-07-04T00:05:23+03:00');
 	const [totalDistance, setTotalDistance] = useState(0);
 	const [walkDistance, setWalkDistance] = useState(0);
 	const [runDistance, setRunDistance] = useState(0);
@@ -90,7 +85,6 @@ export const Statistics = () => {
 
 	async function fetchTrainings() {
 		try {
-			console.log(selectFromDate());
 			let fromDate: string = selectFromDate();
 			const data = await getUserTrainingsFromDate(fromDate);
 			let completedTrainings: any = [];
@@ -104,15 +98,6 @@ export const Statistics = () => {
 			console.error(e);
 		}
 	}
-
-	// async function printAllTrainings() {
-	// 	try {
-	// 		const data = await getUserTrainings();
-	// 		console.log(data);
-	// 	} catch (e) {
-	// 		console.error(e);
-	// 	}
-	// }
 
 	function getStepsNumber() {
 		let stepsNumber: number = 0;
@@ -223,16 +208,6 @@ export const Statistics = () => {
 
 	useEffect(() => {
 		fetchTrainings();
-		// getDayAgoDate();
-		// getWeekAgoDate();
-		// getMonthAgoDate();
-		// if (period === 'day') {
-		// 	setFromDate(dayAgoDate);
-		// } else if (period === 'week') {
-		// 	setFromDate(weekAgoDate);
-		// } else if (period === 'month') {
-		// 	setFromDate(monthAgoDate);
-		// }
 	}, []);
 
 	useEffect(() => {
@@ -249,7 +224,6 @@ export const Statistics = () => {
 		getRunDuration();
 		getBikeDuration();
 		getStepsNumber();
-		// console.log(fromDate);
 	}, [items]);
 
 	const handlePopupOpen = () => {
@@ -261,7 +235,6 @@ export const Statistics = () => {
 	};
 
 	const handlePeriodPick = (period: string) => {
-		console.log(period);
 		setPeriod(period);
 		setIsPopupOpen(false);
 	};

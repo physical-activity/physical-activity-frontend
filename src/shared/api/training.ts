@@ -92,7 +92,7 @@ export const updateTraining = async (id: number, data: Training) => {
 
 export const getUserTrainingsFromDate = async (date: string) => {
 	const token = localStorage.getItem('token');
-	const res = await fetch(`${BASE_URL}/trainings?from_datetime=${date}`, {
+	const res = await fetch(`${BASE_URL}/trainings/?started_after=${date}`, {
 		method: 'GET',
 		headers: {
 			Authorization: `Token ${token}`,
