@@ -4,13 +4,14 @@ interface StatisticsPopupTypes {
 	isOpen: boolean;
 	onClose: () => void;
 	period: string;
-	// handlePeriodPick: (period: string) => void;
+	onPeriodPick: (period: string) => void;
 }
 
 const StatisticsPopup = ({
 	isOpen,
 	onClose,
-	period, // handlePeriodPick,
+	period,
+	onPeriodPick,
 }: StatisticsPopupTypes) => {
 	return (
 		<div className={`statistics-popup ${isOpen && 'statistics-popup_opened'}`}>
@@ -26,7 +27,10 @@ const StatisticsPopup = ({
 					></button>
 				</div>
 				<ul className="statistics-popup__selector">
-					<li className="statistics-popup__selector-item">
+					<li
+						className="statistics-popup__selector-item"
+						onClick={() => onPeriodPick('day')}
+					>
 						<h4
 							className={`statistics-popup__selector-heading ${
 								period === 'day' && 'statistics-popup__selector-heading_active'
@@ -40,7 +44,10 @@ const StatisticsPopup = ({
 							}`}
 						></div>
 					</li>
-					<li className="statistics-popup__selector-item">
+					<li
+						className="statistics-popup__selector-item"
+						onClick={() => onPeriodPick('week')}
+					>
 						<h4
 							className={`statistics-popup__selector-heading ${
 								period === 'week' && 'statistics-popup__selector-heading_active'
@@ -54,7 +61,10 @@ const StatisticsPopup = ({
 							}`}
 						></div>
 					</li>
-					<li className="statistics-popup__selector-item">
+					<li
+						className="statistics-popup__selector-item"
+						onClick={() => onPeriodPick('month')}
+					>
 						<h4
 							className={`statistics-popup__selector-heading ${
 								period === 'month' &&

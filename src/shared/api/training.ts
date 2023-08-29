@@ -89,3 +89,15 @@ export const updateTraining = async (id: number, data: Training) => {
 	});
 	return handleResponse(res);
 };
+
+export const getUserTrainingsFromDate = async (date: string) => {
+	const token = localStorage.getItem('token');
+	const res = await fetch(`${BASE_URL}/trainings?from_datetime=${date}`, {
+		method: 'GET',
+		headers: {
+			Authorization: `Token ${token}`,
+			'Content-Type': 'application/json',
+		},
+	});
+	return handleResponse(res);
+};
