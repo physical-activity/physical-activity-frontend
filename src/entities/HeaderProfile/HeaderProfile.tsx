@@ -1,5 +1,4 @@
-import '../Header/Header.css';
-import './HeaderProfile.css';
+import styles from './HeaderProfile.module.scss';
 
 const HeaderProfile = ({
 	name,
@@ -15,14 +14,17 @@ const HeaderProfile = ({
 	saveChanges: () => void;
 }) => {
 	return (
-		<div className="header-profile">
-			<h2 className="header-profile__title">{name}</h2>
+		<div className={styles.header}>
+			<h2 className={styles.header__title}>{name}</h2>
 			{toggleButtonText ? (
-				<button className="header__button" onClick={() => handleEnableInput()}>
+				<button
+					className={styles.header__btn}
+					onClick={() => handleEnableInput()}
+				>
 					Редактировать
 				</button>
 			) : (
-				<button className="header__button" onClick={() => saveChanges()}>
+				<button className={styles.header__btn} onClick={() => saveChanges()}>
 					Сохранить
 				</button>
 			)}

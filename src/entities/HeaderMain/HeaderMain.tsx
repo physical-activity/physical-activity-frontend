@@ -1,33 +1,22 @@
-import { useNavigate } from 'react-router';
-
-import './HeaderMain.css';
+import styles from './HeaderMain.module.scss';
 
 import { UserState } from 'store/reducers/userSlice';
+import { Logo } from 'shared/logo/logo';
+import { BtnWithLetter } from 'shared/btnWithLetter/btnWithLetter';
+import { useAppSelector } from 'shared/hooks/redux';
 
 const HeaderMain = ({ userData }: { userData: UserState }) => {
-	const navigate = useNavigate();
-	const token = localStorage.getItem('token');
+	const token = useAppSelector((state) => state.user.auth_token);
+
 	return (
-		<div className="header-main">
-			<h1 className="header-main__logo" onClick={() => navigate('/')}>
-				easyfit
-			</h1>
-			<div className="header-main__user">
-				<p className="header-main__name">{userData.user.first_name}</p>
-				{token !== null ? (
-					<>
-						<button
-							className="header-main__btn"
-							onClick={() => {
-								navigate('/users/123');
-							}}
-						>
-							<p className="header-main__letter">
-								{userData.user.first_name.slice(0, 1)}
-							</p>
-						</button>
-					</>
-				) : null}
+		<div className={styles.header}>
+			<div className={styles.container}>
+				<div className={styles.header__wrap}>
+					<Logo text={'easyfit'} />
+					<div className={styles.header__user}>
+						{token !== null ? <BtnWithLetter userData={userData} /> : null}
+					</div>
+				</div>
 			</div>
 		</div>
 	);

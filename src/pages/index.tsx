@@ -14,6 +14,7 @@ import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { TrainingPageMobile } from './training';
 import { MyTrainingsPageMobile } from './my-trainings';
 import { Landing } from './landing';
+import { Statistics } from './statistics';
 import { useNavigate } from 'react-router-dom';
 import useResize from '../shared/hooks/useResize';
 import RequireAuth from 'shared/hooks/require-auth';
@@ -87,6 +88,7 @@ export const Routing = () => {
 				}
 			/>
 			<Route path="/landing" element={<Landing />} />
+			<Route path="/statistics" element={<Statistics />} />
 		</Routes>
 	);
 };

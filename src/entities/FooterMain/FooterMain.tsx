@@ -1,54 +1,104 @@
 import { useNavigate } from 'react-router';
 
-import './FooterMain.css';
+import styles from './FooterMain.module.scss';
 
 import homeIcon from './icons/home.svg';
 import homeIconInactive from './icons/homeInactive.svg';
 import workoutIcon from './icons/workout.svg';
 import workoutIconInactive from './icons/workoutInactive.svg';
-import statsIconInactive from './icons/statInactive.svg';
+import statsIcon from './icons/stats.svg';
+import statsIconInactive from './icons/statsInactive.svg';
+
 import { useAppSelector } from 'shared/hooks/redux';
+import { BtnBlock } from 'entities/BtnBlock/BtnBlock';
 
 type Props = {
 	page: string;
+	withBtn?: boolean;
 };
 
-const FooterMain = ({ page }: Props) => {
+const FooterMain = ({ page, withBtn }: Props) => {
 	const navigate = useNavigate();
 
 	const token = useAppSelector((state) => state.user.auth_token);
 
 	return (
-		<div className="footer-main">
-			<button
-				className="footer-main__item"
-				onClick={() => {
-					navigate('/');
-				}}
-			>
-				<img src={page === 'main' ? homeIcon : homeIconInactive}></img>
-				<caption>Главная</caption>
-			</button>
-			<button
-				className="footer-main__item"
-				onClick={() => {
-					token ? navigate('/my-trainings') : navigate('/signin');
-				}}
-			>
-				<img
-					src={page === 'trainings' ? workoutIcon : workoutIconInactive}
-				></img>
-				<caption>Тренировки</caption>
-			</button>
-			<button
-				className="footer-main__item"
-				onClick={() => {
-					navigate('/');
-				}}
-			>
-				<img src={statsIconInactive}></img>
-				<caption>Статистика</caption>
-			</button>
+		<div className={styles.footer}>
+			<div className={styles.container}>
+				{withBtn === true ? (
+					<BtnBlock
+						text={
+							token == null
+								? 'Присоединиться'
+								: page === 'main'
+								? 'Тренироваться'
+								: page === 'trainings'
+								? 'Создать'
+								: page === 'training-creation'
+								? 'Сохранить'
+								: 'Другая страница'
+						}
+					/>
+				) : null}
+
+				<div className={styles.footer__wrap}>
+					<button
+						className={styles.footer__item}
+						onClick={() => {
+							navigate('/');
+						}}
+					>
+						<img src={page === 'main' ? homeIcon : homeIconInactive}></img>
+						<caption
+							className={
+								page === 'main'
+									? `${styles.footer__text_active}`
+									: `${styles.footer__text}`
+							}
+						>
+							Главная
+						</caption>
+					</button>
+					<button
+						className={styles.footer__item}
+						onClick={() => {
+							token ? navigate('/my-trainings') : navigate('/signin');
+						}}
+					>
+						<img
+							src={page === 'trainings' ? workoutIcon : workoutIconInactive}
+						></img>
+						<caption
+							className={
+								page === 'trainings'
+									? `${styles.footer__text_active}`
+									: `${styles.footer__text}`
+							}
+						>
+							Тренировки
+						</caption>
+					</button>
+					<button
+						className={styles.footer__item}
+						onClick={() => {
+							token ? navigate('/statistics') : navigate('/signin');
+						}}
+					>
+						<img
+							src={page === 'statistics' ? statsIcon : statsIconInactive}
+						></img>
+						<caption
+							className={
+								page === 'statistics'
+									? `${styles.footer__text_active}`
+									: `${styles.footer__text}`
+							}
+						>
+							Статистика
+						</caption>
+					</button>
+				</div>
+			</div>
 		</div>
 	);
 };
