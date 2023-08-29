@@ -39,7 +39,6 @@ export const TrainingForm = () => {
 	const [isTrainingReminder, setIsTrainingReminder] = useState(false);
 	const [isDuratiomError, setIsDuratiomError] = useState(false);
 	const [isDuratiomErrorMessage, setIsDuratiomErrorMessage] = useState('');
-	const [globalValid, setGlobalValid] = useState(false);
 	const [isCaledarModalOpen, setIsCalendarModalOpen] = useState(false);
 	const [isTimeModalStartOpen, setIsTimeModalStartOpen] = useState(false);
 	const [isTimeModalFinishOpen, setIsTimeModalFinishOpen] = useState(false);
@@ -73,10 +72,6 @@ export const TrainingForm = () => {
 		errors.started_at,
 		errors.finished_at,
 	]);
-
-	useEffect(() => {
-		isValid && !isDuratiomError ? setGlobalValid(true) : setGlobalValid(false);
-	}, [isDuratiomError, isValid]);
 
 	function handleTimeStartPick(time: string) {
 		setTrainingStartedAtInputValue(time);
@@ -408,9 +403,10 @@ export const TrainingForm = () => {
 				<div className="training__container">
 					<button
 						className={`training__button ${
-							(!isValid || isDuratiomError) && 'training__button_unvalid'
+							(!trainingDateInputValue || !trainingStartedAtInputValue) &&
+							'training__button_unvalid'
 						}`}
-						disabled={!globalValid}
+						disabled={!(trainingDateInputValue && trainingStartedAtInputValue)}
 					>
 						запланировать
 					</button>
