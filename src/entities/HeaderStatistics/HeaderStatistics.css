@@ -39,7 +39,7 @@
 }
 
 .header-stats__letter {
-	color: var(--new-bg, #F5F5F5);
+	color: var(--new-bg, #f5f5f5);
 	font-family: 'Retni Sans';
 	font-size: 16px;
 	font-style: normal;

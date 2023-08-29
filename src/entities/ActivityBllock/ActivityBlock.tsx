@@ -7,7 +7,7 @@ import timerIcon from './icons/timer.svg';
 const ActivityBlock = () => {
 	return (
 		<section className={styles.activity}>
-			<div className={`${styles.container} ${styles.pb24}`}>
+			<div className={`${styles.container} ${styles.pb24} ${styles.pt24}`}>
 				<div className={styles.activity__content}>
 					<h3 className={styles.activity__header}>Активность</h3>
 					<div className={styles.activity__info}>
