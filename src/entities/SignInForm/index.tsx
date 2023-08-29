@@ -39,41 +39,6 @@ export const SignInForm = ({
 		onError: (errorResponse) => console.log(errorResponse),
 	});
 
-	const read = async () => {
-		let token = localStorage.getItem('google_access_token');
-		const res = await fetch(
-			`https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`,
-			{
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `Bearer ${token}`,
-				},
-				body: JSON.stringify({
-					aggregateBy: [
-						{
-							dataTypeName: 'com.google.step_count.delta',
-							dataSourceId:
-								'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps',
-						},
-					],
-					bucketByTime: { durationMillis: 86400000 },
-					startTimeMillis: 1438705622000,
-					endTimeMillis: 1439310422000,
-				}),
-			}
-		);
-		let response;
-		// let response2;
-		if (res.status === 200) {
-			response = await res.json();
-			console.log(response);
-			console.log(res);
-		} else {
-			throw new Error('lolol');
-		}
-	};
-
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const dataToSend = { password: values.password, email: values.email };
@@ -160,7 +125,6 @@ export const SignInForm = ({
 					<p className="auth-text">Продолжить с VK</p>
 				</Link>
 			</div>
-			<button onClick={() => read()}>read activite</button>
 		</form>
 	);
 };
