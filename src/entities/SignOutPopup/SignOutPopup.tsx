@@ -1,5 +1,5 @@
-import React from 'react';
-import './signoutpopup.css';
+import styles from './SignOutPopup.module.scss';
+
 import { useNavigate } from 'react-router';
 import { useAppDispatch } from 'shared/hooks/redux';
 import { clearUserData } from 'store/reducers/userSlice';
@@ -37,25 +37,20 @@ export const SignOutPopup = ({
 
 	return (
 		<div className={`popup ${isPopupOpen && 'popup_open'}`}>
-			<div className="signout-container">
-				<h1 className="signout__title">внимание</h1>
-				<div className="signout__text-container">
-					<p className="signout__text">
-						Вы точно хотите выйти из аккаунта? (ваши данные сохранятся)
-					</p>
-				</div>
-				<div className="signout__buttons-container">
-					<button
-						className="signout__button signout__button_green"
-						onClick={handleClickSingOut}
-					>
-						назад
+			<div className={styles.signout}>
+				<h2 className={styles.signout__title}>внимание</h2>
+				<p className={styles.signout__text}>
+					Вы точно хотите выйти из аккаунта? (ваши данные сохранятся)
+				</p>
+				<div className={styles.signout__btns}>
+					<button className={styles.signout__btn} onClick={handleClickSingOut}>
+						Назад
 					</button>
 					<button
-						className="signout__button signout__button_gray"
+						className={`${styles.signout__btn} ${styles.signout__btn__accent}`}
 						onClick={handleLogout}
 					>
-						выход
+						Выход
 					</button>
 				</div>
 			</div>
