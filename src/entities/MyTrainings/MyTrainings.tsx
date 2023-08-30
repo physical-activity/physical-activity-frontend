@@ -1,6 +1,6 @@
 import { TrainingCard } from 'entities/TrainingCard/TrainingCard';
 import { useNavigate } from 'react-router-dom';
-import './MyTrainings.css';
+import styles from './MyTrainings.module.scss';
 import { getUserTrainings } from '../../shared/api/training';
 import { deleteTraining } from '../../shared/api/training';
 import { updateTraining } from '../../shared/api/training';
@@ -124,57 +124,60 @@ export const MyTrainings = () => {
 	};
 
 	return (
-		<div className="my-trainings">
-			<div className="my-trainings__status">
-				<button
-					className={`my-trainings__status-button ${
-						activeButton === 0 ? 'my-trainings__status-button_active' : ''
-					}`}
-					onClick={fetchPlannedTrainings}
-				>
-					План
-				</button>
-				<button
-					className={`my-trainings__status-button ${
-						activeButton === 1 ? 'my-trainings__status-button_active' : ''
-					}`}
-					onClick={fetchMissedTrainings}
-				>
-					Пропущено
-				</button>
-				<button
-					className={`my-trainings__status-button ${
-						activeButton === 2 ? 'my-trainings__status-button_active' : ''
-					}`}
-					onClick={fetchCompletedTrainings}
-				>
-					Выполнено
-				</button>
-			</div>
-			<div className="my-trainings__container">
-				<div className="my-trainings__card-container">
-					{items.map((card: Training) => (
-						<TrainingCard
-							card={card}
-							title={card.training_type}
-							key={card.id}
-							date={
-								formatterDay.format(new Date(card.started_at)).split('.')[0]
-							}
-							time={formatterTime.format(new Date(card.started_at))}
-							distance={`${card.distance} км`}
-							reminder={card.reminder}
-							handleDelete={handleDelete}
-							handleCheck={handleCheck}
-						/>
-					))}
+		<div className={styles.trainings}>
+			<div className={styles.container}>
+				<div className={styles.trainings__content}>
+					<div className={styles.trainings__status}>
+						<button
+							className={`${styles.trainings__btn} ${
+								activeButton === 0 ? styles.trainings__btn_active : ''
+							}`}
+							onClick={fetchPlannedTrainings}
+						>
+							План
+						</button>
+						<button
+							className={`${styles.trainings__btn} ${
+								activeButton === 2 ? styles.trainings__btn_active : ''
+							}`}
+							onClick={fetchCompletedTrainings}
+						>
+							Выполнено
+						</button>
+						<button
+							className={`${styles.trainings__btn} ${
+								activeButton === 1 ? styles.trainings__btn_active : ''
+							}`}
+							onClick={fetchMissedTrainings}
+						>
+							Пропущено
+						</button>
+					</div>
+					<div className={styles.trainings__cards}>
+						{items.length === 0 && activeButton === 0 ? (
+							<div className={styles.trainings__textwrap}>
+								<p className={styles.trainings__text}>Пока нет ни одной</p>
+								<p className={styles.trainings__text}>будущей тренировки</p>
+							</div>
+						) : (
+							items.map((card: Training) => (
+								<TrainingCard
+									card={card}
+									title={card.training_type}
+									key={card.id}
+									date={
+										formatterDay.format(new Date(card.started_at)).split('.')[0]
+									}
+									time={formatterTime.format(new Date(card.started_at))}
+									distance={`${card.distance} км`}
+									reminder={card.reminder}
+									handleDelete={handleDelete}
+									handleCheck={handleCheck}
+								/>
+							))
+						)}
+					</div>
 				</div>
-				<button
-					className={`my-trainings__button`}
-					onClick={() => navigate('/training')}
-				>
-					Создать
-				</button>
 			</div>
 		</div>
 	);

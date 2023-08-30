@@ -1,0 +1,53 @@
+.trainingcard {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 50px;
+	background-color: var(--color-gray-bg);
+	padding: 20px;
+	gap: 12px;
+	border-radius: 12px;
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__typewrap {
+		display: flex;
+		gap: 4px;
+		align-items: center;
+	}
+
+	&__title {
+		color: var(--color-black, #212120);
+		font-family: 'Finlandica';
+		font-size: 16px;
+		font-style: italic;
+		font-weight: 700;
+		line-height: 110%; /* 17.6px */
+		letter-spacing: 0.64px;
+		text-transform: uppercase;
+	}
+
+	&__info {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 12px;
+		border-bottom: 1px solid #c3c3cc;
+	}
+
+	&__info_completed {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	&__info_missed {
+		color: var(--color-gray-text);
+	}
+
+	&__btns {
+		display: flex;
+		justify-content: space-between;
+	}
+}
