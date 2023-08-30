@@ -6,24 +6,20 @@
 	width: 100%;
 	padding: 0 20px;
 	height: 100%;
-	background-color: #fff;
+	background-color: var(--color-white);
 }
 
 .form__input-container {
 	width: 100%;
-	background-color: #fff;
+	background-color: var(--color-white);
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
 }
 
-.form__input-container_reset-pass {
-	/* height: 528px; */
-}
-
 .form__server-error {
 	margin-top: -8px;
-	color: #f94c4c;
+	color: var(--color-error);
 }
 
 .form__recover-pass {
@@ -35,17 +31,17 @@
 	margin-top: 20px;
 	margin-bottom: 32px;
 	cursor: pointer;
-	color: var(--new-dark-gray, #898989);
+	color: var(--color-dark-grey);
 	font-family: Retni Sans;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 105%; /* 14.7px */
+	line-height: 105%;
 }
 
 .form__button-continer {
 	width: 100%;
-	background-color: #fff;
+	background-color: var(--color-white);
 	border-radius: 12px;
 	padding: 28px 0;
 	display: flex;
@@ -56,22 +52,22 @@
 	padding: 12px 24px;
 	margin: 0 auto;
 	border-radius: 12px;
-	background: #c2ff5d;
+	background: var(--color-green);
 	border: none;
-	color: #fff;
+	color: var(--color-white);
 	cursor: pointer;
 	font-family: Open Sans;
 	font-size: 18px;
 	font-style: italic;
 	font-weight: 800;
-	line-height: 105%; /* 18.9px */
+	line-height: 105%;
 	text-transform: uppercase;
 	margin-bottom: 32px;
 }
 
 .form__button_unvalid {
-	color: #8b8b96;
-	background: #e0e0e5;
+	color: var(--color-dark-grey);
+	background: var(--color-gray-light);
 	cursor: default;
 }
 
@@ -84,16 +80,16 @@
 }
 
 .form_span {
-	color: var(--new-dark-gray, #898989);
+	color: var(--color-dark-grey);
 	font-family: Retni Sans;
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 105%; /* 16.8px */
+	line-height: 105%;
 	text-align: center;
 	z-index: 20;
 	width: 50px;
-	background-color: #fff;
+	background-color: var(--color-white);
 }
 
 .form_div-span::after {
@@ -101,7 +97,7 @@
 	height: 1px;
 	content: '';
 	z-index: 9;
-	background: #e0e0e5;
+	background: var(--color-gray-light);
 	position: absolute;
 	left: 0;
 	top: 50%;
@@ -120,14 +116,14 @@
 	align-items: center;
 	gap: 16px;
 	border-radius: 12px;
-	border: 1px solid var(--new-gray, #c3c3cc);
-	background: var(--new-bg, #fff);
+	border: 1px solid var(--color-gray-shadow);
+	background: var(--color-white);
 	text-decoration: none;
 	justify-content: center;
 }
 
 .auth-text {
-	color: var(--new-dark-gray, #898989);
+	color: var(--color-dark-grey);
 	font-family: 'Retni Sans';
 	font-size: 16px;
 	font-style: normal;

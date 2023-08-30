@@ -8,7 +8,7 @@
 
 .register-header__logo {
 	text-align: left;
-	color: #141516;
+	color: var(--color-black);
 	line-height: 21px;
 	margin: 8px 8px 0;
 	padding: 20px 20px 12px;
@@ -26,11 +26,11 @@
 
 .register-header__title {
 	text-align: left;
-	color: #141516;
+	color: var(--color-black);
 	line-height: 21px;
 	margin: 4px 8px 0;
 	padding: 12px 20px;
-	background-color: #fff;
+	background-color: var(--color-white);
 	border-radius: 12px;
 	font-family: 'Open Sans';
 	font-size: 20px;

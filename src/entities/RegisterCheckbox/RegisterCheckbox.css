@@ -20,7 +20,7 @@
 	width: 24px;
 	height: 24px;
 	margin: 7px 8px 7px 0;
-	border: solid 1px #212120;
+	border: solid 1px var(--color-black);
 	border-radius: 4px;
 	user-select: none;
 }
@@ -48,5 +48,5 @@
 }
 
 .register__checkbox-link {
-	color: #898989;
+	color: var(--color-dark-grey);
 }

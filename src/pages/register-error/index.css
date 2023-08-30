@@ -2,7 +2,7 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	background-color: black;
+	background-color: var(--color-black);
 	margin: 0 auto;
 	gap: 4px;
 	border-radius: 24px;
@@ -12,7 +12,7 @@
 	display: flex;
 	flex-direction: column;
 	margin: 0 8px;
-	background-color: #fff;
+	background-color: var(--color-white);
 	border-radius: 12px;
 	padding: 0 20px;
 }
@@ -43,11 +43,11 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: 22px;
-	color: #898989;
+	color: var(--color-dark-grey);
 }
 
 .register-error__button-container {
-	background-color: #fff;
+	background-color: var(--color-white);
 	margin: 0 8px 8px;
 	border-radius: 12px;
 	padding: 20px;
@@ -61,8 +61,8 @@
 	margin: 0 auto;
 	border: none;
 	border-radius: 12px;
-	color: #212120;
-	background: #c2ff5d;
+	color: var(--color-black);
+	background: var(--color-green);
 	font-family: 'Open Sans';
 	font-size: 18px;
 	font-weight: 800;

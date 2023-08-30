@@ -3,8 +3,8 @@
 	justify-content: space-between;
 	flex-direction: column;
 	border-radius: 12px;
-	border: 1px solid var(--new-gray-light, #e0e0e5);
-	background: var(--new-bg, #f5f5f5);
+	border: 1px solid var(--color-gray-light);
+	background: var(--color-light-bg);
 	padding: 16px;
 	gap: 11px;
 	width: 100%;
@@ -16,19 +16,19 @@
 }
 
 .trainingduration__text-text {
-	color: var(--new-txt-black, #212120);
+	color: var(--color-black);
 	font-family: Retni Sans;
 	font-size: 10px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 105%; /* 10.5px */
+	line-height: 105%;
 }
 
 .trainingduration__text {
-	color: var(--new-txt-secondary, #a6a6a6);
+	color: var(--color-gray-text);
 	font-family: Retni Sans;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 105%; /* 14.7px */
+	line-height: 105%;
 }

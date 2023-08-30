@@ -34,11 +34,11 @@
 	&__title {
 		margin: 0;
 		padding: 0;
-		color: var(--color-light-gray, #f5f5f5);
+		color: var(--color-light-bg);
 		font-family: 'Retni Sans';
 		font-size: 10px;
 		font-weight: 500;
-		line-height: 105%; /* 10.5px */
+		line-height: 105%;
 		padding-bottom: 11px;
 	}
 
@@ -48,26 +48,26 @@
 	}
 
 	&__dist {
-		color: var(--color-light-gray, #f5f5f5);
+		color: var(--color-light-bg);
 		font-family: 'Retni Sans';
 		font-size: 12px;
 		font-weight: 500;
-		line-height: 105%; /* 14.7px */
+		line-height: 105%;
 	}
 
 	&__time span {
-		color: var(--color-light-gray, #f5f5f5);
+		color: var(--color-light-bg);
 		font-family: 'Retni Sans';
 		font-size: 14px;
 		font-weight: 500;
-		line-height: 105%; /* 14.7px */
+		line-height: 105%;
 	}
 
 	&__text {
-		color: var(--color-light-gray, #f5f5f5);
+		color: var(--color-light-bg);
 		font-family: 'Retni Sans';
 		font-size: 14px;
 		font-weight: 500;
-		line-height: 105%; /* 14.7px */
+		line-height: 105%;
 	}
 }

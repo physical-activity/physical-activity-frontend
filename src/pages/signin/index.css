@@ -1,11 +1,10 @@
 .main {
-	/* max-width: 375px; */
 	width: 100%;
 	max-width: 100%;
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-	background-color: #000;
+	background-color: var(--color-black);
 	height: 100vh;
 }
 
@@ -14,12 +13,12 @@
 	display: flex;
 	flex-direction: column;
 	width: calc(100% - 8px);
-	background-color: #fff;
+	background-color: var(--color-white);
 	border-radius: 14px;
 }
 
 .reset-block__title {
-	color: var(--new-txt-black, #04091f);
+	color: var(--color-black);
 	text-align: center;
 	font-family: Fyodor;
 	font-size: 20px;
@@ -31,13 +30,13 @@
 }
 
 .reset-block__message {
-	color: var(--new-txt-black, #212120);
+	color: var(--color-black);
 	text-align: center;
 	font-family: Retni Sans;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 105%; /* 14.7px */
+	line-height: 105%;
 	text-align: center;
 	margin: 0 0 32px;
 }

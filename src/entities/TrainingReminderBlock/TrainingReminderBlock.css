@@ -1,8 +1,8 @@
 .training__checkbox-element {
 	padding: 16px;
 	border-radius: 12px;
-	border: 1px solid var(--new-gray-light, #e0e0e5);
-	background: var(--new-bg, #f5f5f5);
+	border: 1px solid var(--color-gray-light);
+	background: var(--color-light-bg);
 	display: grid;
 	row-gap: 11px;
 	column-gap: 47px;
@@ -10,12 +10,12 @@
 	grid-template-rows: auto auto;
 	position: relative;
 	align-items: center;
-	color: var(--new-txt-black, #212120);
+	color: var(--color-black);
 	font-family: Retni Sans;
 	font-size: 10px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 130%; /* 13px */
+	line-height: 130%;
 }
 
 .training__checkbox_wrapper {
@@ -41,7 +41,7 @@
 .training__checkmark {
 	width: 24px;
 	height: 24px;
-	border: solid 1px black;
+	border: solid 1px var(--color-black);
 	border-radius: 4px;
 	user-select: none;
 	display: block;

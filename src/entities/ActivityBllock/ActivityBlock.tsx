@@ -25,7 +25,7 @@ const ActivityBlock = () => {
 		dispatch(getActivityDuration())
 			.unwrap()
 			.catch((err) => console.log(err));
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<section className={styles.activity}>
