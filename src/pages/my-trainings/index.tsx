@@ -1,5 +1,3 @@
-import './my-trainings.module.scss';
-
 import HeaderMain from 'entities/HeaderMain/HeaderMain';
 import TextBlock from 'entities/TextBlock/TextBlock';
 import FooterMain from 'entities/FooterMain/FooterMain';
