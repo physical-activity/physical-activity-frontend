@@ -1,7 +1,7 @@
 // import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './reducers/userSlice';
-
+import activityReducer from './reducers/activitySlice';
 // const rootReducer = combineReducers({
 // 	userReducer,
 // });
@@ -23,6 +23,7 @@ import userReducer from './reducers/userSlice';
 export const store = configureStore({
 	reducer: {
 		user: userReducer,
+		activity: activityReducer,
 	},
 });
 
