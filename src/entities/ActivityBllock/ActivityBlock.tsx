@@ -38,7 +38,7 @@ const ActivityBlock = () => {
 							<img src={widthIcon} alt="" />
 							<p className={styles.activity__data}>
 								<span className={styles.activity__number}>
-									{activity.distance / 1000}
+									{(activity.distance / 1000).toString().slice(0, 3)}
 								</span>{' '}
 								км
 							</p>
@@ -57,8 +57,11 @@ const ActivityBlock = () => {
 							<img src={timerIcon} alt="" />
 							<p className={styles.activity__data}>
 								<span className={styles.activity__number}>
-									{'0' + (activity.duration / 60).toString().slice(-2)} :{' '}
-									{'0' + (activity.duration % 60)}
+									{'0' +
+										Math.floor(activity.duration / 60)
+											.toString()
+											.slice(-2)}{' '}
+									: {'0' + (activity.duration % 60)}
 								</span>
 							</p>
 						</div>
