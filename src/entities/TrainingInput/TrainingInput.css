@@ -3,6 +3,7 @@
 	border: none;
 	text-align: right;
 	cursor: pointer;
+	background: var(--new-bg, #f5f5f5);
 }
 
 .training-input__input:focus {

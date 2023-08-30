@@ -1,8 +1,8 @@
 .textBlock {
 	width: 100%;
 	box-sizing: border-box;
-	background-color: var(--color-white);
-	border-radius: 12px;
+	background: var(--new-bg, #f5f5f5);
+	/* border-radius: 12px; */
 	padding-top: 12px;
 	padding-bottom: 12px;
 	padding-left: 20px;
