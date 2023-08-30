@@ -28,7 +28,6 @@ export const Routing = () => {
 	let windowWidth = size[0];
 
 	function redirectToLanding() {
-		console.log(windowWidth);
 		if (windowWidth >= 992) {
 			navigate(`/landing`);
 		}
