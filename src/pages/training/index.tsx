@@ -1,5 +1,3 @@
-import './index.css';
-
 import HeaderMain from 'entities/HeaderMain/HeaderMain';
 import TextBlock from 'entities/TextBlock/TextBlock';
 import FooterMain from 'entities/FooterMain/FooterMain';
@@ -10,15 +8,15 @@ export const TrainingPageMobile = () => {
 	const userData = useAppSelector((state) => state.user);
 
 	return (
-		<div className="page-container">
+		<>
 			<HeaderMain userData={userData} />
-			<TextBlock text={'тренировка'} />
+			<TextBlock text={'Тренировка'} />
 			<TrainingForm />
 			<FooterMain
 				page={'trainings'}
 				withBtn={false}
 				btnText={'Запланировать'}
 			/>
-		</div>
+		</>
 	);
 };
