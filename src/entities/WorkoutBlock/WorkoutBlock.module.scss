@@ -15,7 +15,7 @@
 	color: var(--color-black);
 
 	&__content {
-		border: 1px solid var(--color-gray-light, #e0e0e5);
+		border: 1px solid var(--color-gray-light);
 		border-radius: 12px;
 		overflow: hidden;
 	}
@@ -85,7 +85,7 @@
 		display: block;
 		width: 100%;
 		height: 1px;
-		background-color: var(--color-gray, #d9d9d9);
+		background-color: var(--color-gray);
 		border-radius: 1px;
 		position: absolute;
 		left: 0;
@@ -110,7 +110,7 @@
 	}
 
 	&__text {
-		color: var(--color-blackk, #212120);
+		color: var(--color-black);
 		font-family: 'Retni Sans';
 		font-size: 14px;
 		font-style: normal;

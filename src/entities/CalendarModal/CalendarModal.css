@@ -13,7 +13,7 @@
 }
 
 .modal__container {
-	color: #fff;
+	color: var(--color-white);
 	max-width: 495px;
 	min-width: 329px;
 	position: relative;

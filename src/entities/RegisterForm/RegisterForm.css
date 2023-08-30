@@ -5,7 +5,7 @@
 }
 
 .register__input-container {
-	background-color: #fff;
+	background-color: var(--color-white);
 	padding: 0 20px 32px;
 	gap: 24px;
 	display: flex;
@@ -13,7 +13,7 @@
 }
 
 .register__button-container {
-	background-color: #fff;
+	background-color: var(--color-white);
 	border-radius: 12px;
 	padding: 20px;
 	display: flex;
@@ -26,8 +26,8 @@
 	margin: 0 auto;
 	border: none;
 	border-radius: 12px;
-	color: #212120;
-	background: #c2ff5d;
+	color: var(--color-black);
+	background: var(--color-green);
 	font-family: 'Open Sans';
 	font-size: 18px;
 	font-weight: 800;
@@ -38,30 +38,7 @@
 }
 
 .register__button_unvalid {
-	color: #8b8b96;
-	background: #e0e0e5;
+	color: var(--color-dark-grey);
+	background: var(--color-gray-light);
 	cursor: default;
 }
-
-/* .register__button {
-	width: 319px;
-	padding: 12px 24px;
-	margin: 0 auto;
-	border-radius: 12px;
-	background: #c2ff5d;
-	border: none;
-	color: #fff;
-	cursor: pointer;
-	font-family: Open Sans;
-	font-size: 18px;
-	font-style: italic;
-	font-weight: 800;
-	line-height: 105%; /* 18.9px */
-/* text-transform: uppercase;
-}
-
-.register__button_unvalid {
-	color: #8b8b96;
-	background: #e0e0e5;
-	cursor: default;
-} */

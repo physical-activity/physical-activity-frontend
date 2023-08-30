@@ -6,7 +6,7 @@ const Header = ({ name }: { name: string }) => {
 
 	return (
 		<div className="header">
-			<img className="header_logo" src={logo} />
+			<img className="header_logo" src={logo} alt="логотип" />
 			{name === 'Восстановление пароля' ? (
 				<p className="header__title header__title_selected">
 					Восстановление пароля
@@ -20,7 +20,7 @@ const Header = ({ name }: { name: string }) => {
 						onClick={() => navigate('/signin')}
 					>
 						ВХОД
-					</h2>{' '}
+					</h2>
 					<span>|</span>
 					<h2
 						className={`header__title ${

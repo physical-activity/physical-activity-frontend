@@ -1,13 +1,13 @@
 .footer {
 	width: 100%;
-	background-color: #fff;
+	background-color: var(--color-white);
 	border-radius: 12px;
 	margin: 0 auto 8px;
 }
 
 .footer__text {
 	text-align: center;
-	color: #000;
+	color: var(--color-black);
 	font-family: 'Manrope';
 	font-size: 16px;
 	font-style: normal;
@@ -15,8 +15,4 @@
 	line-height: normal;
 	margin: 0;
 	padding: 28px 20px;
-}
-.footer__span {
-	color: #2349ff;
-	cursor: pointer;
 }
