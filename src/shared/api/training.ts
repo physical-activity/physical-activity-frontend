@@ -55,7 +55,7 @@ export const createTraining = async (data: Data) => {
 
 export const getUserTrainings = async () => {
 	const token = localStorage.getItem('token');
-	const res = await fetch(`${BASE_URL}/trainings/`, {
+	const res = await fetch(`${BASE_URL}/trainings/?page=1&size=1000`, {
 		method: 'GET',
 		headers: {
 			Authorization: `Token ${token}`,
@@ -92,12 +92,15 @@ export const updateTraining = async (id: number, data: Training) => {
 
 export const getUserTrainingsFromDate = async (date: string) => {
 	const token = localStorage.getItem('token');
-	const res = await fetch(`${BASE_URL}/trainings/?started_after=${date}`, {
-		method: 'GET',
-		headers: {
-			Authorization: `Token ${token}`,
-			'Content-Type': 'application/json',
-		},
-	});
+	const res = await fetch(
+		`${BASE_URL}/trainings/?page=1&size=1000&started_after=${date}`,
+		{
+			method: 'GET',
+			headers: {
+				Authorization: `Token ${token}`,
+				'Content-Type': 'application/json',
+			},
+		}
+	);
 	return handleResponse(res);
 };
