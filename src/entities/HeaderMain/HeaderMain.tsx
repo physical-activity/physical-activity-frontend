@@ -1,8 +1,8 @@
 import styles from './HeaderMain.module.scss';
 
 import { UserState } from 'store/reducers/userSlice';
-import { Logo } from 'shared/logo/logo';
-import { BtnWithLetter } from 'shared/btnWithLetter/btnWithLetter';
+import { Logo } from 'shared/ui/logo/logo';
+import { BtnWithLetter } from 'shared/ui/btnWithLetter/btnWithLetter';
 import { useAppSelector } from 'shared/hooks/redux';
 
 const HeaderMain = ({ userData }: { userData: UserState }) => {
