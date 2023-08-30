@@ -122,11 +122,12 @@ export const Landing = () => {
 					</div>
 					<button
 						onClick={handleClickCopy}
+						disabled={buttonCopied ? true : false}
 						className={`landing__share-button ${
 							buttonCopied && 'landing__share-button_copied'
 						}`}
 					>
-						Скопировать ссылку
+						{buttonCopied ? 'Ссылка скопирована' : 'Скопировать ссылку'}
 					</button>
 					<img
 						src={barWhite}

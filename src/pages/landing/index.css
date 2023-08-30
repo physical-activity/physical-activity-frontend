@@ -1,6 +1,6 @@
 .landing {
 	width: 100%;
-	background-color: #ffffff;
+	background-color: var(--color-light-bg);
 }
 
 .landing__header {
@@ -17,11 +17,12 @@
 }
 
 .landing__header-outer-container_visible {
-	background-color: #f5f5f5;
+	background-color: var(--color-light-bg);
+	transition: 0.2s linear;
 }
 
 .landing__header-inner-container {
-	background-color: #f5f5f5;
+	background-color: var(--color-light-bg);
 	padding: 10px 36px;
 	display: flex;
 	justify-content: space-between;
@@ -75,7 +76,7 @@
 }
 
 .landing__main {
-	background-color: #ffffff;
+	background-color: var(--color-light-bg);
 	max-width: 1440px;
 	margin: 0 auto;
 }
@@ -153,6 +154,8 @@
 .landing__share-button_copied {
 	color: var(--new-txt-black, #212120);
 	background-color: var(--new-bg, #f5f5f5);
+	border: 1px solid #000;
+	cursor: default;
 }
 
 .landing__share-button_copied:hover {
