@@ -12,14 +12,12 @@ import requireSvg from './ic_required.svg';
 import calendarSvg from './ic_calendar.svg';
 import CalendarModal from 'entities/CalendarModal/CalendarModal';
 import TimepickerModal from 'entities/TimepickerModal/TimepickerModal';
-import { useNavigate } from 'react-router';
 
 export const TrainingForm = () => {
 	type TypeItem = {
 		name: string;
 	};
 
-	const navigate = useNavigate();
 	const { values, handleChange, errors, isValid, resetForm, setIsValid } =
 		useTrainingFormValidation();
 
@@ -41,6 +39,7 @@ export const TrainingForm = () => {
 	const [isTrainingReminder, setIsTrainingReminder] = useState(false);
 	const [isDuratiomError, setIsDuratiomError] = useState(false);
 	const [isDuratiomErrorMessage, setIsDuratiomErrorMessage] = useState('');
+	const [globalValid, setGlobalValid] = useState(false);
 	const [isCaledarModalOpen, setIsCalendarModalOpen] = useState(false);
 	const [isTimeModalStartOpen, setIsTimeModalStartOpen] = useState(false);
 	const [isTimeModalFinishOpen, setIsTimeModalFinishOpen] = useState(false);
@@ -74,6 +73,10 @@ export const TrainingForm = () => {
 		errors.started_at,
 		errors.finished_at,
 	]);
+
+	useEffect(() => {
+		isValid && !isDuratiomError ? setGlobalValid(true) : setGlobalValid(false);
+	}, [isDuratiomError, isValid]);
 
 	function handleTimeStartPick(time: string) {
 		setTrainingStartedAtInputValue(time);
@@ -212,8 +215,8 @@ export const TrainingForm = () => {
 		);
 
 		createTraining(data)
-			.then(() => {
-				navigate('/my-trainings');
+			.then((res) => {
+				console.log(res);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -405,10 +408,9 @@ export const TrainingForm = () => {
 				<div className="training__container">
 					<button
 						className={`training__button ${
-							(!trainingDateInputValue || !trainingStartedAtInputValue) &&
-							'training__button_unvalid'
+							(!isValid || isDuratiomError) && 'training__button_unvalid'
 						}`}
-						disabled={!(trainingDateInputValue && trainingStartedAtInputValue)}
+						disabled={!globalValid}
 					>
 						запланировать
 					</button>

@@ -9,7 +9,6 @@ import { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { useFormValidation } from 'shared/hooks/useFormValidation';
 import { changeUserInfo } from 'store/reducers/userSlice';
-import { Profile } from 'entities/Profile/Profile';
 
 export const PersonalAccaunt = () => {
 	const userData = useAppSelector((state) => state.user);
@@ -42,11 +41,8 @@ export const PersonalAccaunt = () => {
 	const dispatch = useAppDispatch();
 
 	const saveChanges = async () => {
-		console.log('save');
-		console.log('isValid', isValid);
-		if (!isValid) {
+		if (isValid) {
 			setIsInputDisabled(true);
-			console.log(setIsInputDisabled);
 			// changeUserInfo(name, secondName, email);
 			dispatch(changeUserInfo({ name, secondName, email }));
 		}
@@ -70,37 +66,8 @@ export const PersonalAccaunt = () => {
 
 	return (
 		<div className={styles.wrapper}>
+			<HeaderMain userData={userData} />
 			<main className={styles.main}>
-				<Profile
-					isInputDisabled={isInputDisabled}
-					errors={errors}
-					name={name}
-					secondName={secondName}
-					email={email}
-					avatar={avatar}
-					handleChangeName={handleChangeName}
-					handleChangeSecondName={handleChangeSecondName}
-					toggleButtonText={isInputDisabled}
-					handleEnableInput={handleEnableInput}
-					saveChanges={saveChanges}
-				/>
-				<SignOutPopup
-					isPopupOpen={isPopupOpen}
-					handleClickSingOut={handleClickSingOut}
-				/>
-			</main>
-			<FooterMain
-				page={'main'}
-				withBtn={true}
-				btnText={'Выйти из аккаунта'}
-				handleClick={handleClickSingOut}
-			/>
-		</div>
-	);
-};
-
-/*
-
 				<HeaderProfile
 					name="Профиль"
 					isButton={true}
@@ -120,5 +87,12 @@ export const PersonalAccaunt = () => {
 					handleChangeEmail={handleChangeEmail}
 					handleClickSingOut={handleClickSingOut}
 				/>
-
-*/
+				<SignOutPopup
+					isPopupOpen={isPopupOpen}
+					handleClickSingOut={handleClickSingOut}
+				/>
+			</main>
+			<FooterMain page={'main'} />
+		</div>
+	);
+};
