@@ -1,7 +1,14 @@
-import './TrainingCard.css';
+import styles from './TrainingCard.module.scss';
 import { TrainingCardButton } from '../TrainingCardButton/TrainingCardButton';
 import { TrainingCardInfo } from '../TrainingCardInfo/TrainingCardInfo';
 import React, { useEffect, useState } from 'react';
+
+import bikingIcon from './icons/biking.svg';
+import runningIcon from './icons/running.svg';
+import walkingIcon from './icons/walking.svg';
+import bellIcon from './icons/bell.svg';
+import bellActiveIcon from './icons/bellActive.svg';
+import { formatTime, handleISODate } from 'shared/utils/handleDate';
 
 type Training = {
 	id: number;
@@ -72,35 +79,46 @@ export const TrainingCard = ({
 	}
 
 	return (
-		<div className="training-card">
-			<div className="training-card__container">
-				<p
-					className={`training-card__title ${
-						missed ? 'training-card__title_missed' : ''
-					}`}
-				>
-					{title}
-				</p>
-				<div
-					className={`training-card__reminder 
-						${reminder ? 'training-card__reminder_active' : ''}
-						${missed ? 'training-card__reminder_missed' : ''}
-						${completed ? 'training-card__reminder_missed' : ''}
-					`}
-				></div>
+		<div className={styles.trainingcard}>
+			<div className={styles.trainingcard__header}>
+				<div className={styles.trainingcard__typewrap}>
+					{title === 'Бег' ? (
+						<img src={runningIcon}></img>
+					) : title === 'Ходьба' ? (
+						<img src={walkingIcon}></img>
+					) : title === 'Велопрогулка' ? (
+						<img src={bikingIcon}></img>
+					) : null}
+					<p
+						className={`${styles.trainingcard__title} ${
+							missed ? styles.trainingcard__title_missed : ''
+						}`}
+					>
+						{title === 'Велопрогулка' ? 'Вело' : title}
+					</p>
+				</div>
+				{completed ? null : missed ? null : reminder ? (
+					<img src={bellActiveIcon} alt="" />
+				) : (
+					<img src={bellIcon} alt="" />
+				)}
 			</div>
 			<div
-				className={`training-card__info-container
-					${missed ? 'training-card__info-container_missed' : ''}
-					${completed ? 'training-card__info-container_completed' : ''}
+				className={`${styles.trainingcard__info}
+					${missed ? styles.trainingcard__info_missed : ''}
+					${completed ? styles.trainingcard__info_completed : ''}
 				`}
 			>
 				<TrainingCardInfo type={'date'} info={date} missed={missed} />
-				<TrainingCardInfo type={'time'} info={time} missed={missed} />
+				<TrainingCardInfo
+					type={completed ? 'timer' : 'time'}
+					info={time}
+					missed={missed}
+				/>
 				<TrainingCardInfo type={'distance'} info={distance} missed={missed} />
 			</div>
 			{!completed && (
-				<div className="training-card__container">
+				<div className={styles.trainingcard__btns}>
 					<TrainingCardButton
 						type={'delete'}
 						handleClick={handleDeleteClick}

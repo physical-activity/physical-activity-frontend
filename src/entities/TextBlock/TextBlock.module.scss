@@ -1,0 +1,25 @@
+.container {
+	margin: 0 auto;
+	padding-left: 24px;
+	padding-right: 24px;
+	width: 100%;
+}
+
+.textBlock {
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: 12px;
+	padding-top: 12px;
+	padding-bottom: 24px;
+
+	&__title {
+		margin: 0;
+		padding: 0;
+		text-align: left;
+		color: var(--color-black);
+		font-family: 'Retni Sans';
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 105%; /* 21px */
+	}
+}
