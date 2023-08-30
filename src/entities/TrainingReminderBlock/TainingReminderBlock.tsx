@@ -1,4 +1,5 @@
 import './TrainingReminderBlock.css';
+import bell from './Bell.svg';
 
 export const TrainingReminderBlock = ({
 	type,
@@ -12,18 +13,21 @@ export const TrainingReminderBlock = ({
 	validateInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
 	return (
-		<label className="training__checkbox-element">
-			Напомнить за 1 час
-			<input
-				type={type}
-				id={id}
-				name={name}
-				className="training__checkbox"
-				onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-					validateInput(e);
-				}}
-			/>
-			<span className="training__checkmark"></span>
-		</label>
+		<div className="training__checkbox-element">
+			<img src={bell} className="training__checkbox-bell" />
+			<p className="training__checkbox-text">Напомнить за 1 час</p>
+			<div className="training__checkbox_wrapper">
+				<input
+					type={type}
+					id={id}
+					name={name}
+					className="training__checkbox"
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+						validateInput(e);
+					}}
+				/>
+				<span className="training__checkmark"></span>
+			</div>
+		</div>
 	);
 };
