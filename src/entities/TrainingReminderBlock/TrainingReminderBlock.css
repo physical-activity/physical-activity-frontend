@@ -1,44 +1,54 @@
 .training__checkbox-element {
-	display: flex;
+	padding: 16px;
+	border-radius: 12px;
+	border: 1px solid var(--new-gray-light, #e0e0e5);
+	background: var(--new-bg, #f5f5f5);
+	display: grid;
+	row-gap: 11px;
+	column-gap: 47px;
+	grid-template-columns: min-content auto;
+	grid-template-rows: auto auto;
 	position: relative;
 	align-items: center;
-	color: var(--color-black);
-	justify-content: space-between;
-	font-family: Open Sans;
-	font-size: 16px;
+	color: var(--new-txt-black, #212120);
+	font-family: Retni Sans;
+	font-size: 10px;
 	font-style: normal;
-	font-weight: 400;
-	line-height: 140%; /* 22.4px */
-	letter-spacing: -0.16px;
+	font-weight: 500;
+	line-height: 130%; /* 13px */
+}
+
+.training__checkbox_wrapper {
+	position: relative;
+	position: relative;
+	width: 24px;
+	height: 24px;
+}
+
+.training__checkbox-text {
+	grid-column-start: 1;
+	grid-row-start: span 2;
 }
 
 .training__checkbox {
-	height: 0;
-	width: 0;
+	height: 24px;
+	width: 24px;
+	z-index: 22;
+	position: absolute;
+	opacity: 0;
 }
 
 .training__checkmark {
 	width: 24px;
 	height: 24px;
-	border: solid 1px var(--color-black);
+	border: solid 1px black;
 	border-radius: 4px;
 	user-select: none;
-}
-
-.training__checkbox:checked ~ .training__checkmark:after {
 	display: block;
 }
 
-.training__checkmark:after {
-	content: '.' url(./checkmarkImg.svg);
-	position: absolute;
-	display: none;
-	top: -0.3px;
-	right: 0.3px;
-	width: 24px;
-	height: 24px;
-	background-color: var(--color-green);
-	border: solid 1px var(--color-green);
-	border-radius: 4px;
-	color: var(--color-green);
+.training__checkbox:checked ~ .training__checkmark {
+	background-image: url('./checkbox.svg');
+	background-size: 27px 27px;
+	background-position: center;
 }

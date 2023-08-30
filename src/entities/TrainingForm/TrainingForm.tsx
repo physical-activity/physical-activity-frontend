@@ -13,7 +13,8 @@ import calendarSvg from './ic_calendar.svg';
 import CalendarModal from 'entities/CalendarModal/CalendarModal';
 import TimepickerModal from 'entities/TimepickerModal/TimepickerModal';
 import { useNavigate } from 'react-router';
-
+import styles from 'entities/WorkoutBlock/WorkoutBlock.module.scss';
+import arrowBtnIcon from 'entities/WorkoutBlock/icons/arrowBtn.svg';
 export const TrainingForm = () => {
 	type TypeItem = {
 		name: string;
@@ -228,18 +229,108 @@ export const TrainingForm = () => {
 		<>
 			<form
 				className="training__form"
-				onSubmit={handleSubmit}
+				onSubmit={(e) => handleSubmit(e)}
 				noValidate
 				autoComplete="off"
 			>
+				<div className={`${isListOpen && 'popup_open'} popup`}>
+					<div className="selectactivity_popup">
+						<h2 className="selectactivity_popup-title">Тип тренировки</h2>
+						<div className={styles.workout__btns}>
+							<div
+								className={styles.workout__item}
+								onClick={(e) => {
+									console.log(123123);
+									e.stopPropagation();
+									setTrainingTypeInputValue('Ходьба');
+									setIsListOpen(false);
+								}}
+							>
+								<div className={styles.workout__imgwrap}>
+									<picture>
+										<source
+											srcSet="/images/hp_walk.webp, images/hp_walk@2x.webp 2x"
+											type="image/webp"
+										/>
+										<img
+											className={styles.workout__img}
+											src="images/hp_walk.png"
+											srcSet="images/hp_walk.png, images/hp_walk@2x.png 2x"
+											alt="Ходьба"
+										/>
+									</picture>
+								</div>
+								<div className={styles.workout__btncaption}>
+									<span className={styles.workout__text}>Ходьба</span>
+									<img src={arrowBtnIcon} alt="" />
+								</div>
+							</div>
+							<div
+								className={styles.workout__item}
+								onClick={() => {
+									setTrainingTypeInputValue('Бег');
+									setIsListOpen(false);
+								}}
+							>
+								<div className={styles.workout__imgwrap}>
+									<picture>
+										<source
+											srcSet="/images/hp_run.webp, images/hp_run@2x.webp 2x"
+											type="image/webp"
+										/>
+										<img
+											className={styles.workout__bgimg}
+											src="images/hp_run.png"
+											srcSet="images/hp_run.png, images/hp_run@2x.png 2x"
+											alt="Бег"
+										/>
+									</picture>
+								</div>
+								<div className={styles.workout__btncaption}>
+									<span className={styles.workout__text}>Бег</span>
+									<img src={arrowBtnIcon} alt="" />
+								</div>
+							</div>
+							<div
+								className={styles.workout__item}
+								onClick={() => {
+									setTrainingTypeInputValue('Велопрогулка');
+									setIsListOpen(false);
+								}}
+							>
+								<div className={styles.workout__imgwrap}>
+									<picture>
+										<source
+											srcSet="/images/hp_bike.webp, images/hp_bike@2x.webp 2x"
+											type="image/webp"
+										/>
+										<img
+											className={styles.workout__bgimg}
+											src="images/hp_bike.png"
+											srcSet="images/hp_bike.png, images/hp_bike@2x.png 2x"
+											alt="Вело"
+										/>
+									</picture>
+								</div>
+								<div className={styles.workout__btncaption}>
+									<span className={styles.workout__text}>Велопрогулка</span>
+									<img src={arrowBtnIcon} alt="" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div className="training__container training__container_form">
-					<div className="list-container">
+					<div
+						className="list-container"
+						onClick={() => setIsListOpen(!isListOpen)}
+					>
 						<div className={`list ${isListOpen && 'list_active'}`}>
 							<div className="list__top">
 								<p className="list__title">{trainingTypeInputValue}</p>
 								<div className="list__navigation">
 									<button
-										onClick={() => setIsListOpen(!isListOpen)}
+										// onClick={() => setIsListOpen(!isListOpen)}
 										className={`${
 											isListOpen ? 'list__close-button' : 'list__open-button'
 										}`}
@@ -247,22 +338,6 @@ export const TrainingForm = () => {
 									/>
 								</div>
 							</div>
-							<ul
-								className={isListOpen ? 'list__bottom_active' : 'list__bottom'}
-							>
-								{trainingTypes.map((item, i) => (
-									<li
-										key={i}
-										onClick={() => {
-											setTrainingTypeInputValue(item.name);
-											setIsListOpen(false);
-										}}
-										className="list__text"
-									>
-										{item.name}
-									</li>
-								))}
-							</ul>
 						</div>
 					</div>
 
@@ -360,6 +435,7 @@ export const TrainingForm = () => {
 								isReadOnly
 							/>
 						</div>
+
 						<span className="training__error">{errors.finished_at}</span>
 						<span className="training__error">{isDuratiomErrorMessage}</span>
 					</div>
@@ -385,21 +461,15 @@ export const TrainingForm = () => {
 							<span className="training__error">{errors.steps_num}</span>
 						</div>
 					)}
-				</div>
-
-				{trainingDuration && (
-					<div className="training__container">
+					<div className="training__container training__container_row">
 						<TrainingDuration value={trainingDuration} />
+						<TrainingReminderBlock
+							type="checkbox"
+							id="reminder"
+							name="reminder"
+							validateInput={() => setIsTrainingReminder(!isTrainingReminder)}
+						/>
 					</div>
-				)}
-
-				<div className="training__container">
-					<TrainingReminderBlock
-						type="checkbox"
-						id="reminder"
-						name="reminder"
-						validateInput={() => setIsTrainingReminder(!isTrainingReminder)}
-					/>
 				</div>
 
 				<div className="training__container">
@@ -408,6 +478,7 @@ export const TrainingForm = () => {
 							(!trainingDateInputValue || !trainingStartedAtInputValue) &&
 							'training__button_unvalid'
 						}`}
+						type="submit"
 						disabled={!(trainingDateInputValue && trainingStartedAtInputValue)}
 					>
 						запланировать
