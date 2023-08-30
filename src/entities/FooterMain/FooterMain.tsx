@@ -15,11 +15,9 @@ import { BtnBlock } from 'entities/BtnBlock/BtnBlock';
 type Props = {
 	page: string;
 	withBtn?: boolean;
-	btnText: string;
-	handleClick?: () => void;
 };
 
-const FooterMain = ({ page, withBtn, btnText, handleClick }: Props) => {
+const FooterMain = ({ page, withBtn }: Props) => {
 	const navigate = useNavigate();
 
 	const token = useAppSelector((state) => state.user.auth_token);
@@ -28,7 +26,19 @@ const FooterMain = ({ page, withBtn, btnText, handleClick }: Props) => {
 		<div className={styles.footer}>
 			<div className={styles.container}>
 				{withBtn === true ? (
-					<BtnBlock text={btnText} handleClick={handleClick} />
+					<BtnBlock
+						text={
+							token == null
+								? 'Присоединиться'
+								: page === 'main'
+								? 'Тренироваться'
+								: page === 'trainings'
+								? 'Создать'
+								: page === 'training-creation'
+								? 'Сохранить'
+								: 'Другая страница'
+						}
+					/>
 				) : null}
 
 				<div className={styles.footer__wrap}>

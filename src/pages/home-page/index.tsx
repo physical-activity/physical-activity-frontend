@@ -9,17 +9,9 @@ import { useEffect, useState } from 'react';
 import { WorkoutRemainder } from 'entities/TrainRemainder/WorkoutRemainder';
 import { Training } from 'shared/utils/types';
 import { getUserTrainings } from 'shared/api/training';
-import { useNavigate } from 'react-router';
 
 export const HomePageMobile = () => {
-	const navigate = useNavigate();
 	const userData = useAppSelector((state) => state.user);
-	const token = useAppSelector((state) => state.user.auth_token);
-	const [isToken, setIsToken] = useState(false);
-
-	useEffect(() => {
-		token ? setIsToken(true) : setIsToken(false);
-	}, [token]);
 
 	const [training, setTraining] = useState([]);
 
@@ -65,14 +57,7 @@ export const HomePageMobile = () => {
 				) : null}
 				<WorkoutBlock />
 			</main>
-			<FooterMain
-				page={'main'}
-				withBtn={true}
-				btnText={token == null ? 'Присоединиться' : 'Тренироваться'}
-				handleClick={() => {
-					isToken ? navigate('/training') : navigate('/signin');
-				}}
-			/>
+			<FooterMain page={'main'} withBtn={true} />
 		</div>
 	);
 };
