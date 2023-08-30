@@ -77,13 +77,10 @@ export const Statistics = () => {
 		let fromDate: string = '';
 		if (period === 'day') {
 			fromDate = getTodayDate();
-			console.log(fromDate);
 		} else if (period === 'week') {
 			fromDate = getWeekAgoDate();
-			console.log(fromDate);
 		} else if (period === 'month') {
 			fromDate = getMonthAgoDate();
-			console.log(fromDate);
 		}
 		return fromDate;
 	}
