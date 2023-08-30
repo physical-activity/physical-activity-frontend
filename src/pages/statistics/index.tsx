@@ -1,32 +1,15 @@
 import './index.css';
-import { useEffect, useState } from 'react';
 import { useAppSelector } from 'shared/hooks/redux';
-// import { getUserTrainings } from '../../shared/api/training';
-import { getUserTrainingsFromDate } from '../../shared/api/training';
-import HeaderMain from 'entities/HeaderMain/HeaderMain';
-import FooterMain from 'entities/FooterMain/FooterMain';
+import HeaderStatistics from 'entities/HeaderStatistics/HeaderStatistics';
+import FooterStatistics from 'entities/FooterStatistics/FooterStatistics';
 import runningIcon from './icons/running.svg';
 import walkingIcon from './icons/walking.svg';
 import bikingIcon from './icons/biking.svg';
-// import trainingIcon from './icons/training.svg';
+import trainingIcon from './icons/training.svg';
 import timeIcon from './icons/time.svg';
 import distanceIcon from './icons/distance.svg';
-import StatisticsPopup from 'entities/StatisticsPopup/StatisticsPopup';
 
 export const Statistics = () => {
-	type Training = {
-		id: number;
-		author: string;
-		training_type: string;
-		started_at: string;
-		finished_at: string;
-		distance: number;
-		steps_num: number;
-		completed: boolean;
-		reminder: boolean;
-		rating: number;
-	};
-
 	const userData = useAppSelector((state) => state.user);
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -277,21 +260,15 @@ export const Statistics = () => {
 	// 	setCurrentStreak(count);
 	// 	console.log(count);
 	// }
-
+  
 	return (
 		<div>
-			<HeaderMain userData={userData} />
+			<HeaderStatistics userData={userData} />
 			<main className="statistics">
 				<section className="statistics__switcher">
 					<h2 className="statistics__switcher-header">Статистика</h2>
-					<div className="statistics__navigation" onClick={handlePopupOpen}>
-						<h3 className="statistics__navigation-header">
-							{period === 'day'
-								? 'Сегодня'
-								: period === 'week'
-								? 'За неделю'
-								: 'За месяц'}
-						</h3>
+					<div className="statistics__navigation">
+						<h3 className="statistics__navigation-header">Сегодня</h3>
 						<button className="statistics__navigation-button" type="button" />
 					</div>
 				</section>
@@ -306,10 +283,7 @@ export const Statistics = () => {
 							/>
 							<h4 className="statistics__activity-subheader">Ходьба</h4>
 							<p className="statistics__activity-data">
-								<span className="statistics__activity-number">
-									{walkDistance}
-								</span>{' '}
-								км
+								<span className="statistics__activity-number">{6}</span> км
 							</p>
 						</div>
 						<div className="statistics__activity-item">
@@ -320,10 +294,7 @@ export const Statistics = () => {
 							/>
 							<h4 className="statistics__activity-subheader">Бег</h4>
 							<p className="statistics__activity-data">
-								<span className="statistics__activity-number">
-									{runDistance}
-								</span>{' '}
-								км
+								<span className="statistics__activity-number">{11}</span> км
 							</p>
 						</div>
 						<div className="statistics__activity-item">
@@ -334,16 +305,13 @@ export const Statistics = () => {
 							/>
 							<h4 className="statistics__activity-subheader">Вело</h4>
 							<p className="statistics__activity-data">
-								<span className="statistics__activity-number">
-									{bikeDistance}
-								</span>{' '}
-								км
+								<span className="statistics__activity-number">{22}</span> км
 							</p>
 						</div>
 					</div>
 				</section>
 				<section className="statistics__records">
-					{/* <div className="statistics__records-streak">
+					<div className="statistics__records-streak">
 						<img
 							src={trainingIcon}
 							className="statistics__records-img"
@@ -352,7 +320,7 @@ export const Statistics = () => {
 						<div className="statistics__records-item statistics__records-item_left">
 							<h4 className="statistics__item-header">Без пропусков</h4>
 							<p className="statistics__records-item-data">
-								<span className="statistics__records-number">{currentStreak}</span> дней
+								<span className="statistics__records-number">{37}</span> дней
 							</p>
 						</div>
 						<div className="statistics__records-item statistics__records-item_right">
@@ -361,7 +329,7 @@ export const Statistics = () => {
 								<span className="statistics__records-number">{54}</span> дня
 							</p>
 						</div>
-					</div> */}
+					</div>
 					<div className="statistics__records-time">
 						<img
 							src={timeIcon}
@@ -371,9 +339,8 @@ export const Statistics = () => {
 						<div className="statistics__records-item">
 							<h4 className="statistics__item-header">Общее время</h4>
 							<p className="statistics__records-item-data">
-								<span className="statistics__records-number">
-									{totalDuration}
-								</span>
+								<span className="statistics__records-number">{4}</span> ч{' '}
+								<span className="statistics__records-number">{45}</span> мин
 							</p>
 						</div>
 					</div>
@@ -386,10 +353,7 @@ export const Statistics = () => {
 						<div className="statistics__records-item">
 							<h4 className="statistics__item-header">Общая дистанция</h4>
 							<p className="statistics__records-item-data">
-								<span className="statistics__records-number">
-									{totalDistance}
-								</span>{' '}
-								км
+								<span className="statistics__records-number">{18}</span> км
 							</p>
 						</div>
 					</div>
@@ -401,24 +365,20 @@ export const Statistics = () => {
 							<div className="statistics__type-item">
 								<h4 className="statistics__item-header">Время</h4>
 								<p className="statistics__type-data">
-									<span className="statistics__type-number">
-										{walkDuration}
-									</span>
+									<span className="statistics__type-number">{1}</span> ч{' '}
+									<span className="statistics__type-number">{35}</span> мин
 								</p>
 							</div>
 							<div className="statistics__type-item">
 								<h4 className="statistics__item-header">Дистанция</h4>
 								<p className="statistics__type-data">
-									<span className="statistics__type-number">
-										{walkDistance}
-									</span>{' '}
-									км
+									<span className="statistics__type-number">{6}</span> км
 								</p>
 							</div>
 							<div className="statistics__type-item">
 								<h4 className="statistics__item-header">Шагов</h4>
 								<p className="statistics__type-data">
-									<span className="statistics__type-number">{stepsNumber}</span>
+									<span className="statistics__type-number">{7200}</span>
 								</p>
 							</div>
 						</div>
@@ -429,14 +389,14 @@ export const Statistics = () => {
 							<div className="statistics__type-item">
 								<h4 className="statistics__item-header">Время</h4>
 								<p className="statistics__type-data">
-									<span className="statistics__type-number">{runDuration}</span>
+									<span className="statistics__type-number">{1}</span> ч{' '}
+									<span className="statistics__type-number">{35}</span> мин
 								</p>
 							</div>
 							<div className="statistics__type-item">
 								<h4 className="statistics__item-header">Дистанция</h4>
 								<p className="statistics__type-data">
-									<span className="statistics__type-number">{runDistance}</span>{' '}
-									км
+									<span className="statistics__type-number">{6}</span> км
 								</p>
 							</div>
 							<div className="statistics__type-item">
@@ -453,18 +413,14 @@ export const Statistics = () => {
 							<div className="statistics__type-item">
 								<h4 className="statistics__item-header">Время</h4>
 								<p className="statistics__type-data">
-									<span className="statistics__type-number">
-										{bikeDuration}
-									</span>
+									<span className="statistics__type-number">{1}</span> ч{' '}
+									<span className="statistics__type-number">{35}</span> мин
 								</p>
 							</div>
 							<div className="statistics__type-item">
 								<h4 className="statistics__item-header">Дистанция</h4>
 								<p className="statistics__type-data">
-									<span className="statistics__type-number">
-										{bikeDistance}
-									</span>{' '}
-									км
+									<span className="statistics__type-number">{6}</span> км
 								</p>
 							</div>
 							<div className="statistics__type-item">
