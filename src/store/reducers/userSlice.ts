@@ -1,5 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { IUser } from 'models/IUser';
+export interface IUser {
+	first_name: string;
+	second_name: string;
+	phone: string;
+	email: string;
+	photo: string;
+}
 
 export type UserState = {
 	user: IUser;
