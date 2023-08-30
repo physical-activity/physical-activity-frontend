@@ -28,6 +28,7 @@ export const Statistics = () => {
 	};
 
 	const userData = useAppSelector((state) => state.user);
+
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [items, setItems] = useState<Training[]>([]);
 	const [period, setPeriod] = useState('day');
@@ -476,7 +477,11 @@ export const Statistics = () => {
 					</div>
 				</section>
 			</main>
-			<FooterMain page={'statistics'} withBtn={false} />
+			<FooterMain
+				page={'statistics'}
+				withBtn={false}
+				btnText={'Тренироваться'}
+			/>
 			<StatisticsPopup
 				isOpen={isPopupOpen}
 				onClose={handlePopupClose}
