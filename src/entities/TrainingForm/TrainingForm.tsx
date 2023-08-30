@@ -435,6 +435,7 @@ export const TrainingForm = () => {
 								isReadOnly
 							/>
 						</div>
+
 						<span className="training__error">{errors.finished_at}</span>
 						<span className="training__error">{isDuratiomErrorMessage}</span>
 					</div>
@@ -460,21 +461,15 @@ export const TrainingForm = () => {
 							<span className="training__error">{errors.steps_num}</span>
 						</div>
 					)}
-				</div>
-
-				{trainingDuration && (
-					<div className="training__container">
+					<div className="training__container training__container_row">
 						<TrainingDuration value={trainingDuration} />
+						<TrainingReminderBlock
+							type="checkbox"
+							id="reminder"
+							name="reminder"
+							validateInput={() => setIsTrainingReminder(!isTrainingReminder)}
+						/>
 					</div>
-				)}
-
-				<div className="training__container">
-					<TrainingReminderBlock
-						type="checkbox"
-						id="reminder"
-						name="reminder"
-						validateInput={() => setIsTrainingReminder(!isTrainingReminder)}
-					/>
 				</div>
 
 				<div className="training__container">
