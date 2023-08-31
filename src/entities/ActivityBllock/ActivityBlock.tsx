@@ -57,11 +57,10 @@ const ActivityBlock = () => {
 							<img src={timerIcon} alt="" />
 							<p className={styles.activity__data}>
 								<span className={styles.activity__number}>
-									{'0' +
-										Math.floor(activity.duration / 60)
-											.toString()
-											.slice(-2)}{' '}
-									: {'0' + (activity.duration % 60).toString().slice(-2)}
+									{('0' + Math.floor(activity.duration / 60).toString()).slice(
+										-2
+									)}{' '}
+									: {('0' + (activity.duration % 60).toString()).slice(-2)}
 								</span>
 							</p>
 						</div>
