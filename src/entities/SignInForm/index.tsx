@@ -34,7 +34,7 @@ export const SignInForm = ({
 				.then(() => navigate('/'))
 				.catch((err) => {
 					setIsServerError(true);
-					setErrorText('Не возможно войти с предоставленными данными Google');
+					setErrorText('Невозможно войти с предоставленными данными Google');
 				});
 		},
 		onError: (errorResponse) => console.log(errorResponse),
@@ -115,14 +115,14 @@ export const SignInForm = ({
 			</div>
 			<div className="auth-social">
 				<button className="auth-button" onClick={() => login()}>
-					<img src={googleLogo} />
+					<img src={googleLogo} alt="логотип гугл" />
 					<p className="auth-text">Продолжить с Google</p>
 				</button>
 				<Link
 					to="https://oauth.vk.com/authorize?client_id=51731957&redirect_uri=https://easyfit.space&response_type=code&scope=email"
 					className="auth-button"
 				>
-					<img src={vkLogo} />
+					<img src={vkLogo} alt="логотип ВК" />
 					<p className="auth-text">Продолжить с VK</p>
 				</Link>
 			</div>
