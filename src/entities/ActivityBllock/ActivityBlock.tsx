@@ -61,7 +61,7 @@ const ActivityBlock = () => {
 										Math.floor(activity.duration / 60)
 											.toString()
 											.slice(-2)}{' '}
-									: {'0' + (activity.duration % 60)}
+									: {'0' + (activity.duration % 60).toString().slice(-2)}
 								</span>
 							</p>
 						</div>
