@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { getUserData, userAuthVK } from 'store/reducers/userSlice';
 import { useAppDispatch, useAppSelector } from 'shared/hooks/redux';
 import { TrainingPageMobile } from './training';
+import { TrainingUpdatePageMobile } from './training-update';
 import { MyTrainingsPageMobile } from './my-trainings';
 import { Landing } from './landing';
 import { Statistics } from './statistics';
@@ -75,6 +76,14 @@ export const Routing = () => {
 				element={
 					<RequireAuth>
 						<TrainingPageMobile />
+					</RequireAuth>
+				}
+			/>
+			<Route
+				path="/training-update"
+				element={
+					<RequireAuth>
+						<TrainingUpdatePageMobile />
 					</RequireAuth>
 				}
 			/>

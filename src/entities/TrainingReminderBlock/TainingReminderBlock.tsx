@@ -6,11 +6,13 @@ export const TrainingReminderBlock = ({
 	id,
 	name,
 	validateInput,
+	isChecked,
 }: {
 	type: string;
 	id: string;
 	name: string;
 	validateInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	isChecked?: boolean;
 }) => {
 	return (
 		<div className="training__checkbox-element">
@@ -25,6 +27,7 @@ export const TrainingReminderBlock = ({
 					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 						validateInput(e);
 					}}
+					checked={isChecked}
 				/>
 				<span className="training__checkmark"></span>
 			</div>

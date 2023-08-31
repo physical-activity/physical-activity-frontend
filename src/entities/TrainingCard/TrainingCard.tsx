@@ -1,4 +1,5 @@
 import styles from './TrainingCard.module.scss';
+import { useNavigate } from 'react-router';
 import { TrainingCardButton } from '../TrainingCardButton/TrainingCardButton';
 import { TrainingCardInfo } from '../TrainingCardInfo/TrainingCardInfo';
 import React, { useEffect, useState } from 'react';
@@ -56,6 +57,7 @@ export const TrainingCard = ({
 	handleDelete,
 	handleCheck,
 }: Props) => {
+	const navigate = useNavigate();
 	const [missed, setMissed] = useState(false);
 	const [completed, setCompleted] = useState(false);
 
@@ -76,6 +78,10 @@ export const TrainingCard = ({
 
 	function handleCheckClick() {
 		handleCheck(card.id, card);
+	}
+
+	function handleEditClick() {
+		navigate('/training-update', { state: { id: card.id, card: card } });
 	}
 
 	return (
@@ -131,7 +137,7 @@ export const TrainingCard = ({
 					/>
 					<TrainingCardButton
 						type={'edit'}
-						handleClick={() => console.log(card.id)}
+						handleClick={handleEditClick}
 						missed={missed}
 					/>
 				</div>
