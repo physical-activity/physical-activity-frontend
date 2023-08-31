@@ -481,7 +481,7 @@ export const TrainingForm = () => {
 						type="submit"
 						disabled={!(trainingDateInputValue && trainingStartedAtInputValue)}
 					>
-						запланировать
+						Запланировать
 					</button>
 				</div>
 			</form>

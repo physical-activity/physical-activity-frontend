@@ -1,8 +1,9 @@
 import { useState } from 'react';
+
 import './Input.css';
-import requireSvg from './ic_required_1.svg';
-import toggleVisibleImg from './visibility_off_FILL0_wght300_GRAD0_opsz48 1.svg';
-import visible from './State=Open.svg';
+import requireSvg from './icons/required.svg';
+import hideIcon from './icons/hide-eye.svg';
+import showIcon from './icons/show-eye.svg';
 
 export const Input = ({
 	name,
@@ -73,10 +74,7 @@ export const Input = ({
 			{type === 'password' && (
 				<img
 					className="input-block__input-hidebutton"
-					// src={
-					// 	require('./visibility_off_FILL0_wght300_GRAD0_opsz48 1.svg').default
-					// }
-					src={visibility === 'password' ? toggleVisibleImg : visible}
+					src={visibility === 'password' ? hideIcon : showIcon}
 					alt="show/hide password"
 					onClick={() => toggleInputVisibility()}
 				/>
