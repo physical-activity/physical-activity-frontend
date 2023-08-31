@@ -13,7 +13,7 @@ export const TrainingUpdatePageMobile = () => {
 	const location = useLocation();
 
 	return (
-		<div className="page-container">
+		<>
 			<HeaderMain userData={userData} />
 			<TextBlock text={'тренировка'} />
 			<TrainingUpdateForm id={location.state.id} card={location.state.card} />
@@ -22,6 +22,6 @@ export const TrainingUpdatePageMobile = () => {
 				withBtn={false}
 				btnText={'Запланировать'}
 			/>
-		</div>
+		</>
 	);
 };
