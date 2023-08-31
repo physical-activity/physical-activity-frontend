@@ -1,4 +1,5 @@
 import './TrainingCard.css';
+import { useNavigate } from 'react-router'; // добавлено
 import { TrainingCardButton } from '../TrainingCardButton/TrainingCardButton';
 import { TrainingCardInfo } from '../TrainingCardInfo/TrainingCardInfo';
 import React, { useEffect, useState } from 'react';
@@ -49,6 +50,7 @@ export const TrainingCard = ({
 	handleDelete,
 	handleCheck,
 }: Props) => {
+	const navigate = useNavigate(); // добавлено
 	const [missed, setMissed] = useState(false);
 	const [completed, setCompleted] = useState(false);
 
@@ -69,6 +71,12 @@ export const TrainingCard = ({
 
 	function handleCheckClick() {
 		handleCheck(card.id, card);
+	}
+
+	function handleEditClick() {
+		// функция добавлена
+		navigate('/training-update', { state: { id: card.id, card: card } });
+		console.log(card.id);
 	}
 
 	return (
@@ -113,7 +121,7 @@ export const TrainingCard = ({
 					/>
 					<TrainingCardButton
 						type={'edit'}
-						handleClick={() => console.log(card.id)}
+						handleClick={handleEditClick} // добавлено
 						missed={missed}
 					/>
 				</div>
