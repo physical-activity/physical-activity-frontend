@@ -22,7 +22,7 @@
 	cursor: pointer;
 	border: none;
 	background: transparent;
-	color: var(--new-dark-gray, #898989);
+	color: var(--color-dark-grey);
 	text-align: center;
 	font-family: 'Retni Sans';
 	font-size: 11px;

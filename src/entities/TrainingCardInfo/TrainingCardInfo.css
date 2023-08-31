@@ -19,6 +19,10 @@
 	background-image: url(./time.svg);
 }
 
+.training-card-info__pic_timer {
+	background-image: url(./timerDone.svg);
+}
+
 .training-card-info__pic_distance {
 	background-image: url(./distance.svg);
 }

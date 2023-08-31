@@ -1,5 +1,3 @@
-import './index.css';
-
 import HeaderMain from 'entities/HeaderMain/HeaderMain';
 import TextBlock from 'entities/TextBlock/TextBlock';
 import FooterMain from 'entities/FooterMain/FooterMain';
@@ -18,7 +16,7 @@ export const MyTrainingsPageMobile = () => {
 	return (
 		<>
 			<HeaderMain userData={userData} />
-			<TextBlock text={'мои тренировки'} />
+			<TextBlock text={'Мои тренировки'} />
 			<MyTrainings />
 			<FooterMain
 				page={'trainings'}

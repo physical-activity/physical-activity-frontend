@@ -6,9 +6,9 @@
 .register__footer-text {
 	padding: 20px;
 	border-radius: 12px;
-	background-color: #fff;
+	background-color: var(--color-white);
 	text-align: center;
-	color: #000;
+	color: var(--color-black);
 	font-family: 'Open Sans';
 	font-size: 16px;
 	font-weight: 600;

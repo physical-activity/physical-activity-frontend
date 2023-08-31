@@ -1,9 +1,11 @@
-import './TextBlock.css';
+import styles from './TextBlock.module.scss';
 
 const TextBlock = ({ text }: { text: string }) => {
 	return (
-		<div className="textBlock">
-			<h2 className="textBlock__title">{text}</h2>
+		<div className={styles.container}>
+			<div className={styles.textBlock}>
+				<h2 className={styles.textBlock__title}>{text}</h2>
+			</div>
 		</div>
 	);
 };

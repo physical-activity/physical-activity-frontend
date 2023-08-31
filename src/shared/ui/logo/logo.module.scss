@@ -1,13 +1,13 @@
 .logo {
 	margin: 0;
 	padding: 0;
-	color: var(--color-black, #212120);
+	color: var(--color-black);
 	text-align: center;
 	font-family: 'Finlandica', serif;
 	font-size: 32px;
 	font-style: italic;
 	font-weight: 700;
-	line-height: 105%; /* 33.6px */
+	line-height: 105%;
 	text-transform: uppercase;
 	cursor: pointer;
 }

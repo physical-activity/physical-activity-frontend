@@ -40,11 +40,11 @@
 
 .popup__header-title {
 	text-align: center;
-	color: #141516;
+	color: var(--color-black);
 	line-height: 21px;
 	margin: 0;
 	padding: 12px 0;
-	background-color: #fff;
+	background-color: var(--color-white);
 	border-radius: 12px;
 	font-family: 'Open Sans';
 	font-size: 20px;
@@ -54,7 +54,7 @@
 }
 
 .popup__button-container {
-	background-color: #fff;
+	background-color: var(--color-white);
 	border-radius: 12px;
 	padding: 20px;
 	margin: 0 auto;
@@ -66,8 +66,8 @@
 	margin: 0 auto;
 	border: none;
 	border-radius: 12px;
-	color: #212120;
-	background: #c2ff5d;
+	color: var(--color-black);
+	background: var(--color-green);
 	font-family: 'Open Sans';
 	font-size: 18px;
 	font-weight: 800;
@@ -81,7 +81,7 @@
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-	background-color: #fff;
+	background-color: var(--color-white);
 	border-radius: 12px;
 	padding: 41px 20px;
 }
@@ -94,5 +94,5 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: 22px;
-	color: #212120;
+	color: var(--color-black);
 }

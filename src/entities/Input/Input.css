@@ -10,12 +10,12 @@
 	/* top: 50%;
 	transform: translateY(-50%); */
 	margin: 0;
-	color: #c3c3cc;
+	color: var(--color-gray-shadow);
 	font-family: 'Retni Sans';
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 34px; /* 212.5% */
+	line-height: 34px;
 	letter-spacing: -0.16px;
 }
 .input-block__input {
@@ -23,7 +23,7 @@
 	padding: 8px 0px 14px 0px;
 	border: none;
 	background-color: transparent;
-	border-bottom: 1px solid #c3c3cc;
+	border-bottom: 1px solid var(--color-gray-shadow);
 	z-index: 2;
 	position: inherit;
 	font-family: 'Retni Sans';
@@ -34,24 +34,15 @@ input[type='password'] {
 	font-family: 'Retni Sans';
 	font-style: normal;
 	font-weight: normal;
-	speak: none;
-
-	/* For safety - reset parent styles, that can break glyph codes*/
 	font-variant: normal;
 	text-transform: none;
-
-	/* Font smoothing. That was taken from TWBS */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	/* Uncomment for 3D effect */
-	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
-
-	/* add spacing to better separate each image */
 	letter-spacing: 2px;
 }
 
 .input-block__input_error {
-	border-bottom: 1px solid #f94c4c;
+	border-bottom: 1px solid var(--color-error);
 }
 
 .input-block__input:focus + .input-block__input-name {
@@ -70,7 +61,7 @@ input[type='password'] {
 }
 
 .input-block__input-error {
-	color: #f94c4c;
+	color: var(--color-error);
 	margin-top: 8px;
 	width: fit-content;
 }
