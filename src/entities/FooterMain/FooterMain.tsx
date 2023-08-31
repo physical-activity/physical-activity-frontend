@@ -23,6 +23,7 @@ const FooterMain = ({ page, withBtn, btnText, handleClick }: Props) => {
 	const navigate = useNavigate();
 
 	const token = useAppSelector((state) => state.user.auth_token);
+	const localToken = localStorage.getItem('token');
 
 	return (
 		<div className={styles.footer}>
@@ -52,7 +53,9 @@ const FooterMain = ({ page, withBtn, btnText, handleClick }: Props) => {
 					<button
 						className={styles.footer__item}
 						onClick={() => {
-							token ? navigate('/my-trainings') : navigate('/signin');
+							token || localToken
+								? navigate('/my-trainings')
+								: navigate('/signin');
 						}}
 					>
 						<img
@@ -71,7 +74,9 @@ const FooterMain = ({ page, withBtn, btnText, handleClick }: Props) => {
 					<button
 						className={styles.footer__item}
 						onClick={() => {
-							token ? navigate('/statistics') : navigate('/signin');
+							token || localToken
+								? navigate('/statistics')
+								: navigate('/signin');
 						}}
 					>
 						<img
