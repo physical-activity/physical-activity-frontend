@@ -27,7 +27,7 @@ export const Checkbox = ({
 			<span className="register__checkbox-desc">
 				Я принимаю{' '}
 				<a
-					href="#"
+					href="#rules"
 					target="_blank"
 					rel="noreferrer noopener"
 					className="register__checkbox-link"
@@ -36,7 +36,7 @@ export const Checkbox = ({
 				</a>{' '}
 				и
 				<a
-					href="#"
+					href="#privacy"
 					target="_blank"
 					rel="noreferrer noopener"
 					className="register__checkbox-link"

@@ -13,7 +13,7 @@ export const TrainingUpdatePageMobile = () => {
 	return (
 		<>
 			<HeaderMain userData={userData} />
-			<TextBlock text={'тренировка'} />
+			<TextBlock text={'Тренировка'} />
 			<TrainingUpdateForm id={location.state.id} card={location.state.card} />
 			<FooterMain
 				page={'trainings'}

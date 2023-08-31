@@ -78,38 +78,6 @@
 	padding-right: 8px;
 }
 
-.training__button_calendar {
-	display: flex;
-	margin: auto;
-	padding: 0;
-	border: none;
-	background: none;
-	cursor: pointer;
-}
-
-.training__button {
-	width: 319px;
-	padding: 12px 0;
-	margin: 0 auto;
-	border: none;
-	border-radius: 12px;
-	color: var(--color-black);
-	background: var(--color-green);
-	font-family: 'Open Sans';
-	font-size: 18px;
-	font-weight: 800;
-	font-style: italic;
-	line-height: 19px;
-	cursor: pointer;
-	text-transform: uppercase;
-}
-
-.training__button_unvalid {
-	color: var(--color-dark-grey);
-	background: var(--color-gray-light);
-	cursor: default;
-}
-
 .list-container {
 	position: relative;
 	min-height: 40px;
