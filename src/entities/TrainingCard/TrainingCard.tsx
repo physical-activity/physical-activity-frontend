@@ -1,5 +1,5 @@
 import styles from './TrainingCard.module.scss';
-import { useNavigate } from 'react-router'; 
+import { useNavigate } from 'react-router';
 import { TrainingCardButton } from '../TrainingCardButton/TrainingCardButton';
 import { TrainingCardInfo } from '../TrainingCardInfo/TrainingCardInfo';
 import React, { useEffect, useState } from 'react';
