@@ -15,6 +15,7 @@ export const TrainingCardButton = ({ type, handleClick, missed }: Props) => {
 					: `training-card-button training-card-button_${type}`
 			}`}
 			onClick={handleClick}
+			disabled={missed && type === 'check' ? true : false}
 		/>
 	);
 };

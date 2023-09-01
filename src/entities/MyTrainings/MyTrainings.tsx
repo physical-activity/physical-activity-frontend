@@ -44,9 +44,9 @@ export const MyTrainings = () => {
 			const data = await getUserTrainings();
 			let plannedTrainings: any = [];
 			data.results.map((training: Training) => {
-				let trainingStartTime = new Date(training.started_at).getTime();
+				let trainingEndTime = new Date(training.finished_at).getTime();
 				let currentTime = Date.now();
-				if (trainingStartTime > currentTime && training.completed === false) {
+				if (trainingEndTime > currentTime && training.completed === false) {
 					plannedTrainings.push(training);
 				}
 			});
@@ -60,11 +60,12 @@ export const MyTrainings = () => {
 	async function fetchMissedTrainings() {
 		try {
 			const data = await getUserTrainings();
+			console.log(data);
 			let missedTrainings: any = [];
 			data.results.map((training: Training) => {
-				let trainingStartTime = new Date(training.started_at).getTime();
+				let trainingEndTime = new Date(training.finished_at).getTime();
 				let currentTime = Date.now();
-				if (trainingStartTime < currentTime && training.completed === false) {
+				if (trainingEndTime < currentTime && training.completed === false) {
 					missedTrainings.push(training);
 				}
 			});
