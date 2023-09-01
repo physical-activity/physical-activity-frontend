@@ -60,7 +60,6 @@ export const MyTrainings = () => {
 	async function fetchMissedTrainings() {
 		try {
 			const data = await getUserTrainings();
-			console.log(data);
 			let missedTrainings: any = [];
 			data.results.map((training: Training) => {
 				let trainingEndTime = new Date(training.finished_at).getTime();
