@@ -62,9 +62,9 @@ export const TrainingCard = ({
 	const [completed, setCompleted] = useState(false);
 
 	useEffect(() => {
-		let trainingStartTime = new Date(card.started_at).getTime();
+		let trainingEndTime = new Date(card.finished_at).getTime();
 		let currentTime = Date.now();
-		if (trainingStartTime < currentTime) {
+		if (trainingEndTime < currentTime && card.completed === false) {
 			setMissed(true);
 		}
 		if (card.completed === true) {
