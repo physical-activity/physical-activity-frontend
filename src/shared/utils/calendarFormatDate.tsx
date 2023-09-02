@@ -2,7 +2,7 @@ type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 const calendarFormatDate = (date: Value) => {
-	const dateValue = date?.toLocaleString().split('.', 3);
+	const dateValue = date?.toLocaleString('ru-RU').split('.', 3);
 
 	if (dateValue) {
 		const day = dateValue[0];
