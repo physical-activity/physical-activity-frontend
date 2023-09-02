@@ -32,7 +32,7 @@
 	margin-bottom: 32px;
 	cursor: pointer;
 	color: var(--color-dark-grey);
-	font-family: Retni Sans;
+	font-family: 'Retni Sans';
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
@@ -58,7 +58,7 @@
 	cursor: pointer;
 
 	color: var(--color-black);
-	font-family: Retni Sans;
+	font-family: 'Retni Sans';
 	font-size: 18px;
 	font-style: normal;
 	font-weight: 500;
@@ -81,7 +81,7 @@
 
 .form_span {
 	color: var(--color-dark-grey);
-	font-family: Retni Sans;
+	font-family: 'Retni Sans';
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;

@@ -8,8 +8,8 @@ import { useAppDispatch } from 'shared/hooks/redux';
 import { singInUser, userAuthGoogle } from 'store/reducers/userSlice';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Link } from 'react-router-dom';
-import googleLogo from './google.svg';
-import vkLogo from './vk.svg';
+import googleLogo from './icons/google.svg';
+import vkLogo from './icons/vk.svg';
 
 export const SignInForm = ({
 	setIsPopupOpen,
