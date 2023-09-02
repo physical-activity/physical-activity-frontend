@@ -5,6 +5,7 @@ import { getUserTrainings } from '../../shared/api/training';
 import { deleteTraining } from '../../shared/api/training';
 import { updateTraining } from '../../shared/api/training';
 import React, { useEffect, useState } from 'react';
+import { Loader } from 'features/loader/loader';
 
 export const MyTrainings = () => {
 	const navigate = useNavigate();
@@ -23,6 +24,7 @@ export const MyTrainings = () => {
 	};
 
 	const [items, setItems] = useState([]);
+	const [request, setRequest] = useState(true);
 	const [activeButton, setActiveButton] = useState(0);
 
 	let formatterDay = new Intl.DateTimeFormat('ru', {
@@ -52,6 +54,7 @@ export const MyTrainings = () => {
 			});
 			setActiveButton(0);
 			setItems(plannedTrainings);
+			setRequest(false);
 		} catch (e) {
 			console.error(e);
 		}
@@ -70,6 +73,7 @@ export const MyTrainings = () => {
 			});
 			setActiveButton(1);
 			setItems(missedTrainings);
+			setRequest(false);
 		} catch (e) {
 			console.error(e);
 		}
@@ -86,6 +90,7 @@ export const MyTrainings = () => {
 			});
 			setActiveButton(2);
 			setItems(completedTrainings);
+			setRequest(false);
 		} catch (e) {
 			console.error(e);
 		}
@@ -123,61 +128,69 @@ export const MyTrainings = () => {
 	};
 
 	return (
-		<div className={styles.trainings}>
-			<div className={styles.container}>
-				<div className={styles.trainings__content}>
-					<div className={styles.trainings__status}>
-						<button
-							className={`${styles.trainings__btn} ${
-								activeButton === 0 ? styles.trainings__btn_active : ''
-							}`}
-							onClick={fetchPlannedTrainings}
-						>
-							План
-						</button>
-						<button
-							className={`${styles.trainings__btn} ${
-								activeButton === 2 ? styles.trainings__btn_active : ''
-							}`}
-							onClick={fetchCompletedTrainings}
-						>
-							Выполнено
-						</button>
-						<button
-							className={`${styles.trainings__btn} ${
-								activeButton === 1 ? styles.trainings__btn_active : ''
-							}`}
-							onClick={fetchMissedTrainings}
-						>
-							Пропущено
-						</button>
-					</div>
-					<div className={styles.trainings__cards}>
-						{items.length === 0 && activeButton === 0 ? (
-							<div className={styles.trainings__textwrap}>
-								<p className={styles.trainings__text}>Пока нет ни одной</p>
-								<p className={styles.trainings__text}>будущей тренировки</p>
+		<>
+			{request ? (
+				<Loader />
+			) : (
+				<div className={styles.trainings}>
+					<div className={styles.container}>
+						<div className={styles.trainings__content}>
+							<div className={styles.trainings__status}>
+								<button
+									className={`${styles.trainings__btn} ${
+										activeButton === 0 ? styles.trainings__btn_active : ''
+									}`}
+									onClick={fetchPlannedTrainings}
+								>
+									План
+								</button>
+								<button
+									className={`${styles.trainings__btn} ${
+										activeButton === 2 ? styles.trainings__btn_active : ''
+									}`}
+									onClick={fetchCompletedTrainings}
+								>
+									Выполнено
+								</button>
+								<button
+									className={`${styles.trainings__btn} ${
+										activeButton === 1 ? styles.trainings__btn_active : ''
+									}`}
+									onClick={fetchMissedTrainings}
+								>
+									Пропущено
+								</button>
 							</div>
-						) : (
-							items.map((card: Training) => (
-								<TrainingCard
-									card={card}
-									title={card.training_type}
-									key={card.id}
-									date={
-										formatterDay.format(new Date(card.started_at)).split('.')[0]
-									}
-									time={formatterTime.format(new Date(card.started_at))}
-									distance={`${card.distance} км`}
-									reminder={card.reminder}
-									handleDelete={handleDelete}
-									handleCheck={handleCheck}
-								/>
-							))
-						)}
+							<div className={styles.trainings__cards}>
+								{items.length === 0 && activeButton === 0 ? (
+									<div className={styles.trainings__textwrap}>
+										<p className={styles.trainings__text}>Пока нет ни одной</p>
+										<p className={styles.trainings__text}>будущей тренировки</p>
+									</div>
+								) : (
+									items.map((card: Training) => (
+										<TrainingCard
+											card={card}
+											title={card.training_type}
+											key={card.id}
+											date={
+												formatterDay
+													.format(new Date(card.started_at))
+													.split('.')[0]
+											}
+											time={formatterTime.format(new Date(card.started_at))}
+											distance={`${card.distance} км`}
+											reminder={card.reminder}
+											handleDelete={handleDelete}
+											handleCheck={handleCheck}
+										/>
+									))
+								)}
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+			)}
+		</>
 	);
 };
