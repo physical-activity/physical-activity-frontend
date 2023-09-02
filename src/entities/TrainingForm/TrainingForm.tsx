@@ -8,8 +8,8 @@ import { createTraining } from '../../shared/api/training';
 import { REGEX } from 'shared/utils/constants';
 import { TrainingReminderBlock } from '../TrainingReminderBlock/TainingReminderBlock';
 import { TrainingDuration } from '../TrainingDuration/TrainingDuration';
-import requireSvg from './ic_required.svg';
-import calendarSvg from './ic_calendar.svg';
+import requireSvg from './icons/ic_required.svg';
+import calendarSvg from './icons/ic_calendar.svg';
 import CalendarModal from 'entities/CalendarModal/CalendarModal';
 import TimepickerModal from 'entities/TimepickerModal/TimepickerModal';
 import { useNavigate } from 'react-router';
@@ -240,7 +240,6 @@ export const TrainingForm = () => {
 							<div
 								className={styles.workout__item}
 								onClick={(e) => {
-									console.log(123123);
 									e.stopPropagation();
 									setTrainingTypeInputValue('Ходьба');
 									setIsListOpen(false);
