@@ -365,7 +365,7 @@ export const Statistics = () => {
 							alt="Training"
 						/>
 						<div className="statistics__records-item">
-							<h4 className="statistics__item-header">Общее время</h4>
+							<h4 className="statistics__item-header">Общая длительность</h4>
 							<p className="statistics__records-item-data">
 								<span className="statistics__records-number">
 									{totalDuration}
@@ -395,7 +395,7 @@ export const Statistics = () => {
 						<h3 className="statistics__type-header">Ходьба</h3>
 						<div className="statistics__type-block">
 							<div className="statistics__type-item">
-								<h4 className="statistics__item-header">Время</h4>
+								<h4 className="statistics__item-header">Длительность</h4>
 								<p className="statistics__type-data">
 									<span className="statistics__type-number">
 										{walkDuration}
@@ -423,7 +423,7 @@ export const Statistics = () => {
 						<h3 className="statistics__type-header">Бег</h3>
 						<div className="statistics__type-block">
 							<div className="statistics__type-item">
-								<h4 className="statistics__item-header">Время</h4>
+								<h4 className="statistics__item-header">Длительность</h4>
 								<p className="statistics__type-data">
 									<span className="statistics__type-number">{runDuration}</span>
 								</p>
@@ -447,7 +447,7 @@ export const Statistics = () => {
 						<h3 className="statistics__type-header">Вело</h3>
 						<div className="statistics__type-block">
 							<div className="statistics__type-item">
-								<h4 className="statistics__item-header">Время</h4>
+								<h4 className="statistics__item-header">Длительность</h4>
 								<p className="statistics__type-data">
 									<span className="statistics__type-number">
 										{bikeDuration}
@@ -473,7 +473,7 @@ export const Statistics = () => {
 					</div>
 				</section>
 			</main>
-			<FooterMain page={'statistics'} withBtn={false} btnText={'Сохранить'} />
+			<FooterMain page={'statistics'} withBtn={false} />
 			<StatisticsPopup
 				isOpen={isPopupOpen}
 				onClose={handlePopupClose}

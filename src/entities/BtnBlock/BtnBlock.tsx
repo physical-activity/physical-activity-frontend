@@ -1,7 +1,7 @@
 import styles from './BtnBlock.module.scss';
 
 type Props = {
-	text: string;
+	text?: string;
 	btnType?: string;
 	handleClick?: () => void;
 };

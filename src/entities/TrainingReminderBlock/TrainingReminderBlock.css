@@ -1,4 +1,5 @@
 .training__checkbox-element {
+	flex-basis: 50%;
 	padding: 16px;
 	border-radius: 12px;
 	border: 1px solid var(--color-gray-light);
@@ -19,7 +20,6 @@
 }
 
 .training__checkbox_wrapper {
-	position: relative;
 	position: relative;
 	width: 24px;
 	height: 24px;
@@ -48,6 +48,7 @@
 }
 
 .training__checkbox:checked ~ .training__checkmark {
+	background-color: var(--color-black);
 	background-image: url('./checkbox.svg');
 	background-size: 27px 27px;
 	background-position: center;

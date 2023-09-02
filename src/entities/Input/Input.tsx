@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import './Input.css';
+//import './Input.css';
+import styles from './Input.module.scss';
 import requireSvg from './icons/required.svg';
 import hideIcon from './icons/hide-eye.svg';
 import showIcon from './icons/show-eye.svg';
@@ -41,7 +42,7 @@ export const Input = ({
 	};
 
 	return (
-		<div className="input-block">
+		<div className={styles.input}>
 			<input
 				required={required}
 				name={name}
@@ -49,8 +50,8 @@ export const Input = ({
 				value={value}
 				disabled={disabled}
 				id={id}
-				className={`input-block__input ${
-					(isValidInput || isServerError) && 'input-block__input_error'
+				className={`${styles.input__input} ${
+					(isValidInput || isServerError) && styles.input__error
 				}`}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e)}
 				pattern={pattern}
@@ -59,21 +60,17 @@ export const Input = ({
 				}}
 			/>
 			{!value && required && (
-				<p className="input-block__input-name">
+				<p className={styles.input__name}>
 					{placeholder}{' '}
-					<img
-						src={requireSvg}
-						className="input-block__input-span"
-						alt="required"
-					/>
+					<img src={requireSvg} className={styles.input__span} alt="required" />
 				</p>
 			)}
 			{isValidInput !== '' && (
-				<span className="input-block__input-error">{isValidInput}</span>
+				<span className={styles.input__texterror}>{isValidInput}</span>
 			)}
 			{type === 'password' && (
 				<img
-					className="input-block__input-hidebutton"
+					className={styles.input__hidebutton}
 					src={visibility === 'password' ? hideIcon : showIcon}
 					alt="show/hide password"
 					onClick={() => toggleInputVisibility()}

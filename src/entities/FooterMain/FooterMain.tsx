@@ -15,7 +15,7 @@ import { BtnBlock } from 'entities/BtnBlock/BtnBlock';
 type Props = {
 	page: string;
 	withBtn?: boolean;
-	btnText: string;
+	btnText?: string;
 	handleClick?: () => void;
 };
 
