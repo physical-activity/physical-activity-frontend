@@ -3,24 +3,25 @@
 	flex-direction: column;
 	align-items: center;
 	max-width: 336px;
-	gap: 4px;
+	gap: 14px;
+	background-color: var(--color-white);
+	border-radius: 12px;
 }
 
 .timepicker__title {
 	width: 100%;
-	padding: 12px 0;
+	padding: 24px 0;
 	margin: 0;
 	background-color: var(--color-white);
 	border-radius: 12px;
 
-	text-align: center;
 	color: var(--color-black);
-	font-family: Open Sans;
-	font-size: 18px;
-	font-style: italic;
-	font-weight: 800;
+	text-align: center;
+	font-family: Retni Sans;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
 	line-height: 105%;
-	text-transform: uppercase;
 }
 
 .timepicker__main {
@@ -28,7 +29,6 @@
 	width: 100%;
 	margin: 0;
 	background-color: var(--color-white);
-	border-radius: 12px;
 	padding: 20px 0;
 	display: flex;
 	justify-content: center;
@@ -72,24 +72,23 @@
 
 .timepicker__btns-group {
 	display: flex;
-	gap: 4px;
+	gap: 12px;
+	padding: 0 12px 12px;
 }
 
 .timepicker__btn {
-	width: 166px;
-	background-color: var(--color-white);
+	width: 145px;
 	cursor: pointer;
 	outline: none;
 	border: none;
 	padding: 12px 0;
 	border-radius: 12px;
 
-	font-family: Open Sans;
-	font-size: 16px;
+	font-family: Retni Sans;
+	font-size: 14px;
 	font-style: normal;
-	font-weight: 600;
-	line-height: 140%;
-	letter-spacing: -0.16px;
+	font-weight: 500;
+	line-height: 105%;
 }
 
 .timepicker__btn_main {
@@ -100,7 +99,7 @@
 	position: absolute;
 	width: 296px;
 	height: 40px;
-	top: 162px;
+	top: 193px;
 	background-color: var(--color-gray-shadow);
 	border-radius: 8px;
 }

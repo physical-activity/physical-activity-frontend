@@ -496,7 +496,7 @@ export const TrainingForm = () => {
 				handleTimePick={handleTimeStartPick}
 			/>
 			<TimepickerModal
-				title="Время старта"
+				title="Время окончания"
 				isOpen={isTimeModalFinishOpen}
 				onClose={() => setIsTimeModalFinishOpen(false)}
 				handleTimePick={handleTimeFinishPick}
