@@ -63,4 +63,5 @@ jobs:
             sudo docker-compose down
             sudo docker volume rm admin_node_build
             sudo docker pull easyfitorg/physact_frontend:latest
+            sudo docker rmi $(sudo docker images | grep none | awk '{print $3}')
             sudo docker-compose up -d
