@@ -537,7 +537,7 @@ export const TrainingUpdateForm = ({ id, card }: Props) => {
 				handleTimePick={handleTimeStartPick}
 			/>
 			<TimepickerModal
-				title="Время старта"
+				title="Время окончания"
 				isOpen={isTimeModalFinishOpen}
 				onClose={() => setIsTimeModalFinishOpen(false)}
 				handleTimePick={handleTimeFinishPick}
