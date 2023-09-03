@@ -347,11 +347,13 @@ export const TrainingForm = () => {
 							}`}
 						>
 							<p className="training__label">Дата</p>
-							<img
-								src={requireSvg}
-								className="training__input-span"
-								alt="required"
-							/>
+							{!trainingDateInputValue && (
+								<img
+									src={requireSvg}
+									className="training__input-span"
+									alt="required"
+								/>
+							)}
 							<TrainingInput
 								type="text"
 								id="training_date"
@@ -380,6 +382,13 @@ export const TrainingForm = () => {
 							onClick={() => setIsTimeModalStartOpen(true)}
 						>
 							<p className="training__label">Время старта</p>
+							{!trainingStartedAtInputValue && (
+								<img
+									src={requireSvg}
+									className="training__input-span"
+									alt="required"
+								/>
+							)}
 							<TrainingInput
 								type="text"
 								id="started_at"
