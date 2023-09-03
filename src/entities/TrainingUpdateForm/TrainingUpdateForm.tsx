@@ -392,11 +392,6 @@ export const TrainingUpdateForm = ({ id, card }: Props) => {
 							}`}
 						>
 							<p className="training__label">Дата</p>
-							<img
-								src={requireSvg}
-								className="training__input-span"
-								alt="required"
-							/>
 							<TrainingInput
 								type="text"
 								id="training_date"
