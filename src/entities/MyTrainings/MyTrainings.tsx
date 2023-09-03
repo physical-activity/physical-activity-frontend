@@ -89,7 +89,7 @@ export const MyTrainings = () => {
 				}
 			});
 			setActiveButton(2);
-			setItems(completedTrainings);
+			setItems(completedTrainings.reverse());
 			setRequest(false);
 		} catch (e) {
 			console.error(e);
