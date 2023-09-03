@@ -142,7 +142,7 @@
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {
-	color: var(--color-dark-grey);
+	color: var(--color-dark-grey) !important;
 }
 
 .react-calendar__year-view .react-calendar__tile,
@@ -156,6 +156,7 @@
 	border-radius: 12px;
 	padding: 5px;
 	background: none;
+	color: var(--color-black);
 
 	text-align: center;
 	font-family: Retni Sans;
