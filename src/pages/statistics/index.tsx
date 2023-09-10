@@ -1,14 +1,12 @@
 import './index.css';
 import { useEffect, useState } from 'react';
 import { useAppSelector } from 'shared/hooks/redux';
-// import { getUserTrainings } from '../../shared/api/training';
 import { getUserTrainingsFromDate } from '../../shared/api/training';
 import HeaderMain from 'entities/HeaderMain/HeaderMain';
 import FooterMain from 'entities/FooterMain/FooterMain';
 import runningIcon from './icons/running.svg';
 import walkingIcon from './icons/walking.svg';
 import bikingIcon from './icons/biking.svg';
-// import trainingIcon from './icons/training.svg';
 import timeIcon from './icons/time.svg';
 import distanceIcon from './icons/distance.svg';
 import StatisticsPopup from 'entities/StatisticsPopup/StatisticsPopup';
@@ -40,8 +38,6 @@ export const Statistics = () => {
 	const [bikeDuration, setBikeDuration] = useState('0:00');
 	const [totalDuration, setTotalDuration] = useState('0:00');
 	const [stepsNumber, setStepsNumber] = useState(0);
-	// const [allTrainings, setAllTrainings] = useState([]);
-	// const [currentStreak, setCurrentStreak] = useState(0);
 
 	function getTodayDate() {
 		const now = new Date();
@@ -214,7 +210,6 @@ export const Statistics = () => {
 
 	useEffect(() => {
 		fetchTrainings();
-		// getAllTrainings();
 	}, [period]);
 
 	useEffect(() => {
@@ -227,7 +222,6 @@ export const Statistics = () => {
 		getRunDuration();
 		getBikeDuration();
 		getStepsNumber();
-		// currentStreakCount();
 	}, [items]);
 
 	const handlePopupOpen = () => {
@@ -242,37 +236,6 @@ export const Statistics = () => {
 		setPeriod(period);
 		setIsPopupOpen(false);
 	};
-
-	// async function getAllTrainings() {
-	// 	try {
-	// 		const data = await getUserTrainings();
-	// 		let completedTrainings: any = [];
-	// 		data.results.map((training: Training) => {
-	// 			if (training.completed === true) {
-	// 				completedTrainings.push(training);
-	// 			}
-	// 		});
-	// 		console.log(completedTrainings);
-	// 		setAllTrainings(completedTrainings);
-	// 	} catch (e) {
-	// 		console.error(e);
-	// 	}
-	// }
-
-	// function currentStreakCount() {
-	// 	let datesArr: any = [];
-	// 	allTrainings.map((training: Training) => {
-	// 		datesArr.push({date: training.started_at});
-	// 	});
-	// 	datesArr.sort();
-	// 	console.log(datesArr);
-	// 	let count = 0
-	// 	datesArr.reverse().forEach((el: any, i: any) => {
-	// 		if (new Date().setUTCHours(0,0,0,0) - new Date(el.date).setUTCHours(0,0,0,0) === i * 86400000) count++
-	// 	})
-	// 	setCurrentStreak(count);
-	// 	console.log(count);
-	// }
 
 	return (
 		<div>
@@ -339,25 +302,6 @@ export const Statistics = () => {
 					</div>
 				</section>
 				<section className="statistics__records">
-					{/* <div className="statistics__records-streak">
-						<img
-							src={trainingIcon}
-							className="statistics__records-img"
-							alt="Training"
-						/>
-						<div className="statistics__records-item statistics__records-item_left">
-							<h4 className="statistics__item-header">Без пропусков</h4>
-							<p className="statistics__records-item-data">
-								<span className="statistics__records-number">{currentStreak}</span> дней
-							</p>
-						</div>
-						<div className="statistics__records-item statistics__records-item_right">
-							<h4 className="statistics__item-header">Рекорд</h4>
-							<p className="statistics__records-item-data">
-								<span className="statistics__records-number">{54}</span> дня
-							</p>
-						</div>
-					</div> */}
 					<div className="statistics__records-time">
 						<img
 							src={timeIcon}
