@@ -1,0 +1,18 @@
+.footer {
+	width: 100%;
+	background-color: var(--color-white);
+	border-radius: 12px;
+	margin: 0 auto 8px;
+}
+
+.footer__text {
+	text-align: center;
+	color: var(--color-black);
+	font-family: 'Manrope';
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin: 0;
+	padding: 28px 20px;
+}

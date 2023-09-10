@@ -1,0 +1,24 @@
+.btn {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	border: none;
+	display: flex;
+	background-color: var(--color-black);
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	justify-content: center;
+	align-items: center;
+
+	&__letter {
+		color: var(--color-light-bg);
+		font-family: 'Retni Sans';
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 100%;
+		letter-spacing: -0.16px;
+	}
+}

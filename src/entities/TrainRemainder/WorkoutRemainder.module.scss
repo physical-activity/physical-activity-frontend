@@ -1,0 +1,73 @@
+.container {
+	margin: 0 auto;
+	padding-left: 24px;
+	padding-right: 24px;
+	width: 100%;
+}
+
+.remainder {
+	&__wrap {
+		width: 100%;
+		box-sizing: border-box;
+		background-color: var(--color-black);
+		border-radius: 12px;
+		padding-top: 14px;
+		padding-bottom: 14px;
+		padding-right: 24px;
+		padding-left: 16px;
+		display: flex;
+		gap: 16px;
+	}
+
+	&__content {
+		display: grid;
+		grid-template-columns: 1.5fr 1fr 60px;
+		gap: 37px;
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+	}
+
+	&__title {
+		margin: 0;
+		padding: 0;
+		color: var(--color-light-bg);
+		font-family: 'Retni Sans';
+		font-size: 10px;
+		font-weight: 500;
+		line-height: 105%;
+		padding-bottom: 11px;
+	}
+
+	&__workout {
+		display: flex;
+		gap: 8px;
+	}
+
+	&__dist {
+		color: var(--color-light-bg);
+		font-family: 'Retni Sans';
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 105%;
+	}
+
+	&__time span {
+		color: var(--color-light-bg);
+		font-family: 'Retni Sans';
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 105%;
+	}
+
+	&__text {
+		color: var(--color-light-bg);
+		font-family: 'Retni Sans';
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 105%;
+	}
+}

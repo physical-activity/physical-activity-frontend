@@ -1,0 +1,7 @@
+.register {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	background-color: var(--color-white);
+	height: 100vh;
+}

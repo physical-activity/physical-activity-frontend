@@ -1,0 +1,49 @@
+.training-card-info {
+	display: flex;
+	gap: 4px;
+}
+
+.training-card-info__pic {
+	background: none;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 24px;
+	width: 24px;
+}
+
+.training-card-info__pic_date {
+	background-image: url(./date.svg);
+}
+
+.training-card-info__pic_time {
+	background-image: url(./time.svg);
+}
+
+.training-card-info__pic_timer {
+	background-image: url(./timerDone.svg);
+}
+
+.training-card-info__pic_distance {
+	background-image: url(./distance.svg);
+}
+
+.training-card-info__pic_date-missed {
+	background-image: url(./dateMissed.svg);
+}
+
+.training-card-info__pic_time-missed {
+	background-image: url(./timeMissed.svg);
+}
+
+.training-card-info__pic_distance-missed {
+	background-image: url(./distanceMissed.svg);
+}
+
+.training-card-info__text {
+	font-family: Open Sans;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 22.4px;
+	letter-spacing: -0.16px;
+}

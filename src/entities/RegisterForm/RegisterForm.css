@@ -1,0 +1,43 @@
+.register__form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.register__input-container {
+	background-color: var(--color-white);
+	padding: 0 24px;
+	gap: 24px;
+	display: flex;
+	flex-direction: column;
+}
+
+.register__button-container {
+	background-color: var(--color-white);
+	border-radius: 12px;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.register__button {
+	padding: 12px 0;
+	margin: 0 24px;
+	border: none;
+	border-radius: 12px;
+	background: var(--color-green);
+	cursor: pointer;
+
+	color: var(--color-black);
+	font-family: Retni Sans;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 105%;
+}
+
+.register__button_unvalid {
+	color: var(--color-dark-grey);
+	background: var(--color-gray-light);
+	cursor: default;
+}

@@ -1,0 +1,65 @@
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 800;
+	src: url(./OpenSans-ExtraBoldItalic.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-weight: 600;
+	src: url(./OpenSans-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-weight: 400;
+	src: url(./OpenSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Finlandica';
+	font-style: italic;
+	font-weight: 700;
+	src: url(./Finlandica-BoldItalic.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Retni Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: url(./RetniSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Retni Sans';
+	font-style: normal;
+	font-weight: 500;
+	src: url(./RetniSans-Medium.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Retni Sans';
+	font-style: normal;
+	font-weight: 600;
+	src: url(./RetniSans-Bold.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'fontello';
+	src: url('./fontello.eot');
+	src:
+		url('./fontello.eot') format('embedded-opentype'),
+		url('./fontello.woff2') format('woff2'),
+		url('./fontello.woff') format('woff'),
+		url('./fontello.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* @font-face {
+	font-family: 'Retni Sans';
+	src: url('./RetniSans-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+} */

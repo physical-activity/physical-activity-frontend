@@ -1,0 +1,65 @@
+.container {
+	margin: 0 auto;
+	padding-left: 24px;
+	padding-right: 24px;
+	width: 100%;
+	padding-bottom: 145px;
+}
+
+.trainings {
+	&__content {
+		display: flex;
+		flex-direction: column;
+		min-height: inherit;
+	}
+
+	&__status {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 4px;
+		justify-content: space-between;
+		padding-bottom: 16px;
+	}
+
+	&__btn {
+		width: 100%;
+		padding: 8px 0;
+		margin: 0 auto;
+		border: 1px solid var(--color-gray-light);
+		border-radius: 16px;
+		background: var(--color-light-bg);
+		color: var(--color-black);
+		font-family: 'Retni Sans';
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 105%; /* 12.6px */
+		letter-spacing: 0.24px;
+		cursor: pointer;
+	}
+
+	&__btn_active {
+		background: var(--color-black);
+		color: var(--color-light-bg);
+		border: 1px solid var(--color-black);
+	}
+
+	&__cards {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		min-height: 100%;
+	}
+
+	&__textwrap {
+		padding-top: calc(218px - 48px);
+	}
+
+	&__text {
+		color: var(--color-black);
+		text-align: center;
+		font-family: 'Retni Sans';
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 105%; /* 16.8px */
+	}
+}

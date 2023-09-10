@@ -1,0 +1,18 @@
+.register__footer {
+	width: 100%;
+	margin: 0 auto 8px;
+}
+
+.register__footer-text {
+	padding: 20px;
+	border-radius: 12px;
+	background-color: var(--color-white);
+	text-align: center;
+	color: var(--color-black);
+	font-family: 'Open Sans';
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 22px;
+	margin: 0 8px;
+	cursor: pointer;
+}

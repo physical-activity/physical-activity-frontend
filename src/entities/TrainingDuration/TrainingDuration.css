@@ -1,0 +1,35 @@
+.trainingduration__conteiner {
+	flex-basis: 50%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	border-radius: 12px;
+	border: 1px solid var(--color-gray-light);
+	background: var(--color-light-bg);
+	padding: 16px;
+	gap: 11px;
+	width: 100%;
+}
+
+.trainingduration__conteiner-img {
+	width: 24px;
+	height: 24px;
+}
+
+.trainingduration__text-text {
+	color: var(--color-black);
+	font-family: Retni Sans;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 105%;
+}
+
+.trainingduration__text {
+	color: var(--color-gray-text);
+	font-family: Retni Sans;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 105%;
+}

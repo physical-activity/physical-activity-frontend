@@ -1,0 +1,11 @@
+.training-input__input {
+	width: 100%;
+	border: none;
+	text-align: right;
+	cursor: pointer;
+	background: var(--color-light-bg);
+}
+
+.training-input__input:focus {
+	outline: none;
+}
